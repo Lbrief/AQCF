@@ -2,26 +2,31 @@
 
 [English](README.md) | [简体中文](README.zh-CN.md)
 
-AQCF 研究客户端与云服务器之间的神经网络隐私推理。客户端提供图像并获得预测结果，服务器持有训练好的模型。协议旨在保护客户端图像不被服务器获知，同时保护服务器的模型权重不被客户端获知。同态加密负责仿射层，双方安全计算协议负责非线性操作。在论文给出的数值范围和安全假设下，协议输出与对应明文计算的整数结果一致。
+<p align="center">
+  <a href="docs/media/aqcf-overview.gif"><img src="docs/media/aqcf-overview.gif" alt="AQCF 云端隐私推理：保留相位的商恢复、掩码编程的联合进位与面向输出的迹合并" width="100%"></a>
+</p>
 
-本仓库包含算法代码、模型编译器、数据准备工具和论文保留的实验结果。**第一次使用建议从下面的 SqueezeNet 流程开始**，完成一次本地双端加密推理。
+[静态封面](docs/media/aqcf-overview.png) · [动图说明](docs/media/README.md)
 
-## 目前验证到了哪一步？
+**面向客户端与云服务器的精确整数隐私推理。**
 
-代码分为两组：`native/` 是最终 SqueezeNet 和 ResNet-50 实现；`structured/` 是较早用于机制消融的三个模型配置，共有 33 个适用的消融设置。两组代码的开关和实验范围不同，请使用各自的操作说明。
+AQCF 让客户端获得神经网络预测，同时保护输入图像不被云服务器获知，并保护服务器的模型权重不被客户端获知。同态加密负责仿射层，双方安全计算协议负责非线性操作。在论文给出的数值范围和安全假设下，协议保留对应明文计算的整数输出。
 
-下表描述本仓库重新整理后的代码验证情况：
+本仓库提供算法实现、模型编译器、数据工具和论文保留的实验观测。**第一次使用建议按下面四步运行 SqueezeNet**，在本地启动双方协议并逐项检查输出。
 
-| 模型与数据集 | 代码组 | 从源码构建 | 程序、布局和输入哈希 | 完整加密推理 |
-|---|---|---|---|---|
-| SqueezeNet / ImageNet | Native | 通过 | 一致 | **本地通过：1000 个分数及分类索引全部一致** |
-| ResNet-50 / ImageNet | Native | 通过 | 一致 | 尚未使用本仓库执行 |
-| ResNet-18 / CIFAR-100 | Structured | 通过 | 一致 | 尚未使用本仓库执行 |
-| ResNet-18 / Tiny ImageNet | Structured | 通过 | 一致 | 尚未使用本仓库执行 |
-| MobileNetV2 / CIFAR-100 | Structured | 通过 | 一致 | 尚未使用本仓库执行 |
+[快速检查](#quick-check) · [完整推理](#complete-inference) · [数据与权重](#data-and-weights) · [实验结果](#results) · [验证情况](#validation-status)
 
-已完成的 SqueezeNet 验证在同一台主机上运行两个隔离的协议参与方。本仓库的跨主机 WAN 复现尚未完成验证；论文原有的 WAN 实验结果保留在 [results](results/README.md)。各项检查的依据见[验证记录](docs/validation.md)。
+## 算法思想
 
+AQCF 围绕隐私推理中的三类计算展开：仿射层与非线性层交界处的商恢复、非线性协议中的进位转换，以及加密输出的系数提取。
+
+1. **保留相位的商接口。** 将密文分量 `c0` 保留为本地相位，只传递 `c1`，再通过受保护的低位校正恢复所需有符号商的份额。这减少了仿射计算与非线性计算边界上需要传递的信息，并在给定数值范围内保留校正后的整数结果。[分量保留实现](native/squeezenet/engine/retained_squeezenet_component.hpp) · [商恢复实现](native/squeezenet/core/quarter_consumer_fusion.hpp)。
+2. **掩码编程的联合进位。** 对查表的随机输出掩码进行编程，使后续前缀阶段在推进下一位置的布尔进位时，同步推导当前输入进位的算术份额。进位转换与前缀递推共享这一步计算。[联合进位实现](native/squeezenet/protocol/squeezenet_joint_carry_bridge.inc)。
+3. **面向输出的迹合并。** 在投影到所需输出之前，递归合并系数迹，同时保持系数索引和缩放关系。对于适用的输出布局，这减少了密钥切换操作。[迹合并](native/resnet50/engine/output_trace_merge.hpp) · [求值实现](native/resnet50/src/trace_evaluator.cpp)。
+
+[源码说明](native/README.md)给出这些算法与完整模型实现的对应关系。算术检查验证有界恒等式和系数映射；协议安全性还依赖论文中说明的后端和组合假设。
+
+<a id="quick-check"></a>
 ## 快速检查：无需下载数据和模型
 
 准备 Git 和 Python 3.11 或 3.12，然后运行：
@@ -35,6 +40,7 @@ python3 tools/summarize_results.py --output validation/quick-check/tables
 
 第一条 Python 命令检查算术恒等式，成功时输出 `"status": "PASS"`。第二条根据保留的实验观测生成五份 CSV 表格，其中包含加速比。这两步不执行加密推理，也不测量新的推理时间。
 
+<a id="complete-inference"></a>
 ## 第一次完整运行：SqueezeNet
 
 以下命令均在克隆后的仓库根目录执行，使用 **Ubuntu 24.04 或 WSL2 中的 Ubuntu 24.04 终端**。原生代码需要 x86-64 处理器，支持 AES-NI、AVX2 和 FMA，并有四个可用物理核心。不需要 GPU。启动器会自动选择合适的 CPU 编号；运行结果应放在 Linux 文件系统中。
@@ -110,7 +116,8 @@ PASS: all 1000 integer scores match; class 65.
 
 这是一次**本地双端推理**。客户端的 `service_monotonic_seconds` 从首个加密输入帧开始计时，到收到最终受保护结果为止；初始化和本地最终重构分别记录。报告也保留 RAW 时钟数据。引用结果时请同时保留计时边界和部署类型。仅准备文件、加载检查及 ResNet-50 的运行方式见[原生模型复现指南](docs/native_models.md)。
 
-## 数据和模型从哪里获得？
+<a id="data-and-weights"></a>
+## 数据与权重
 
 | 模型 | 图像来源 | 指定权重来源 |
 |---|---|---|
@@ -127,7 +134,8 @@ PASS: all 1000 integer scores match; class 65.
 
 上游原始 MobileNet 权重不能直接替代这个文件。[数据说明](docs/data.md)记录预处理、固定样本、来源版本和校验值；[Structured 模型指南](docs/structured_models.md)给出权重导入、编译、运行和消融方法。下载的数据集、权重、生成的模型文件及运行结果均不纳入 Git。
 
-## 如何看结果和消融加速比？
+<a id="results"></a>
+## 结果与消融加速比
 
 仓库保留论文中的实验观测，并提供表格生成工具。时间比统一按以下方式理解：
 
@@ -137,13 +145,33 @@ PASS: all 1000 integer scores match; class 65.
 
 比值大于 1，分别表示 AQCF、全部机制开启的配置或候选实现更快。33 个消融设置属于较早的 Structured 模型，并不是最终 Native 版本的全因子消融。比较数值前请阅读[结果及比较范围](results/README.md)。[WAN 指南](docs/wan.md)说明保留的传输设计和跨主机运行仍需验证的部分。
 
-## 三个算法部分从哪里看？
+<a id="validation-status"></a>
+## 验证情况
 
-1. **保留相位的商接口。** 将仿射校正并入本地相位表示，再安全恢复所需的有符号商，减少加密仿射计算与非线性计算边界上需要传递的信息。[对应实现](native/squeezenet/core/retained_squeezenet_phase.hpp)。
-2. **掩码编程的联合进位。** 对前一级查表的随机输出掩码进行编程，使下一级前缀计算在推进布尔进位的同时，得到所需的算术进位份额。[对应实现](native/squeezenet/protocol/squeezenet_joint_carry_bridge.inc)。
-3. **面向输出的迹合并。** 递归合并系数迹并保持索引和缩放关系，再投影到需要的输出；适用的输出布局因此减少密钥切换操作。[迹合并](native/resnet50/engine/output_trace_merge.hpp) · [求值实现](native/resnet50/src/trace_evaluator.cpp)。
+代码分为两组：`native/` 是最终 SqueezeNet 和 ResNet-50 实现；`structured/` 是较早用于机制消融的三个模型配置，共有 33 个适用的消融设置。两组代码的开关和实验范围不同，请使用对应指南。
 
-[源码说明](native/README.md)给出这些算法与完整模型代码的对应关系。`tools/aqcf_compiler/` 是系数编译器，`data/` 保存公开计算图和参考绑定，`tests/` 提供算术检查。算术检查验证指定恒等式；密码协议的安全性还依赖论文中说明的后端和组合假设。
+下表描述本仓库重新整理后的代码验证情况：
+
+| 模型与数据集 | 代码组 | 从源码构建 | 程序、布局和输入哈希 | 完整加密推理 |
+|---|---|---|---|---|
+| SqueezeNet / ImageNet | Native | 通过 | 一致 | **本地通过：1000 个分数及分类索引全部一致** |
+| ResNet-50 / ImageNet | Native | 通过 | 一致 | 尚未使用本仓库执行 |
+| ResNet-18 / CIFAR-100 | Structured | 通过 | 一致 | 尚未使用本仓库执行 |
+| ResNet-18 / Tiny ImageNet | Structured | 通过 | 一致 | 尚未使用本仓库执行 |
+| MobileNetV2 / CIFAR-100 | Structured | 通过 | 一致 | 尚未使用本仓库执行 |
+
+已完成的 SqueezeNet 验证在同一台主机上运行两个隔离的协议参与方。本仓库的跨主机 WAN 复现尚未完成验证；论文原有的 WAN 实验结果保留在 [results](results/README.md)。各项检查的依据见[验证记录](docs/validation.md)。
+
+## 目录导览
+
+| 路径 | 内容 |
+|---|---|
+| [`native/`](native/README.md) | 最终 SqueezeNet 和 ResNet-50 协议实现 |
+| [`structured/`](docs/structured_models.md) | 较早的模型配置与机制消融流程 |
+| [`tools/aqcf_compiler/`](tools/aqcf_compiler/) | 系数编译器 |
+| [`data/`](docs/data.md) | 公开计算图、参考绑定和权重来源记录 |
+| [`tests/`](tests/) | 算术恒等式与系数映射检查 |
+| [`results/`](results/README.md) | 保留的实验观测与比较范围 |
 
 ## 作者与声明
 

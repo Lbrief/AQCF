@@ -2,41 +2,59 @@
 
 [English](README.md) | [简体中文](README.zh-CN.md)
 
-AQCF studies private neural-network inference between a client and a cloud
-server. The client supplies an image and receives the prediction; the server
-holds the trained model. The protocol is designed to protect the image from the
-server and the model weights from the client. Homomorphic encryption handles affine layers, and
-two-party protocols handle nonlinear operations. The implementation targets the
-same integer outputs as the corresponding clear computation, under the bounds
-and security assumptions described in the paper.
+<p align="center">
+  <a href="docs/media/aqcf-overview.gif"><img src="docs/media/aqcf-overview.gif" alt="AQCF private cloud inference: retained-phase quotient recovery, mask-programmed joint carry, and output-directed trace merging" width="100%"></a>
+</p>
 
-This repository includes the algorithm code, model compilers, data-preparation
-tools, and retained experimental results. **Start with SqueezeNet below** for
-the shortest path from source code to a complete local encrypted inference.
+[Still image](docs/media/aqcf-overview.png) · [Animation explained](docs/media/README.md)
 
-## What has been checked?
+**Exact integer inference for private client–cloud computation.**
 
-There are two code families. `native/` contains the final SqueezeNet and
-ResNet-50 implementations. `structured/` contains the three earlier model
-profiles used for the 33 applicable mechanism-removal configurations. Their
-switches and experimental scopes differ; use the instructions for your profile.
+AQCF lets a client obtain a neural-network prediction while keeping its image
+private from the cloud server and the server's model weights private from the
+client. It combines homomorphic encryption for affine layers with two-party
+protocols for nonlinear operations. Under the paper's numerical bounds and
+security assumptions, the protocol preserves the integer outputs of the
+corresponding clear computation.
 
-The following status refers to the reorganized code in this repository:
+This repository provides the algorithm implementations, model compilers, data
+tools, and retained experimental observations. **Start with the four-step
+SqueezeNet example** to run both protocol parties locally and check every output.
 
-| Model and dataset | Code family | Built from source | Program, layout, and input hashes | Complete encrypted inference |
-|---|---|---|---|---|
-| SqueezeNet / ImageNet | Native | Passed | Matched | **Passed locally: all 1000 scores and the class index matched** |
-| ResNet-50 / ImageNet | Native | Passed | Matched | Not yet run with this repository |
-| ResNet-18 / CIFAR-100 | Structured | Passed | Matched | Not yet run with this repository |
-| ResNet-18 / Tiny ImageNet | Structured | Passed | Matched | Not yet run with this repository |
-| MobileNetV2 / CIFAR-100 | Structured | Passed | Matched | Not yet run with this repository |
+[Quick check](#quick-check) · [Complete inference](#complete-inference) ·
+[Data and weights](#data-and-weights) · [Results](#results) ·
+[Validation status](#validation-status)
 
-The completed SqueezeNet run used two isolated parties on one local host.
-Two-host WAN reproduction with this repository has not been validated. The
-paper's retained WAN measurements are available separately in
-[results](results/README.md). See [the validation record](docs/validation.md)
-for the checks behind this table.
+## Algorithm overview
 
+AQCF addresses three sources of work in private inference: quotient recovery at
+the affine/nonlinear boundary, carry conversion inside the nonlinear protocol,
+and coefficient extraction from encrypted outputs.
+
+1. **Retained-phase quotient interface.** Keep the ciphertext component `c0`
+   as a local phase and transmit `c1`. Protected low-bit correction then
+   recovers shares of the required signed quotient. This reduces the
+   information transferred across the affine/nonlinear boundary while
+   preserving the corrected integer under the stated bounds.
+   [Retained component](native/squeezenet/engine/retained_squeezenet_component.hpp) ·
+   [Quotient recovery](native/squeezenet/core/quarter_consumer_fusion.hpp).
+2. **Mask-programmed joint carry.** Program a lookup's random output mask so
+   the following prefix stage derives arithmetic shares of its incoming carry
+   while advancing the Boolean carry to the next prefix position. Carry
+   conversion and prefix progression share this computation.
+   [Joint-carry implementation](native/squeezenet/protocol/squeezenet_joint_carry_bridge.inc).
+3. **Output-directed trace merge.** Merge recursive coefficient traces before
+   projecting to the required outputs, preserving coefficient indices and
+   scale. Eligible output layouts then need fewer key-switch operations.
+   [Trace merge](native/resnet50/engine/output_trace_merge.hpp) ·
+   [Evaluator](native/resnet50/src/trace_evaluator.cpp).
+
+The [source map](native/README.md) connects these algorithms to the complete
+model implementations. The arithmetic checks verify bounded identities and
+coefficient mappings; security also depends on the backend and composition
+assumptions in the paper.
+
+<a id="quick-check"></a>
 ## Quick check: no dataset or model download
 
 Use Git and Python 3.11 or 3.12. In a terminal:
@@ -48,10 +66,12 @@ python3 tests/check_protocol_identities.py
 python3 tools/summarize_results.py --output validation/quick-check/tables
 ```
 
-The first command checks the arithmetic identities and prints `"status": "PASS"`.
-The second generates five CSV tables, including speedup ratios, from the retained
-observations. These commands do not run encrypted inference or measure latency.
+The first Python command checks the arithmetic identities and prints
+`"status": "PASS"`. The second generates five CSV tables, including speedup
+ratios, from the retained observations. These commands do not run encrypted
+inference or measure latency.
 
+<a id="complete-inference"></a>
 ## First complete run: SqueezeNet
 
 Run the following commands from the cloned repository, in an **Ubuntu 24.04
@@ -151,7 +171,8 @@ The report also retains the raw-clock measurement. Keep the timing boundary and
 deployment label when reporting results. For preparation-only commands, loader
 probes, and ResNet-50 instructions, see [native model reproduction](docs/native_models.md).
 
-## Where do the data and weights come from?
+<a id="data-and-weights"></a>
+## Data and weights
 
 | Models | Images | Exact weights |
 |---|---|---|
@@ -171,6 +192,7 @@ source revisions, and checksums. [Structured-model instructions](docs/structured
 cover checkpoint import, compilation, execution, and mechanism removals. Downloaded
 datasets, weights, generated assets, and run outputs are excluded from Git.
 
+<a id="results"></a>
 ## Results and ablations
 
 The repository retains the paper's observations and regenerates readable tables.
@@ -187,27 +209,40 @@ they are not a factorial ablation of the final native implementation. Read
 The [WAN guide](docs/wan.md) documents the retained transport design and what is
 still needed for a portable two-host run.
 
-## Three algorithm paths
+<a id="validation-status"></a>
+## Validation status
 
-1. **Retained-phase quotient interface.** Carry the affine correction into a
-   local phase representation, then recover the required signed quotient with
-   less information crossing the encrypted-affine/nonlinear boundary.
-   [Implementation](native/squeezenet/core/retained_squeezenet_phase.hpp).
-2. **Mask-programmed joint carry.** Program the preceding lookup's random output
-   mask so the next prefix stage can derive arithmetic carry shares while
-   advancing its Boolean carry computation.
-   [Implementation](native/squeezenet/protocol/squeezenet_joint_carry_bridge.inc).
-3. **Output-directed trace merge.** Recursively merge coefficient traces while
-   preserving their indices and scale, then project to the required outputs.
-   Eligible output layouts require fewer key-switch operations.
-   [Trace merge](native/resnet50/engine/output_trace_merge.hpp) ·
-   [Evaluator](native/resnet50/src/trace_evaluator.cpp).
+There are two code families. `native/` contains the final SqueezeNet and
+ResNet-50 implementations. `structured/` contains the three earlier model
+profiles used for the 33 applicable mechanism-removal configurations. Their
+switches and experimental scopes differ; follow the guide for your profile.
 
-[The source map](native/README.md) connects these paths to the full model code.
-`tools/aqcf_compiler/` contains the coefficient compiler, `data/` the public
-graphs and reference bindings, and `tests/` the arithmetic checks. The checks
-establish the stated identities; security additionally relies on the backend
-and composition assumptions described in the paper.
+The following status refers to the reorganized code in this repository:
+
+| Model and dataset | Code family | Built from source | Program, layout, and input hashes | Complete encrypted inference |
+|---|---|---|---|---|
+| SqueezeNet / ImageNet | Native | Passed | Matched | **Passed locally: all 1000 scores and the class index matched** |
+| ResNet-50 / ImageNet | Native | Passed | Matched | Not yet run with this repository |
+| ResNet-18 / CIFAR-100 | Structured | Passed | Matched | Not yet run with this repository |
+| ResNet-18 / Tiny ImageNet | Structured | Passed | Matched | Not yet run with this repository |
+| MobileNetV2 / CIFAR-100 | Structured | Passed | Matched | Not yet run with this repository |
+
+The completed SqueezeNet run used two isolated parties on one local host.
+Two-host WAN reproduction with this repository has not been validated. The
+paper's retained WAN measurements are available separately in
+[results](results/README.md). See [the validation record](docs/validation.md)
+for the checks behind this table.
+
+## Repository guide
+
+| Path | Contents |
+|---|---|
+| [`native/`](native/README.md) | Final SqueezeNet and ResNet-50 protocol implementations |
+| [`structured/`](docs/structured_models.md) | Earlier model profiles and mechanism-removal workflow |
+| [`tools/aqcf_compiler/`](tools/aqcf_compiler/) | Coefficient compiler |
+| [`data/`](docs/data.md) | Public graphs, reference bindings, and model-source records |
+| [`tests/`](tests/) | Arithmetic identity and coefficient-mapping checks |
+| [`results/`](results/README.md) | Retained observations and comparison boundaries |
 
 ## Authors and notices
 
