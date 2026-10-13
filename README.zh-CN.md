@@ -3,7 +3,7 @@
 [English](README.md) | [简体中文](README.zh-CN.md)
 
 <p align="center">
-  <a href="docs/media/aqcf-overview.gif"><img src="docs/media/aqcf-overview.gif" alt="aqcf 完整算法动图：矩阵乘法、通道打包、迹合并、保留相位和联合进位" width="100%"></a>
+  <a href="docs/media/aqcf-overview.gif"><img src="docs/media/aqcf-overview.gif?v=bodoni-matrix" alt="aqcf 完整算法动图：矩阵乘法、通道打包、迹合并、保留相位和联合进位" width="100%"></a>
 </p>
 
 [查看大图](docs/media/aqcf-overview.png) · [高清视频](docs/media/aqcf-overview.mp4) · [动图说明](docs/media/README.md)
