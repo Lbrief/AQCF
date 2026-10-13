@@ -1,476 +1,439 @@
-"""Render the AQCF README animation. Requires Pillow; no model or data access.
+"""Render AQCF's paper mechanisms as moving coefficient objects.
 
-    python -m pip install Pillow
-    python tools/render_readme_banner.py
-
-The scenes follow manuscript Figure 1(b), Algorithm 1, and Figure 2.
-They show symbolic protected views; animation time is not protocol latency.
+Requires Pillow. Geometry, lighting and motion are generated locally.
+The coefficients are symbolic protected views, not opened plaintext values.
+The scenes follow Figure 1(b), Algorithm 1 and Figure 2 of the AQCF paper.
 """
 from __future__ import annotations
 
 import argparse
+from functools import lru_cache
 import math
 import os
 from pathlib import Path
+import random
 
 from PIL import Image, ImageDraw, ImageFilter, ImageFont
 
-W, H, SCALE = 1440, 800, 2
-BG = (7, 14, 28)
-INK = (236, 246, 255)
-MUTED = (153, 177, 201)
-CYAN = (74, 225, 241)
-PURPLE = (180, 154, 255)
+W, H, SCALE = 1440, 810, 2
+PAPER = (237, 233, 223)
+INK = (38, 40, 40)
+MUTED = (104, 103, 96)
+STONE = (84, 91, 91)
+PALE = (182, 185, 175)
+RED = (188, 69, 43)
+BLUE = (107, 130, 143)
+WHITE = (246, 242, 232)
 
 
-def mix(a, b, t):
-    return tuple(round(x * (1 - t) + y * t) for x, y in zip(a, b))
-
-
-def font_path(kind):
-    roots = []
-    if os.environ.get('WINDIR'):
-        roots.append(Path(os.environ['WINDIR']) / 'Fonts')
-    roots += [Path('/usr/share/fonts/truetype/dejavu'), Path('/usr/share/fonts/truetype/liberation2')]
-    names = {
-        'hero': ['bahnschrift.ttf', 'DejaVuSans-Bold.ttf', 'LiberationSans-Bold.ttf'],
-        'bold': ['segoeuib.ttf', 'DejaVuSans-Bold.ttf', 'LiberationSans-Bold.ttf'],
-        'body': ['segoeui.ttf', 'DejaVuSans.ttf', 'LiberationSans-Regular.ttf'],
-        'mono': ['consola.ttf', 'DejaVuSansMono.ttf', 'LiberationMono-Regular.ttf'],
-    }[kind]
-    for root in roots:
-        for name in names:
-            if (root / name).is_file():
-                return str(root / name)
-    raise RuntimeError('Install DejaVu Sans and DejaVu Sans Mono, or use standard Windows fonts.')
-
-
-FONTS = {}
-
-
-def font(size, kind='body'):
-    key = (size, kind)
-    if key not in FONTS:
-        FONTS[key] = ImageFont.truetype(font_path(kind), size * SCALE)
-    return FONTS[key]
-
-
-class Canvas:
-    def __init__(self, image):
-        self.image = image
-        self.d = ImageDraw.Draw(image)
-
-    def rect(self, box, fill, radius=0, outline=None, width=1):
-        coords = tuple(round(v * SCALE) for v in box)
-        self.d.rounded_rectangle(coords, radius=round(radius * SCALE), fill=fill,
-                                 outline=outline, width=width * SCALE)
-
-    def line(self, points, fill, width=1):
-        self.d.line([(round(x * SCALE), round(y * SCALE)) for x, y in points],
-                    fill=fill, width=width * SCALE, joint='curve')
-
-    def circle(self, x, y, r, fill, outline=None, width=1):
-        self.d.ellipse(tuple(round(v * SCALE) for v in (x-r, y-r, x+r, y+r)),
-                       fill=fill, outline=outline, width=width * SCALE)
-
-    def text(self, x, y, text, size=20, fill=INK, kind='body', anchor='la'):
-        self.d.text((round(x*SCALE), round(y*SCALE)), text, font=font(size, kind),
-                    fill=fill, anchor=anchor)
-
-    def centered(self, x, y, text, size=20, fill=INK, kind='body'):
-        f = font(size, kind)
-        width = self.d.textlength(text, font=f) / SCALE
-        self.text(x-width/2, y, text, size, fill, kind)
-
-    def arrow(self, points, fill, width=2):
-        self.line(points, fill, width)
-        x, y = points[-1]
-        px, py = points[-2]
-        a = math.atan2(y-py, x-px)
-        self.line([(x-7*math.cos(a-.55), y-7*math.sin(a-.55)), (x, y),
-                   (x-7*math.cos(a+.55), y-7*math.sin(a+.55))], fill, width)
-
-    def packet(self, points, progress, color, radius=4):
-        lengths = [math.hypot(b[0]-a[0], b[1]-a[1]) for a, b in zip(points, points[1:])]
-        distance = (progress % 1) * sum(lengths)
-        for a, b, length in zip(points, points[1:], lengths):
-            if distance <= length:
-                t = distance/length
-                x, y = a[0]+(b[0]-a[0])*t, a[1]+(b[1]-a[1])*t
-                self.circle(x, y, radius+4, mix(BG, color, .15))
-                self.circle(x, y, radius, color)
-                self.circle(x-1, y-1, max(1, radius/3), INK)
-                break
-            distance -= length
-
-
-def poly(c, points, fill):
-    c.d.polygon([(round(x*SCALE),round(y*SCALE)) for x,y in points], fill=fill)
+def blend(a, b, t):
+    return tuple(round(x+(y-x)*t) for x, y in zip(a, b))
 
 
 def smooth(t):
-    t=max(0,min(1,t))
+    t = min(1, max(0, t))
     return t*t*(3-2*t)
 
 
-def lerp(a,b,t):
-    return a+(b-a)*t
-
-
-def math_text(c,x,y,text,size,color=INK,center=False):
-    import re
-    tokens=re.split(r'(u_[AB])',text)
-    widths=[]
-    for token in tokens:
-        if token in ('u_A','u_B'):
-            widths.append(c.d.textlength('u',font=font(size))/SCALE+c.d.textlength(token[-1],font=font(round(size*.64)))/SCALE+2)
-        else:
-            widths.append(c.d.textlength(token,font=font(size))/SCALE)
-    if center:x-=sum(widths)/2
-    for token,w in zip(tokens,widths):
-        if token in ('u_A','u_B'):
-            c.text(x,y,'u',size,color)
-            offset=c.d.textlength('u',font=font(size))/SCALE
-            c.text(x+offset,y+size*.4,token[-1],round(size*.64),color)
-        else:c.text(x,y,token,size,color)
-        x+=w
-
-
-def tile(c,x,y,w,h,label,color=CYAN,level=.7,size=22,depth=5):
-    # Extruded coefficient tiles; the front face carries the algebraic identity.
-    poly(c,[(x+w,y+3),(x+w+depth,y+depth),(x+w+depth,y+h+depth),(x+w,y+h)],mix(BG,color,.19*level))
-    poly(c,[(x+3,y+h),(x+w,y+h),(x+w+depth,y+h+depth),(x+depth,y+h+depth)],mix(BG,color,.12*level))
-    c.rect((x,y,x+w,y+h),mix((10,23,37),color,.14*level),8,mix((36,52,68),color,.5*level))
-    c.line([(x+10,y+1),(x+w-10,y+1)],mix((44,71,86),color,.8*level),1)
-    if label:
-        if 'u_' in label:
-            math_text(c,x+w/2,y+(h-size)/2-2,label,size,mix((53,71,86),INK,level),True)
-        else:
-            c.centered(x+w/2,y+(h-size)/2-2,label,size,mix((53,71,86),INK,level),'body')
-
-
-def cap(c,x,y,text,color=CYAN):
-    c.text(x,y,text,16,color,'bold')
-
-
-def tag(c,x,y,text,color=CYAN,size=18):
-    w=c.d.textlength(text,font=font(size,'body'))/SCALE+28
-    c.rect((x,y,x+w,y+35),mix(BG,color,.09),8,mix((32,49,65),color,.28))
-    c.text(x+14,y+5,text,size,color)
-    return w
+def ramp(p, a, b):
+    return smooth((p-a)/(b-a))
 
 
 def sub(n):
-    return str(n).translate(str.maketrans('0123456789','₀₁₂₃₄₅₆₇₈₉'))
+    return str(n).translate(str.maketrans('0123456789', '₀₁₂₃₄₅₆₇₈₉'))
 
 
-def base_image():
-    image=Image.new('RGB',(W*SCALE,H*SCALE),BG)
-    light=Image.new('RGB',image.size,BG)
-    d=ImageDraw.Draw(light)
-    d.ellipse((200,-500,2200,1400),fill=(10,42,59))
-    d.ellipse((2200,100,3450,1350),fill=(39,23,64))
-    light=light.filter(ImageFilter.GaussianBlur(160*SCALE))
-    image=Image.blend(image,light,.65)
-    c=Canvas(image)
-    # Quiet perspective construction grid underneath the coefficient workspace.
-    for i in range(11):
-        x=480+i*90
-        c.line([(880+(x-880)*.25,195),(x,685)],(17,33,48),1)
-    for y in (232,280,338,407,489,586,680):
-        c.line([(473,y),(1377,y)],(16,32,46),1)
-    c.rect((1,1,W-2,H-2),None,27,(35,54,70))
-    # Four phase plates form the small brand mark.
-    for i,col in enumerate((CYAN,PURPLE,CYAN,(139,206,212))):
-        x=49+(i%2)*24;y=46+(i//2)*24
-        poly(c,[(x,y+6),(x+17,y),(x+27,y+7),(x+10,y+13)],mix(BG,col,.6))
-        c.line([(x,y+6),(x+10,y+13),(x+27,y+7)],col,1)
-    c.text(119,26,'AQCF',75,INK,'hero')
-    c.text(390,44,'EXACT PRIVATE INFERENCE',20,INK,'bold')
-    c.text(391,76,'ALGORITHMS FOR THE CLIENT–CLOUD BOUNDARY',16,MUTED)
-    c.rect((1098,44,1385,98),(11,25,40),27,(49,67,89))
-    c.circle(1122,71,4,CYAN)
-    c.centered(1245,56,'CLIENT  ↔  CLOUD',20,(201,221,237),'body')
-    c.line([(48,137),(1391,137)],(36,57,72),1)
-    c.text(51,154,'PAPER MECHANISMS / IN MOTION',15,MUTED,'mono')
-    c.text(1081,154,'SYMBOLIC PROTECTED VIEWS',15,MUTED,'mono')
-    c.line([(451,216),(451,662)],(39,58,75),1)
-    return image
+@lru_cache(None)
+def font(size, style='body'):
+    roots = [Path(os.environ.get('WINDIR', 'C:/Windows'))/'Fonts',
+             Path('/usr/share/fonts/truetype/dejavu'),
+             Path('/usr/share/fonts/truetype/liberation2')]
+    options = {
+        'body': ['segoeui.ttf', 'DejaVuSans.ttf', 'LiberationSans-Regular.ttf'],
+        'light': ['segoeuil.ttf', 'DejaVuSans.ttf', 'LiberationSans-Regular.ttf'],
+        'bold': ['seguisb.ttf', 'segoeuib.ttf', 'DejaVuSans-Bold.ttf', 'LiberationSans-Bold.ttf'],
+        'math': ['georgia.ttf', 'DejaVuSerif.ttf', 'LiberationSerif-Regular.ttf'],
+        'italic': ['georgiai.ttf', 'DejaVuSerif.ttf', 'LiberationSerif-Italic.ttf'],
+        'mono': ['consola.ttf', 'DejaVuSansMono.ttf', 'LiberationMono-Regular.ttf'],
+    }[style]
+    for root in roots:
+        for name in options:
+            if (root/name).exists():
+                return ImageFont.truetype(str(root/name), round(size*SCALE))
+    raise RuntimeError('Install the DejaVu font family.')
 
 
-def left_panel(c,scene,color):
-    keywords=['RETAINED-PHASE INTERFACE','MASK-PROGRAMMED JOINT CARRY','OUTPUT-DIRECTED TRACE MERGE']
-    titles=[['Keep the','phase.'],['Program the','carry.'],['Merge after','contraction.']]
-    subtitles=['Recover the exact integer.','Two compatible sharings.','Preserve every coefficient index.']
-    descriptions=[['Apply the correction locally.','Leave the low two bits intact.'],
-                  ['Prepare the mask first.','Reuse the incoming carry','at the selected boundary.'],
-                  ['Contract channels before projection.','Cancel complementary coefficients.']]
-    cap(c,53,223,keywords[scene],color)
-    for j,line in enumerate(titles[scene]):
-        c.text(48,265+j*67,line,54 if scene!=1 else 51,INK,'bold')
-    c.text(53,416,subtitles[scene],23,color)
-    for j,line in enumerate(descriptions[scene]):
-        c.text(53,469+j*31,line,20,MUTED)
-    if scene==0:
-        tag(c,53,575,'LOW BITS PRESERVED',CYAN,18)
-        c.text(53,624,'Figure 1(b) · local phases',17,(117,148,169))
-    elif scene==1:
-        tag(c,53,594,'ONE FRESH BANK · ONE USE',PURPLE,16)
-        c.text(53,638,'Algorithm 1 · selected carry boundary',16,(117,148,169))
-    else:
-        c.text(53,548,'128 → 32',45,color,'bold')
-        c.text(54,605,'KEY SWITCHES IN THE EXAMPLE LAYER',14,MUTED,'bold')
-        c.text(54,635,'Figure 2 · C = 2, 256 → 64 channels',16,(117,148,169))
+def text(im, xy, value, size=22, color=INK, style='body', anchor='la'):
+    ImageDraw.Draw(im).text(tuple(round(v*SCALE) for v in xy), value,
+                           font=font(size, style), fill=color, anchor=anchor)
 
 
-def phase_scene(c,p):
-    q=smooth((p-.1)/.35)
-    reveal=smooth((p-.46)/.22)
-    left_panel(c,0,CYAN)
-    # A and B remain local to different parties, as in Figure 1(b).
-    cap(c,505,222,'SERVER-LOCAL PHASE',CYAN)
-    cap(c,505,396,'CLIENT-LOCAL PHASE',PURPLE)
-    c.text(508,251,'A′ =' if q>.65 else 'A =',29,INK,'body')
-    c.text(508,425,'B =',29,INK,'body')
-    c.text(1189,222,'LOW 2 BITS',16,(233,194,125),'bold')
-    c.text(1189,396,'LOW 2 BITS',16,(233,194,125),'bold')
-    highx=593; highw=525
-    for y,col,label in ((248,CYAN,'4a' if q>.65 else '4ã'),(422,PURPLE,'4b')):
-        tile(c,highx,y,highw,75,'',col,.9,28,7)
-        for i in range(24):
-            bx=highx+18+i*20
-            c.line([(bx,y+19),(bx,y+55)],mix(BG,col,.14+.07*(i%4)),2)
-        c.rect((highx+201,y+12,highx+319,y+63),mix((9,22,36),col,.08),9)
-        c.centered(highx+260,y+22,label,31,INK,'body')
-        c.text(1139,y+19,'+',27,MUTED)
-    for y,label in ((248,'r'),(422,'t')):
-        tile(c,1186,y,147,75,label,(236,194,126),.85,30,7)
-        c.line([(1260,y+6),(1260,y+69)],(129,107,76),1)
-        c.rect((1236,y+19,1284,y+57),(35,37,37),6)
-        c.centered(1260,y+20,label,30,(251,219,154),'body')
-    # The correction enters only the quotient part; the gold low-bit cell is fixed.
-    cx=lerp(614,846,q); cy=lerp(346,278,q)
+def centered(im, xy, value, size=22, color=INK, style='body'):
+    d = ImageDraw.Draw(im)
+    length = d.textlength(value, font=font(size, style))/SCALE
+    text(im, (xy[0]-length/2, xy[1]), value, size, color, style)
+
+
+def line(im, points, color, width=1):
+    ImageDraw.Draw(im).line([(round(x*SCALE), round(y*SCALE)) for x, y in points],
+                            fill=color, width=max(1, round(width*SCALE)))
+
+
+def poly(im, points, fill):
+    ImageDraw.Draw(im).polygon([(round(x*SCALE), round(y*SCALE)) for x, y in points], fill=fill)
+
+
+def math_text(im, xy, value, size=28, color=INK):
+    # Letter subscripts do not exist as a complete Unicode alphabet.
+    import re
+    x, y = xy
+    for token in re.split('(u_[AB])', value):
+        if token in ('u_A', 'u_B'):
+            text(im, (x,y), 'u', size, color, 'math')
+            x += ImageDraw.Draw(im).textlength('u', font=font(size,'math'))/SCALE
+            text(im, (x,y+size*.42), token[-1], size*.62, color)
+            x += ImageDraw.Draw(im).textlength(token[-1],font=font(size*.62))/SCALE+2
+        else:
+            text(im,(x,y),token,size,color,'body')
+            x += ImageDraw.Draw(im).textlength(token,font=font(size))/SCALE
+
+
+@lru_cache(None)
+def background():
+    # A quiet warm studio surface, without glow, grids or interface decoration.
+    small = Image.new('RGB',(360,203))
+    pixels = small.load()
+    rng = random.Random(13)
+    for y in range(203):
+        for x in range(360):
+            vignette = min(1, math.hypot((x-174)/285,(y-88)/260))
+            shade = -.045*vignette + .012*math.exp(-((x-210)**2+(y-75)**2)/23000)
+            noise = rng.uniform(-.0015,.0015)
+            pixels[x,y] = tuple(round(c*(1+shade+noise)) for c in PAPER)
+    im = small.resize((W*SCALE,H*SCALE),Image.Resampling.BICUBIC)
+    return im
+
+
+def header(im, scene):
+    text(im,(61,39),'AQCF',61,INK,'light')
+    text(im,(64,112),'Exact private inference',20,MUTED)
+    titles = [('Retained phase', 'Local correction. The low two bits stay intact.'),
+              ('Joint carry', 'One incoming carry, two compatible sharings.'),
+              ('Output-directed merge', 'Contract channels, then cancel complementary terms.')]
+    text(im,(484,49),titles[scene][0],34,INK,'light')
+    text(im,(487,101),titles[scene][1],20,MUTED)
+    text(im,(1300,56),f'0{scene+1}',35,RED,'math')
+    text(im,(1360,69),'/ 03',17,MUTED,'mono')
+    line(im,[(64,755),(1375,755)],(187,184,174),1)
+    text(im,(64,771),'Symbolic protected views',16,MUTED)
+    text(im,(1136,773),'CLIENT–CLOUD INFERENCE',14,MUTED,'mono')
+
+
+class Stage:
+    """Orthographic geometry with consistent lighting and soft contact shadows."""
+    def __init__(self, image, origin=(845,415), scale=47, yaw=.26, pitch=.53):
+        self.image, self.origin, self.scale = image, origin, scale
+        self.cy,self.sy,self.cp,self.sp = math.cos(yaw),math.sin(yaw),math.cos(pitch),math.sin(pitch)
+        self.objects = []
+
+    def project(self, v):
+        x,y,z = v
+        return (self.origin[0]+self.scale*(self.cy*x-self.sy*y),
+                self.origin[1]+self.scale*(self.sp*(self.sy*x+self.cy*y)-self.cp*z))
+
+    def depth(self, v):
+        x,y,z=v
+        return self.cp*(self.sy*x+self.cy*y)+self.sp*z
+
+    def box(self,x,y,z,dx,dy,dz,color=STONE,label=None,size=21,ink=WHITE):
+        self.objects.append((x,y,z,dx,dy,dz,color,label,size,ink))
+
+    def draw(self):
+        shadows=Image.new('RGBA',self.image.size,(0,0,0,0))
+        sd=ImageDraw.Draw(shadows)
+        for x,y,z,dx,dy,dz,col,label,size,ink in self.objects:
+            # Farther objects cast wider, lighter shadows on the studio plane.
+            pts=[self.project((xx+.12*(z+dz),yy+.18*(z+dz),0))
+                 for xx,yy in [(x,y),(x+dx,y),(x+dx,y+dy),(x,y+dy)]]
+            sd.polygon([(round(a*SCALE),round(b*SCALE)) for a,b in pts],fill=(53,46,36,32))
+        shadows=shadows.filter(ImageFilter.GaussianBlur(10*SCALE))
+        self.image.paste(shadows,(0,0),shadows)
+        faces=[]
+        for box in self.objects:
+            x,y,z,dx,dy,dz,col,label,size,ink=box
+            vertices=[(x,y,z),(x+dx,y,z),(x+dx,y+dy,z),(x,y+dy,z),
+                      (x,y,z+dz),(x+dx,y,z+dz),(x+dx,y+dy,z+dz),(x,y+dy,z+dz)]
+            for ids,shade in [((1,2,6,5),.55),((2,3,7,6),.73),((4,5,6,7),1.0)]:
+                vv=[vertices[j] for j in ids]
+                depth=sum(self.depth(v) for v in vv)/4
+                color=tuple(round(c*shade) for c in col)
+                faces.append((depth,[self.project(v) for v in vv],color,ids==(4,5,6,7),box))
+        for depth,pts,color,is_top,box in sorted(faces,key=lambda f:f[0]):
+            poly(self.image,pts,color)
+            if is_top:
+                # Light grazes the edge; fine bevels replace glowing outlines.
+                line(self.image,[pts[0],pts[1]],blend(color,WHITE,.22),.8)
+                x,y,z,dx,dy,dz,col,label,size,ink=box
+                if label:
+                    self.surface_label(label,(x,y,z+dz+.005),(dx,dy),size,ink)
+
+    def surface_label(self, value, at, dims, size, color):
+        # Warp the engraved symbol onto its actual top plane.
+        x,y,z=at;dx,dy=dims
+        pad=.08
+        pts=[self.project(v) for v in [(x+pad,y+pad,z),(x+dx-pad,y+pad,z),
+                                      (x+pad,y+dy-pad,z)]]
+        left=math.floor(min(p[0] for p in pts)-2)
+        top=math.floor(min(p[1] for p in pts)-2)
+        fourth=(pts[1][0]+pts[2][0]-pts[0][0],pts[1][1]+pts[2][1]-pts[0][1])
+        right=math.ceil(max([p[0] for p in pts]+[fourth[0]])+2)
+        bottom=math.ceil(max([p[1] for p in pts]+[fourth[1]])+2)
+        tw=max(4,round((dx-.16)*self.scale*SCALE))
+        th=max(4,round((dy-.16)*self.scale*SCALE))
+        label=Image.new('RGBA',(tw,th),(0,0,0,0))
+        dd=ImageDraw.Draw(label)
+        f=font(size)
+        while dd.textlength(value,font=f)>tw*.9 and size>10:
+            size-=1;f=font(size)
+        dd.text((tw/2,th/2),value,font=f,fill=color,anchor='mm')
+        ax=(pts[1][0]-pts[0][0])*SCALE/tw
+        ay=(pts[1][1]-pts[0][1])*SCALE/tw
+        bx=(pts[2][0]-pts[0][0])*SCALE/th
+        by=(pts[2][1]-pts[0][1])*SCALE/th
+        ox=(pts[0][0]-left)*SCALE;oy=(pts[0][1]-top)*SCALE
+        det=ax*by-ay*bx
+        coeff=(by/det,-bx/det,(bx*oy-by*ox)/det,
+               -ay/det,ax/det,(ay*ox-ax*oy)/det)
+        warped=label.transform(((right-left)*SCALE,(bottom-top)*SCALE),
+                               Image.Transform.AFFINE,coeff,Image.Resampling.BICUBIC)
+        self.image.paste(warped,(left*SCALE,top*SCALE),warped)
+
+    def note(self, xyz, value, offset=(0,-35), size=20, color=MUTED):
+        xx,yy=self.project(xyz)
+        target=(xx+offset[0],yy+offset[1])
+        line(self.image,[(xx,yy),target],blend(PAPER,color,.45),1)
+        if 'u_' in value:
+            math_text(self.image,(target[0]+8,target[1]-size),value,size,color)
+        else:
+            text(self.image,(target[0]+8,target[1]-size),value,size,color)
+
+
+def phase_scene(im,p):
+    stage=Stage(im,origin=(873,432),scale=46,yaw=.18,pitch=.63)
+    q=ramp(p,.12,.5)
+    # The correction affects the high part only; the two low-bit cells never move.
+    for row,y in enumerate((-2.7,1.65)):
+        col=STONE if row==0 else BLUE
+        stage.box(-6.4,y,.35,9.0,1.65,.78,col,'4a' if row==0 and q>.94 else ('4ã' if row==0 else '4b'),34)
+        for j in range(2):
+            stage.box(3.05+j*.77,y,.35,.66,1.65,.78,RED)
     if q<.98:
-        c.arrow([(663,367),(853,367),(853,329)],(43,108,120),1)
-        tile(c,cx,cy,155,39,'−4 corr',CYAN,.9,23,3)
+        # A thin local-correction plate settles into A, never into r.
+        z=1.3+1.7*(1-q)
+        stage.box(-6.4,-2.7,z,9.0,1.65,.17,blend(RED,STONE,q*.75),'−4 corr',27)
+    stage.draw()
+    for row,y in enumerate((-2.7,1.65)):
+        for j in range(36):
+            if j%3==0:
+                xx=-6.22+j*.245
+                a=stage.project((xx,y+.06,1.139));b=stage.project((xx,y+.32,1.139))
+                line(im,[a,b],(139,147,143),.65)
+    stage.note((-5.9,-2.7,.35),'A′  /  server local' if q>.94 else 'A  /  server local',(-210,-14),19,INK)
+    stage.note((-5.9,3.3,.35),'B  /  client local',(-66,68),19,INK)
+    stage.note((3.7,-2.7,1.2),'r  /  fixed low 2 bits',(47,-48),20,RED)
+    stage.note((3.7,3.3,1.2),'t  /  low 2 bits',(35,56),20,RED)
+    text(im,(65,272),'Local correction',24,INK,'bold')
+    text(im,(65,315),'A′ = A − 4 corr',27,INK,'math')
+    text(im,(65,365),'37-bit high part',19,MUTED)
+    text(im,(65,395),'+ 2 retained low bits',19,MUTED)
+    text(im,(65,606),'PROTECTED QUARTER RECONSTRUCTION',13,MUTED,'mono')
+    text(im,(65,639),'z ≡ b − a + ω(t,r)  (mod 2³⁷)',35,INK)
+    text(im,(931,667),'Shared integer before the floor operation',18,MUTED)
+
+
+def carry_scene(im,p):
+    # Dependency stages live along one diagonal rail, not a client/server route.
+    beta=ramp(p,.28,.44);arith=ramp(p,.54,.73)
+    stage=Stage(im,origin=(895,410),scale=55,yaw=-.17,pitch=.62)
+    # Boolean shares keep their cap while growing an even arithmetic component.
+    for row,(x,label,col) in enumerate(((-3.85,'α',STONE),(.35,'β',BLUE))):
+        appear=1 if row==0 else beta
+        if appear<.015:continue
+        basez=.45+1.35*arith+(1-beta)*1.3*(row==1)
+        if arith>.015:
+            stage.box(x,-.65,.35,2.65,2.65,1.42*arith,col,'',22)
+        stage.box(x,-.65,basez,2.65,2.65,.16,WHITE,label,43,RED)
+        stage.box(x,1.91,basez-.015,2.65,.09,.18,RED)
+        # An inset footing establishes the odd/even boundary.
+        stage.box(x-.10,-.75,.15,2.85,2.85,.16,PALE)
+    # Separate outgoing carry: low-profile block, set farther back.
+    if arith>.06:
+        stage.box(4.7,-4.0,.26,1.1,1.1,.26+arith*.26,PALE,'d′',25,INK)
+    stage.draw()
+    # Mask preparation appears first; lookup output later, arithmetic last.
+    text(im,(65,221),'PREPARE',13,MUTED,'mono')
+    text(im,(65,254),'α = (k₀ + k₁) mod 2',26,INK)
+    text(im,(65,298),'Fresh ROT keys. One use.',18,MUTED)
+    if beta>.05:
+        text(im,(65,367),'PRECEDING LOOKUP',13,MUTED,'mono')
+        text(im,(65,400),'β = d xor α',29,INK)
+    if arith>.05:
+        stage.note((-2.52,2,.48),'u_A = α + 2K',(-114,64),22,INK)
+        stage.note((1.67,2,.48),'u_B = β − 2Q',(2,61),22,INK)
+        stage.note((5.25,-3.45,.8),'next Boolean carry',(24,-35),18,MUTED)
     else:
-        tag(c,654,344,'a ≡ ã − corr  (mod 2³⁷)',CYAN,20)
-    c.line([(1200,335),(1320,335)],(214,173,107),2)
-    c.centered(1260,345,'r unchanged',18,(236,194,126),'body')
-    # Both local paths feed protected reconstruction; no phase is opened.
-    c.arrow([(1338,287),(1360,287),(1360,522),(804,522),(804,536)],(76,93,108),1)
-    c.arrow([(1338,463),(1360,463)],(76,93,108),1)
-    c.rect((505,541,1110,639),mix(BG,CYAN,.07),14,(50,100,119))
-    cap(c,529,554,'PROTECTED QUARTER RECONSTRUCTION',CYAN)
-    c.text(529,585,'z ≡ b − a + ω(t,r)  (mod 2³⁷)',27,INK,'body')
-    c.arrow([(1114,592),(1141,592),(1141,568),(1155,568)],(85,154,168),1)
-    for r in range(2):
-        for col in range(3):
-            i=r*3+col
-            tile(c,1160+col*64,550+r*44,54,34,'z'+sub(i),CYAN,.35+.6*reveal,19,4)
-    c.text(1160,647,'shared integer',18,MUTED)
-    c.text(507,655,'A′ = A − 4 corr     ·     39-bit local phases',18,MUTED,'body')
+        stage.note((-2.52,-.65,.9),'prepared mask',(-84,-87),20,INK)
+        if beta>.05:stage.note((1.67,2,.8),'masked incoming carry',(12,87),20,INK)
+    text(im,(65,606),'NEXT LOOKUP / ARITHMETIC SHARES',13,MUTED,'mono')
+    math_text(im,(65,638),'u_A + u_B ≡ d  (mod 2ʷ)',35,INK)
+    text(im,(932,629),'The low bits remain α and β.',20,RED)
+    text(im,(932,666),'The outgoing Boolean carry is distinct.',18,MUTED)
 
 
-def carry_scene(c,p):
-    left_panel(c,1,PURPLE)
-    mask=smooth((p-.1)/.28)
-    forwarded=smooth((p-.4)/.25)
-    produced=smooth((p-.62)/.22)
-    cap(c,510,219,'FRESH ROT BANK',PURPLE)
-    tile(c,510,252,70,48,'k₀',PURPLE,.9,26)
-    tile(c,592,252,70,48,'k₁',PURPLE,.9,26)
-    c.arrow([(675,276),(742,276)],(115,97,150),2)
-    tile(c,754,246,276,62,'α = (k₀+k₁) mod 2',PURPLE,.9,23)
-    c.text(1110,225,'PREPARE BEFORE LOOKUP',15,MUTED,'bold')
-    c.text(1109,255,'local mask dependency',19,MUTED)
-    c.arrow([(890,316),(890,340),(637,340),(637,367)],(98,83,131),1)
-    # The two panels are dependency stages, not parties or transmitted secrets.
-    c.rect((510,366,800,471),(18,24,44),15,(94,78,134))
-    cap(c,531,381,'PRECEDING LOOKUP',PURPLE)
-    c.text(532,414,'program its output mask',21,INK)
-    mx=lerp(859,674,mask);my=lerp(267,443,mask)
-    if mask<.98:
-        tile(c,mx,my,59,38,'α',PURPLE,.95,24,3)
-    else:
-        tile(c,538,448,79,43,'α',PURPLE,.95,26,3)
-        tile(c,639,448,137,43,'β = d xor α',CYAN,.9,19,3)
-    c.arrow([(808,417),(985,417)],(99,88,143),2)
-    if mask>.7:
-        c.packet([(817,417),(978,417)],min(.999,forwarded),PURPLE,5)
-    c.text(818,370,'incoming carry d',18,(187,175,224))
-    c.text(825,442,'Boolean shares (α,β)',16,MUTED)
-    c.rect((992,366,1355,471),(20,25,44),15,(104,88,145))
-    cap(c,1016,381,'NEXT PREFIX LOOKUP',PURPLE)
-    c.text(1016,414,'advance + derive arithmetic shares',19,INK)
-    c.arrow([(1092,474),(1092,512),(790,512),(790,536)],(87,117,127),1)
-    c.arrow([(1272,474),(1272,536)],(156,126,78),1)
-    tile(c,524,542,239,71,'u_A = α + 2K',CYAN,.35+.6*produced,23,5)
-    tile(c,777,542,239,71,'u_B = β − 2Q',CYAN,.35+.6*produced,23,5)
-    tile(c,1068,542,287,71,'next Boolean carry',(237,193,117),.4+.5*produced,22,5)
-    math_text(c,529,635,'u_A + u_B ≡ d  (mod 2ʷ)',28,INK)
-    c.text(1068,630,'distinct outgoing sharing',17,MUTED)
-    math_text(c,530,674,'u_A mod 2 = α   ·   u_B mod 2 = β',18,CYAN)
+def contraction_scene(im,p):
+    stage=Stage(im,origin=(811,420),scale=46,yaw=.25,pitch=.65)
+    align=ramp(p,.08,.42)
+    contracted=ramp(p,.48,.83)
+    # The input is one pack; both branches use it. Short weights are reversed.
+    for j in range(4):
+        stage.box(-6+j*.94,-.3,.35,.84,1.3,.55,STONE,'x'+sub(j),23)
+    for row,y in enumerate((-3.6,2.7)):
+        col=STONE if row==0 else BLUE
+        stage.box(-.5,y,.45,1.28,1.4,.32,PALE,'X⁻¹',27,INK)
+        for j,v in enumerate((('b₁','b₀','0','0'),('c₁','c₀','0','0'))[row]):
+            stage.box(1.35+j*.91+(1-align)*.6,y,.45+(1-align)*.4,.81,1.4,.52,col if j<2 else PALE,v,24,WHITE if j<2 else MUTED)
+        stage.box(6.05,y,.45,1.12,1.4,.12+.6*contracted,blend(PALE,RED,contracted),'Z'+sub(row),26)
+    # Small restrained arrows connect actual operator dependencies.
+    def arrow(a,b):
+        x0,y0=stage.project(a);x1,y1=stage.project(b)
+        line(im,[(x0,y0),(x1,y1)],(148,144,134),1.3)
+        a=math.atan2(y1-y0,x1-x0)
+        line(im,[(x1-6*math.cos(a-.5),y1-6*math.sin(a-.5)),(x1,y1),
+                 (x1-6*math.cos(a+.5),y1-6*math.sin(a+.5))],(148,144,134),1.3)
+    arrow((-1.95,.3,.6),(-.7,-2.9,.6));arrow((-1.95,.3,.6),(-.7,3.4,.6))
+    arrow((5.1,-2.9,.6),(5.95,-2.9,.6));arrow((5.1,3.4,.6),(5.95,3.4,.6))
+    stage.draw()
+    stage.note((-4.5,-.3,1),'same Enc(Pᵢ)',(-54,-53),21,INK)
+    stage.note((3,-3.6,1),'private short weights',(-60,-43),19,MUTED)
+    text(im,(65,230),'BEFORE THE MERGE',13,MUTED,'mono')
+    text(im,(65,265),'One input pack.',27,INK,'light')
+    text(im,(65,305),'Two contractions.',27,INK,'light')
+    text(im,(65,605),'CHANNEL CONTRACTION',13,MUTED,'mono')
+    text(im,(65,640),'Zᵣ = Σᵢ Wᵣ,ᵢ X⁻¹ Pᵢ',34,INK)
+    text(im,(905,636),'256 × 56 × 56  →  64 × 56 × 56',24,INK)
+    text(im,(906,675),'Native ResNet-50 example  /  C = 2',18,MUTED)
 
 
-def contraction_scene(c,p):
-    left_panel(c,2,(160,231,204))
-    cap(c,508,222,'SAME INPUT · TWO PRIVATE SHORT WEIGHT PACKS',CYAN)
-    c.text(508,343,'Enc(Pᵢ)',26,INK)
-    for i in range(4):
-        tile(c,510+i*49,386,42,46,'x'+sub(i),CYAN,.85,22,6)
-    c.rect((503,379,708,442),None,11,(44,129,152),1)
-    c.text(508,467,'128 input ciphertexts',19,MUTED)
-    c.text(508,496,'reuse the same pack',19,CYAN)
-    branches=[[(714,410),(745,410),(745,313),(789,313)],
-              [(714,410),(745,410),(745,513),(789,513)]]
-    for row,(y,color) in enumerate(((288,CYAN),(488,PURPLE))):
-        c.arrow(branches[row],(67,103,127),1)
-        c.packet(branches[row],p*.9,color,4)
-        tile(c,794,y,92,47,'X⁻¹',color,.9,26,4)
-        c.text(905,y+5,'×',32,MUTED)
-        cap(c,945,y-29,'PRIVATE W'+sub(row)+',ᵢ',color)
-        letters=('b','c')[row]
-        for j,value in enumerate((letters+'₁',letters+'₀','0','0')):
-            tile(c,944+j*48,y,41,47,value,color,.8 if j<2 else .3,21,4)
-        c.arrow([(1145,y+24),(1195,y+24)],(64,104,126),1)
-        c.circle(1216,y+24,23,(13,35,47),(86,153,164),1)
-        c.centered(1216,y+6,'Σᵢ',23,INK)
-        c.arrow([(1244,y+24),(1278,y+24)],(68,126,143),1)
-        tile(c,1287,y,72,47,'Z'+sub(row),color,.75,24,4)
-    c.arrow([(1324,340),(1324,385)],(62,120,135),1)
-    c.arrow([(1324,482),(1324,443)],(92,88,137),1)
-    c.circle(1324,414,27,(17,40,49),(117,204,184),1)
-    c.centered(1324,396,'M',29,(171,236,208),'body')
-    c.text(993,400,'contract, then merge',23,(177,204,218))
-    c.rect((504,588,1363,642),mix(BG,CYAN,.055),12,(50,85,103))
-    c.centered(933,600,'Zᵣ = Σᵢ Wᵣ,ᵢ X⁻¹ Pᵢ',28,INK,'body')
-    c.text(508,659,'256 × 56 × 56  →  64 × 56 × 56',22,(177,204,218))
-    c.text(1072,659,'32 protected output CT',18,MUTED)
-
-
-def trace_scene(c,p):
-    left_panel(c,2,(160,231,204))
-    q=smooth((p-.1)/.76)
-    cap(c,508,222,'16 CONSECUTIVE COEFFICIENTS · C = 2',CYAN)
-    c.text(507,251,'V = A + U',26,INK)
-    c.text(827,251,'σ₁(T),  T = A − U',24,INK)
-    c.text(1161,251,'M = V + σ₁(T)',24,INK)
-    origins=(506,827,1150)
-    step=53;cell=45
-    active=min(15,int(q*16))
+def trace_scene(im,p):
+    complete=ramp(p,.65,.79)
+    stage=Stage(im,origin=(868-93*complete,425-5*complete),scale=63+9*complete,yaw=.17,pitch=.63)
+    q=ramp(p,.03,.63)
+    # Two signed coefficient surfaces approach; a completed cell is their sum.
+    # Row-major indices correspond to 16 consecutive coefficients, not a tensor reshape.
     for i in range(16):
-        row,col=divmod(i,4)
-        xx=col*step;yy=302+row*step
-        selected=i<=active
-        local=smooth(q*16-i)
-        color=CYAN if i%2==0 else PURPLE
-        # v and t show the two summands; the signed t term removes its complement.
-        tile(c,origins[0]+xx,yy,cell,cell,'v'+sub(i),color,.55+.4*(i==active),21,4)
-        tile(c,origins[1]+xx,yy,cell,cell,('−' if i%2 else '')+'t'+sub(i),color,.55+.4*(i==active),20,4)
-        out='2'+('a' if i%2==0 else 'u')+sub(i)
-        tile(c,origins[2]+xx,yy,cell,cell,out,color,.93 if selected else .19,18,4)
-        if i==active:
-            for origin in origins:
-                c.rect((origin+xx-3,yy-3,origin+xx+cell+3,yy+cell+3),None,10,color,1)
-            # Lift the active result into its original coefficient slot.
-            if local<.96:
-                c.rect((origins[2]+xx,yy,origins[2]+xx+cell,yy+cell),(8,20,32),8)
-                tile(c,origins[2]+xx,yy-26*(1-local),cell,cell,out,color,.9,18,8)
-    c.text(757,376,'+',35,MUTED)
-    c.text(1090,376,'=',35,MUTED)
-    c.text(507,522,'A = Z₀    U = XZ₁',21,MUTED)
-    c.text(827,522,'σ₁: X → −X',21,(214,194,250))
-    c.text(1152,522,'trace factor 2 kept',18,CYAN)
-    # Exact symbolic cancellation corresponding to Figure 2(c).
-    i=active;idx=sub(i)
-    if i%2==0:
-        eq=f'(a{idx} + u{idx}) + (a{idx} − u{idx}) = 2a{idx}'
+        row,col=divmod(i,8)
+        x=-5.5+col*1.29;y=-1.45+row*2.0
+        k=ramp(q*16,i,i+1)
+        done=q*16>=i+1
+        color=STONE if i%2==0 else BLUE
+        if not done:
+            gap=2.55*(1-k)
+            stage.box(x,y,.38+gap,1.13,1.55,.27,STONE,'v'+sub(i),22)
+            stage.box(x,y,.22,1.13,1.55,.26,BLUE,('−' if i%2 else '')+'t'+sub(i),21)
+        else:
+            stage.box(x,y,.23,1.13,1.55,.55,color,'2'+('a' if i%2==0 else 'u')+sub(i),20)
+        if 0<k<1:
+            # A restrained rust rim marks only the pair currently cancelling.
+            stage.box(x-.025,y-.025,.14,1.18,1.6,.08,RED)
+    stage.draw()
+    active=min(15,int(q*16))
+    idx=sub(active)
+    left=im.copy()
+    text(left,(65,215),'COEFFICIENT CANCELLATION',13,MUTED,'mono')
+    text(left,(65,253),'V = A + U',26,INK,'math')
+    text(left,(65,299),'T = A − U',26,INK,'math')
+    text(left,(65,358),'A = Z₀    U = XZ₁',20,MUTED)
+    text(left,(65,391),'σ₁(X) = −X',21,RED)
+    text(left,(65,606),'EXACT OUTPUT TRACE',13,MUTED,'mono')
+    text(left,(65,640),'M = V + σ₁(T)',34,INK,'math')
+    im.paste(Image.blend(left,im,complete))
+    # Labels for the two surfaces, not decorations or implied plaintext values.
+    if q<.97:
+        stage.note((4.095,1.32,3.2),'V',(72,-44),24,INK)
+        stage.note((4.095,2.1,.49),'σ₁(T)',(37,42),23,INK)
+    sign='+' if active%2==0 else '−'
+    term='a' if active%2==0 else 'u'
+    if q<1:
+        text(im,(484,573),f'(a{idx} + u{idx}) {sign} (a{idx} − u{idx}) = 2{term}{idx}',25,INK)
     else:
-        eq=f'(a{idx} + u{idx}) − (a{idx} − u{idx}) = 2u{idx}'
-    c.rect((504,568,1363,628),mix(BG,CYAN,.055),13,(53,86,104))
-    c.centered(933,580,eq,28,INK,'body')
-    # Layer-specific cost, not a claim of whole-model latency improvement.
-    c.text(508,653,'256 × 56 × 56  →  64 × 56 × 56',23,(177,204,218))
-    c.text(1059,653,'8,192 products unchanged',18,MUTED)
+        centered(im,(786,573),'M = 2[a₀, u₁, a₂, u₃, …, a₁₄, u₁₅]',32,INK)
+    text(im,(942,630),'128 → 32',42,RED,'light')
+    text(im,(945,684),'key switches / selected layer',18,MUTED)
+    text(im,(485,690),'16 coefficients · trace factor 2 retained',19,MUTED)
 
 
-def scene_image(base,scene,p):
-    image=base.copy();c=Canvas(image)
-    if scene<2:
-        (phase_scene,carry_scene)[scene](c,p)
-    elif p<.32:
-        contraction_scene(c,min(1,p/.26))
-        if p>.26:
-            clean=base.copy();left_panel(Canvas(clean),2,(160,231,204))
-            nxt=base.copy();trace_scene(Canvas(nxt),0)
-            if p<.29:
-                image=Image.blend(image,clean,smooth((p-.26)/.03))
+def scene(scene,p):
+    im=background().copy()
+    header(im,scene)
+    if scene==0:phase_scene(im,p)
+    elif scene==1:carry_scene(im,p)
+    else:
+        if p<.29:contraction_scene(im,p/.29)
+        elif p<.34:
+            # A paper wipe clears geometry before the trace close-up.
+            q=(p-.29)/.05
+            if q<.5:
+                old=im.copy();contraction_scene(old,1)
+                im=Image.blend(old,im,smooth(q*2))
             else:
-                image=Image.blend(clean,nxt,smooth((p-.29)/.03))
-    else:
-        trace_scene(c,(p-.32)/.68)
-    return image
-
-
-def progress_rail(image,scene,p):
-    c=Canvas(image)
-    labels=('RETAINED PHASES','JOINT CARRY','OUTPUT-DIRECTED MERGE')
-    colors=(CYAN,PURPLE,(160,231,204))
-    for i in range(3):
-        x=53+i*460
-        active=i==scene
-        c.line([(x,734),(x+414,734)],(35,54,72),2)
-        if active:
-            c.line([(x,734),(x+414*p,734)],colors[i],3)
-        c.text(x,754,f'0{i+1}',19,colors[i] if active else (78,99,119),'mono')
-        c.text(x+39,754,labels[i],18,INK if active else (92,118,139),'bold')
-    return image
+                nxt=im.copy();trace_scene(nxt,0)
+                im=Image.blend(im,nxt,smooth((q-.5)*2))
+        else:trace_scene(im,(p-.34)/.66)
+    return im
 
 
 def frame(base,t):
     stage=(t%1)*3
-    scene=min(2,int(stage));p=stage-scene
-    image=scene_image(base,scene,p)
-    if p>.93:
-        next_scene=(scene+1)%3
-        if p<.965:
-            image=Image.blend(image,base,smooth((p-.93)/.035))
-        else:
-            image=Image.blend(base,scene_image(base,next_scene,0),smooth((p-.965)/.035))
-    progress_rail(image,scene,p)
-    return image.resize((W,H),Image.Resampling.LANCZOS)
+    i=min(2,int(stage));p=stage-i
+    im=scene(i,p)
+    # A brief exposure through the warm studio surface, never overlapping text.
+    if p>.955:
+        q=(p-.955)/.045
+        clean=background()
+        if q<.5:im=Image.blend(im,clean,smooth(q*2))
+        else:im=Image.blend(clean,scene((i+1)%3,0),smooth((q-.5)*2))
+    return im.resize((W,H),Image.Resampling.LANCZOS)
 
 
 def main():
     parser=argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--output',type=Path,default=Path(__file__).resolve().parents[1]/'docs'/'media')
-    parser.add_argument('--frames',type=int,default=300)
+    parser.add_argument('--frames',type=int,default=600)
     parser.add_argument('--preview-only',action='store_true')
     args=parser.parse_args()
-    if args.frames<30 or args.frames%3:
-        parser.error('--frames must be divisible by 3 and at least 30')
+    if args.frames<30 or args.frames%3:parser.error('--frames must be a multiple of 3 and at least 30')
     args.output.mkdir(parents=True,exist_ok=True)
-    base=base_image()
-    poster=frame(base,.25)
-    poster.save(args.output/'aqcf-overview.png',optimize=True)
+    # A completed trace makes the strongest static cover.
+    frame(None,(2+.94)/3).save(args.output/'aqcf-overview.png',optimize=True)
     if args.preview_only:
         for i in range(3):
-            frame(base,(i+.72)/3).save(args.output/f'preview-scene-{i+1}.png')
-        frame(base,(2+.18)/3).save(args.output/'preview-contraction.png')
-        print('Preview scenes rendered.');return
-    # One palette across all scenes keeps typography and cross-fades stable.
-    sample=Image.new('RGB',(W,H*3))
-    for i in range(3):
-        sample.paste(frame(base,(i+.68)/3),(0,i*H))
-    palette=sample.quantize(colors=144,method=Image.Quantize.MEDIANCUT)
-    frames=[frame(base,i/args.frames).quantize(palette=palette,dither=Image.Dither.NONE) for i in range(args.frames)]
-    frames[0].save(args.output/'aqcf-overview.gif',save_all=True,append_images=frames[1:],
-                   duration=100,loop=0,disposal=1,optimize=True)
-    print(f'Rendered {W} x {H}, {args.frames} frames, {args.frames/10:g} seconds.')
+            frame(None,(i+.72)/3).save(args.output/f'preview-scene-{i+1}.png')
+        frame(None,(2+.19)/3).save(args.output/'preview-contraction.png')
+        print('Four mechanism previews rendered.');return
+    samples=Image.new('RGB',(W,H*4))
+    for i,t in enumerate((.24,.57,.74,.97)):
+        samples.paste(frame(None,t),(0,i*H))
+    palette=samples.quantize(colors=224,method=Image.Quantize.MEDIANCUT)
+    images=[]
+    for i in range(args.frames):
+        images.append(frame(None,i/args.frames).quantize(palette=palette,dither=Image.Dither.NONE))
+        if i%60==0:print(f'Rendered {i}/{args.frames}',flush=True)
+    # 50ms = 20fps; 600 frames produce a readable 30-second loop.
+    images[0].save(args.output/'aqcf-overview.gif',save_all=True,append_images=images[1:],
+                   duration=50,loop=0,disposal=1,optimize=True)
+    print(f'Rendered {W} x {H}, {args.frames} frames, {args.frames*.05:g} seconds.')
     for name in ('aqcf-overview.gif','aqcf-overview.png'):
-        target=args.output/name
-        print(f'{name}: {target.stat().st_size:,} bytes')
+        print(f'{name}: {(args.output/name).stat().st_size:,} bytes')
 
 
 if __name__=='__main__':

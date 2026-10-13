@@ -8,6 +8,14 @@ paper**. Three full-width scenes follow the actual algebra and dependencies:
 preserve the low bits, reuse an incoming carry in two representations, and merge
 the required output coefficients.
 
+The cover uses a warm studio background, solid coefficient surfaces and a small
+rust-red accent. A correction plate settles into the high part of a local phase;
+fixed caps identify the retained low bits. The carry scene keeps its low-bit caps
+while the even arithmetic components grow beneath them. In the final scene,
+signed coefficient pairs meet, cancel and resolve into the complete output.
+The shape and motion explain structure; their dimensions do not encode values
+or execution time.
+
 ## From the paper to the animation
 
 | Scene | Paper source | What the animation shows | Implementation |
@@ -33,8 +41,10 @@ the required output coefficients.
   `C = 2`. It is an operation count, not a fourfold inference speedup. The
   layer’s `8,192` ciphertext–plaintext products remain unchanged.
 
-Animation timing is chosen for readability and does not measure latency. The
-paper’s numerical bounds and security assumptions still apply.
+The 30-second loop is rendered at 20 frames per second. Unchanged frames may be
+stored together by the GIF encoder. Animation timing is chosen for readability
+and does not measure latency. The paper's numerical bounds and security
+assumptions still apply.
 
 ## Regenerate the cover
 
