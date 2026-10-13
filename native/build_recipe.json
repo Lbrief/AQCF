@@ -1,0 +1,322 @@
+[
+  {
+    "model": "squeezenet",
+    "name": "inference",
+    "source": "squeezenet/src/inference.cpp",
+    "flags": [
+      "-DAQCF_UNIFORM_INPUT_SHARE=1",
+      "-DAQCF_HE_PROJECTED_OUTPUT=1",
+      "-DAQCF_MASKED_GATE_FACTOR=0",
+      "-DAQCF_COMPUTE4_CLOUD_PUBLIC=1",
+      "-DAQCF_SILENTOT_CONTROL=1",
+      "-DAQCF_POOL_SELECTED=0",
+      "-DAQCF_FUSED_COFACTOR=0",
+      "-DAQCF_FUSED_QUARTER_ENTRY=1",
+      "-DAQCF_LAYER_FRONTIER=1",
+      "-DAQCF_WAN_WAVE=1",
+      "-DAQCF_POOL38=1",
+      "-DAQCF_TUPLE_SELECTORS=4",
+      "-O3",
+      "-std=c++17",
+      "-maes",
+      "-msse4.1",
+      "-mavx",
+      "-mavx2",
+      "-faligned-new",
+      "-fopenmp",
+      "-Wno-deprecated-declarations",
+      "-DNDEBUG",
+      "-DEMP_USE_RANDOM_DEVICE=1",
+      "-DAQCF_EXACT_QUARTER_BUILD=1",
+      "-DAQCF_QUARTER_PROFILE=2",
+      "-DAQCF_QUERY_FINALIZER_PUBLIC=0",
+      "-DAQCF_ROOT_NATIVE_AUX_WIDE=1",
+      "-DAQCF_QUARTER_ADMITTED_REAL=1",
+      "-DAQCF_BACKBONE_ADMITTED=1",
+      "-pthread"
+    ]
+  },
+  {
+    "model": "squeezenet",
+    "name": "native_ot_bridge",
+    "source": "squeezenet/src/native_ot_bridge.cpp",
+    "flags": [
+      "-std=gnu++17",
+      "-O3",
+      "-DNDEBUG",
+      "-DEMP_USE_RANDOM_DEVICE=1",
+      "-maes",
+      "-msse4.1",
+      "-mavx",
+      "-mavx2",
+      "-mpclmul",
+      "-pthread",
+      "-fvisibility=hidden",
+      "-fvisibility-inlines-hidden",
+      "-DAQCF_NATIVE_BOOL_BATCH=1",
+      "-DAQCF_NATIVE_STREAM_BATCH=1"
+    ]
+  },
+  {
+    "model": "squeezenet",
+    "name": "parallel_ntt_hooks",
+    "source": "squeezenet/he_backend/parallel_ntt_hooks.cpp",
+    "flags": [
+      "-std=c++17",
+      "-O3",
+      "-DNDEBUG",
+      "-pthread"
+    ]
+  },
+  {
+    "model": "squeezenet",
+    "name": "seal_rns_parallel",
+    "source": "squeezenet/he_backend/seal_rns_parallel.cpp",
+    "flags": [
+      "-std=c++17",
+      "-O3",
+      "-DNDEBUG",
+      "-pthread"
+    ]
+  },
+  {
+    "model": "squeezenet",
+    "name": "seal_rlwe_parallel",
+    "source": "squeezenet/he_backend/seal_rlwe_parallel.cpp",
+    "flags": [
+      "-std=c++17",
+      "-O3",
+      "-DNDEBUG",
+      "-pthread"
+    ]
+  },
+  {
+    "model": "squeezenet",
+    "name": "seal_randomgen_parallel",
+    "source": "squeezenet/he_backend/seal_randomgen_parallel.cpp",
+    "flags": [
+      "-std=c++17",
+      "-O3",
+      "-DNDEBUG",
+      "-pthread"
+    ]
+  },
+  {
+    "model": "squeezenet",
+    "name": "seal_polynomial_parallel",
+    "source": "squeezenet/he_backend/seal_polynomial_parallel.cpp",
+    "flags": [
+      "-std=c++17",
+      "-O3",
+      "-DNDEBUG",
+      "-pthread"
+    ]
+  },
+  {
+    "model": "squeezenet",
+    "name": "seal_ntt_parallel",
+    "source": "squeezenet/he_backend/seal_ntt_parallel.cpp",
+    "flags": [
+      "-std=c++17",
+      "-O3",
+      "-DNDEBUG",
+      "-pthread"
+    ]
+  },
+  {
+    "model": "squeezenet",
+    "name": "seal_validation_parallel",
+    "source": "squeezenet/he_backend/seal_validation_parallel.cpp",
+    "flags": [
+      "-std=c++17",
+      "-O3",
+      "-DNDEBUG",
+      "-pthread"
+    ]
+  },
+  {
+    "model": "squeezenet",
+    "name": "seal_decryptor_parallel",
+    "source": "squeezenet/he_backend/seal_decryptor_parallel.cpp",
+    "flags": [
+      "-std=c++17",
+      "-O3",
+      "-DNDEBUG",
+      "-pthread"
+    ]
+  },
+  {
+    "model": "resnet50",
+    "name": "inference",
+    "source": "resnet50/src/inference.cpp",
+    "flags": [
+      "-fno-thread-jumps",
+      "-DAQCF_R50_FRONTIER=1",
+      "-DAQCF_SILENTOT_CONTROL=1",
+      "-DAQCF_POOL38=1",
+      "-DAQCF_BAND_ACTION=1",
+      "-DAQCF_WINDOW_ACTION=1",
+      "-DAQCF_TUPLE_SELECTORS=4",
+      "-DAQCF_STRIDE_NORMALIZED=1",
+      "-DAQCF_RHOMBUS_ADMITTED=1",
+      "-O3",
+      "-std=c++17",
+      "-maes",
+      "-msse4.1",
+      "-mavx",
+      "-mavx2",
+      "-faligned-new",
+      "-fopenmp",
+      "-Wno-deprecated-declarations",
+      "-DNDEBUG",
+      "-DEMP_USE_RANDOM_DEVICE=1",
+      "-DAQCF_EXACT_QUARTER_BUILD=1",
+      "-DAQCF_QUARTER_PROFILE=2",
+      "-DAQCF_QUERY_FINALIZER_PUBLIC=0",
+      "-DAQCF_ROOT_NATIVE_AUX_WIDE=1",
+      "-DAQCF_QUARTER_ADMITTED_REAL=1",
+      "-pthread"
+    ]
+  },
+  {
+    "model": "resnet50",
+    "name": "trace_evaluator",
+    "source": "resnet50/src/trace_evaluator.cpp",
+    "flags": [
+      "-std=c++17",
+      "-O3",
+      "-pthread"
+    ]
+  },
+  {
+    "model": "resnet50",
+    "name": "native_ot_bridge",
+    "source": "resnet50/src/native_ot_bridge.cpp",
+    "flags": [
+      "-std=gnu++17",
+      "-O3",
+      "-DNDEBUG",
+      "-DEMP_USE_RANDOM_DEVICE=1",
+      "-maes",
+      "-msse4.1",
+      "-mavx",
+      "-mavx2",
+      "-mpclmul",
+      "-pthread",
+      "-fvisibility=hidden",
+      "-fvisibility-inlines-hidden",
+      "-DAQCF_NATIVE_BOOL_BATCH=1",
+      "-DAQCF_NATIVE_STREAM_BATCH=1"
+    ]
+  },
+  {
+    "model": "resnet50",
+    "name": "exact_fma_kernel",
+    "source": "resnet50/src/exact_fma_kernel.cpp",
+    "flags": [
+      "-std=c++17",
+      "-O3",
+      "-mavx2",
+      "-mfma",
+      "-ffp-contract=off",
+      "-fno-fast-math"
+    ]
+  },
+  {
+    "model": "resnet50",
+    "name": "transport_pacing",
+    "source": "resnet50/src/transport_pacing.cpp",
+    "flags": [
+      "-O3",
+      "-std=c++17"
+    ]
+  },
+  {
+    "model": "resnet50",
+    "name": "parallel_ntt_hooks",
+    "source": "resnet50/he_backend/parallel_ntt_hooks.cpp",
+    "flags": [
+      "-std=c++17",
+      "-O3",
+      "-DNDEBUG",
+      "-pthread"
+    ]
+  },
+  {
+    "model": "resnet50",
+    "name": "seal_rns_parallel",
+    "source": "resnet50/he_backend/seal_rns_parallel.cpp",
+    "flags": [
+      "-std=c++17",
+      "-O3",
+      "-DNDEBUG",
+      "-pthread"
+    ]
+  },
+  {
+    "model": "resnet50",
+    "name": "seal_rlwe_parallel",
+    "source": "resnet50/he_backend/seal_rlwe_parallel.cpp",
+    "flags": [
+      "-std=c++17",
+      "-O3",
+      "-DNDEBUG",
+      "-pthread"
+    ]
+  },
+  {
+    "model": "resnet50",
+    "name": "seal_randomgen_parallel",
+    "source": "resnet50/he_backend/seal_randomgen_parallel.cpp",
+    "flags": [
+      "-std=c++17",
+      "-O3",
+      "-DNDEBUG",
+      "-pthread"
+    ]
+  },
+  {
+    "model": "resnet50",
+    "name": "seal_polynomial_parallel",
+    "source": "resnet50/he_backend/seal_polynomial_parallel.cpp",
+    "flags": [
+      "-std=c++17",
+      "-O3",
+      "-DNDEBUG",
+      "-pthread"
+    ]
+  },
+  {
+    "model": "resnet50",
+    "name": "seal_ntt_parallel",
+    "source": "resnet50/he_backend/seal_ntt_parallel.cpp",
+    "flags": [
+      "-std=c++17",
+      "-O3",
+      "-DNDEBUG",
+      "-pthread"
+    ]
+  },
+  {
+    "model": "resnet50",
+    "name": "seal_validation_parallel",
+    "source": "resnet50/he_backend/seal_validation_parallel.cpp",
+    "flags": [
+      "-std=c++17",
+      "-O3",
+      "-DNDEBUG",
+      "-pthread"
+    ]
+  },
+  {
+    "model": "resnet50",
+    "name": "seal_decryptor_parallel",
+    "source": "resnet50/he_backend/seal_decryptor_parallel.cpp",
+    "flags": [
+      "-std=c++17",
+      "-O3",
+      "-DNDEBUG",
+      "-pthread"
+    ]
+  }
+]

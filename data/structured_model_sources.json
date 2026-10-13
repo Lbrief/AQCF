@@ -1,0 +1,34 @@
+{
+  "schema": "aqcf.structured_model_sources.v1",
+  "models": {
+    "cifar_resnet18": {
+      "description": "PrivCirNet author block-circulant ResNet-18 checkpoint",
+      "upstream_download_url": "https://drive.google.com/uc?id=1-O4BQ9ry7Z6luyGbAa2lrK8y_hF1c3rD",
+      "upstream_folder_url": "https://drive.google.com/drive/folders/16W7QCQtQ15qXxAInuiBZfQ8TGMIOGItd",
+      "checkpoint_sha256": "6c578feabaef6eb2f0c9587864671321af75dd1c2c89f4a66446493a1588d8ea",
+      "checkpoint_bytes": 134776458,
+      "extracted_state_sha256": "54bde800b187ab6fee769747c5fa0f1e1cf0ea2d49b741cf0bc8a7d18d8fef3b",
+      "integer_model_sha256": "5945be459292c36526a7290a46f6a49f7b451ea1bf13b2e9342487a5f0dc7fbc"
+    },
+    "tiny_resnet18": {
+      "description": "PrivCirNet author dense Tiny ImageNet ResNet-18 checkpoint",
+      "upstream_download_url": "https://drive.google.com/uc?id=1_-q6h-tnc123FAjx47kU_LtEqpenn5tB",
+      "checkpoint_sha256": "5a9ba96acdbd6ee3c1e98c817814a1df683105465c7bca418cfba79e6e93c860",
+      "checkpoint_bytes": 135391818,
+      "extracted_state_sha256": "19f1d0e94c7c7bc957efdf4706903a9dd5ff4948ab6e5a2c2ae916499b2e6d0c",
+      "parameters_npz_sha256": "4b22c2e6c8a9b2cf448ef7dca7c933f538cb706ead103eae64b8d122be4d73ac"
+    },
+    "cifar_mobilenetv2": {
+      "description": "Frozen derived BN/IR-compatible MobileNetV2 endpoint; not the original upstream checkpoint",
+      "public_download_url": "https://github.com/Lbrief/AQCF/releases/download/models-v1/cifar_mobilenetv2_state.pt",
+      "public_release_tag": "models-v1",
+      "release_asset_note": "Separate model asset with the exact retained endpoint bytes; no retraining or reserialization.",
+      "checkpoint_sha256": "0e889f03a6ee93017f4c4fa4cd1a3c5a3ea5b2a465cd9bde45afc2104ad39e8a",
+      "checkpoint_bytes": 9372732,
+      "checkpoint_format": "PyTorch state_dict wrapper containing 106 named tensors only",
+      "license_record": "The retained preparation materials do not record a separate license or SPDX identifier for this derived checkpoint; see NOTICE.md and applicable upstream terms.",
+      "integer_model_sha256": "93f954f0bba8559380a8c8159c4a8b5f7211164015fabe2624fb735169067032",
+      "completed_training_steps": 3224
+    }
+  }
+}

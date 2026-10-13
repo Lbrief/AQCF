@@ -1,0 +1,64 @@
+#pragma once
+#include "resnet50/engine/persistent_worker_owner.hpp"
+// Local compute scheduling only. No protocol calls, shared RNG or cross-request cache.
+// Exactly four worker threads; bounded ready frames; caller alone performs ordered IO.
+#include <array>
+#include <condition_variable>
+#include <exception>
+#include <functional>
+#include <memory>
+#include <mutex>
+#include <stdexcept>
+#include <thread>
+#include <vector>
+#include <sched.h>
+#include <time.h>
+namespace aqcf_compute4 {
+inline void check(bool ok,const char* why){if(!ok)throw std::runtime_error(why);}
+inline long long thread_ns(){timespec t{};check(clock_gettime(CLOCK_THREAD_CPUTIME_ID,&t)==0,"worker CPU clock");return t.tv_sec*1000000000LL+t.tv_nsec;}
+struct Evidence {
+ std::array<unsigned long long,4> items{};
+ std::array<long long,4> cpu_ns{};
+ std::array<int,4> cpus{{-1,-1,-1,-1}};
+};
+// Preparation runs on workers; consumption can do ordered transport on caller.
+// Every call creates and joins fresh workers. Jobs never outlive owning key/context.
+template<class Result,class Prepare,class Consume>
+Evidence ordered(std::size_t n,const std::array<int,4>& cpus,Prepare prepare,Consume consume,std::size_t window=8){
+ check(n>=4,"four workers require at least four real compute jobs");
+ check(window>=4&&window<=64,"bounded producer window");
+ for(unsigned a=0;a<4;++a)for(unsigned b=0;b<a;++b)check(cpus[a]!=cpus[b],"four distinct CPU IDs");
+ std::vector<std::unique_ptr<Result>> ready(n);
+ std::mutex lock;std::condition_variable wake;std::size_t consumed=0;
+ bool cancelled=false;std::exception_ptr failure;Evidence evidence;
+ auto fail=[&](std::exception_ptr e){std::lock_guard<std::mutex> hold(lock);if(!failure)failure=e;cancelled=true;wake.notify_all();};
+ auto work=[&](unsigned lane){try{
+   cpu_set_t allowed;CPU_ZERO(&allowed);CPU_SET(cpus[lane],&allowed);
+   check(sched_setaffinity(0,sizeof(allowed),&allowed)==0,"compute4 affinity");
+   evidence.cpus[lane]=sched_getcpu();check(evidence.cpus[lane]==cpus[lane],"actual worker CPU");
+   for(std::size_t index=lane;index<n;index+=4){
+     {std::unique_lock<std::mutex> hold(lock);wake.wait(hold,[&]{return cancelled||index<consumed+window;});if(cancelled)return;}
+     auto start=thread_ns();auto value=std::make_unique<Result>(prepare(index,lane));
+     evidence.cpu_ns[lane]+=thread_ns()-start;++evidence.items[lane];
+     {std::lock_guard<std::mutex> hold(lock);if(cancelled)return;ready[index]=std::move(value);}
+     wake.notify_all();
+   }
+ }catch(...){fail(std::current_exception());}};
+ std::vector<aqcf_owner4::Task> workers;
+ try{for(unsigned lane=0;lane<4;++lane)workers.emplace_back(work,lane);}
+ catch(...){fail(std::current_exception());for(auto& t:workers)t.join();std::rethrow_exception(failure);}
+ try{
+   for(std::size_t index=0;index<n;++index){
+     std::unique_ptr<Result> value;
+     {std::unique_lock<std::mutex> hold(lock);wake.wait(hold,[&]{return cancelled||bool(ready[index]);});
+      if(failure)std::rethrow_exception(failure);value=std::move(ready[index]);}
+     consume(index,std::move(*value)); // not delayed until all jobs finish
+     {std::lock_guard<std::mutex> hold(lock);consumed=index+1;}wake.notify_all();
+   }
+ }catch(...){fail(std::current_exception());}
+ for(auto& t:workers)t.join();
+ if(failure)std::rethrow_exception(failure);
+ for(unsigned lane=0;lane<4;++lane)check(evidence.items[lane]>0&&evidence.cpu_ns[lane]>0,"four workers must do real work");
+ return evidence;
+}
+}

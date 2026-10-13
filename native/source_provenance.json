@@ -1,0 +1,3099 @@
+{
+  "note": "Files were renamed by function and include paths rewritten. AQCF_CPU_LIST replaces fixed CPU numbers while preserving four-worker allocation and native physical-core checks. Cryptographic parameters, algorithms and flags are retained.",
+  "files": [
+    {
+      "path": "native/squeezenet/src/inference.cpp",
+      "original_sha256": "2d1a5bcd891613a089450c742d84bb51d7fc860b9a3a0f04bbf83284879066ba",
+      "sha256": "268d8308e89f0fb0dee18f3b5367a18598e77d8fa4f924284ca3dba8ba1c5675"
+    },
+    {
+      "path": "native/squeezenet/core/squeezenet_thread_trace.hpp",
+      "original_sha256": "af95d9b39c7c72d795be9e98399ed569adf1df8697bcfcaedc4e64badc806fef",
+      "sha256": "af95d9b39c7c72d795be9e98399ed569adf1df8697bcfcaedc4e64badc806fef"
+    },
+    {
+      "path": "native/squeezenet/engine/native_worker_runtime.hpp",
+      "original_sha256": "f5e259dad6f2de225b2d0dc45fc1d6352639fcd0323f0a902d7a57f9285acdb3",
+      "sha256": "d6c16654dfbae660c1a9477dc96c01ebb279af51fa6e7ae3ea5b7072389ba8b9"
+    },
+    {
+      "path": "native/squeezenet/parallel/pcn_parallel.hpp",
+      "original_sha256": "ab87888799d29aa0cb878f2831da428b3953de3d234be6f63f249c6816164c2d",
+      "sha256": "ab87888799d29aa0cb878f2831da428b3953de3d234be6f63f249c6816164c2d"
+    },
+    {
+      "path": "native/squeezenet/parallel/parallel_span.hpp",
+      "original_sha256": "eeba5a01643d34642b02009fde2c97ccce26b85401643a435c7e34c992b36ae9",
+      "sha256": "b7452eeafee08427f94a9f8227b874197a31411ad925c2923a97404fb5298136"
+    },
+    {
+      "path": "native/squeezenet/parallel/parallel_data.hpp",
+      "original_sha256": "272b81891d6563d13a56b4fc554920582b08c0f3df80208f3f8183298422288c",
+      "sha256": "f2b72a0cfc16a94860800bfd22afc45eec7c8ec7eae9c61da81ba1bd2757f8e4"
+    },
+    {
+      "path": "native/squeezenet/parallel/parallel_ntt.hpp",
+      "original_sha256": "3089cd75dad378d54c8ed81875dc286eb546e61b96cfc8f7bfb492c514819858",
+      "sha256": "3089cd75dad378d54c8ed81875dc286eb546e61b96cfc8f7bfb492c514819858"
+    },
+    {
+      "path": "native/squeezenet/parallel/parallel_context.hpp",
+      "original_sha256": "4efe4de5bc76e0ddb62dd1863fb81fc838172623d41ff10393a69c12f115c80d",
+      "sha256": "ec866b5ccda1db422e88c1d4b16b174f4b39faf87c58c8982a532e17f09b9afa"
+    },
+    {
+      "path": "native/squeezenet/engine/bfv_program.hpp",
+      "original_sha256": "44b6a4f6317cb0f588003eafdd1acdf3d2d6eb2911dd262bad5b3c0185950de7",
+      "sha256": "e861809a174050e2b119861999b36387fadfd8f5c243dba4d65847b0a22fe327"
+    },
+    {
+      "path": "native/squeezenet/engine/squeezenet_pipeline.hpp",
+      "original_sha256": "02fb8c71fde62747a1f60b73ebfd8faf69fc1687186369222785db6ba0f1003e",
+      "sha256": "02fb8c71fde62747a1f60b73ebfd8faf69fc1687186369222785db6ba0f1003e"
+    },
+    {
+      "path": "native/squeezenet/engine/owned_squeezenet_pipeline.hpp",
+      "original_sha256": "73329a123137cdd59069724e1948f35f7cffdc07ca091070d3ecc3995650505c",
+      "sha256": "ae3ef4c527b60384f9898844595aaba42198a04d55eaecee99f78ab802aba911"
+    },
+    {
+      "path": "native/squeezenet/engine/compute_workers.hpp",
+      "original_sha256": "a586a39648c07054d9ed8af331ed01db3aa54e233103715e857a4d5c5f3b6bd6",
+      "sha256": "5696d524d5efc3e72f31368722ea67431ea8ffe2c7c6fb0b453c771d420e16b2"
+    },
+    {
+      "path": "native/squeezenet/engine/packed_phase_wire.hpp",
+      "original_sha256": "2f4e7b0a554c5c12831af7a34304f0f4c38bca7b6830ff18fdb57406db97993a",
+      "sha256": "2f4e7b0a554c5c12831af7a34304f0f4c38bca7b6830ff18fdb57406db97993a"
+    },
+    {
+      "path": "native/squeezenet/engine/squeezenet_input_rounding.hpp",
+      "original_sha256": "e947b90283af6838221514a098abdfc372a92a7fd500a6ace2e3987fe7636d83",
+      "sha256": "cbb93a54638cfbd73fdb2f68b7fa0ffbd8e24510efcdad3279f0833ac1675ec1"
+    },
+    {
+      "path": "native/squeezenet/engine/squeezenet_input_floor.hpp",
+      "original_sha256": "97a9a6cda97017e18f4c2a8fbd1c74beebe1805f8eb33d235382a03e7c4b5ec3",
+      "sha256": "2660af1fc2778f56b4fd8c486eb67f819c1930fb785387c465df828f90d55fb7"
+    },
+    {
+      "path": "native/squeezenet/engine/input_support_projection.hpp",
+      "original_sha256": "7dfb1c2fad7f4d06c719dde9a378ff8038434c98e0f63e3660d01a97649ae5b0",
+      "sha256": "fb02f5203030e5d81cdd4e5adc9927d9af44d8781b3add6ec59f44a3693fe2b9"
+    },
+    {
+      "path": "native/squeezenet/engine/kernel_action.hpp",
+      "original_sha256": "67df3661c1c0a2b839a65ae2d862521e0459fe5a8b836a2cc18e3b6376985a60",
+      "sha256": "c32c7a62a9dcd3c8f9f9e14d6e08c735a0c127d8ec6387eac2974762e06ab426"
+    },
+    {
+      "path": "native/squeezenet/engine/parallel_validation.hpp",
+      "original_sha256": "d1524ac76c8c2ab4500d0f156282c12cd3d7a87c9b668427fc409d9cd4214c82",
+      "sha256": "d1524ac76c8c2ab4500d0f156282c12cd3d7a87c9b668427fc409d9cd4214c82"
+    },
+    {
+      "path": "native/squeezenet/engine/squeezenet_support_packing.hpp",
+      "original_sha256": "d73c50498d865315ba55a5156a251c4f14d423e10cac62def5e605e09d57a9f8",
+      "sha256": "d73c50498d865315ba55a5156a251c4f14d423e10cac62def5e605e09d57a9f8"
+    },
+    {
+      "path": "native/squeezenet/engine/program.hpp",
+      "original_sha256": "5b4879ff5573df1229c5555fd5973ddeaeff92ba4e6cc31e741202087c70f911",
+      "sha256": "e6c84997eeee5cde2062b1a4ed511e572024bffe89d0b2129b87a9ee93192ebb"
+    },
+    {
+      "path": "native/squeezenet/engine/types.hpp",
+      "original_sha256": "3ef356f50bec54ae9e02905f556a5dc28bf1a8e0053cb8b4277f5c9850b5ca62",
+      "sha256": "3ef356f50bec54ae9e02905f556a5dc28bf1a8e0053cb8b4277f5c9850b5ca62"
+    },
+    {
+      "path": "native/squeezenet/engine/pair_profile.hpp",
+      "original_sha256": "56d564159441a9dd3fbb275cc638c3602002ef0786ba1e323f39daa2bf024288",
+      "sha256": "56d564159441a9dd3fbb275cc638c3602002ef0786ba1e323f39daa2bf024288"
+    },
+    {
+      "path": "native/squeezenet/engine/retained_squeezenet_component.hpp",
+      "original_sha256": "e18ef46c904533ea561fe70a06b04587b9d494fe74c215a2a7cdeaa5978d8429",
+      "sha256": "e18ef46c904533ea561fe70a06b04587b9d494fe74c215a2a7cdeaa5978d8429"
+    },
+    {
+      "path": "native/squeezenet/engine/module_basis.hpp",
+      "original_sha256": "ff00dd2ffa8f84971023269e8b387458c28a0e79791e62af59b8bc2a595d4d2c",
+      "sha256": "6b3728096724055d6229d1968cc771adf12711c0cd16b7551d8969d5e95077a8"
+    },
+    {
+      "path": "native/squeezenet/engine/parallel_public_transform.hpp",
+      "original_sha256": "c529445aebbabbe86d72a9bcfdb665d6171433e9a3ed2f427e9193c77e53f911",
+      "sha256": "8e26bdcbf0db878aaadf0e18970c03509eaef425d9ce2252e64e29f2c9d6728f"
+    },
+    {
+      "path": "native/squeezenet/engine/coefficient_wire.hpp",
+      "original_sha256": "c697768a74eb7ebcdf7f8992e5d68a51f59dae3cc75b48149aaffb5269106c44",
+      "sha256": "2b1d322e4a781d3b4cfa686c5ae7f0a03aaed1859166755374677222b1abe0d9"
+    },
+    {
+      "path": "native/squeezenet/engine/parallel_ingress.hpp",
+      "original_sha256": "0bcf038879ae80857828207d3543be0d3a08ac6c71050889491ade2f33f571b5",
+      "sha256": "09b697f91df1bf990ca27d21c76a6b9285e688f3dabe77e9115eb18681809e43"
+    },
+    {
+      "path": "native/squeezenet/engine/bilinear_action.hpp",
+      "original_sha256": "4a2155d5d608ed9a8a5e98870a11c02036d26dc2fbcd031b41ba8d7a053cf259",
+      "sha256": "a53db41c5e7dacbf4e1e30a20f07305286bd1133494bf74077867b4cd4de79ce"
+    },
+    {
+      "path": "native/squeezenet/engine/lifted_pk_zero.hpp",
+      "original_sha256": "9b2c236a0238588a511aef079a813badb104df908c2b9503d6be7ffe57756ac8",
+      "sha256": "d366e9ae3fee1d37ae2a451f06215311d1de3d41aa1f46bc6e99fdb3f3d5b94e"
+    },
+    {
+      "path": "native/squeezenet/engine/root_flood.hpp",
+      "original_sha256": "a93222056fec0e490e46a2cb087ba26dc296e621faa95008f71ba94ff71e8961",
+      "sha256": "0235b41dc417bfb0cb7b091a4cc37dff4121dc430121ee4f0c22ab4bc3e77531"
+    },
+    {
+      "path": "native/squeezenet/engine/quarter_protocol.hpp",
+      "original_sha256": "f669e333cf206faa721a8e70fbc13bb747f371e810694f2f9c0c84f6a495a3f1",
+      "sha256": "84138c708a12f62e7681c9d413ab26929a5f4bf34b7c2118e4fb2bcf884ddb75"
+    },
+    {
+      "path": "native/squeezenet/engine/quarter_recover.hpp",
+      "original_sha256": "33b85d285934f71f5bb2337d434f148d859f87a7915083d726e6ced99746f7de",
+      "sha256": "baf7ceb20d1dde4d083d586e39f34153464e55278c5512075b96615ad2c2ae7e"
+    },
+    {
+      "path": "native/squeezenet/engine/sci.hpp",
+      "original_sha256": "948e5e98898d56002189f28a57a69b92c727b08848cc1c5e3be615aa527f8238",
+      "sha256": "99cdab74b790825dd4c59b24abe5b000ea91e1005b3aa9e49c228de528111f2a"
+    },
+    {
+      "path": "native/squeezenet/protocol/backend.hpp",
+      "original_sha256": "a3be0aea8f12e4b049b0ba270db3912d2e1cd4abad7061e8a3fbda663588549f",
+      "sha256": "c3264bfaced8c0016eb1925635ccd195c3a4063839065ea32200789267a26ea3"
+    },
+    {
+      "path": "native/squeezenet/protocol/native_ot_bridge.h",
+      "original_sha256": "2dcd5fa1bc1eb32f7ebce4d56efb78ba023f2d2a53787dc21db3fd26c1a8c20e",
+      "sha256": "2dcd5fa1bc1eb32f7ebce4d56efb78ba023f2d2a53787dc21db3fd26c1a8c20e"
+    },
+    {
+      "path": "native/squeezenet/protocol/quotient_recovery.h",
+      "original_sha256": "362334b027316f13d87771bca9c9f3e056ab57c1d0f1ca2c5a9b391d75c9d0df",
+      "sha256": "9990aef65518f5869aeef265c9b823d6458a55cd6eb1cf0be956df567406470b"
+    },
+    {
+      "path": "native/squeezenet/protocol/radix_quotient.h",
+      "original_sha256": "48a79e19a0d864073ff3d68fa70181a45c5bc4b91bfe0175675505db18c49728",
+      "sha256": "61e6831806df15897398eac4e240df53088015179798a96a0eed642baac1364c"
+    },
+    {
+      "path": "native/squeezenet/protocol/late_quotient_api.h",
+      "original_sha256": "1b4895eec283abcfca7520b43156e1554f84a258c95dad8427a6a2853050212a",
+      "sha256": "1b4895eec283abcfca7520b43156e1554f84a258c95dad8427a6a2853050212a"
+    },
+    {
+      "path": "native/squeezenet/engine/small_state.hpp",
+      "original_sha256": "937e7a5910441495da226756577d31009e14a2e8e645343677153a2ab847f646",
+      "sha256": "35a8e1f25f3b85b1e43a41cfd6b5b8b8c3ce45ecac3f0fc66132a07c02ba38c8"
+    },
+    {
+      "path": "native/squeezenet/engine/prepared_bits.hpp",
+      "original_sha256": "d93da01ea591d371163664b6b6d8fcd92a2444ad4fc6eda48ddcd697a9e0fbb6",
+      "sha256": "80e94a04b13335a78d8cf622cfc0f820e29c3aaba066209d778755c4dc70e7df"
+    },
+    {
+      "path": "native/squeezenet/engine/tuple_selector_bank.hpp",
+      "original_sha256": "b49fa6a6c01b0dafe8bbc242fda371f34acefa19042df1da3c141466b9c40e1b",
+      "sha256": "53243eef2c3bc52e7dcbacae80ecbf3b156ea57bddc1b53cbb7c1310793b4da7"
+    },
+    {
+      "path": "native/squeezenet/engine/native_late_ot.hpp",
+      "original_sha256": "c1a18dd3a17a711b3f43667b73759e56310e2bc4f862b4af8f4c1b9e982b39b3",
+      "sha256": "d6c2dc79b33327dba925cfb386e5ea5c54fe26504f1c46ae6a4866728ee2bfa3"
+    },
+    {
+      "path": "native/squeezenet/engine/late_ot_bank.hpp",
+      "original_sha256": "e802dc3ef05522df8980df784f116ac76dcb7e9149faa61ffde29342ce1fe59f",
+      "sha256": "931fe212371a32c9420b294575320d39748f5e65451b55fe58ab5889fbc2f658"
+    },
+    {
+      "path": "native/squeezenet/vendor/bolt_sci/BuildingBlocks/aux-protocols.h",
+      "original_sha256": "2b4e2324694c52c1be0f321cadf1a9efb7e8f6201d11676061e3d59225acd9bc",
+      "sha256": "90582cc434596ada7408566ad37b9fc8bb5810a6943cdbb6058014a123c50903"
+    },
+    {
+      "path": "native/squeezenet/vendor/bolt_sci/Millionaire/millionaire.h",
+      "original_sha256": "b75b51e5c3698e44f63b2396c1cbbd3d6b005da68ef129b2dbe8e034ef3cdfe1",
+      "sha256": "b2f47c201bd94b0b0899c6fa5745f99d43c650cf21b5462f4ebfd7bd80a1195f"
+    },
+    {
+      "path": "native/squeezenet/vendor/bolt_sci/Millionaire/bit-triple-generator.h",
+      "original_sha256": "0289cf5f8571a3376a142a5b5e5c6017861627bfe1d4267a25c2aeb2a5cf5bf7",
+      "sha256": "2a120e8191146510f00cddbbe7d581c8e93264c14c914cf3acd43b2c4ff14fe1"
+    },
+    {
+      "path": "native/squeezenet/vendor/bolt_sci/OT/ot_pack.h",
+      "original_sha256": "33b02d12c90aafb0df41454e876d31fd1f2c73101cdc2bc519d0bce21572dee3",
+      "sha256": "dbbebc0db06c7a92b0b7940f08c927610700565fb8c7c5a3d83bd04420a9bdba"
+    },
+    {
+      "path": "native/squeezenet/vendor/bolt_sci/OT/emp-ot.h",
+      "original_sha256": "66e9dbfc12fded62871f55d1c6c0d6f891cd245c77062b88e709b6fd58338072",
+      "sha256": "5f29e689c8d5c9d5706e77576467226256e679fbf44b993e5ad91f2171aa37ac"
+    },
+    {
+      "path": "native/squeezenet/vendor/bolt_sci/OT/ideal.h",
+      "original_sha256": "8399420d65cba722567112b24a77e6618dcdb45910a8c63d8555a3c93f9ea6dc",
+      "sha256": "9fa984ccea79f9b1e136a40be93fa5d6d63eb813b36067ec4f82fd7aa1be98a6"
+    },
+    {
+      "path": "native/squeezenet/vendor/bolt_sci/OT/ot.h",
+      "original_sha256": "af9ee4ebbcff3fe5af091d15e442a9ca5cf9a67e2f7024d13c7f3b88924fa6cb",
+      "sha256": "ebeb60697a9afe38bd1ab1f3ea4d5b9df735704c6b1fd8227e342576be5da4af"
+    },
+    {
+      "path": "native/squeezenet/vendor/bolt_sci/utils/emp-tool.h",
+      "original_sha256": "d1deb1f276f556aafb6df649a5645388323fec296b94782f927bdb6d0e53ad54",
+      "sha256": "ffcd3b71c648611605c6842e6dce25ea778c35c2d931c3f064e4e2d33d92d7fe"
+    },
+    {
+      "path": "native/squeezenet/vendor/bolt_sci/utils/io_channel.h",
+      "original_sha256": "1043065cf49bf118e15144215bd79b63a8d1547a8971d6b58877c0780a5cf298",
+      "sha256": "6f98f9be988f57cbf6ef2f24a0d59e20e827e30399c278e52c3bed71b0fe28cd"
+    },
+    {
+      "path": "native/squeezenet/vendor/bolt_sci/utils/block.h",
+      "original_sha256": "d66a545a0ba698495d7881bc2640c6ffdcf05aee3bcfca2f015c530e4943dd50",
+      "sha256": "d66a545a0ba698495d7881bc2640c6ffdcf05aee3bcfca2f015c530e4943dd50"
+    },
+    {
+      "path": "native/squeezenet/vendor/bolt_sci/utils/group.h",
+      "original_sha256": "c81fdece56d525619148f482dc9df7cde6a97ad61f5548a8f88b84c1ba5274ae",
+      "sha256": "eb2872aec4e64d749b03bee7c75c53c90fc970b83c0104df1d632126e0653d3e"
+    },
+    {
+      "path": "native/squeezenet/vendor/bolt_sci/utils/utils.h",
+      "original_sha256": "13e9acf2bc45a7b09e395d4a7e0ebe4b41030a29a69bb2f99d1228987477712a",
+      "sha256": "47012a6a8c6bfd76d61ae554cea09d2017f735078dfd1b86a374c01f5a7f9232"
+    },
+    {
+      "path": "native/squeezenet/vendor/bolt_sci/utils/prg.h",
+      "original_sha256": "870294bc36bbeb8f298890767145247ec299102e8d77ca7d8ca69167559153df",
+      "sha256": "15db12f54b45db6385bd472fc3d02cdf4ce69c4557e39e5b493c3ea9d5eb437a"
+    },
+    {
+      "path": "native/squeezenet/vendor/bolt_sci/utils/aes-ni.h",
+      "original_sha256": "24f84169975a20c69eba643bb52f974d34502b96635efeaf97da24d05d599285",
+      "sha256": "478f39edd23a75a84a6399bf9f83980375c35db261b6775c471da5c8f2955157"
+    },
+    {
+      "path": "native/squeezenet/vendor/bolt_sci/utils/aes.h",
+      "original_sha256": "3d48d5f729640d0c6812427241fa6656808e3a58ee616274d47220b6d4b41a96",
+      "sha256": "52142b0be35bddd5a5dbec75e7ab311aaa1e33fd34075d86300328f38f58e819"
+    },
+    {
+      "path": "native/squeezenet/vendor/bolt_sci/utils/constants.h",
+      "original_sha256": "2966ac6e4e14d7957f832933f75f1908bf57a5df4bb08d542ee821b5ad594098",
+      "sha256": "2966ac6e4e14d7957f832933f75f1908bf57a5df4bb08d542ee821b5ad594098"
+    },
+    {
+      "path": "native/squeezenet/vendor/bolt_sci/utils/utils.hpp",
+      "original_sha256": "edb7f010c0f7d17d63e6f2bb34cb4b18b11da78e9413560811a0fec4992735fb",
+      "sha256": "edb7f010c0f7d17d63e6f2bb34cb4b18b11da78e9413560811a0fec4992735fb"
+    },
+    {
+      "path": "native/squeezenet/vendor/bolt_sci/utils/group_openssl.h",
+      "original_sha256": "ce121a72f972dd301d052707989bc0b5b0d33876f6f16d03a7e9abb56c97b610",
+      "sha256": "ce121a72f972dd301d052707989bc0b5b0d33876f6f16d03a7e9abb56c97b610"
+    },
+    {
+      "path": "native/squeezenet/vendor/bolt_sci/utils/io_pack.h",
+      "original_sha256": "2371eed0f738e8cac0ec68e87bf5854ef865d252d51fc218488cde65956a16a5",
+      "sha256": "0670f546e9f83deebdea1ab187722a97968ebc61d7238d71cde2e1dfd9675f9c"
+    },
+    {
+      "path": "native/squeezenet/vendor/bolt_sci/utils/net_io_channel.h",
+      "original_sha256": "bc051cf2b55a6cbe327176cd9772695d07ea0683516dfe220e0a1c9d771a911a",
+      "sha256": "5d6275b495cf01b7137b68571f82b6f0e0768de03888a149f19a0b28f1393b98"
+    },
+    {
+      "path": "native/squeezenet/vendor/bolt_sci/utils/ArgMapping/ArgMapping.h",
+      "original_sha256": "bb48e5cafe66b57d5c03cce7a2ef56cf63f09d3cfa63ba3b9510247c4ffe838a",
+      "sha256": "bb48e5cafe66b57d5c03cce7a2ef56cf63f09d3cfa63ba3b9510247c4ffe838a"
+    },
+    {
+      "path": "native/squeezenet/vendor/bolt_sci/utils/aes_opt.h",
+      "original_sha256": "a15d3d44d9994de81db73b59d61ea5b1933730fb7b490cfb5de8d9d550191cfc",
+      "sha256": "bf44eb85e4ab89a0caefafb62cb0f9706c8789e741e348d82a82252af6175778"
+    },
+    {
+      "path": "native/squeezenet/vendor/bolt_sci/utils/ubuntu_terminal_colors.h",
+      "original_sha256": "1b0c6b7f881eb53fcc8391c6357905136043f0e8a39e1514e1adb825b2515494",
+      "sha256": "1b0c6b7f881eb53fcc8391c6357905136043f0e8a39e1514e1adb825b2515494"
+    },
+    {
+      "path": "native/squeezenet/vendor/bolt_sci/utils/ccrf.h",
+      "original_sha256": "0994531208bf1b92becea1fd180314ec6d232b544032faa17fe096ad2c645c9c",
+      "sha256": "bcad7ae95f661a38f9a3647fbd8e22cdae4a60b950c43fdd3edf93b47826aea9"
+    },
+    {
+      "path": "native/squeezenet/vendor/bolt_sci/utils/crh.h",
+      "original_sha256": "497d47f7f9058a3c11abe4507a4144abb56f7c7aa741458715aef9f8d6a13fa6",
+      "sha256": "4091d06b7a9b3112bf8bfe725e2fe051700e8fca8acbb2a76ab78342d90c93e6"
+    },
+    {
+      "path": "native/squeezenet/vendor/bolt_sci/utils/prp.h",
+      "original_sha256": "16fece23d02b68887a843b9bedb4da9071d918c9414d797801427c0e6a1e6bd6",
+      "sha256": "c0fe76139a807c55589b040c92c8444aaabcf41a4dfe3f589522e5f14b5508d8"
+    },
+    {
+      "path": "native/squeezenet/vendor/bolt_sci/utils/hash.h",
+      "original_sha256": "eca38b17aad0bf20757f838002b4bb7869d3f95c15fd956283a36e9911da8f84",
+      "sha256": "c4be2281eb8ade30e7c747b95865a88abc0579085afa7d067f49b375dbe3116a"
+    },
+    {
+      "path": "native/squeezenet/vendor/bolt_sci/OT/iknp.h",
+      "original_sha256": "8585a2cce3e9a52a5c9faaf33d4762632b90448a6e0e1140d2832d96a2602380",
+      "sha256": "febe448e306e60ee885665f15f261dfdb867a334c764b7e1d126a594a57bc4ef"
+    },
+    {
+      "path": "native/squeezenet/vendor/bolt_sci/OT/np.h",
+      "original_sha256": "c040ac3dba53d0e374ff02952f288a05091e6bb680b703d2fb8eb7163d2bbc98",
+      "sha256": "4751e204e53c963778b1445f627919bab90fa8bdcae046ba4ac42a66f7e554c3"
+    },
+    {
+      "path": "native/squeezenet/vendor/bolt_sci/OT/kkot.h",
+      "original_sha256": "53798112027b59ec83054a266ddf30da0606250c48f8cadbb7482370219b2cdd",
+      "sha256": "31b3a11915ff95562de5606ff5c005a160ea3f118dcbb79d2b97d8236f7362bf"
+    },
+    {
+      "path": "native/squeezenet/vendor/bolt_sci/OT/split-iknp.h",
+      "original_sha256": "7ea5ca10d7d17a350c1c74cce393f279a3ee26597d05dace9122a57bcd40aafa",
+      "sha256": "2f07f6c9d29e5a574504caf0f7101735bbf28bd26fb6099a63c84bf86efdc69f"
+    },
+    {
+      "path": "native/squeezenet/vendor/bolt_sci/OT/ot-utils.h",
+      "original_sha256": "35cc43ccc1b86a1d16ab3e1979f000e77425941ed3a5eff6cf48de315b8e1027",
+      "sha256": "7c021c193439d7a3ac98cd46672b7e182a32c9045a8dd84008ef9d7a4d5999aa"
+    },
+    {
+      "path": "native/squeezenet/vendor/bolt_sci/OT/split-utils.h",
+      "original_sha256": "9af4756eebc30c255a95b578c4152052b858bdf038443b6420d85ce846e18aec",
+      "sha256": "d6b724d53a87103b6f55946f2f61650e48c5aa158ead8fd7c77dc651af42dbcc"
+    },
+    {
+      "path": "native/squeezenet/vendor/bolt_sci/OT/split-kkot.h",
+      "original_sha256": "76913564f37e4a6fe97376aa0b11cab5919d266e816fc5dc0ba2a8602a9441a1",
+      "sha256": "60e8eb5909f8655163d3ffefeb7ba43ee87442c8ae286e132d071507cde4ee72"
+    },
+    {
+      "path": "native/squeezenet/vendor/bolt_sci/Millionaire/millionaire_with_equality.h",
+      "original_sha256": "eb5c0213c1d63b1f2bb032f93bfdf611b2222701740e28d9737559f3164fe2ae",
+      "sha256": "ea331e190c1889c33e55123c1e8df047effb8fc22d36ad19af75cf67a6fade2e"
+    },
+    {
+      "path": "native/squeezenet/vendor/bolt_sci/GC/emp-sh2pc.h",
+      "original_sha256": "4ec3ba3070cb6f88c426ff091c45d629db255a20b6523fbf711d8520bd23706a",
+      "sha256": "a84a1b7c02b2c9764509cfc15a2a3b176032a53b2f3831f8126a0a6080ee227d"
+    },
+    {
+      "path": "native/squeezenet/vendor/bolt_sci/GC/semihonest.h",
+      "original_sha256": "b37dd84ab0ed6892d17665253b6e666d25f5d6065b183cfd5d56772e9dc12c77",
+      "sha256": "cb649efe4f6d3ae53113fae52d7b7338f684c60d9bdfa4252da1edffb9b81383"
+    },
+    {
+      "path": "native/squeezenet/vendor/bolt_sci/GC/sh_eva.h",
+      "original_sha256": "c9317438523ceceadaba715d1b8cb5ee20c4d5aca557e7686502597a1cf0c465",
+      "sha256": "885035b3ca404c94a9a7b4daefed64ec4d7b0e2d1e998c1983a22443b11b8c69"
+    },
+    {
+      "path": "native/squeezenet/vendor/bolt_sci/GC/sh_party.h",
+      "original_sha256": "dac36b9dff35b11c934280c13fa248538d68c1fa18906b58c4a83cd2da47b345",
+      "sha256": "f8856e45b37b78fc1261495f2eeac40b43efa75bc4870d3e44399d1183846c62"
+    },
+    {
+      "path": "native/squeezenet/vendor/bolt_sci/GC/emp-tool.h",
+      "original_sha256": "4450d77f09620e31813a4566f41a9acb2da8fa49d1588ee19e2311d641167cfc",
+      "sha256": "e40f665717582d14d8c79f06573f8559098d7442397474106a5369d4a65b4e47"
+    },
+    {
+      "path": "native/squeezenet/vendor/bolt_sci/GC/bit.h",
+      "original_sha256": "e3339519f69d76faef0ea9d760f7a40969c90da287e216d4bd4a062340a1c257",
+      "sha256": "aceee384ea8fcf3b72566be6fe29ef0015932060d6f625c278d39906ebfc4d35"
+    },
+    {
+      "path": "native/squeezenet/vendor/bolt_sci/GC/circuit_execution.h",
+      "original_sha256": "d0e1b8170a719b4303dd1b1f4aa06e33c2131912d7ac9eae42a9adaf7d6a4927",
+      "sha256": "e0ced53a681f5978cff34cee6adc15f50906cf43b5ccfe83621ccb4469baaf80"
+    },
+    {
+      "path": "native/squeezenet/vendor/bolt_sci/GC/protocol_execution.h",
+      "original_sha256": "08ae641c3a8f504f9cd6a452cd1310f46661d3ccf91422c9349d51ac9f3b6f37",
+      "sha256": "14096308ab669c9a6aa14eee0289e059e45f2fa24395b30953e9c3a9c79bba8a"
+    },
+    {
+      "path": "native/squeezenet/vendor/bolt_sci/GC/swappable.h",
+      "original_sha256": "53ef455f42c3a3d01464737a37ea2bd91617cbd39681e1b7b1855093b6d3b877",
+      "sha256": "78f34ab1987b3dbbf2960eb81bec48e32692c57a1db1cfe7472e394a0c979216"
+    },
+    {
+      "path": "native/squeezenet/vendor/bolt_sci/GC/bit.hpp",
+      "original_sha256": "f14fbc8407e233214c333088868fba8ed77c28ea2daaeb0d877292933bc5b8f7",
+      "sha256": "f14fbc8407e233214c333088868fba8ed77c28ea2daaeb0d877292933bc5b8f7"
+    },
+    {
+      "path": "native/squeezenet/vendor/bolt_sci/GC/comparable.h",
+      "original_sha256": "df13c12a47d89bcef0f22723b238aae3d56139c88e2d4156f4ab481b054a0e47",
+      "sha256": "df13c12a47d89bcef0f22723b238aae3d56139c88e2d4156f4ab481b054a0e47"
+    },
+    {
+      "path": "native/squeezenet/vendor/bolt_sci/GC/integer.h",
+      "original_sha256": "09146e74d0fa4b271a4860230ac3f13b867be3be0a7815ff03beb319ebcda85d",
+      "sha256": "8c4e1ff6264d6a07e8db08756a4ffd1d156f1569555333f4c3a0a08ee8f3a3ca"
+    },
+    {
+      "path": "native/squeezenet/vendor/bolt_sci/GC/number.h",
+      "original_sha256": "0514e5a48fbdd75a7349ec6e2385137c2fef57ca300d9786c0129a3d7ec83471",
+      "sha256": "fbdf7b6f3b92f21c6beda86479012134dc9ce03b8b7e6b9eadf005018d12aa41"
+    },
+    {
+      "path": "native/squeezenet/vendor/bolt_sci/GC/integer.hpp",
+      "original_sha256": "3c1bf40700a67997688f38b66e847465ae374a222747daf3799f84ae37a2db47",
+      "sha256": "3c1bf40700a67997688f38b66e847465ae374a222747daf3799f84ae37a2db47"
+    },
+    {
+      "path": "native/squeezenet/vendor/bolt_sci/GC/aes_opt.h",
+      "original_sha256": "f66ef723d5005d3abf8648f25c7891be2eeb3d578e118cc52b610ba807cfbae9",
+      "sha256": "3d2407322656de27880e08829a760b7d0905d5c0b5e77835c49c120942d86aee"
+    },
+    {
+      "path": "native/squeezenet/vendor/bolt_sci/GC/f2k.h",
+      "original_sha256": "b65e3d4572a4a33cb200f9816d6257409a3fbbf06704351577674a55d01033f1",
+      "sha256": "98241fcfc57c7907fd6acad09e0d314c2a381d85e79c80f3b0e98d3c058d0c95"
+    },
+    {
+      "path": "native/squeezenet/vendor/bolt_sci/GC/mitccrh.h",
+      "original_sha256": "4c2cede1fb065b582e2bf9a74f3b61975eda553b1e10b0ec15cd2a7d0f49cebc",
+      "sha256": "0dfcacc395f84009bced953366de94e32df5fc2dd7a709506bb3d06ffe96a714"
+    },
+    {
+      "path": "native/squeezenet/vendor/bolt_sci/GC/utils.h",
+      "original_sha256": "5e460df44b35b6f8505f07e917fb462c8be534f5680df020bc6b8a56f2b884dc",
+      "sha256": "60b9a9796ea4c40ec9358032d44548c8b2b4d625ecb4f4d3538d892f6bd8f98c"
+    },
+    {
+      "path": "native/squeezenet/vendor/bolt_sci/GC/halfgate_eva.h",
+      "original_sha256": "9f6b2364a36c55174cfc5fa76a8732edfc0ed465b1ba388a3bfa4b57016c3b1a",
+      "sha256": "b107f87c471719520c779d92db60702c8d1f62324f5ef6f9c1a09510dc8d0691"
+    },
+    {
+      "path": "native/squeezenet/vendor/bolt_sci/GC/halfgate_gen.h",
+      "original_sha256": "d6e15b7076bcf14409a54eb71ba9cc7ebc5bbde27e0c934711407f6b35df74ad",
+      "sha256": "e3dbfcc7767b30be2bc1915fbe82ec39cb99844bf28d150ee1e625250c47cf5d"
+    },
+    {
+      "path": "native/squeezenet/vendor/bolt_sci/GC/sh_gen.h",
+      "original_sha256": "f0f66c7044d001039005f37ab87b4773dc2f446024ef8459c8af553676b8783e",
+      "sha256": "de592502da63c918b85ffcbb889d9c95d2277546b0cddf65404859774d9c8dba"
+    },
+    {
+      "path": "native/squeezenet/engine/quotient_extension.hpp",
+      "original_sha256": "736815fdbea1ec8a1613c21c0d60c2bc2d2edd69cc3d2a1152f4897ad7863f47",
+      "sha256": "a9939b557236b8844383744ad9f7676be45628e0e09fe9a9a91d39c43fab2e62"
+    },
+    {
+      "path": "native/squeezenet/engine/exact_ccrf_response.hpp",
+      "original_sha256": "6ffd56f06bd03b16cf3521f9bf0737d8ecffb500f04a0262766dfe2edab77f6a",
+      "sha256": "ff23e0b0daa9255eee0cf1abd2a16db501b472e1f386ab4b514695d01836902b"
+    },
+    {
+      "path": "native/squeezenet/engine/streaming_ccrf.hpp",
+      "original_sha256": "dffcee01271525323b2acc8198ab98e0aebec88076349df332cf5f57db174fc3",
+      "sha256": "bd82f72142905782cc1e316159534374d18c819be433dc4f10754952b7d2c166"
+    },
+    {
+      "path": "native/squeezenet/engine/cofactor_word_response.hpp",
+      "original_sha256": "86705e37755a34febbb401de447a15adc44f64b69b3dc22ca9568f5cbc545431",
+      "sha256": "48b21302021d4f169e9da15e80cfa908cbe4f3a26eceb6a776d23ce6ec03ffc8"
+    },
+    {
+      "path": "native/squeezenet/engine/fused_cofactor_response.hpp",
+      "original_sha256": "929bbdad95391c4322296f46cde41358b538e3089edf73ad8b318dc5517ea93f",
+      "sha256": "69e795bb736bcd61876aff95db38aadf98a1f236fd8ff591a2d429f463aef768"
+    },
+    {
+      "path": "native/squeezenet/engine/wide_cofactor_response.hpp",
+      "original_sha256": "9b73068353742122dcc000f1815a8299ae4c316e72c678bc9d6cdea5bc002527",
+      "sha256": "c1c339a559f21a2b2ad88a1b747cc16a38acb817f2373d9ce0f19ea889e5f7c0"
+    },
+    {
+      "path": "native/squeezenet/engine/native_auxiliary_lift.hpp",
+      "original_sha256": "4260588d8fdb36bdf9e09f9dabe59a66521d52250268164cd488a9c7c1f77c6a",
+      "sha256": "c21eaa483820c5002f1cc7a1d5fff685aa346b9122768b474e160152df0bd65a"
+    },
+    {
+      "path": "native/squeezenet/engine/auxiliary_lift.hpp",
+      "original_sha256": "5619ecf2e551fd1f5c6907b89e15c3b486284ef0306472d3835d4898dec2280e",
+      "sha256": "075f8304442f1a22a1cfd0b1d930daa67ba14839dc9315ace4fc20056cbbf172"
+    },
+    {
+      "path": "native/squeezenet/engine/native_aux_wide.hpp",
+      "original_sha256": "587e45db4b4a1b6237caa7a5bec125838b3934c78f7eae87a2ad34001224a082",
+      "sha256": "af9ed929c1839166f2614333f1846acf7fe07110b783b2912e6267e6e522a0fb"
+    },
+    {
+      "path": "native/squeezenet/engine/prescaled_original_zero.hpp",
+      "original_sha256": "2ecbb2ab6216644b2befe038ba83fccc91f35d5dc5011843dd552e0fa48751ee",
+      "sha256": "ed61fe9ce76b3722fc96b1ed1fe2310bdb8535acc49dd2ca72af0445e3fcfa11"
+    },
+    {
+      "path": "native/squeezenet/engine/spectral_ingress.hpp",
+      "original_sha256": "d502df8e5265700f4a018b968b5c612fe721563b29aafc4bd9035180cf7ae1b1",
+      "sha256": "d502df8e5265700f4a018b968b5c612fe721563b29aafc4bd9035180cf7ae1b1"
+    },
+    {
+      "path": "native/squeezenet/engine/clock_sample.hpp",
+      "original_sha256": "2a2b1bd9074e3431c35d98c73fbb3d5552268e9e2057d07b8b3c0eca7a0ad841",
+      "sha256": "03f5ca338c5344220e983b480600526ad04ce7d4b9f80d81849d37b1c223f256"
+    },
+    {
+      "path": "native/squeezenet/engine/worker_lanes.hpp",
+      "original_sha256": "4ae3a7cf3ac01453be90600d84efb9cf73674a8392cbe03972383f3406f6e9a7",
+      "sha256": "ee686b0186dbe26827636903cd8d34320e4ac5c747531cb8ee732b1ebdfcc2a4"
+    },
+    {
+      "path": "native/squeezenet/core/squeezenet_request_scope.hpp",
+      "original_sha256": "a7fb19b2c890edc932f5c5f3b3ac9ab3ad46c96f3fb5f121be4623f1d109b798",
+      "sha256": "a7fb19b2c890edc932f5c5f3b3ac9ab3ad46c96f3fb5f121be4623f1d109b798"
+    },
+    {
+      "path": "native/squeezenet/engine/backbone_boundary.hpp",
+      "original_sha256": "701ac8feb84cb909c938df47a2d0136e11ae239fca09facc2fffea6715bb811f",
+      "sha256": "0ae3f749f3738d457082637797956e189a6814979636b59db93e0ce3d5122e5a"
+    },
+    {
+      "path": "native/squeezenet/engine/boundary_action.hpp",
+      "original_sha256": "778079ff870503be3736a7a35a8a5a717d1beadb578f9d6a91d442c8d29c8732",
+      "sha256": "a81bf57b9180a7a45897caf02b5c1614bc65a5125c5a2912356a5621ac061264"
+    },
+    {
+      "path": "native/squeezenet/engine/kernels.hpp",
+      "original_sha256": "c662a8194cc474640b41feb272908a271885b5c7400d058c9d0313795c958cfc",
+      "sha256": "604d5abe11efdb202dccc314c8c130bb80887c46ea5a4733edb06dc8e5cf2ec4"
+    },
+    {
+      "path": "native/squeezenet/engine/decision.hpp",
+      "original_sha256": "42b3c6609338b035202e68f2eac65ecdb52c13f9c95595f078858988922045ab",
+      "sha256": "8f44e8ac4a9aa7ad387b7f008480bf0b25fc22982bcf71014dc1aa6578feefcc"
+    },
+    {
+      "path": "native/squeezenet/engine/carry_token.hpp",
+      "original_sha256": "03acf5e2b3a1a10fde40dd6e642b918527e6f18fcf2ff629dc7e57874f716ec6",
+      "sha256": "c3854d1e0b8f3435eb473c46583bedb548a7ebc214bbcaf18c7d1298ec761d7c"
+    },
+    {
+      "path": "native/squeezenet/engine/linked_cofactor.hpp",
+      "original_sha256": "88ba2b05554aa5c38d5d01eaa6a8f9c66cda8ca5f66d8ea2fce81c4b4f9fadf9",
+      "sha256": "a1ea7210299de2ad23396e0c4b6bb0acfaa1998a8cef3ffc6fbce4fbe472f65c"
+    },
+    {
+      "path": "native/squeezenet/engine/late_carry.hpp",
+      "original_sha256": "aa426fd7c85db87c3c0a376657c9b7c004290704083e8bc9b53d0fc263156428",
+      "sha256": "69a1615141c04d1b44ae637eab313138141595a0604f24e358917b291b1b6897"
+    },
+    {
+      "path": "native/squeezenet/core/backbone_admission.hpp",
+      "original_sha256": "e180ac6f6cad85acb9b94483333e91b435e677c95982baa80bd7c05edca04466",
+      "sha256": "af305d33eacf5888b516bef653efcbed8a55eb7abc635275294de888ebd47922"
+    },
+    {
+      "path": "native/squeezenet/core/ring37_boundary.hpp",
+      "original_sha256": "110637c6af9bc5fea6995afa36c6626464f866a119eebb1134e50d6251d2c3d0",
+      "sha256": "38bdba457cd5c41a6719beeea7966695a4fd61fab9836ec350981667628e525f"
+    },
+    {
+      "path": "native/squeezenet/core/ring37_direct.hpp",
+      "original_sha256": "c773736d94658e73462fa00a256660efbb77344ff2dcea188e9ddce1021493f7",
+      "sha256": "b36b73e65c572367da03b6e07b4a08afaccc29278b6e8d2ef193112350ef279b"
+    },
+    {
+      "path": "native/squeezenet/core/shared_prefix.hpp",
+      "original_sha256": "55034f6a2c4f7c95d3aaee606b0643e0fceef351944d793be84bf2a1ed577cf7",
+      "sha256": "73dc4f85c653bf69e6c1e3497e2907e97d34f2428eb8c15f0d7c42d8ded938a2"
+    },
+    {
+      "path": "native/squeezenet/core/direct_token_core.hpp",
+      "original_sha256": "4ef1403ad0d5e3033f8053fda61639ce96006b03e421da57f66ff7718b833420",
+      "sha256": "083f168be3ec8eecff80a5b9f206050b1b35bbff585a95729157e23f17d4a0c5"
+    },
+    {
+      "path": "native/squeezenet/core/wave_policy.hpp",
+      "original_sha256": "056ec07fd08c714fa1743c39daa8aa6483cb2132bd789e08cfb394f6c27b284c",
+      "sha256": "056ec07fd08c714fa1743c39daa8aa6483cb2132bd789e08cfb394f6c27b284c"
+    },
+    {
+      "path": "native/squeezenet/core/carry_stride_core.hpp",
+      "original_sha256": "344b513aee31958ef5afc1d00a6a5672ab87f2b1162b8c35dbe0a03d83335d34",
+      "sha256": "91db399645d21c2fcf00f115588541f7d5188c14f6c00384ef430d32d0abe102"
+    },
+    {
+      "path": "native/squeezenet/core/carry_stride_math.hpp",
+      "original_sha256": "9e797d1937dc5145a867003e471e4ff635a7145772c967d50122a1827c711b79",
+      "sha256": "9e797d1937dc5145a867003e471e4ff635a7145772c967d50122a1827c711b79"
+    },
+    {
+      "path": "native/squeezenet/core/direct_ring_relu.hpp",
+      "original_sha256": "5ad1f593755721a33ae35e11b33a079085eb6f347b346cfbebd4b95aef3fe0b4",
+      "sha256": "2c8ae50555723418a9f013050f4ee2f19714482925ffa29b8da376db96dd8ce0"
+    },
+    {
+      "path": "native/squeezenet/core/emit_factor.hpp",
+      "original_sha256": "671204584e8b2a6d75c8524c5c311e2ad8f87394869cb7a9d9cffaee17c68763",
+      "sha256": "671204584e8b2a6d75c8524c5c311e2ad8f87394869cb7a9d9cffaee17c68763"
+    },
+    {
+      "path": "native/squeezenet/core/sq_backend.hpp",
+      "original_sha256": "19a6067d34361378c2f2c5925d95791146251a151448637d8cf74d16541182db",
+      "sha256": "fef6c5a52e5bb0490b2451fbf775b0eb74b8a59ebc7d647d6408b55fa316d621"
+    },
+    {
+      "path": "native/squeezenet/core/retained_squeezenet_phase.hpp",
+      "original_sha256": "301d2c2c0f2bc120985c7e47fec6e6121cfea7a4029a15a9534721f0a27b5379",
+      "sha256": "91938c2cbfe80e89ab8f180a96e0613663d2f1942cdef4ef7251761324c56f62"
+    },
+    {
+      "path": "native/squeezenet/core/protected_argmax.hpp",
+      "original_sha256": "1d579dcc6c0267591c3857d009c1a2691f32ba9bab751a9469094d98243a5799",
+      "sha256": "8b1e59c7d0508117245c43eff57e68298b720897114a2b818adcb480ee9ab1c1"
+    },
+    {
+      "path": "native/squeezenet/core/range_tail.hpp",
+      "original_sha256": "f86efa69dd4ca9d6a0d6588140b30574915c13f11e136135417933394ef71635",
+      "sha256": "5d426b5b57b991bd60386ba586cddc4e8bb1d5feee0bb1bc6c69ba02be27d0d4"
+    },
+    {
+      "path": "native/squeezenet/core/small_pool.hpp",
+      "original_sha256": "1687a9354d9989f09662b680f864a68763a679e8a8c817d47ce276af247554ee",
+      "sha256": "389429950c92ec7bd8c90a3c6d29df66ac66148a8e4649d9b96ed11653591ea4"
+    },
+    {
+      "path": "native/squeezenet/core/squeezenet_duplex_pool.hpp",
+      "original_sha256": "f60076e8f3c101d70b793ccff24676524353a91fad7fc3960c4969a92ff2c3ce",
+      "sha256": "64dae4973df3243500a61ab91a025757ab528da283d2dcababcde1d13e266d00"
+    },
+    {
+      "path": "native/squeezenet/core/squeezenet_pool.hpp",
+      "original_sha256": "e6d3c8594850e05d064d28eaf3ea0428ce52368f8f5e9125eb206bffcb5aa3b9",
+      "sha256": "fb8934c0b27e06973fab94cd34af61cca6527d2d46fd7fa7db9f3aef602ac1c3"
+    },
+    {
+      "path": "native/squeezenet/core/quarter_consumer_fusion.hpp",
+      "original_sha256": "38a8e8864e05b6413615163c1482d3c8fe714aefc806dfaf77daf98c801fe027",
+      "sha256": "efde73ec6bb680151e030cf7a3eeb7861b2b14df442b60168cdcc4599e57775b"
+    },
+    {
+      "path": "native/squeezenet/core/squeezenet_affine_adapter.hpp",
+      "original_sha256": "47280cf83b747254ebbe28c414279b2a7f320e6649b756a9955d5ee116a0678d",
+      "sha256": "d5ce5d2033bb76e3dbaf414e9b183ac14885a984169d82e6d2bd535565667dd0"
+    },
+    {
+      "path": "native/squeezenet/core/squeezenet_joint_terminal.hpp",
+      "original_sha256": "9f77c25e57640dafc9726bda377de09f3a8008f4984674b6d15a7e5c3d304b16",
+      "sha256": "f0355820ff8df93c5b8bab717d87f2aa858b4918b2fcc8cfcf94355566e90615"
+    },
+    {
+      "path": "native/squeezenet/core/squeezenet_prefix_tree.hpp",
+      "original_sha256": "e3b651984517496107f0d15b1ed3bc81004cbf28f904d4bd919d3ef1f151955f",
+      "sha256": "a05cc0c4090dd1c50751a4b9d5abbfee6ff408718d31e587cd58985dd00495e8"
+    },
+    {
+      "path": "native/squeezenet/core/pool_quotient_domain.hpp",
+      "original_sha256": "a15ca61502de87863fc18212cf862e2319062d1b2b6985ea8fdfbc3945ab852b",
+      "sha256": "c47e3f2eb8304bef9987f99b6a949255503c9fa9d2df550fa74e4579ac250183"
+    },
+    {
+      "path": "native/squeezenet/core/quotient_pool_digits.hpp",
+      "original_sha256": "826d8860a8ac9906293e6af0844eb0a8a8b2bacc70edfc0404ad92e69e370cac",
+      "sha256": "4db97567a260397fea0d4ca1defcf3b72996692f1bd2aa2736fd89dcd8bea3a2"
+    },
+    {
+      "path": "native/squeezenet/core/pool_selected_transition.hpp",
+      "original_sha256": "bd95aa923278642e3a10157e0264e4c9c3401779bd08c45385f71248633457a4",
+      "sha256": "997dffe1bc8591b556869d0532546eea186592f10e477bea1ccc4ee9000d8b88"
+    },
+    {
+      "path": "native/squeezenet/core/quotient_pool38.hpp",
+      "original_sha256": "917d991b2085b59ab8dc35fca60af6d04ba12f56346646a470314b6b6f73c0cb",
+      "sha256": "c761fa912e3b194c7e8a56a72ffb2632fd7872aaffed44733327777ab02bb69b"
+    },
+    {
+      "path": "native/squeezenet/core/wan_wave_lanes.hpp",
+      "original_sha256": "6b4023be967e6f447d01e297695312d5898807c5fa5c41d86b515bb3983fbd3d",
+      "sha256": "69ef190cecf0ae86eb22ec0d3a1f509304cd95f602fd4ef125467f853f578a0c"
+    },
+    {
+      "path": "native/squeezenet/core/nonnegative_lift.hpp",
+      "original_sha256": "2cf364c582e1e665e870f6b6bd403435310367a8eac829e3738306470b775389",
+      "sha256": "89d7b5671a0deaaf9dea6b21561f24748acae2fe7b656d86dfa910e60b35adae"
+    },
+    {
+      "path": "native/squeezenet/core/pool_range.hpp",
+      "original_sha256": "ddc6ba8d61b6f6f6a83a9b19714dcf6d5cba1c5d8476a3e6b0ac40fa0390b8c5",
+      "sha256": "b33289446f38a7ef5bda5dac11fa48303147da48844a8e789f92e4cd5272ba04"
+    },
+    {
+      "path": "native/squeezenet/core/pool_wave.hpp",
+      "original_sha256": "ed46b547b39a0ffb425280f86f52dc2be4dd318fe685990d52f3125110d49c96",
+      "sha256": "f8de13930626238c24376de987f01da2b4d4eb5723a40bfabf065d3616387f16"
+    },
+    {
+      "path": "native/squeezenet/core/pool_lanes.hpp",
+      "original_sha256": "329f5847c70df4d3e1a5c8efd107638cf691502e16aa0537029ca21f8d3845fd",
+      "sha256": "cb36f419cf74108474f032ffb3ffb5484330c6053f0cb7d4194263837c3aa8c5"
+    },
+    {
+      "path": "native/squeezenet/core/ring37_direct_floor.hpp",
+      "original_sha256": "b624ac02592e5d6ea65ae847de5dabbb12b5bf2f0bf529595352ada310f542ff",
+      "sha256": "906c97e2a952e7ccdb1bf63095de8ba7d34c3b65ab06146e70d98384c6de46d4"
+    },
+    {
+      "path": "native/squeezenet/core/sq_executor.hpp",
+      "original_sha256": "1604c54906e992da468b2f8e69c163c6e511f501f77fa328f94ccb594a2a75de",
+      "sha256": "a21654ca4d2ad5523973bab4724be518986b6b545423fc433e1f5fac51a87457"
+    },
+    {
+      "path": "native/squeezenet/core/pool_geometry.hpp",
+      "original_sha256": "565565166cd71574ee2987c25b805433c24a59689515c0608d79f8544233281f",
+      "sha256": "92ce8dcd981949a97f54ed82ce8e9cb941aef47e837355585f194f737c47a261"
+    },
+    {
+      "path": "native/squeezenet/core/sq_schedule.hpp",
+      "original_sha256": "f38bd893c33d40ebef54c13b1981cc1a3f69bc12041fce5ca9048bb73ee034c8",
+      "sha256": "f38bd893c33d40ebef54c13b1981cc1a3f69bc12041fce5ca9048bb73ee034c8"
+    },
+    {
+      "path": "native/squeezenet/src/native_ot_bridge.cpp",
+      "original_sha256": "5e3680e4f0897f93cdfbf873f7cd718307743102a7bb2b7168d15b734650e5e6",
+      "sha256": "21142cf8b4228d8748689f7f66e005a94384ab0c97900ea4b03080a69102a782"
+    },
+    {
+      "path": "native/squeezenet/protocol/stream_batch_io.hpp",
+      "original_sha256": "65fcfe3ce7fddf6ff05f9b61a9b59ef9f86d4cce8a2d888daed7b45dd37ba8a0",
+      "sha256": "65fcfe3ce7fddf6ff05f9b61a9b59ef9f86d4cce8a2d888daed7b45dd37ba8a0"
+    },
+    {
+      "path": "native/squeezenet/protocol/bool_batch_io.hpp",
+      "original_sha256": "b4ea49c336b8a4574a3e605b868b8b5ba1cbfeebbd2436ce9a533326fe49f091",
+      "sha256": "b4ea49c336b8a4574a3e605b868b8b5ba1cbfeebbd2436ce9a533326fe49f091"
+    },
+    {
+      "path": "native/squeezenet/protocol/OT/ferret/silent_ot.h",
+      "original_sha256": "e1e2b71a9bd313540dc2571842834dac7eb1c6544a92eca47137b3b457ebbc2e",
+      "sha256": "e308afd15b21af53ded0e339d81bf926e05c1ad3924a3ef3ebc92c8896e5a9ee"
+    },
+    {
+      "path": "native/squeezenet/vendor/emp/emp-ot/cot.h",
+      "original_sha256": "1ecf56ae68b11a7ca652e1ad37cc54a35c1c2bf9177656b8f4b2372f41f905f8",
+      "sha256": "5b6325c65918af12c8ab2943148111c5ad9c0b7879c2eb3ef0ded12e22819f2b"
+    },
+    {
+      "path": "native/squeezenet/vendor/emp/emp-ot/ot.h",
+      "original_sha256": "7145d567927636dec207cb8a8155f3beb181aa7ce1f49a960b52e72a19428689",
+      "sha256": "ef3eb859cbafa271a337f0170c200611199b7a11d2a39717c067e6743bb4014b"
+    },
+    {
+      "path": "native/squeezenet/vendor/emp/emp-tool/emp-tool.h",
+      "original_sha256": "b4bb1afb6246354cbdab169d4ad85f2666ccfc0d2bc82d25a9f13833b0967e31",
+      "sha256": "593a39f1acf1bd0ae7a28b95ce99ce53ddbf81b863c5b686f8404ae435e44460"
+    },
+    {
+      "path": "native/squeezenet/vendor/emp/emp-tool/io/file_io_channel.h",
+      "original_sha256": "23ee81df15f7852e34e04849a4bb7ab0d2856650be5eb9a974bd4d97228e28e5",
+      "sha256": "272812fc48b77e132b8ad8967bdaf2506f0afd420c330d8a637e2c41de59ffc6"
+    },
+    {
+      "path": "native/squeezenet/vendor/emp/emp-tool/io/io_channel.h",
+      "original_sha256": "0c0b812e12552e1219650c5eec1023e45bd32e7b07c4e28ceff902e4ff0b38a6",
+      "sha256": "ea5e01e92d4d438a2b5ace24d4cfc1b55eb46c09804d4494b4454098506bccce"
+    },
+    {
+      "path": "native/squeezenet/vendor/emp/emp-tool/utils/block.h",
+      "original_sha256": "130e554f090c969c0f846abfa0574fc845d3394edeceb89c8ea55e7b24f98d49",
+      "sha256": "130e554f090c969c0f846abfa0574fc845d3394edeceb89c8ea55e7b24f98d49"
+    },
+    {
+      "path": "native/squeezenet/vendor/emp/emp-tool/utils/prg.h",
+      "original_sha256": "7150ec6e6c0a4ee5a747a069e342031073d8b70251652a6da73c780b4047bd10",
+      "sha256": "d945f768a528d53ae044e7bd02b9a0fd96f8bc6c360baffa763cccb2aa56f2f7"
+    },
+    {
+      "path": "native/squeezenet/vendor/emp/emp-tool/utils/aes.h",
+      "original_sha256": "a5a52f1df1d7d0114c0e2cb5a0986f236897bc3883c19c3a56a6aa813f8a99ba",
+      "sha256": "9a919178ba1638b717c5be675df285644fe8b2dd1d67b1d7933222db4bfb0270"
+    },
+    {
+      "path": "native/squeezenet/vendor/emp/emp-tool/utils/utils.h",
+      "original_sha256": "65af213e98198c0cc6250c600bef2b384be9571cf5f28ed26a058816b75b3950",
+      "sha256": "8d54293a01cfb3b7f96da3bed305640a1e8b6e44ecdaae9fd8f7a522d5720b2e"
+    },
+    {
+      "path": "native/squeezenet/vendor/emp/emp-tool/utils/constants.h",
+      "original_sha256": "dea92ec918d4dbe4292f73fda96d83140819caf62d36ef3707d7a7524e6770ab",
+      "sha256": "dea92ec918d4dbe4292f73fda96d83140819caf62d36ef3707d7a7524e6770ab"
+    },
+    {
+      "path": "native/squeezenet/vendor/emp/emp-tool/utils/utils.hpp",
+      "original_sha256": "81ccd4363a4773810c71d721d1e7c22c226cf02d773520f9d04d5ab69f98eadf",
+      "sha256": "81ccd4363a4773810c71d721d1e7c22c226cf02d773520f9d04d5ab69f98eadf"
+    },
+    {
+      "path": "native/squeezenet/vendor/emp/emp-tool/utils/group.h",
+      "original_sha256": "1bc38eee273344a1478f9703fd057db54472dd93570b590014956042b31b0be4",
+      "sha256": "de9e39142fd9778b641f1fb0bee2d2ae008f97002a692418606cdfd2e06f9cda"
+    },
+    {
+      "path": "native/squeezenet/vendor/emp/emp-tool/utils/group_openssl.h",
+      "original_sha256": "550bd959940ad7fcb17e31a5fe5c7785ad0cc00a9796f8d2fdd4f20ac20cf8ad",
+      "sha256": "550bd959940ad7fcb17e31a5fe5c7785ad0cc00a9796f8d2fdd4f20ac20cf8ad"
+    },
+    {
+      "path": "native/squeezenet/vendor/emp/emp-tool/io/mem_io_channel.h",
+      "original_sha256": "6fc3de953eb79b58eb8a9b999191dd7b503f1dcdd19fe301d9aa5a087c6e0eed",
+      "sha256": "0854dcac1c492d52d0e360d4fe61a3a938793d8c2036d7b88b63b75542593ade"
+    },
+    {
+      "path": "native/squeezenet/vendor/emp/emp-tool/io/net_io_channel.h",
+      "original_sha256": "c7c53ba4cb42e7457b70fc899fe9c6fdb30d132aaac90987eb7655d211452191",
+      "sha256": "c6dff2725a366cb66df91488831b7713a3764f8331711ea9079c0141b95717ba"
+    },
+    {
+      "path": "native/squeezenet/vendor/emp/emp-tool/io/highspeed_net_io_channel.h",
+      "original_sha256": "eee640b356d306d98bbb55cb4cfe7e9edd18c65879279799c7b5af1d639a9393",
+      "sha256": "d4ffb6cef35e065d4559c39aa49a6de79353272c8d9d7e3207cedd31510f2168"
+    },
+    {
+      "path": "native/squeezenet/vendor/emp/emp-tool/circuits/bit.h",
+      "original_sha256": "cb470f03caf21f463927675f35d206484ebbf0283375d9c668555242b7a62f01",
+      "sha256": "79a9c0206f3d6173bcd84ac3bf9eaab5b948fb31643a51d20d4d756ca7b11138"
+    },
+    {
+      "path": "native/squeezenet/vendor/emp/emp-tool/execution/circuit_execution.h",
+      "original_sha256": "9730aed44cb12166fc57ec42998e43ff2eb67141fd22e6af4334bdf88773d8f7",
+      "sha256": "a6c3d1aeac886c5ecf94db12fbe9ca72e4eb35314a1c0a0676442e2555c54c3c"
+    },
+    {
+      "path": "native/squeezenet/vendor/emp/emp-tool/execution/protocol_execution.h",
+      "original_sha256": "4f95e7230a906442bba99d5df8480a44b84659681c36e8252d296230b178817d",
+      "sha256": "92ffd69506d280fac1d8459216970febe31945e3b81eed738194c667abfbc121"
+    },
+    {
+      "path": "native/squeezenet/vendor/emp/emp-tool/circuits/swappable.h",
+      "original_sha256": "56bd0a16c1576fe09d2c70fd90347f9ad6cbf0bc9e0b5266b39e79a4e9045130",
+      "sha256": "89235558e32a1252ea24f3c478ba09d183fa376dd7063b63eb7f9161aefb1090"
+    },
+    {
+      "path": "native/squeezenet/vendor/emp/emp-tool/circuits/bit.hpp",
+      "original_sha256": "9186ddc282c95bbe68a275bc9e52283751e859a2335e0dc62851c77df8548641",
+      "sha256": "9186ddc282c95bbe68a275bc9e52283751e859a2335e0dc62851c77df8548641"
+    },
+    {
+      "path": "native/squeezenet/vendor/emp/emp-tool/circuits/circuit_file.h",
+      "original_sha256": "5fc0d4331417cdaafa20595c8a4d4f83146b363304dbfc7d0356fab2c9d810c1",
+      "sha256": "949dd3685bcc1bd3b90116f193d0535201fecb5c9b44abe5b66303ab7d46c287"
+    },
+    {
+      "path": "native/squeezenet/vendor/emp/emp-tool/circuits/comparable.h",
+      "original_sha256": "880b3b8e999e05e21eba284444b4761609cbe73e9db3aeed06b573e3ff495a56",
+      "sha256": "880b3b8e999e05e21eba284444b4761609cbe73e9db3aeed06b573e3ff495a56"
+    },
+    {
+      "path": "native/squeezenet/vendor/emp/emp-tool/circuits/float32.h",
+      "original_sha256": "155490d4a6637874d8e9d1e6cfc35e22447b63e19e9e04323029d15435e60ad5",
+      "sha256": "ac2c39155bb2d88e90ed03954e20d2ffb87e230067be71b01cc63f181b6aac81"
+    },
+    {
+      "path": "native/squeezenet/vendor/emp/emp-tool/circuits/integer.h",
+      "original_sha256": "cc0a390594e08b11279adc394da1c7f81fb526984018fe2805706088396317c7",
+      "sha256": "6aabb70f0f07096d2b08fdd3ecad3dab2bb674bae6eab314169ed4e433f9df2d"
+    },
+    {
+      "path": "native/squeezenet/vendor/emp/emp-tool/circuits/number.h",
+      "original_sha256": "09bb9a49a81c4c32e0280d18c86dde8cbc76727f6d4fbec1ad1102f9288bb684",
+      "sha256": "905a5d5da1198d78a6c0577f2cbb3b3b4b65181142c65e5684429ba65ee9d408"
+    },
+    {
+      "path": "native/squeezenet/vendor/emp/emp-tool/circuits/integer.hpp",
+      "original_sha256": "b30cf8bef5b81eca9d93aa2c6b6a28b7f80ef4bef51a308291c5c2a747fb69eb",
+      "sha256": "b30cf8bef5b81eca9d93aa2c6b6a28b7f80ef4bef51a308291c5c2a747fb69eb"
+    },
+    {
+      "path": "native/squeezenet/vendor/emp/emp-tool/circuits/float32.hpp",
+      "original_sha256": "67d5479663f6d615d007a561c4097908813e1ac6b8d83cea26d8534e7713ef52",
+      "sha256": "67d5479663f6d615d007a561c4097908813e1ac6b8d83cea26d8534e7713ef52"
+    },
+    {
+      "path": "native/squeezenet/vendor/emp/emp-tool/circuits/aes_128_ctr.h",
+      "original_sha256": "046ea144b46a363b8102e4d739f3b8211c223ea4da1eb5e92773b11e28e65438",
+      "sha256": "2cf460bfb3038c1b1d3645021d9a8bc100f5d7da315597268852436004e20753"
+    },
+    {
+      "path": "native/squeezenet/vendor/emp/emp-tool/utils/hash.h",
+      "original_sha256": "14492f2b9cdbced276d7602b8cec2c474f5bab15cb442c37d74f41e496816a60",
+      "sha256": "bfffafd965f5fde155515727dd9bd606212795353696a53abeb7473aaf3cdec9"
+    },
+    {
+      "path": "native/squeezenet/vendor/emp/emp-tool/utils/prp.h",
+      "original_sha256": "a3fcae2e342f1efd6cf9579cdcc08536f5c9d330e70029679895fe705e04940a",
+      "sha256": "d591526369e7153181367bbf6b681834fcd985bbdf752cc4ca93104af059185b"
+    },
+    {
+      "path": "native/squeezenet/vendor/emp/emp-tool/utils/crh.h",
+      "original_sha256": "5fa8865bd079a4a5ae228abeb74a4821a312676e3205b4abeb2e48db0ba47765",
+      "sha256": "16d7cb08a75fbebdcb73d44cd8ab9737e9da6b608d97f64bb2fd4b89f8b97310"
+    },
+    {
+      "path": "native/squeezenet/vendor/emp/emp-tool/utils/ccrh.h",
+      "original_sha256": "06c480584c8a6ececada26496b6ed6d5b6f189ca045029bd67d5388995e26abd",
+      "sha256": "dd1668ee6a6cfbf90115a2dfe02ae07605cfd93ee95d46544dca4f5c90fcc288"
+    },
+    {
+      "path": "native/squeezenet/vendor/emp/emp-tool/utils/tccrh.h",
+      "original_sha256": "9a71b097d5df8801b5ea34fc65a0b1454c96e41d3d9e70c36fc47d15f6f70786",
+      "sha256": "e58d56786af02302ea3469db57f81aa69baa390dbd7275ab0676990a8d8af76f"
+    },
+    {
+      "path": "native/squeezenet/parallel/ThreadPool.h",
+      "original_sha256": "bb6789333ed64699829feec4d64c40fcad4280e0f8a545f5ad6a6175e174ad78",
+      "sha256": "bb6789333ed64699829feec4d64c40fcad4280e0f8a545f5ad6a6175e174ad78"
+    },
+    {
+      "path": "native/squeezenet/vendor/emp/emp-tool/utils/mitccrh.h",
+      "original_sha256": "250f1371df7e7a612fdb862fef55f7e63ac77397770b91a3c7443e70bf181c9e",
+      "sha256": "9906f50972d41b8642af88d87ba517a966cddb2ae2f5dd577625c39a20025b26"
+    },
+    {
+      "path": "native/squeezenet/vendor/emp/emp-tool/utils/aes_opt.h",
+      "original_sha256": "58955f8ea30eb82043138fb4fc635c1febbbaaa86120f4f11cb4847b9ecb0440",
+      "sha256": "80c07f35d7c1ed6d71087a44d13ba3bde120c29513e92865c09e52bca24c364d"
+    },
+    {
+      "path": "native/squeezenet/vendor/emp/emp-tool/utils/f2k.h",
+      "original_sha256": "9ce2931ce47bed734a7f2b35c23eb6b0af750091c8403b8225b30f788dc45ff5",
+      "sha256": "397f15327a8b93c36b7e32ae9f84bd617c2a0670e9cc9a15fabf6f729d61bcf9"
+    },
+    {
+      "path": "native/squeezenet/vendor/emp/emp-tool/gc/halfgate_eva.h",
+      "original_sha256": "c52104344a881fc1083706a175ace3f452967cdeb99ef1d587e8b3128485f4e9",
+      "sha256": "9605fdb0830dbedf90f28e06c0a2592b3112e9e2865cb2c97eeb104edf15f9c9"
+    },
+    {
+      "path": "native/squeezenet/vendor/emp/emp-tool/gc/halfgate_gen.h",
+      "original_sha256": "741b2fb5d6006d4e73d50a02d4efe9e131926acb1b6938d8cdb97b5ec266cba7",
+      "sha256": "715835c458a5be1615896c5d3426f090aba4cb6dca0c3c3eb86528c2e41ff4bb"
+    },
+    {
+      "path": "native/squeezenet/vendor/emp/emp-tool/gc/privacy_free_eva.h",
+      "original_sha256": "844203fcc6e6e12ea6f7942a5d725ee9d7871cf4fa1705d6bfda36c8e1fa019b",
+      "sha256": "6f8ec9a4b364648644801554ed937f06d22f255806f30f15cc060d8aace370e1"
+    },
+    {
+      "path": "native/squeezenet/vendor/emp/emp-tool/gc/privacy_free_gen.h",
+      "original_sha256": "6e79363f056cb7016930ba7e795915058d5f50d306114cac8bf574d423ab6825",
+      "sha256": "36701a16a5f86f582f4b137243c213fd22cfac622aded2ec3ba0ed00da1f7667"
+    },
+    {
+      "path": "native/squeezenet/vendor/emp/emp-tool/execution/plain_circ.h",
+      "original_sha256": "e4f5f399644f6772a440ca2b7ebb6402f7e1a1c67fcbc28cd739d8f0ec71a129",
+      "sha256": "d39448290bd9c3d4d68100df98e738028159dd25ab250dde8d3e285acbb3d33d"
+    },
+    {
+      "path": "native/squeezenet/vendor/emp/emp-tool/execution/plain_prot.h",
+      "original_sha256": "1e657b677566baaac40a9cf3f7116626f619192598b89406e8c3e3191931b842",
+      "sha256": "806656b5e1dcf3b46b2e614131b8a0e81f72b4e65e9d56dd6177f587f4f2a3f9"
+    },
+    {
+      "path": "native/squeezenet/protocol/emp-ot/ferret/ferret_cot.h",
+      "original_sha256": "9de5ec54ae142804f3538d30cb0ad0e6a9758b6224d715a107641c15b341f533",
+      "sha256": "64b2c96b6ec07617c34dfecff6ed03f05bdab4908aba3b88ace0bbe55117ecc7"
+    },
+    {
+      "path": "native/squeezenet/vendor/emp/emp-ot/ferret/mpcot_reg.h",
+      "original_sha256": "d9b36dae872a41ac00c19b6c1b5f79c30a06cc037ed765ec8bd0176e39afb604",
+      "sha256": "105705c518a1c016ab61d8192626d6143ec7318921dd286518b354871ed628b5"
+    },
+    {
+      "path": "native/squeezenet/vendor/emp/emp-ot/ferret/spcot_sender.h",
+      "original_sha256": "6a8c41835d11431be649a752fb99c8b1e249f7f2362200d034b39e588ef8ea5e",
+      "sha256": "10cb73859032dfecb1aadf11a005448561a3603c31f0f75b93fe628605a8c776"
+    },
+    {
+      "path": "native/squeezenet/vendor/emp/emp-ot/emp-ot.h",
+      "original_sha256": "1eb5e9f8373cb82b9b76a8cb72a965ab4f71ab85703d8443514a988176a42fad",
+      "sha256": "47bc3a3c0b5cf311266f81e5a2dbfee76102f0a2012c2dd63a68d388a4ac5331"
+    },
+    {
+      "path": "native/squeezenet/vendor/emp/emp-ot/ideal.h",
+      "original_sha256": "d9246ac35c3ef09fc6697b45da271936d4e69758fe9d323d0e3299129371784c",
+      "sha256": "93a84b0063850f40564bcd17884db437be53ef7b5dbb2bb8b7508fc76f6b440c"
+    },
+    {
+      "path": "native/squeezenet/vendor/emp/emp-ot/co.h",
+      "original_sha256": "fce33e4ebddd061e312e7439f8b1dc9fc927c8e77b631102308c450b9570a2c8",
+      "sha256": "6e020642d774a831a6b54685f937abc91b68f20f0f5ec7ba2aebb9883a6e263b"
+    },
+    {
+      "path": "native/squeezenet/vendor/emp/emp-ot/np.h",
+      "original_sha256": "30da57f91f58af8c4b29cb1b9d38d8dd7e7f16e257f81cede191d7b71fba5c23",
+      "sha256": "1ee2e63f9ebfd93fb52b1f748606d626434575827a4205fd8766df42826fff76"
+    },
+    {
+      "path": "native/squeezenet/vendor/emp/emp-ot/iknp.h",
+      "original_sha256": "a665b1741b9c01204bd32bff4a4f57d166e92fa8e7ef218841534d22d73535b8",
+      "sha256": "6f19892242819ff335604d86787ca2770459d7e51ed0162a235a4645e0fe47d7"
+    },
+    {
+      "path": "native/squeezenet/vendor/emp/emp-ot/ferret/twokeyprp.h",
+      "original_sha256": "752ba75fa3462e0729c95e2e670f355929e7a775732926c4469f771a6c01dca2",
+      "sha256": "8ddbdee5952f99683cf2b9cffcb7304e55bf22fe6d678d8b65300134c08a96b8"
+    },
+    {
+      "path": "native/squeezenet/vendor/emp/emp-ot/ferret/spcot_recver.h",
+      "original_sha256": "4d8271299748d29091ab9e7e7a0e0bbaa7a15dd4deb6ea31caf806d818a53756",
+      "sha256": "0992a0cd587fb60f7e0fb1078dc2c03d8afaa94f4fae5d9475f6822b21b1bae6"
+    },
+    {
+      "path": "native/squeezenet/vendor/emp/emp-ot/ferret/preot.h",
+      "original_sha256": "a278179ce3feaeb6367ae5bfb838bd2159e51b583f9a66679d410a91a7d695e5",
+      "sha256": "b3aea56eb7540a0dcdf9d9238ba4197ee75b8a397713745386d57d6728d23869"
+    },
+    {
+      "path": "native/squeezenet/vendor/emp/emp-ot/ferret/base_cot.h",
+      "original_sha256": "6948b31cf7fcc42c7e6a7bf928dc1fdbb43fe9b7536f1f2eb57bf88ca759c0da",
+      "sha256": "ccc886ba9a1d9d8e5fc1729c00fe26e63a79fcd9f7fbb2d378d7372c5afb4ad7"
+    },
+    {
+      "path": "native/squeezenet/protocol/emp-ot/ferret/lpn_f2.h",
+      "original_sha256": "701bbb6e67bd2628dfc11ee1fa9be34cb83d10a4885cba00b613339407870d5e",
+      "sha256": "70b2e0766fa056f5e4862b1ddfd9c959d82ca8a3add6eec91aac56ec9535e805"
+    },
+    {
+      "path": "native/squeezenet/protocol/squeezenet_correlation_common.hpp",
+      "original_sha256": "be6a7f60d62879f4095fa18eb6a4ccbdd4e2f9e3580bded2f4c4b8aa8fd5ef5e",
+      "sha256": "be6a7f60d62879f4095fa18eb6a4ccbdd4e2f9e3580bded2f4c4b8aa8fd5ef5e"
+    },
+    {
+      "path": "native/squeezenet/vendor/emp/emp-ot/ferret/constants.h",
+      "original_sha256": "e58ed31b1665d90c1e7535a4a5db5f72ab843e5375c646cde7245d4527dca051",
+      "sha256": "e58ed31b1665d90c1e7535a4a5db5f72ab843e5375c646cde7245d4527dca051"
+    },
+    {
+      "path": "native/squeezenet/protocol/emp-ot/ferret/ferret_cot.hpp",
+      "original_sha256": "fee0bb641d2f5c46e65b1a2d58a5abd87ee8655991d331adfed15e9eda655cb0",
+      "sha256": "fee0bb641d2f5c46e65b1a2d58a5abd87ee8655991d331adfed15e9eda655cb0"
+    },
+    {
+      "path": "native/squeezenet/protocol/squeezenet_correlation_cohort.hpp",
+      "original_sha256": "8e9a456772c6608a19f739186112a4823613a412dc056a4fec87549d4084bc6f",
+      "sha256": "64248505bfb2cd4506d88bedd391ea89656f3e0b0a3050a6706520f54366cceb"
+    },
+    {
+      "path": "native/squeezenet/vendor/native_sci/OT/ot-utils.h",
+      "original_sha256": "6cbfd263b1134a3bf2a5f838ce53cf272791619423a722bb0c1fd362e0aa3f84",
+      "sha256": "d604fc6573c887ea1c0b144b3f31d0602dc4f39a33d5bf60e12813305e2231e3"
+    },
+    {
+      "path": "native/squeezenet/vendor/native_sci/OT/ot.h",
+      "original_sha256": "af9ee4ebbcff3fe5af091d15e442a9ca5cf9a67e2f7024d13c7f3b88924fa6cb",
+      "sha256": "0c73728268a0f8d3aa8767a194f0b5294b9b814e702bbcfd966ffb9147463b5c"
+    },
+    {
+      "path": "native/squeezenet/vendor/native_sci/utils/emp-tool.h",
+      "original_sha256": "566242c6a82b1b61d61af9fc7f9ac3cb5252a30726f4fd908704e686977fda86",
+      "sha256": "404aae97f8f928a1da71dbe04f2ddd7ddcd726668fe427faf5828f434ad98d91"
+    },
+    {
+      "path": "native/squeezenet/vendor/native_sci/utils/io_channel.h",
+      "original_sha256": "8ef8a1c58749480752b61099a617cd100403831c021f4b5fc85e951bc61b095c",
+      "sha256": "ef7d3ac7de035df2d3d635aa9a87238785783d31052a67bd968bc2499febcad1"
+    },
+    {
+      "path": "native/squeezenet/vendor/native_sci/utils/block.h",
+      "original_sha256": "833b74d0745a865b0a976f4180bc4840a6653120d89c4628d3423e9253a6ef1e",
+      "sha256": "833b74d0745a865b0a976f4180bc4840a6653120d89c4628d3423e9253a6ef1e"
+    },
+    {
+      "path": "native/squeezenet/vendor/native_sci/utils/group.h",
+      "original_sha256": "c81fdece56d525619148f482dc9df7cde6a97ad61f5548a8f88b84c1ba5274ae",
+      "sha256": "3e159d3ceb23bf16bd553ffd29f1a8ee020c78dcc7c76ff8439f6e6dcbdfa871"
+    },
+    {
+      "path": "native/squeezenet/vendor/native_sci/utils/net_io_channel.h",
+      "original_sha256": "54d76fb63751f0b0e9c009dbff9e7c445db6938f0816da1ae04c51cdefbd9d62",
+      "sha256": "e23f84003a13dbbd7123edd968b383f314b0872cefc00160c68e382ddb2bb13b"
+    },
+    {
+      "path": "native/squeezenet/vendor/native_sci/utils/ArgMapping/ArgMapping.h",
+      "original_sha256": "bb48e5cafe66b57d5c03cce7a2ef56cf63f09d3cfa63ba3b9510247c4ffe838a",
+      "sha256": "bb48e5cafe66b57d5c03cce7a2ef56cf63f09d3cfa63ba3b9510247c4ffe838a"
+    },
+    {
+      "path": "native/squeezenet/vendor/native_sci/utils/aes-ni.h",
+      "original_sha256": "24f84169975a20c69eba643bb52f974d34502b96635efeaf97da24d05d599285",
+      "sha256": "6f22a34f1d4f9dfbd2a8fac5c359fd01fa8ad4f0e46c2d5487670b960ae31f97"
+    },
+    {
+      "path": "native/squeezenet/vendor/native_sci/utils/aes.h",
+      "original_sha256": "3d48d5f729640d0c6812427241fa6656808e3a58ee616274d47220b6d4b41a96",
+      "sha256": "822c2fd8c54fcb7c58bdce38c15e4e2345b17d3fab295d820341d5bdb08077f7"
+    },
+    {
+      "path": "native/squeezenet/vendor/native_sci/utils/aes_opt.h",
+      "original_sha256": "a15d3d44d9994de81db73b59d61ea5b1933730fb7b490cfb5de8d9d550191cfc",
+      "sha256": "95c6dbd6955d646cb55e3f3d57c2c150159eba4fc9a2cd4324b2f2d897a0311e"
+    },
+    {
+      "path": "native/squeezenet/vendor/native_sci/utils/ubuntu_terminal_colors.h",
+      "original_sha256": "1b0c6b7f881eb53fcc8391c6357905136043f0e8a39e1514e1adb825b2515494",
+      "sha256": "1b0c6b7f881eb53fcc8391c6357905136043f0e8a39e1514e1adb825b2515494"
+    },
+    {
+      "path": "native/squeezenet/vendor/native_sci/utils/ccrf.h",
+      "original_sha256": "0994531208bf1b92becea1fd180314ec6d232b544032faa17fe096ad2c645c9c",
+      "sha256": "f64901e64957e32e242568cb8aa7c0abe8592b1495c9dfec1786bc6618750d6e"
+    },
+    {
+      "path": "native/squeezenet/vendor/native_sci/utils/prg.h",
+      "original_sha256": "656d15bfe1c3f01bf019f2cc416b502e18746c3432b705b83686a0d116731423",
+      "sha256": "1686f3a39619d80fce3028d8b6a44769dc672c6d427bad96422cd32c6cb9dc88"
+    },
+    {
+      "path": "native/squeezenet/vendor/native_sci/utils/constants.h",
+      "original_sha256": "95de3e71fd81b0c3d3158118646fb92ebe548c238888f0d2b3618322ea01001c",
+      "sha256": "95de3e71fd81b0c3d3158118646fb92ebe548c238888f0d2b3618322ea01001c"
+    },
+    {
+      "path": "native/squeezenet/vendor/native_sci/utils/crh.h",
+      "original_sha256": "497d47f7f9058a3c11abe4507a4144abb56f7c7aa741458715aef9f8d6a13fa6",
+      "sha256": "9e3815c02ced6d2cb647f16a2e91bd4a14a1ca278cd9fcd75ec34e350ce699e9"
+    },
+    {
+      "path": "native/squeezenet/vendor/native_sci/utils/prp.h",
+      "original_sha256": "16fece23d02b68887a843b9bedb4da9071d918c9414d797801427c0e6a1e6bd6",
+      "sha256": "ed5fdbd66c6872c29ca6a94fb6570453f70b63fa6a9d816b13f26968a2c9a656"
+    },
+    {
+      "path": "native/squeezenet/vendor/native_sci/utils/hash.h",
+      "original_sha256": "c135e790a2572c29ecb656196400b276ae80cdc42018b144ab861c387dc102ed",
+      "sha256": "2b2db6f29beef12864b5879b42f9cfc00300b7af08e8101383deeba09a6b18f6"
+    },
+    {
+      "path": "native/squeezenet/vendor/native_sci/utils/utils.h",
+      "original_sha256": "b3d70c051aa2e3f1d9d5702454ad8cf8f0b91dcfcc0e4af2b2467a917c8eb340",
+      "sha256": "a877942279f8d9aa9a8b69e58a17cb1c55572948222718b7002ddbc140b8cef8"
+    },
+    {
+      "path": "native/squeezenet/vendor/native_sci/utils/utils.hpp",
+      "original_sha256": "ca71833337d9d2088ad06b8f4ce5df342abd0cc0ba9e8faa994c61aff5d046b9",
+      "sha256": "ca71833337d9d2088ad06b8f4ce5df342abd0cc0ba9e8faa994c61aff5d046b9"
+    },
+    {
+      "path": "native/squeezenet/vendor/native_sci/utils/mitccrh.h",
+      "original_sha256": "fcbe6a49a3cff1e2396bbed0a4af5089f75bbef8bc847795e613d9aee28ad7f5",
+      "sha256": "c1dc2861fabe06655b8aef20e0ea12ac2e76670de6f79a7857c6f546fff4aaf8"
+    },
+    {
+      "path": "native/squeezenet/vendor/native_sci/utils/performance.h",
+      "original_sha256": "b5dded69eb4a82cd7e55499777eb9e761815a4ceb8b96ad54d8ed3296355ccbb",
+      "sha256": "b5dded69eb4a82cd7e55499777eb9e761815a4ceb8b96ad54d8ed3296355ccbb"
+    },
+    {
+      "path": "native/squeezenet/protocol/correlation_key_slice.hpp",
+      "original_sha256": "a29c54ad3d1e28b5e5edeb263949fe963695d60aa9a87ebabe24bfdd2816deb4",
+      "sha256": "a29c54ad3d1e28b5e5edeb263949fe963695d60aa9a87ebabe24bfdd2816deb4"
+    },
+    {
+      "path": "native/squeezenet/protocol/correlation_word.hpp",
+      "original_sha256": "07d920a1eb4c62a672de16c8fe4f26aa892425e56944227df562bf5281b51ac9",
+      "sha256": "07d920a1eb4c62a672de16c8fe4f26aa892425e56944227df562bf5281b51ac9"
+    },
+    {
+      "path": "native/squeezenet/protocol/late_quotient_fields.inc",
+      "original_sha256": "c171d2485b7e16b06b20a6fa7c05660a4a6fea7406c4dcd0dcd54f30f7e75171",
+      "sha256": "c171d2485b7e16b06b20a6fa7c05660a4a6fea7406c4dcd0dcd54f30f7e75171"
+    },
+    {
+      "path": "native/squeezenet/protocol/quotient_recovery_fields.inc",
+      "original_sha256": "ca66d608bb05fe3d5496777b31313d8bb426e8dbd8021c990ea8bbaa5f5d15bf",
+      "sha256": "8de1ed4118fe606a639e390ab1b7c4553e8fd7e61c5ca7a4a1378f7c586ab3d5"
+    },
+    {
+      "path": "native/squeezenet/protocol/quotient_recovery_math.hpp",
+      "original_sha256": "98f109cd4b3d0532765f63b97c4fd17b6c1e7ae217db3026abf32c929b2f69ab",
+      "sha256": "98f109cd4b3d0532765f63b97c4fd17b6c1e7ae217db3026abf32c929b2f69ab"
+    },
+    {
+      "path": "native/squeezenet/protocol/radix_quotient_fields.inc",
+      "original_sha256": "6927dfd28fbdc90ba82d170ec1822be00bd3fa52365ef7136e00fe5a28beec89",
+      "sha256": "25bcfd6dd0c61fa59e49005299b93a98a9c4121c06e76867489d3bdb0126a844"
+    },
+    {
+      "path": "native/squeezenet/protocol/radix_quotient_math.hpp",
+      "original_sha256": "d4a5ed9c2fbf0a9fd2dc46e0901be9b686d7e44dd7bbfc23d560283652765b01",
+      "sha256": "d4a5ed9c2fbf0a9fd2dc46e0901be9b686d7e44dd7bbfc23d560283652765b01"
+    },
+    {
+      "path": "native/squeezenet/protocol/correlation_lookup.inc",
+      "original_sha256": "edfe6ff6a8a0021a49213835e5c868d2f93029f643daba7341f0da6330c62c65",
+      "sha256": "edfe6ff6a8a0021a49213835e5c868d2f93029f643daba7341f0da6330c62c65"
+    },
+    {
+      "path": "native/squeezenet/protocol/late_quotient_bridge.inc",
+      "original_sha256": "ac7cf75615758078181c4b5740292dbb33b58ff260de7a137e17ad2bc991a87e",
+      "sha256": "ac7cf75615758078181c4b5740292dbb33b58ff260de7a137e17ad2bc991a87e"
+    },
+    {
+      "path": "native/squeezenet/protocol/quotient_recovery_bridge.inc",
+      "original_sha256": "2c5ba1a94f88a9538f27e0543919e158623e8994b55a163a72edf40ee641aaab",
+      "sha256": "2c5ba1a94f88a9538f27e0543919e158623e8994b55a163a72edf40ee641aaab"
+    },
+    {
+      "path": "native/squeezenet/protocol/radix_quotient_bridge.inc",
+      "original_sha256": "b8fe34620b82e5c1981d8dc1b424fd4b2c07e8e64485f4b52a1ce512c8b0b18b",
+      "sha256": "b8fe34620b82e5c1981d8dc1b424fd4b2c07e8e64485f4b52a1ce512c8b0b18b"
+    },
+    {
+      "path": "native/squeezenet/protocol/seeded_mask_bridge.inc",
+      "original_sha256": "d9a165d9697eebca9d6456953294a6893db958d61bba2ff82e1e82235540081a",
+      "sha256": "d9a165d9697eebca9d6456953294a6893db958d61bba2ff82e1e82235540081a"
+    },
+    {
+      "path": "native/squeezenet/protocol/squeezenet_joint_carry_bridge.inc",
+      "original_sha256": "a92f16a405631d6beea51e73c2ebd1b91b22693d3a2563ed1068dacb3040d0e8",
+      "sha256": "a92f16a405631d6beea51e73c2ebd1b91b22693d3a2563ed1068dacb3040d0e8"
+    },
+    {
+      "path": "native/squeezenet/protocol/elided_component_bridge.inc",
+      "original_sha256": "c98da625fa617cd67b0af23d79eb88691225fc6698ec3d3fe6c4cfb64436c7ce",
+      "sha256": "c98da625fa617cd67b0af23d79eb88691225fc6698ec3d3fe6c4cfb64436c7ce"
+    },
+    {
+      "path": "native/squeezenet/protocol/squeezenet_duplex_pool_bridge.inc",
+      "original_sha256": "b4062a4d5e33ea6edf489e13c90a1135aaa534c883a9655019f80293b68a9806",
+      "sha256": "b4062a4d5e33ea6edf489e13c90a1135aaa534c883a9655019f80293b68a9806"
+    },
+    {
+      "path": "native/squeezenet/he_backend/parallel_ntt_hooks.cpp",
+      "original_sha256": "f6c1341c81f8f032eb42911ffd0f16cd3b4f807b61f6e09df2c68e0e2a346f6b",
+      "sha256": "e9e4285051aac5b0fac6f4042271dbff40b509e1d1a35a3f3b6930e1c53d0c83"
+    },
+    {
+      "path": "native/squeezenet/he_backend/parallel_ntt.hpp",
+      "original_sha256": "3089cd75dad378d54c8ed81875dc286eb546e61b96cfc8f7bfb492c514819858",
+      "sha256": "3089cd75dad378d54c8ed81875dc286eb546e61b96cfc8f7bfb492c514819858"
+    },
+    {
+      "path": "native/squeezenet/he_backend/seal_rns_parallel.cpp",
+      "original_sha256": "ea40221d5696fa13670e53a5fe34f33f8419c3201774828d0a7f9fd104451250",
+      "sha256": "589978aa402887d85bcd88c37641bfc9142a8bad3c57d51f39ee91bac8abf075"
+    },
+    {
+      "path": "native/squeezenet/he_backend/parallel_rns.hpp",
+      "original_sha256": "a7bc679de8d2b412f35590003943d35f4a2a050b483a1180afa8745673ee9d57",
+      "sha256": "16277ff7b6c37efb8147c02ff02b20a0842b129de34fcd6ef6995ec414fb8d40"
+    },
+    {
+      "path": "native/squeezenet/he_backend/parallel_data.hpp",
+      "original_sha256": "272b81891d6563d13a56b4fc554920582b08c0f3df80208f3f8183298422288c",
+      "sha256": "786b35b288d59548d1be5880dbd78a90ab97249c3bb07f69d469aecc5994640b"
+    },
+    {
+      "path": "native/squeezenet/he_backend/pcn_parallel.hpp",
+      "original_sha256": "ab87888799d29aa0cb878f2831da428b3953de3d234be6f63f249c6816164c2d",
+      "sha256": "ab87888799d29aa0cb878f2831da428b3953de3d234be6f63f249c6816164c2d"
+    },
+    {
+      "path": "native/squeezenet/he_backend/seal_rlwe_parallel.cpp",
+      "original_sha256": "93136a89459c9e4dfe1862645cd7e94f8ccea2f29095bba694b53024656a645c",
+      "sha256": "e5e4cbdf11f4e4291884dc7fe2bf5ec35858a995724f18b77ef92588a4b23aff"
+    },
+    {
+      "path": "native/squeezenet/he_backend/parallel_noise_sampling.hpp",
+      "original_sha256": "c6dc02b8e870683a5441cc101c3a3dca502ae574f159c354f36d34479af99e37",
+      "sha256": "64a1f01b9d0b611f4546aacd2e541337d13cc4f3364596c0111f79bd6e304664"
+    },
+    {
+      "path": "native/squeezenet/he_backend/seal_randomgen_parallel.cpp",
+      "original_sha256": "12dc1031df5c73042c9f0b0fa30628ac709074057ad7337e522975446a8fca29",
+      "sha256": "3841de207da876530528d1de49eae95625a5976f3564bc7d4c27fce7d77cb954"
+    },
+    {
+      "path": "native/squeezenet/he_backend/seal_polynomial_parallel.cpp",
+      "original_sha256": "7e188e74259b331892fcabc0240f50cd161e285bc406b98c33d5c2f5b9cacc1c",
+      "sha256": "54ad2d33186c0c7aca7d2990f9f4ce9fa8f283d158e002aec2251676562058f6"
+    },
+    {
+      "path": "native/squeezenet/he_backend/parallel_polynomial.hpp",
+      "original_sha256": "de9506450ed10675a8a398153380fe3212a9d546d96c82d529b7c1429def6f8a",
+      "sha256": "ee48e35346284cac5f8fcef3e91cc9849c0e7f32fe2bf44bf423e5d485b16f76"
+    },
+    {
+      "path": "native/squeezenet/he_backend/seal_ntt_parallel.cpp",
+      "original_sha256": "d11c00bd92327c3f695c3af502f349d350d61f7b07af6d82bacd7146e6d60b97",
+      "sha256": "e922cb678070e03f4aa0d2f1f5092e7ddd46be34ac73b2861c0cd5dbad76720d"
+    },
+    {
+      "path": "native/squeezenet/he_backend/parallel_context.hpp",
+      "original_sha256": "9632b7c11798957f49ca7bed5ea2c81424d45fd361bc8248267cb1aea4282593",
+      "sha256": "11ebdc88cfc4350b0d84a15b6ba6866629adf7cacaaa75c31d2457f0d3757d9e"
+    },
+    {
+      "path": "native/squeezenet/he_backend/parallel_span.hpp",
+      "original_sha256": "eeba5a01643d34642b02009fde2c97ccce26b85401643a435c7e34c992b36ae9",
+      "sha256": "dbca7277588badb4f157bef56f071ccbc22d720d7fd31f652fbb3f3ce35ed23c"
+    },
+    {
+      "path": "native/squeezenet/he_backend/seal_validation_parallel.cpp",
+      "original_sha256": "99042da919da9dda70e9892011cba066131dcfcd12cac56e4eca37a8e170c552",
+      "sha256": "5262813d421cfe0c515ab05743602b9c85df316465d7d809fd5d28323ef4180d"
+    },
+    {
+      "path": "native/squeezenet/he_backend/seal_decryptor_parallel.cpp",
+      "original_sha256": "9dcf5ac4f7afefdbb07d28ee9d2b84469ca989003ab6562e93f04f4272a21d30",
+      "sha256": "c2d0cdbf483e53cf4ee930c225725ee5f66433f340664fb4e67aefbdbde0fff4"
+    },
+    {
+      "path": "native/resnet50/src/inference.cpp",
+      "original_sha256": "c17646a7992ba667f0c514d687147fbaaf30541ea3b2063edd5ec15b6843048b",
+      "sha256": "97db547dc70a3e0d12e4ccd0b00187d7bcccc2de2edc5d90f036aa2fcc8cf25d"
+    },
+    {
+      "path": "native/resnet50/engine/resnet_thread_trace.hpp",
+      "original_sha256": "c2f287b163e8e7765ae6b22ee0721417362b05f7a77c9a71f52a16dab58ffa3f",
+      "sha256": "18c8c553f5c774bb2b0061f1fd1ed1f9f6c64f8c44f9b650a8183699d20d628d"
+    },
+    {
+      "path": "native/resnet50/engine/persistent_worker_owner.hpp",
+      "original_sha256": "f7be6ce2bc73ae99459fa83366acb1df634e17376f643f9dde8183c8e8168fd8",
+      "sha256": "f7be6ce2bc73ae99459fa83366acb1df634e17376f643f9dde8183c8e8168fd8"
+    },
+    {
+      "path": "native/resnet50/vendor/bolt_sci/BuildingBlocks/truncation.h",
+      "original_sha256": "b8fdd0d6214ed1ca0e7b174a94fdcb64de4cdcaa37fa0de61f4e781f0cf6b30d",
+      "sha256": "3409f97d10c47ae2e0cdff9096db40cf136079b3d9e48bf98b84ac6428eaee52"
+    },
+    {
+      "path": "native/resnet50/vendor/bolt_sci/BuildingBlocks/aux-protocols.h",
+      "original_sha256": "2b4e2324694c52c1be0f321cadf1a9efb7e8f6201d11676061e3d59225acd9bc",
+      "sha256": "9a0ccfaf283b1f34a9c072805a4dcc2863f4f10082af0d5589bea3f3f7167f7f"
+    },
+    {
+      "path": "native/resnet50/core/millionaire.h",
+      "original_sha256": "cc50b2c5a30ed0872a0b5e19ae6f8eefdcddfe60b99b8475ee3467a7f414cea4",
+      "sha256": "0619d9ec829714cafb39e115b7e3b33cf554a288ec3bf1335ea72cdfb0e1225b"
+    },
+    {
+      "path": "native/resnet50/vendor/bolt_sci/Millionaire/bit-triple-generator.h",
+      "original_sha256": "0289cf5f8571a3376a142a5b5e5c6017861627bfe1d4267a25c2aeb2a5cf5bf7",
+      "sha256": "b7d999af1c33ac895446b82df2661e68ce802327c230e6f59c251551eb9a3cac"
+    },
+    {
+      "path": "native/resnet50/vendor/bolt_sci/OT/ot_pack.h",
+      "original_sha256": "33b02d12c90aafb0df41454e876d31fd1f2c73101cdc2bc519d0bce21572dee3",
+      "sha256": "fc0ccaaac8f7180b2c16d0c2d7c314ab88215a6afb3fff26553da2a1a8320f5c"
+    },
+    {
+      "path": "native/resnet50/vendor/bolt_sci/OT/emp-ot.h",
+      "original_sha256": "66e9dbfc12fded62871f55d1c6c0d6f891cd245c77062b88e709b6fd58338072",
+      "sha256": "6194f7d3d8d902d08ea88e24f40175879f5c7ce349ce0f6e06b9554f5ece708e"
+    },
+    {
+      "path": "native/resnet50/vendor/bolt_sci/OT/ideal.h",
+      "original_sha256": "8399420d65cba722567112b24a77e6618dcdb45910a8c63d8555a3c93f9ea6dc",
+      "sha256": "2a32347aa3bbff8990f5de3b2ddf01e7f378544ac0359a6d51a653d264622a31"
+    },
+    {
+      "path": "native/resnet50/vendor/bolt_sci/OT/ot.h",
+      "original_sha256": "af9ee4ebbcff3fe5af091d15e442a9ca5cf9a67e2f7024d13c7f3b88924fa6cb",
+      "sha256": "5d20f9c32c6ce242ef88bd52fd31d88b5e45fadd9b62b9f606b2f17333e4fe1d"
+    },
+    {
+      "path": "native/resnet50/vendor/bolt_sci/utils/emp-tool.h",
+      "original_sha256": "d1deb1f276f556aafb6df649a5645388323fec296b94782f927bdb6d0e53ad54",
+      "sha256": "eaaaac3c11814a5fb6b90913099583a0af6c067f6305549cc4f25bc0804b6dd2"
+    },
+    {
+      "path": "native/resnet50/vendor/bolt_sci/utils/io_channel.h",
+      "original_sha256": "1043065cf49bf118e15144215bd79b63a8d1547a8971d6b58877c0780a5cf298",
+      "sha256": "6771c0b24c3ec66bc5558cabc710eff0b60c2381c7782bbcce4ed90f1c328275"
+    },
+    {
+      "path": "native/resnet50/vendor/bolt_sci/utils/block.h",
+      "original_sha256": "d66a545a0ba698495d7881bc2640c6ffdcf05aee3bcfca2f015c530e4943dd50",
+      "sha256": "d66a545a0ba698495d7881bc2640c6ffdcf05aee3bcfca2f015c530e4943dd50"
+    },
+    {
+      "path": "native/resnet50/vendor/bolt_sci/utils/group.h",
+      "original_sha256": "c81fdece56d525619148f482dc9df7cde6a97ad61f5548a8f88b84c1ba5274ae",
+      "sha256": "dc331eb09ab9aba63baf6aa73a7ca957767e1649277591fd737d9c9050c71d38"
+    },
+    {
+      "path": "native/resnet50/vendor/bolt_sci/utils/utils.h",
+      "original_sha256": "13e9acf2bc45a7b09e395d4a7e0ebe4b41030a29a69bb2f99d1228987477712a",
+      "sha256": "a514542bb42590729fa4bfc358e65ad95e58ec8feae63b3faaf2d20a02beb670"
+    },
+    {
+      "path": "native/resnet50/vendor/bolt_sci/utils/prg.h",
+      "original_sha256": "870294bc36bbeb8f298890767145247ec299102e8d77ca7d8ca69167559153df",
+      "sha256": "fe1c6daf9df8da89fc932f8fb822cd7954272177a274b486be25277fc4d11801"
+    },
+    {
+      "path": "native/resnet50/vendor/bolt_sci/utils/aes-ni.h",
+      "original_sha256": "24f84169975a20c69eba643bb52f974d34502b96635efeaf97da24d05d599285",
+      "sha256": "3b3c7bf124cd9701c82e7c45b30c0a24083b7b78c6f9201f1b5a175c0854bf5e"
+    },
+    {
+      "path": "native/resnet50/vendor/bolt_sci/utils/aes.h",
+      "original_sha256": "3d48d5f729640d0c6812427241fa6656808e3a58ee616274d47220b6d4b41a96",
+      "sha256": "c915be6d0a7372e7bbb8601631ee13d812ec9142b549b4cb35e7062900b84f3b"
+    },
+    {
+      "path": "native/resnet50/vendor/bolt_sci/utils/constants.h",
+      "original_sha256": "2966ac6e4e14d7957f832933f75f1908bf57a5df4bb08d542ee821b5ad594098",
+      "sha256": "2966ac6e4e14d7957f832933f75f1908bf57a5df4bb08d542ee821b5ad594098"
+    },
+    {
+      "path": "native/resnet50/vendor/bolt_sci/utils/utils.hpp",
+      "original_sha256": "edb7f010c0f7d17d63e6f2bb34cb4b18b11da78e9413560811a0fec4992735fb",
+      "sha256": "edb7f010c0f7d17d63e6f2bb34cb4b18b11da78e9413560811a0fec4992735fb"
+    },
+    {
+      "path": "native/resnet50/vendor/bolt_sci/utils/group_openssl.h",
+      "original_sha256": "ce121a72f972dd301d052707989bc0b5b0d33876f6f16d03a7e9abb56c97b610",
+      "sha256": "ce121a72f972dd301d052707989bc0b5b0d33876f6f16d03a7e9abb56c97b610"
+    },
+    {
+      "path": "native/resnet50/vendor/bolt_sci/utils/io_pack.h",
+      "original_sha256": "2371eed0f738e8cac0ec68e87bf5854ef865d252d51fc218488cde65956a16a5",
+      "sha256": "8378226eab3427c8f7018bf719873c06a33d8d9e21e408e1ec7f83dff8469066"
+    },
+    {
+      "path": "native/resnet50/vendor/bolt_sci/utils/net_io_channel.h",
+      "original_sha256": "bc051cf2b55a6cbe327176cd9772695d07ea0683516dfe220e0a1c9d771a911a",
+      "sha256": "38d2b84ad817669168b4533d6882ac145028142716ba4a0c9e5b4ae769f3d1be"
+    },
+    {
+      "path": "native/resnet50/vendor/bolt_sci/utils/ArgMapping/ArgMapping.h",
+      "original_sha256": "bb48e5cafe66b57d5c03cce7a2ef56cf63f09d3cfa63ba3b9510247c4ffe838a",
+      "sha256": "bb48e5cafe66b57d5c03cce7a2ef56cf63f09d3cfa63ba3b9510247c4ffe838a"
+    },
+    {
+      "path": "native/resnet50/vendor/bolt_sci/utils/aes_opt.h",
+      "original_sha256": "a15d3d44d9994de81db73b59d61ea5b1933730fb7b490cfb5de8d9d550191cfc",
+      "sha256": "a1deebd38e1147ba5775c30f65d49d37a52607aeedff67890e95a65b6bedc79f"
+    },
+    {
+      "path": "native/resnet50/vendor/bolt_sci/utils/ubuntu_terminal_colors.h",
+      "original_sha256": "1b0c6b7f881eb53fcc8391c6357905136043f0e8a39e1514e1adb825b2515494",
+      "sha256": "1b0c6b7f881eb53fcc8391c6357905136043f0e8a39e1514e1adb825b2515494"
+    },
+    {
+      "path": "native/resnet50/vendor/bolt_sci/utils/ccrf.h",
+      "original_sha256": "0994531208bf1b92becea1fd180314ec6d232b544032faa17fe096ad2c645c9c",
+      "sha256": "a7759b04d23fd0b3d578b9c050818b659518a2496b2c40c0d0e0bdc7a8f62732"
+    },
+    {
+      "path": "native/resnet50/vendor/bolt_sci/utils/crh.h",
+      "original_sha256": "497d47f7f9058a3c11abe4507a4144abb56f7c7aa741458715aef9f8d6a13fa6",
+      "sha256": "c016ce407357117ee75a168df1f9e377cd5dd5de74c0f8463859f2674d46dcd8"
+    },
+    {
+      "path": "native/resnet50/vendor/bolt_sci/utils/prp.h",
+      "original_sha256": "16fece23d02b68887a843b9bedb4da9071d918c9414d797801427c0e6a1e6bd6",
+      "sha256": "e117f2c0d19f5ece89b6860ceaa10abdadb6e07c3ba3377f3961c01597471488"
+    },
+    {
+      "path": "native/resnet50/vendor/bolt_sci/utils/hash.h",
+      "original_sha256": "eca38b17aad0bf20757f838002b4bb7869d3f95c15fd956283a36e9911da8f84",
+      "sha256": "faea02eb577f153e7c2228e3841d3c6745968d7151d8acc49bdae5228b55d5bc"
+    },
+    {
+      "path": "native/resnet50/vendor/bolt_sci/OT/iknp.h",
+      "original_sha256": "8585a2cce3e9a52a5c9faaf33d4762632b90448a6e0e1140d2832d96a2602380",
+      "sha256": "05e7c253f44104c55fef9a6963e4c6b2d45145b17e80e83b5cdf7d9ccb5acfd1"
+    },
+    {
+      "path": "native/resnet50/vendor/bolt_sci/OT/np.h",
+      "original_sha256": "c040ac3dba53d0e374ff02952f288a05091e6bb680b703d2fb8eb7163d2bbc98",
+      "sha256": "a664c00df49a655f6f26fee858518225ef3a25173b30db280b47b1953355e6bf"
+    },
+    {
+      "path": "native/resnet50/vendor/bolt_sci/OT/kkot.h",
+      "original_sha256": "53798112027b59ec83054a266ddf30da0606250c48f8cadbb7482370219b2cdd",
+      "sha256": "3cc1e936acefc781837b0fd139e6e36aa046e67e367208a2a4f6e395309ad037"
+    },
+    {
+      "path": "native/resnet50/vendor/bolt_sci/OT/split-iknp.h",
+      "original_sha256": "7ea5ca10d7d17a350c1c74cce393f279a3ee26597d05dace9122a57bcd40aafa",
+      "sha256": "61eb274589b2f22ea1b59c1d7429b9549aad10b3cd56e06d8f4321939591411b"
+    },
+    {
+      "path": "native/resnet50/vendor/bolt_sci/OT/ot-utils.h",
+      "original_sha256": "35cc43ccc1b86a1d16ab3e1979f000e77425941ed3a5eff6cf48de315b8e1027",
+      "sha256": "c6e7c6a066ff07d62e5636fb80fb172e8c0da999f112d8457acacd5b75706264"
+    },
+    {
+      "path": "native/resnet50/vendor/bolt_sci/OT/split-utils.h",
+      "original_sha256": "9af4756eebc30c255a95b578c4152052b858bdf038443b6420d85ce846e18aec",
+      "sha256": "e8861882c3b34a78565ff7914c4e60ed2184bb26bb43d92f7ffc2471d0dfbde6"
+    },
+    {
+      "path": "native/resnet50/vendor/bolt_sci/OT/split-kkot.h",
+      "original_sha256": "76913564f37e4a6fe97376aa0b11cab5919d266e816fc5dc0ba2a8602a9441a1",
+      "sha256": "f6bec3f9ef29b63b969d9acc9ce69dbbd0b6274ec03fd4dfc9f7025df37c6c5d"
+    },
+    {
+      "path": "native/resnet50/vendor/bolt_sci/Millionaire/millionaire_with_equality.h",
+      "original_sha256": "eb5c0213c1d63b1f2bb032f93bfdf611b2222701740e28d9737559f3164fe2ae",
+      "sha256": "8bd6103f2090d1534195c1edcf80822b1a02e23c927c8f5ee43341caa753d2cc"
+    },
+    {
+      "path": "native/resnet50/vendor/bolt_sci/GC/emp-sh2pc.h",
+      "original_sha256": "4ec3ba3070cb6f88c426ff091c45d629db255a20b6523fbf711d8520bd23706a",
+      "sha256": "5880b3ac41dbe9a9e248ff000b9a23167c6cee6fe891a8a94470dbcf45a5b21c"
+    },
+    {
+      "path": "native/resnet50/vendor/bolt_sci/GC/semihonest.h",
+      "original_sha256": "b37dd84ab0ed6892d17665253b6e666d25f5d6065b183cfd5d56772e9dc12c77",
+      "sha256": "a0f33b4edfdb04e596f606cd479c4f83746f456abcd7b91caafe32a44cbcc8ff"
+    },
+    {
+      "path": "native/resnet50/vendor/bolt_sci/GC/sh_eva.h",
+      "original_sha256": "c9317438523ceceadaba715d1b8cb5ee20c4d5aca557e7686502597a1cf0c465",
+      "sha256": "e9546f28fdf1d603821739031ae1a1715e46436f73aceaab03c214f3bb74ab75"
+    },
+    {
+      "path": "native/resnet50/vendor/bolt_sci/GC/sh_party.h",
+      "original_sha256": "dac36b9dff35b11c934280c13fa248538d68c1fa18906b58c4a83cd2da47b345",
+      "sha256": "e33220f767cbd4a379745004585d2ee940e18509d8988304e4318ac3ed60e053"
+    },
+    {
+      "path": "native/resnet50/vendor/bolt_sci/GC/emp-tool.h",
+      "original_sha256": "4450d77f09620e31813a4566f41a9acb2da8fa49d1588ee19e2311d641167cfc",
+      "sha256": "01771bdec4e10a87bbccb3e7a54e5fa3c85ad092de1a4a858ea1f1989fdf2074"
+    },
+    {
+      "path": "native/resnet50/vendor/bolt_sci/GC/bit.h",
+      "original_sha256": "e3339519f69d76faef0ea9d760f7a40969c90da287e216d4bd4a062340a1c257",
+      "sha256": "d0c6a2c20ef00f1a1d2436e774d28e8ca7e0fa25f99a9613108ba3b8d1bd2b79"
+    },
+    {
+      "path": "native/resnet50/vendor/bolt_sci/GC/circuit_execution.h",
+      "original_sha256": "d0e1b8170a719b4303dd1b1f4aa06e33c2131912d7ac9eae42a9adaf7d6a4927",
+      "sha256": "bc27311c1b670bbafd40340cb47000d711497023e95de7607445ec2fb33c54fa"
+    },
+    {
+      "path": "native/resnet50/vendor/bolt_sci/GC/protocol_execution.h",
+      "original_sha256": "08ae641c3a8f504f9cd6a452cd1310f46661d3ccf91422c9349d51ac9f3b6f37",
+      "sha256": "534d877b3ed75a4f9ea14bbb78319b970967f2f8c572793eab2e5e38fb7d9821"
+    },
+    {
+      "path": "native/resnet50/vendor/bolt_sci/GC/swappable.h",
+      "original_sha256": "53ef455f42c3a3d01464737a37ea2bd91617cbd39681e1b7b1855093b6d3b877",
+      "sha256": "f91d7f128f13fb6a139c873efd9b67aa431395f149ea158b5cd3bc24ea4b8919"
+    },
+    {
+      "path": "native/resnet50/vendor/bolt_sci/GC/bit.hpp",
+      "original_sha256": "f14fbc8407e233214c333088868fba8ed77c28ea2daaeb0d877292933bc5b8f7",
+      "sha256": "f14fbc8407e233214c333088868fba8ed77c28ea2daaeb0d877292933bc5b8f7"
+    },
+    {
+      "path": "native/resnet50/vendor/bolt_sci/GC/comparable.h",
+      "original_sha256": "df13c12a47d89bcef0f22723b238aae3d56139c88e2d4156f4ab481b054a0e47",
+      "sha256": "df13c12a47d89bcef0f22723b238aae3d56139c88e2d4156f4ab481b054a0e47"
+    },
+    {
+      "path": "native/resnet50/vendor/bolt_sci/GC/integer.h",
+      "original_sha256": "09146e74d0fa4b271a4860230ac3f13b867be3be0a7815ff03beb319ebcda85d",
+      "sha256": "bdd471894671bf4d1ad436fb479a7566c0e01a1490a401a1f774ace3f5bc7539"
+    },
+    {
+      "path": "native/resnet50/vendor/bolt_sci/GC/number.h",
+      "original_sha256": "0514e5a48fbdd75a7349ec6e2385137c2fef57ca300d9786c0129a3d7ec83471",
+      "sha256": "767d30ca97f14b8357a3a11fe67e12bcb590be6f393e445ce37f05cfee74e94c"
+    },
+    {
+      "path": "native/resnet50/vendor/bolt_sci/GC/integer.hpp",
+      "original_sha256": "3c1bf40700a67997688f38b66e847465ae374a222747daf3799f84ae37a2db47",
+      "sha256": "3c1bf40700a67997688f38b66e847465ae374a222747daf3799f84ae37a2db47"
+    },
+    {
+      "path": "native/resnet50/vendor/bolt_sci/GC/aes_opt.h",
+      "original_sha256": "f66ef723d5005d3abf8648f25c7891be2eeb3d578e118cc52b610ba807cfbae9",
+      "sha256": "d2797a8a850f79eaa3b46c8e88ccc9ac4cbc1369780e1262c358d34ae9738660"
+    },
+    {
+      "path": "native/resnet50/vendor/bolt_sci/GC/f2k.h",
+      "original_sha256": "b65e3d4572a4a33cb200f9816d6257409a3fbbf06704351577674a55d01033f1",
+      "sha256": "833d41febc87ca1b93c2772d762d3adb778f32d3ea42408d558fe44f125ebeb1"
+    },
+    {
+      "path": "native/resnet50/vendor/bolt_sci/GC/mitccrh.h",
+      "original_sha256": "4c2cede1fb065b582e2bf9a74f3b61975eda553b1e10b0ec15cd2a7d0f49cebc",
+      "sha256": "8854de31b7ab9d86966a43c8950e0dbad185fa1a75426ef61f2488fc9a211455"
+    },
+    {
+      "path": "native/resnet50/vendor/bolt_sci/GC/utils.h",
+      "original_sha256": "5e460df44b35b6f8505f07e917fb462c8be534f5680df020bc6b8a56f2b884dc",
+      "sha256": "25d88dbaef2a1d7deebdcb67f763a2343374696ac673eebbf628e15ca8419dc3"
+    },
+    {
+      "path": "native/resnet50/vendor/bolt_sci/GC/halfgate_eva.h",
+      "original_sha256": "9f6b2364a36c55174cfc5fa76a8732edfc0ed465b1ba388a3bfa4b57016c3b1a",
+      "sha256": "f4280304d2e0473f29577601742a4b39cc02d0399edcc5193abc9f0e3211489a"
+    },
+    {
+      "path": "native/resnet50/vendor/bolt_sci/GC/halfgate_gen.h",
+      "original_sha256": "d6e15b7076bcf14409a54eb71ba9cc7ebc5bbde27e0c934711407f6b35df74ad",
+      "sha256": "b0398e6e76f6bcfc6419384259a74f74dea13d79a82841659d4d13713e5f8518"
+    },
+    {
+      "path": "native/resnet50/vendor/bolt_sci/GC/sh_gen.h",
+      "original_sha256": "f0f66c7044d001039005f37ab87b4773dc2f446024ef8459c8af553676b8783e",
+      "sha256": "00c4c3b2d6a5efb5284c89c86acf9c8d100c1f9395d6b5e45d5a15d7c87aa558"
+    },
+    {
+      "path": "native/resnet50/vendor/bolt_sci/Millionaire/equality.h",
+      "original_sha256": "f0a5f58cdbe4a1d1744e57908fee42310e28931ec5b2b991a1a16520f83b150f",
+      "sha256": "f9b1703fbd0379e721007a4ffa94e2328ad31dfa13cfebc6a907323a39fd4980"
+    },
+    {
+      "path": "native/resnet50/engine/native_worker_runtime.hpp",
+      "original_sha256": "2b32ff266ed5c0bfae84d59321820fe55fbd37de72ec58098ffae88d949b39f2",
+      "sha256": "a90fc9d4b55f8be43c699aa81ded89459a12341fcf10d50413c2f27120414922"
+    },
+    {
+      "path": "native/resnet50/parallel/pcn_parallel.hpp",
+      "original_sha256": "9f7f3070efb55eb3f7b235667cf170cb55803d5b8676f98687b79b6bb18c7763",
+      "sha256": "c16ae01c29dba814857df86f505f4451712ad1f0ed9eff5f0611fe769a9a397a"
+    },
+    {
+      "path": "native/resnet50/parallel/parallel_span.hpp",
+      "original_sha256": "eeba5a01643d34642b02009fde2c97ccce26b85401643a435c7e34c992b36ae9",
+      "sha256": "a5489239c08aaf753daa72b86bbd345e2c8d2fe1f718ce0fc9d6abdd951ce9c5"
+    },
+    {
+      "path": "native/resnet50/parallel/parallel_data.hpp",
+      "original_sha256": "5f5445f178a4921f41d3157d6b95b09ee1bb02f4186d905d39ea0553802e92bf",
+      "sha256": "d17d22bafeae9a65f8e8b0712ca70d93db5176f6109c23565b6b8a4bf37009f3"
+    },
+    {
+      "path": "native/resnet50/parallel/parallel_ntt.hpp",
+      "original_sha256": "fa12270cc3850e7927eec5a03297c535aa7a35d149df7b5f311de7536a9f7518",
+      "sha256": "52ef94e3146b319e8e7e15353eadf0ad222454a081cacbe8355a9df089d36216"
+    },
+    {
+      "path": "native/resnet50/parallel/parallel_context.hpp",
+      "original_sha256": "9632b7c11798957f49ca7bed5ea2c81424d45fd361bc8248267cb1aea4282593",
+      "sha256": "17f3cb11312500e6e81c3639da18330596609fcb287a54b5339407df2e6eaf3e"
+    },
+    {
+      "path": "native/resnet50/engine/bfv_program.hpp",
+      "original_sha256": "cb336f9a9958951e6dc0d8e82ac6de5aa1429a7f17f1bc8d9690bcdbbd1ca00c",
+      "sha256": "1d8d9fffe70799a591b37c8581e97e590ac25e11d6057befa70f16061c5dc2cf"
+    },
+    {
+      "path": "native/resnet50/engine/parallel_public_transform.hpp",
+      "original_sha256": "f915aece6932cce1c262c5175d12f1a38ad0d14d4170d395acef3d8cda500ebe",
+      "sha256": "5f9300d82b8cc019a713c948a53e089911a647ce33a868219d1c884218a6a712"
+    },
+    {
+      "path": "native/resnet50/core/kernel_action.hpp",
+      "original_sha256": "a10393025971ac46761cb0a8f1dbe0c9df832ef25f07a541a59c3a027b5146af",
+      "sha256": "2c8bf02b5a169f122c0369cf9801244496c19b45c3a953c6d620c5db83074ea5"
+    },
+    {
+      "path": "native/resnet50/core/program.hpp",
+      "original_sha256": "ae4b6548b1e36ff9d282470d9d97c7309da3c349165b5d8eee6bde142fff7023",
+      "sha256": "196c0b1fc644a61c9f67f54be8aee284e2e193cdd350f19dec6b5149f21e9723"
+    },
+    {
+      "path": "native/resnet50/core/types.hpp",
+      "original_sha256": "3ef356f50bec54ae9e02905f556a5dc28bf1a8e0053cb8b4277f5c9850b5ca62",
+      "sha256": "3ef356f50bec54ae9e02905f556a5dc28bf1a8e0053cb8b4277f5c9850b5ca62"
+    },
+    {
+      "path": "native/resnet50/core/pair_profile.hpp",
+      "original_sha256": "56d564159441a9dd3fbb275cc638c3602002ef0786ba1e323f39daa2bf024288",
+      "sha256": "56d564159441a9dd3fbb275cc638c3602002ef0786ba1e323f39daa2bf024288"
+    },
+    {
+      "path": "native/resnet50/engine/compute_workers.hpp",
+      "original_sha256": "ad9dea9b5452217ee4ca66d296e5a0920894b1386ab5b483f7ae23ec63e12603",
+      "sha256": "a6e6c341eafa4d6baf3cb0f41952c372b0cb7ffed6068363d25e66f3f0f4f9f9"
+    },
+    {
+      "path": "native/resnet50/core/linear18_roster.hpp",
+      "original_sha256": "3cbe1c6db8eadffcd0bfbef538fa73cc878be24f94ee4babc15c782fab1d4c8f",
+      "sha256": "3cbe1c6db8eadffcd0bfbef538fa73cc878be24f94ee4babc15c782fab1d4c8f"
+    },
+    {
+      "path": "native/resnet50/engine/affine_lifecycle.hpp",
+      "original_sha256": "bb2e8a83805af44c85ada80e75243d4dea63b222ca17fa97deaeab5dd8b2aafd",
+      "sha256": "bb2e8a83805af44c85ada80e75243d4dea63b222ca17fa97deaeab5dd8b2aafd"
+    },
+    {
+      "path": "native/resnet50/core/batch_norm_affine_core.hpp",
+      "original_sha256": "29e7565be719a684d9665f8ccaa7495467a05489e06475e2b415a0c3c3518c78",
+      "sha256": "8a021c1ab82fc8082e2cff86ff36c5fd77e7096da63977e9e258e7166f511f7a"
+    },
+    {
+      "path": "native/resnet50/core/batch_norm_owner_binding.hpp",
+      "original_sha256": "28a87bf7e36eee39350c2517ce0244eb52f09f81e787fe863cd69877a1e3310c",
+      "sha256": "28a87bf7e36eee39350c2517ce0244eb52f09f81e787fe863cd69877a1e3310c"
+    },
+    {
+      "path": "native/resnet50/core/seeded_wire.hpp",
+      "original_sha256": "701dd52cfeee056e6d690fd955855d824af2750d4deca1e206294aaff5bdd1e2",
+      "sha256": "701dd52cfeee056e6d690fd955855d824af2750d4deca1e206294aaff5bdd1e2"
+    },
+    {
+      "path": "native/resnet50/engine/seeded_key_policy.hpp",
+      "original_sha256": "c7ca52eb65ac425d02e3e36cb1d9f8e3c1ddb9dae9c25d5f80fae9de0e1c37f6",
+      "sha256": "6c81668ab1f29d615a71b307bf97da30a0270bcecc334c5014d735f9137b30fe"
+    },
+    {
+      "path": "native/resnet50/engine/seeded_key_codec.hpp",
+      "original_sha256": "e8f81fd5fce2b20635f8565a2266e93195d702525f3075c716aebff62cc7dba5",
+      "sha256": "e8f81fd5fce2b20635f8565a2266e93195d702525f3075c716aebff62cc7dba5"
+    },
+    {
+      "path": "native/resnet50/engine/batch_norm_retained_core.hpp",
+      "original_sha256": "33f405ae1727b91f3ce14e6dda97a52f63364791e2795d4d0e99c6f753e71c1b",
+      "sha256": "b78d586ebd1df660524e5e3fdec65ca8385388f5c9ef0fb11e55766c95baa295"
+    },
+    {
+      "path": "native/resnet50/engine/input_stream_codec.hpp",
+      "original_sha256": "7c71ba2296c3f4fd2aac76c15bb7103ed2bb4a3d9a6a6c8f94806c1829502e48",
+      "sha256": "fcddfffab816b9759bb9422453029a787df58c8ee07350ff40fa487324b141dc"
+    },
+    {
+      "path": "native/resnet50/engine/input_phase_codec.hpp",
+      "original_sha256": "9d4461f8ec2df18691de2fd84e63b8561ff7ea21351cbbdccbb98c9d124a367f",
+      "sha256": "7ac0db443d7c20500f17e7e6d0b7bcdb0ae26e4d92a7af24678656432576fa2d"
+    },
+    {
+      "path": "native/resnet50/engine/input_mask_codec.hpp",
+      "original_sha256": "f3a9f4f9f77d51f32b3b6a6b9bccb6c5488ccd477015c8f08353d6b8ff4b80c4",
+      "sha256": "0d119456eb7abc4ac2ce7d12d80860a8f51b05559ae53a15d44737c0d069bd63"
+    },
+    {
+      "path": "native/resnet50/engine/input_program.hpp",
+      "original_sha256": "b03c5d2073decaf18819217d00c54a67f4e58ee0e915e89462d62be4b5d03ba2",
+      "sha256": "c6c07ac3f90771205a797fa9fb02091d34d5b20b086284831b4c408c4adccfc5"
+    },
+    {
+      "path": "native/resnet50/engine/horner_policy.hpp",
+      "original_sha256": "c3bf40c2dd48656e1a3d98ce1f36e1941a3491cbcda1f956ed3ea8abafd8f1ba",
+      "sha256": "abab7417d1b1c5cdb1c4117af5d2bd78af74bfc6069854c065638e8f72785b62"
+    },
+    {
+      "path": "native/resnet50/engine/horner_polynomial.hpp",
+      "original_sha256": "f39b056323e2f7ac142726a33e1ac02d17d3f15685e7b6c2ae0b41572cb8ddd1",
+      "sha256": "13fdc6cbc4637be11909d50bcc63c90152853bf8fbeffd5b13868e3d91801a3e"
+    },
+    {
+      "path": "native/resnet50/engine/joint_retained_policy.hpp",
+      "original_sha256": "13b12bb504ca6f16d5438ce9d8d19cc0b1496be56e80ae2e14ac38c12de219d2",
+      "sha256": "95f3e92cd7fdb365783f718bfbf6e6fee347206ce15ba4f8f4963e0c42d37ce3"
+    },
+    {
+      "path": "native/resnet50/engine/retained_resnet_component.hpp",
+      "original_sha256": "fea03be184a48cb24e0701c5920f45c6f9b47fa023798647129c974b0e186e5a",
+      "sha256": "fea03be184a48cb24e0701c5920f45c6f9b47fa023798647129c974b0e186e5a"
+    },
+    {
+      "path": "native/resnet50/core/cofactor_word_response.hpp",
+      "original_sha256": "318dc0519b1c3bfc751c175ed5acba268c0aaf39f4553f5f0562425d8df326f4",
+      "sha256": "3e3f292b14fabcbbdc74c09f38106e54e28b7890f67aced8e6009e01456e82d9"
+    },
+    {
+      "path": "native/resnet50/core/streaming_ccrf.hpp",
+      "original_sha256": "dffcee01271525323b2acc8198ab98e0aebec88076349df332cf5f57db174fc3",
+      "sha256": "6c4512009a116dc00cb3f4ec00e71e6d3f7610afbaa018c0c404a79d4bd7c935"
+    },
+    {
+      "path": "native/resnet50/engine/native_quotient_adapter.hpp",
+      "original_sha256": "0afed5b0dd4ed8cd045029381109a05e9c03a1029db9e1943db4a2cd43e5449c",
+      "sha256": "30719156298aebbe92d50ee4defb46df0dfc70535975e63e1a82c7c332e01aa9"
+    },
+    {
+      "path": "native/resnet50/engine/late_program.hpp",
+      "original_sha256": "009d614c4d67f792675080090e83f94717946b5083c42cbaba7c0f7c7569bbc5",
+      "sha256": "29485ed9452c4b098f5a2655da53e0eaae448e1a449b3a0d6aeb6a471e1e227f"
+    },
+    {
+      "path": "native/resnet50/protocol/joint_mask_core.hpp",
+      "original_sha256": "a05b34532fbc1dbafe1ee933b9d654c7aa674da5eec324ccc0b34f044efe13c0",
+      "sha256": "a05b34532fbc1dbafe1ee933b9d654c7aa674da5eec324ccc0b34f044efe13c0"
+    },
+    {
+      "path": "native/resnet50/engine/prescribed_correlation.hpp",
+      "original_sha256": "3e0fe5595c703efab57bdbfd39a83dfae699ce385068389795e126d4f5f6b384",
+      "sha256": "495b72bed64a271a4345cc19aa965fc6829bba5928c62c09f6afa47011b05361"
+    },
+    {
+      "path": "native/resnet50/engine/shared_prefix.hpp",
+      "original_sha256": "777c2428002ffe8edcf6396500b0077a98c6cdc0cddaa9539dfb0c19aaac5d17",
+      "sha256": "f4beb44e1ba9d7a45f505c90545a5e2e91a66fb720e367a66712487e5e3c910e"
+    },
+    {
+      "path": "native/resnet50/engine/direct_ring_relu.hpp",
+      "original_sha256": "5ad1f593755721a33ae35e11b33a079085eb6f347b346cfbebd4b95aef3fe0b4",
+      "sha256": "73c51b3c7773197d40bd6e638c3002068ba9d496505cd60b7e2d4e0f448e4f8e"
+    },
+    {
+      "path": "native/resnet50/engine/backbone_boundary.hpp",
+      "original_sha256": "701ac8feb84cb909c938df47a2d0136e11ae239fca09facc2fffea6715bb811f",
+      "sha256": "496661a44fa91d4ab1907f730661034eb1f7da33182bd5d42f81df0141c733df"
+    },
+    {
+      "path": "native/resnet50/core/boundary_action.hpp",
+      "original_sha256": "778079ff870503be3736a7a35a8a5a717d1beadb578f9d6a91d442c8d29c8732",
+      "sha256": "8873917b48abc28e93c1bf158045ab9f8af41a551cf0ab8ed105eeab635d4b59"
+    },
+    {
+      "path": "native/resnet50/core/kernels.hpp",
+      "original_sha256": "c662a8194cc474640b41feb272908a271885b5c7400d058c9d0313795c958cfc",
+      "sha256": "5d079db24248a05d583d8fa8cac896386049bde1567bafb03f5414a962c4e9a5"
+    },
+    {
+      "path": "native/resnet50/core/decision.hpp",
+      "original_sha256": "42b3c6609338b035202e68f2eac65ecdb52c13f9c95595f078858988922045ab",
+      "sha256": "e8075faf1083511ff0ffe6f1a9dc88c5c70fec98efa5b2906b8fd08801dfe319"
+    },
+    {
+      "path": "native/resnet50/core/small_state.hpp",
+      "original_sha256": "937e7a5910441495da226756577d31009e14a2e8e645343677153a2ab847f646",
+      "sha256": "9e87af15f18a2f5867d74cdb6489693bc394a4ec0f26f7de62326ee1410150cf"
+    },
+    {
+      "path": "native/resnet50/core/carry_token.hpp",
+      "original_sha256": "7c210a86b0ade03d1bc46a401899d5b0445f517f9b19bd743fbfefc7eddd84a9",
+      "sha256": "f4f175c1a268ed60d41322ab250b09e8375c25ab1c4310bcc91c3cd632e56acb"
+    },
+    {
+      "path": "native/resnet50/core/linked_cofactor.hpp",
+      "original_sha256": "d236e6198a2315d4d84c677345396ffdd9940ab7c0879bd1b0e76d06c2414723",
+      "sha256": "4f3bda5bbb34faf168744bcc6bad3ee407da2bfdd52cac7dfdd48fa984d9aa37"
+    },
+    {
+      "path": "native/resnet50/core/prepared_bits.hpp",
+      "original_sha256": "d93da01ea591d371163664b6b6d8fcd92a2444ad4fc6eda48ddcd697a9e0fbb6",
+      "sha256": "30a45923945109fc7312cc4907d1798906e56afae66bdf8d54dccc48b5f56ce7"
+    },
+    {
+      "path": "native/resnet50/core/late_carry.hpp",
+      "original_sha256": "aa426fd7c85db87c3c0a376657c9b7c004290704083e8bc9b53d0fc263156428",
+      "sha256": "0cd397a4f94a919023bea8a14843893abfee6b81f0b8c36c73e6ba809426ef29"
+    },
+    {
+      "path": "native/resnet50/core/late_ot_bank.hpp",
+      "original_sha256": "e802dc3ef05522df8980df784f116ac76dcb7e9149faa61ffde29342ce1fe59f",
+      "sha256": "2f8a6c303051c5d2a43840140af85998f3158438ec8ed9425460b24725a9be7c"
+    },
+    {
+      "path": "native/resnet50/engine/quotient_phase_relu.hpp",
+      "original_sha256": "5c17d7f4aaf5053e35835d1c7ec5e5b6c1cb0a9be9638f7d41f7cf98e24c52d9",
+      "sha256": "3de450f9fc89422a48f2a7cdb6ed108352721959684ec2ae434ab1a4bf1b36d7"
+    },
+    {
+      "path": "native/resnet50/engine/quotient_recovery_core.hpp",
+      "original_sha256": "0fa324dcbca79ba19074691b5066119a700802649921a6305018094c967aaf5f",
+      "sha256": "639cad91eb41aed4fd9d045c621d61725639c51485bbeef01bca39dfb1d53c1a"
+    },
+    {
+      "path": "native/resnet50/engine/radix_quotient_core.hpp",
+      "original_sha256": "c61f46af373069952db22a1c244ba17e6b889f991b7273033b039863b3998628",
+      "sha256": "236fcf0baaef55349fb533ec56a79c0a61902fc3efbd08440948afa74203521b"
+    },
+    {
+      "path": "native/resnet50/engine/ring37_direct.hpp",
+      "original_sha256": "a4c4bbee16a9322c913403bac76bcc5d68379e01e2ef7991459c29c39fe39a42",
+      "sha256": "49ae3663b34e5689766ac1879f6fedf073d5ed796d23bb5dc2fe270c56cf7a67"
+    },
+    {
+      "path": "native/resnet50/engine/nonnegative_terminal.hpp",
+      "original_sha256": "c8697233db314e510c1793928013ddd789e5ae55b680d1c1942491d42049fe78",
+      "sha256": "2e911beec9f93c0a650b2560b2e6f7ebd61b292fd3d13783d58eebe5f50e1cf2"
+    },
+    {
+      "path": "native/resnet50/core/quarter_recover.hpp",
+      "original_sha256": "33b85d285934f71f5bb2337d434f148d859f87a7915083d726e6ced99746f7de",
+      "sha256": "664b5a7f1282476eea9c1fb9fe7fc054c34b2c2ce2315a0e879d6b760e3c03fb"
+    },
+    {
+      "path": "native/resnet50/core/sci.hpp",
+      "original_sha256": "9f594d436ac50bb3eb9d9989615b7dc0c6aea390c2be4ca95f2ad9f142a8d266",
+      "sha256": "8c2ff4535eb3773fbd50380e5779c9543036dfd42617ac5da54aeec744940349"
+    },
+    {
+      "path": "native/resnet50/protocol/backend.hpp",
+      "original_sha256": "1eef317b18fcd9bb8c80c4b4943bdc7135a21454b7ba91dc11047a8834219072",
+      "sha256": "f0dee96f718709a40f50b47e3f566b2aa5db7f01f212df8073682bf23912eb57"
+    },
+    {
+      "path": "native/resnet50/protocol/native_ot_bridge.h",
+      "original_sha256": "2dcd5fa1bc1eb32f7ebce4d56efb78ba023f2d2a53787dc21db3fd26c1a8c20e",
+      "sha256": "2dcd5fa1bc1eb32f7ebce4d56efb78ba023f2d2a53787dc21db3fd26c1a8c20e"
+    },
+    {
+      "path": "native/resnet50/protocol/quotient_recovery.h",
+      "original_sha256": "362334b027316f13d87771bca9c9f3e056ab57c1d0f1ca2c5a9b391d75c9d0df",
+      "sha256": "de7fb9c98c871fe7b9f12d896674fbf7287ed49a5543d8b9903fdb463bb12c52"
+    },
+    {
+      "path": "native/resnet50/protocol/radix_quotient.h",
+      "original_sha256": "48a79e19a0d864073ff3d68fa70181a45c5bc4b91bfe0175675505db18c49728",
+      "sha256": "227d0256a5d7bdb4413a8f9e65913b1886bc387e2d4915ffdc017e7bc73a8afd"
+    },
+    {
+      "path": "native/resnet50/protocol/late_quotient_api.h",
+      "original_sha256": "1b4895eec283abcfca7520b43156e1554f84a258c95dad8427a6a2853050212a",
+      "sha256": "1b4895eec283abcfca7520b43156e1554f84a258c95dad8427a6a2853050212a"
+    },
+    {
+      "path": "native/resnet50/core/tuple_selector_bank.hpp",
+      "original_sha256": "374d3da3a506597696e28e4440c87640e22cb1b38e64b47d4d81e615981f2d4b",
+      "sha256": "57fa6b0ff89ceeb95e5ece27e621ce909ac92d7bd5abcbed6ba348e3f062e924"
+    },
+    {
+      "path": "native/resnet50/core/native_late_ot.hpp",
+      "original_sha256": "c1a18dd3a17a711b3f43667b73759e56310e2bc4f862b4af8f4c1b9e982b39b3",
+      "sha256": "f5a533604527cfbfab81cda8b84bd2927b07f61004abb3d9da26bfcbe284d3f4"
+    },
+    {
+      "path": "native/resnet50/core/quotient_extension.hpp",
+      "original_sha256": "329cf449613093386adf91640a98e67110434eaf59d58b6ddaab876cfb5367e4",
+      "sha256": "4c74060c4993c8f2e1562549c69be2b061c022224338a7fe32030577dca69de1"
+    },
+    {
+      "path": "native/resnet50/core/exact_ccrf_response.hpp",
+      "original_sha256": "6ffd56f06bd03b16cf3521f9bf0737d8ecffb500f04a0262766dfe2edab77f6a",
+      "sha256": "e4cab162baab99609556db18c87b440e5675a8d0d1af1d62c72cd7ad1281d5a8"
+    },
+    {
+      "path": "native/resnet50/engine/phase_relu.hpp",
+      "original_sha256": "8d63fc9deca4d60c6e7ed80d6f34e32b9f6bd33ed1768c26d9e0cbaa2d2bc31d",
+      "sha256": "366dda913d9d475835386c02c678206cc811b694e7230ff35305e34fd1f72bb8"
+    },
+    {
+      "path": "native/resnet50/engine/alternating_carry.hpp",
+      "original_sha256": "a373debfdd329a01a7a07cd686464477013967d86029dee7f79b2327f3f601b3",
+      "sha256": "a0edaa706c4b1f0abbbce89e667560e8989381889dc244aa6a6e9e4eceb4eda9"
+    },
+    {
+      "path": "native/resnet50/engine/protected_input.hpp",
+      "original_sha256": "5de848883c33cfcba59a48c325540c22be39af48c530a6f3509b4e780a262b50",
+      "sha256": "5ec23098347c248ff027789c7e6784437b4034e835c6efe2c6dbef415db3bfa5"
+    },
+    {
+      "path": "native/resnet50/engine/resnet_affine_pipeline.hpp",
+      "original_sha256": "63c7edc98b37d74bda31ac660492e90f78973aafc3f5899faf85d56ab906e112",
+      "sha256": "5a40116ec0e3e171b82c13f044a817c7d63ab1d837c79d1aa40a1cf4aaf62c8d"
+    },
+    {
+      "path": "native/resnet50/core/ordered_publication.hpp",
+      "original_sha256": "8d3a1f059b4d8d63a8acc1919ab115b574f12919cf4841904cc011dee6eea338",
+      "sha256": "8d3a1f059b4d8d63a8acc1919ab115b574f12919cf4841904cc011dee6eea338"
+    },
+    {
+      "path": "native/resnet50/core/module_basis.hpp",
+      "original_sha256": "ff00dd2ffa8f84971023269e8b387458c28a0e79791e62af59b8bc2a595d4d2c",
+      "sha256": "158bd3c49d7db22d7af8b0d10880c03d1feb2d27493e7682b29c099630e742cd"
+    },
+    {
+      "path": "native/resnet50/core/coefficient_wire.hpp",
+      "original_sha256": "c697768a74eb7ebcdf7f8992e5d68a51f59dae3cc75b48149aaffb5269106c44",
+      "sha256": "7f0a3b69193e6564df4d3ab61ae18545ddd9a571cd7ffb72bef57bcd2833dc55"
+    },
+    {
+      "path": "native/resnet50/core/joint_crt_wire.hpp",
+      "original_sha256": "df063d76c14a9fb31a49d622519bc935f2a4b5dc9b3479f375681b9b3454646d",
+      "sha256": "df063d76c14a9fb31a49d622519bc935f2a4b5dc9b3479f375681b9b3454646d"
+    },
+    {
+      "path": "native/resnet50/engine/retained_component_policy.hpp",
+      "original_sha256": "dab8ad539574f8f313c8effa5c920c510ad21fe3be7e33eae50775cb4062163f",
+      "sha256": "88966b6c28dee20b5dfeb9a713465ef54ebf0eda3518c485471c9ee5b136b23f"
+    },
+    {
+      "path": "native/resnet50/engine/packed_affine_correction.hpp",
+      "original_sha256": "12894075dff87b081fc18e6f2bfab719ba97888357b1db8b3b38efb7f2280088",
+      "sha256": "f66eefe78177c0a4f8c592f16f2938888baea7e53b78a06e6a6df1c9e3829a01"
+    },
+    {
+      "path": "native/resnet50/engine/pointwise_owner.hpp",
+      "original_sha256": "4b4d5ad63401d2ae800f08742dccfcee979cad9beeb7840887bc82904360a507",
+      "sha256": "3501a228b7f340fdcc2b5648dd634e8c5bd453155a340ae65beeda48fb2ecc9a"
+    },
+    {
+      "path": "native/resnet50/engine/pointwise_roster.hpp",
+      "original_sha256": "3d7a02b177ae1e8e386ec3ceeb7a7c39c627d13cadbcb849be54b37e02170bd0",
+      "sha256": "cc18816f118675dc45d129a3b1c38a98ad879495c9f0e2ec0fc5769a590c88b0"
+    },
+    {
+      "path": "native/resnet50/core/bilinear_action.hpp",
+      "original_sha256": "4a2155d5d608ed9a8a5e98870a11c02036d26dc2fbcd031b41ba8d7a053cf259",
+      "sha256": "a5e86469070d72ae31ea26eacf4ad9ccf4783ac7e2f0744faf0ec7f5ef9f0a84"
+    },
+    {
+      "path": "native/resnet50/core/lifted_pk_zero.hpp",
+      "original_sha256": "9b2c236a0238588a511aef079a813badb104df908c2b9503d6be7ffe57756ac8",
+      "sha256": "9275c7ba39bbac212a3548f5afacdfbbbd2ba7c5812bfbe392e862337bf1bafb"
+    },
+    {
+      "path": "native/resnet50/core/root_flood.hpp",
+      "original_sha256": "a93222056fec0e490e46a2cb087ba26dc296e621faa95008f71ba94ff71e8961",
+      "sha256": "40ce8bbc7f9536ec8807910b6b8c9118ccaa5c92f706114556b48e6cac829c23"
+    },
+    {
+      "path": "native/resnet50/core/quarter_protocol.hpp",
+      "original_sha256": "a791311f4b096d3d17bd488fbf59d03b018969cb4c74cbb99e287b023a778d52",
+      "sha256": "e0961a39b1bb4893d4cd8a2254ab24da3a4c3dd3ea56df453da1150a42c41a82"
+    },
+    {
+      "path": "native/resnet50/core/quarter_consumer.hpp",
+      "original_sha256": "3d3c9a6be9013460f3461f07b453291888e1ce00bd578079fd35a83fee3e7b84",
+      "sha256": "b4aca2a14255af8b4c83598a0e73397d76e63c2c0f6ccda28a8b26eff1b3dc45"
+    },
+    {
+      "path": "native/resnet50/core/producer_bulk_mask.hpp",
+      "original_sha256": "f629858b888e440e8c0fd2fe9ee8e10e25d4e04a778c82b393d0a06b3cbb8c62",
+      "sha256": "07d9aaa5091f91d630b445d05a152d5b918792f83b7a348b8856ae2dcefae56a"
+    },
+    {
+      "path": "native/resnet50/core/bulk_full_mask.hpp",
+      "original_sha256": "67f676af442194795d2b9f646ef0842248f051bc552d01d8a98fe9b5790ce3af",
+      "sha256": "0acad1da95dccab60f6cb89e43a77c0a6eba4ac16cd970857f58263e64b80b26"
+    },
+    {
+      "path": "native/resnet50/core/native_auxiliary_lift.hpp",
+      "original_sha256": "4260588d8fdb36bdf9e09f9dabe59a66521d52250268164cd488a9c7c1f77c6a",
+      "sha256": "90641aafa5eea27e6f1e33f1414903d610ce9bae79ec293e84c5a9b8f3659d0f"
+    },
+    {
+      "path": "native/resnet50/core/auxiliary_lift.hpp",
+      "original_sha256": "5619ecf2e551fd1f5c6907b89e15c3b486284ef0306472d3835d4898dec2280e",
+      "sha256": "e268a36fd0fdf2086200e453ba339d6cc86e5d8d907bccf2bb903ff7448ac975"
+    },
+    {
+      "path": "native/resnet50/core/native_aux_wide.hpp",
+      "original_sha256": "587e45db4b4a1b6237caa7a5bec125838b3934c78f7eae87a2ad34001224a082",
+      "sha256": "51be8c1efae29b21b238b1bfdb0ebea17d5b0050a66010213561962de5525841"
+    },
+    {
+      "path": "native/resnet50/core/prescaled_original_zero.hpp",
+      "original_sha256": "dab2a67cf620b6f8cb5023f69b4cc7f736b70592c5f22f54c355d745db158daa",
+      "sha256": "e4cf6eac243203cf0366ec5f138aea62c08892cdd64559363f76e144082bbb8f"
+    },
+    {
+      "path": "native/resnet50/core/spectral_ingress.hpp",
+      "original_sha256": "d502df8e5265700f4a018b968b5c612fe721563b29aafc4bd9035180cf7ae1b1",
+      "sha256": "d502df8e5265700f4a018b968b5c612fe721563b29aafc4bd9035180cf7ae1b1"
+    },
+    {
+      "path": "native/resnet50/core/signed_weight.hpp",
+      "original_sha256": "db5c0f107fd409346bce8e6279ad00bcb6f52ff85c44c66e126a242654436360",
+      "sha256": "db5c0f107fd409346bce8e6279ad00bcb6f52ff85c44c66e126a242654436360"
+    },
+    {
+      "path": "native/resnet50/core/public_tile_weight.hpp",
+      "original_sha256": "b858e71a9a720a1f5afb36b0fc3114c23af4398c5a9f642a1985f80b6ac3b8e5",
+      "sha256": "605524b6e03ffd11bece6a19f5e18d62a27b7ea2f4efcdd7ee36d94e8477b6b8"
+    },
+    {
+      "path": "native/resnet50/core/stride_normalized_weight.hpp",
+      "original_sha256": "560ad461513a4d4e81c11f6d46b099edb9e81cc6d618c527cd37a9e0b9dd6608",
+      "sha256": "24a947c3ec8dfd21f095f4a0bb53e5a8f3a44418ae425f843ed2df98dcb07c59"
+    },
+    {
+      "path": "native/resnet50/core/windowed_quotient_action.hpp",
+      "original_sha256": "2eecbd1ee893af83ceae30a95ddd222fef9b08b7b43ba01d3e62cfdaf9cf787c",
+      "sha256": "4a72dc0ae50dbdbadbd113934ca49fc99a9dfe203edfa3f54e5f539f87573042"
+    },
+    {
+      "path": "native/resnet50/core/band_accumulator.hpp",
+      "original_sha256": "e6be52ced739cb6b1a759dc33445c7e4ce8d015c8aeb1db6e5a1859f17225958",
+      "sha256": "e6be52ced739cb6b1a759dc33445c7e4ce8d015c8aeb1db6e5a1859f17225958"
+    },
+    {
+      "path": "native/resnet50/core/r50_stride_rules.hpp",
+      "original_sha256": "bfa49ee9dfda8720399519cf8ca2fe4ff5b7af2fa46fc491d5d89f1fa43c61ca",
+      "sha256": "03c09c3ca7f8b4f816712fd5a415a791e146bc0e340bb4e56bb380d0538bb8a5"
+    },
+    {
+      "path": "native/resnet50/engine/polyphase_convolution.hpp",
+      "original_sha256": "3c548d5d9ab5a0605db09d7488a6efeb3acf3f75f5009f21610c35d7f980195b",
+      "sha256": "3c548d5d9ab5a0605db09d7488a6efeb3acf3f75f5009f21610c35d7f980195b"
+    },
+    {
+      "path": "native/resnet50/core/spatial_sparse_action.hpp",
+      "original_sha256": "e04260b692195dd26c080cf495bc97d1bbcdcf3145e8ff17cd2eec86fb6086ed",
+      "sha256": "10869f0fcb2a294f5677d6c4f25567b9dd8e5053134cd292b6382cd1617ce54f"
+    },
+    {
+      "path": "native/resnet50/core/r50_spatial_rules.hpp",
+      "original_sha256": "71864c47c3004e868c638bbb12b38257cf8c1de41a164a077871cf0055893441",
+      "sha256": "a0c54f7db726e6635c9c9b030239dfb0ef89c52d6177ca67cf9707ce0428af6c"
+    },
+    {
+      "path": "native/resnet50/core/r50_public_tile_spacing.hpp",
+      "original_sha256": "6cfd3669a5991c63fbab6324b713c3a19a87fd116aa18ba9b4c29d2479bcc31d",
+      "sha256": "6cfd3669a5991c63fbab6324b713c3a19a87fd116aa18ba9b4c29d2479bcc31d"
+    },
+    {
+      "path": "native/resnet50/core/seeded_wire38.hpp",
+      "original_sha256": "ecbf6246c4a3aa9c7818ba04044c2c3edc7d126e7d7a5629ea987eeeff967158",
+      "sha256": "1a941abc15e04ce5b0a885154a11ae371d0bcb64f1691477d5301fd2bba1f713"
+    },
+    {
+      "path": "native/resnet50/core/clock_sample.hpp",
+      "original_sha256": "2a2b1bd9074e3431c35d98c73fbb3d5552268e9e2057d07b8b3c0eca7a0ad841",
+      "sha256": "d323a9bddca649c744a2dd4371817012595247fe41d0dc51c09ef6ff39e2f31e"
+    },
+    {
+      "path": "native/resnet50/engine/batch_norm_retained_members.inc",
+      "original_sha256": "db991b8b7c9d3b2f43934793633ca4caad3c908ed00a88a4d38d0f9d4e9287bd",
+      "sha256": "16543b0357f97c845634f5418aeba6a861c69f6ab52476c36df9c7aef9f39d98"
+    },
+    {
+      "path": "native/resnet50/engine/batch_norm_affine_members.inc",
+      "original_sha256": "150a676444ac2fb1fe73a144215dba961ffd4f4ff7131d45912b2e6ce39b4783",
+      "sha256": "f8c2f251991e374d439cdfd286c921b7093a6fe5988e5b371ba9d1dd3e545d83"
+    },
+    {
+      "path": "native/resnet50/engine/online_affine_members.inc",
+      "original_sha256": "44183451e6785881452561346c0c72f15c0387cb911c1eba4ac0d1adfbcbf78d",
+      "sha256": "44183451e6785881452561346c0c72f15c0387cb911c1eba4ac0d1adfbcbf78d"
+    },
+    {
+      "path": "native/resnet50/core/worker_lanes.hpp",
+      "original_sha256": "5416d8d0834c149f71bf8d98484064db04318aaeb3a2bcab342117bbdbca46a0",
+      "sha256": "6e9a55f72e81465e529de7622e0a4c81ba9f1e6615e3e1e046dc031b76e124bf"
+    },
+    {
+      "path": "native/resnet50/engine/resnet_request_scope.hpp",
+      "original_sha256": "ff14832f21b90ef607d07dfc5dc6924ca14806ee698d46819e53165f08f5668e",
+      "sha256": "ff14832f21b90ef607d07dfc5dc6924ca14806ee698d46819e53165f08f5668e"
+    },
+    {
+      "path": "native/resnet50/engine/ring37_boundary.hpp",
+      "original_sha256": "110637c6af9bc5fea6995afa36c6626464f866a119eebb1134e50d6251d2c3d0",
+      "sha256": "6fac3a3d0e185053634e7d1263db8fb1cbd5b9b8f4ac8b435a9b67c8c3dbbcda"
+    },
+    {
+      "path": "native/resnet50/engine/r50_schedule.hpp",
+      "original_sha256": "fba790fdcf0e38918580ad817ebf56eb3313395a15c7627b30896eef4114f833",
+      "sha256": "fba790fdcf0e38918580ad817ebf56eb3313395a15c7627b30896eef4114f833"
+    },
+    {
+      "path": "native/resnet50/engine/rhombus_admission.hpp",
+      "original_sha256": "00720b3496bac493320e74525dbf03da5e453147a756e2291bc84ea2ca90e1ad",
+      "sha256": "9e5684e456355bfd013b449c6b1f15c75519b4095bfba880212e801e5ff6e9da"
+    },
+    {
+      "path": "native/resnet50/engine/r50_backend.hpp",
+      "original_sha256": "a965988265addd885ed45af448f33896fdee2ec8a9607ec9be2dce50bf14fb2e",
+      "sha256": "5ac53cdcb07fa4ed4360ae538ca930460aa4d1c62e624f62c27c0f00957cd736"
+    },
+    {
+      "path": "native/resnet50/engine/floor_before_pool.hpp",
+      "original_sha256": "109aaf2efd1c532902c1be6f07b505c646e7200c1d4bcf43a459a797f4be34b2",
+      "sha256": "1d59f9dfb8455a7d098d308f0144979d7270049eb5a713a9ad6ee20c26c93c0e"
+    },
+    {
+      "path": "native/resnet50/engine/joint_quotient_adapter.hpp",
+      "original_sha256": "d07df221448fba9a7f394877bdba809b16b7de858da7b1f9a953ad58883ce822",
+      "sha256": "920ed36de38db18d2ecc3f45a19e9921f81938bc451c5a7bbb0b6dea88c110dd"
+    },
+    {
+      "path": "native/resnet50/engine/retained_resnet_phase.hpp",
+      "original_sha256": "cad228b8240e05714417acb208d91b44f5e62f6f1c111cb674bc1e17a97d26e3",
+      "sha256": "2526a49558bb7de8bb24ff867c75575873ccaff177c07bff9ca9d9f648e9158c"
+    },
+    {
+      "path": "native/resnet50/engine/directed_phase.hpp",
+      "original_sha256": "4cb9696105d25ec719ab2f6c7a8126ded2ff49835ac86431bf31821868e83e32",
+      "sha256": "b600f036db1d02ffa8c8773659153b28bc6e0fbd50b582fb121cd195b4d8ab5b"
+    },
+    {
+      "path": "native/resnet50/engine/elided_terminal.hpp",
+      "original_sha256": "c00ea01c3c500e920496523b6f343053927df0a53bafdab835e025c3f990e819",
+      "sha256": "2a90da040dd2e4faf9f85e3ca95097c9944826637eebb9fc03e216ec9e257d48"
+    },
+    {
+      "path": "native/resnet50/engine/resnet_joint_terminal.hpp",
+      "original_sha256": "80e06f3d67aa116b8cd0d9d66bcd0dbd0a852a6324699e0b8ad0c91ff9be6fe9",
+      "sha256": "aa528b8aa762c035902c4b51b5f2cb283226482a604bdd96dbd3ce65a08b7ee7"
+    },
+    {
+      "path": "native/resnet50/engine/joint_floor.hpp",
+      "original_sha256": "6d5adeb5ad35e98b558c87310c479268824d2356c75c1b3583ca4737ebacfe6a",
+      "sha256": "95b456e60e83505e9c3154de5fc3d6ddd0ab0994ad131853e5d36b2f32a7d2e5"
+    },
+    {
+      "path": "native/resnet50/engine/floor_terminal.hpp",
+      "original_sha256": "58d8cec34c357e8054d197fbf0c9af304048bfa200e6be888721bf96082bbaf8",
+      "sha256": "138b1ada493a8a5aae746393919649afc41b672d19e4a832b6f2d6d01bef7609"
+    },
+    {
+      "path": "native/resnet50/engine/floor_before_pool_carry.hpp",
+      "original_sha256": "2b40f572c12f117300be4e9b2237cbc43515f63484681698e5197472163216bd",
+      "sha256": "483fba62573b2eff25add67cf9fcd26017694570cff7015b36ba372675642fc8"
+    },
+    {
+      "path": "native/resnet50/engine/pool_frontier.hpp",
+      "original_sha256": "accd90e79f69a9ea608a97a623e3fc95390c9d7db005a4788a0eac681225af51",
+      "sha256": "c3f882e79d4387add0a3dce10f4c438b2744f82fa736f4b29cb520b64c3df874"
+    },
+    {
+      "path": "native/resnet50/engine/quotient_pool38.hpp",
+      "original_sha256": "91dd8f3f5cf6fc4540c2deca3dbab86483f97cbe2454b9d83380c1d8fb2dc935",
+      "sha256": "111ceb072c3de08e803b71ca719066fb0a9f066250f3f52356dc9694fdd50965"
+    },
+    {
+      "path": "native/resnet50/protocol/pool_carry.h",
+      "original_sha256": "3e3c1355a009bc95a0e43eb1bf6186e0fe73ddf9279b5778a9f12fecf88aa0a3",
+      "sha256": "605ea9bcfa8f30e0f0e0e945d86d1908c207fff6d6c1a0c765f9ab9b542f21fd"
+    },
+    {
+      "path": "native/resnet50/engine/directed_carry_consumer.hpp",
+      "original_sha256": "b9d560e3577531a381a9503d65216e62192d455f2cc16abdef203624acf011b0",
+      "sha256": "2355b718926e68392988c782f73cb4814f86e244a370c45fc17d34e77ab4c610"
+    },
+    {
+      "path": "native/resnet50/engine/directed_phase_view.hpp",
+      "original_sha256": "5784afb1a6eba6747cc376c4dd4cec543ce21ece774c0c8ec9c7b8d8c68583be",
+      "sha256": "cb5ef965c220c209a102285d4538135914e9d808b18108e230a0354e1483471a"
+    },
+    {
+      "path": "native/resnet50/engine/prefix_lut_adapter.hpp",
+      "original_sha256": "9dd46b952fd25d6a7aa1b0e3f0b0debe33f76654650feb9d3461f1f5b64ea880",
+      "sha256": "1d52471ae70f8bea1b35e0187300da055ca256f8ba8cea38a1a6368ef00b091e"
+    },
+    {
+      "path": "native/resnet50/engine/prefix_tree.hpp",
+      "original_sha256": "5e3e2e76e7d56df67f330f26552e19f2740591c2b7117d0fe494b046f5aedefe",
+      "sha256": "1f0f20ccbe790017a1bbaa4abae071ac05c7cfd6617fc07867699ee2e8e52d41"
+    },
+    {
+      "path": "native/resnet50/engine/native_radix_adapter.hpp",
+      "original_sha256": "22bf71c03d762aaf067e808b54baa2b5c161404fdc2953204f529d1d5943fa2d",
+      "sha256": "e63680097bad318d97bbe3f6b3c38752101e46947b0c76d048c2a0e90027b97d"
+    },
+    {
+      "path": "native/resnet50/engine/native_seed_adapter.hpp",
+      "original_sha256": "052da8badff6cbf5c15b2d0fe866351dfc9c00e9ab7770c07171ea87418c433a",
+      "sha256": "6b385ed0eb95f9f90ca777a6653bc8d9a8512308da18e4a66553e59606a8dfe3"
+    },
+    {
+      "path": "native/resnet50/engine/seeded_mask.hpp",
+      "original_sha256": "a6ba746d34828780c02fc6f04555a0d6c76ad217e1ff1ec380d0072bed4cfc9f",
+      "sha256": "b7924a1ac4b2032d5b4acea3101fda9f532c39b3309f14bb53eb0ce6d305e82d"
+    },
+    {
+      "path": "native/resnet50/engine/protected_residual.hpp",
+      "original_sha256": "09317ded7ca806d2a5344b57ba28075175d8e6ad2741d4a9559a3b9757fec952",
+      "sha256": "6c5c9e79a60cb47d76b8932ff8b03330c1c34c5b4531fab3ac0f0555f656a7d3"
+    },
+    {
+      "path": "native/resnet50/engine/ring37_direct_floor.hpp",
+      "original_sha256": "f8dd8b1f17deb6e80864b23317eecd601d66b9ec429c081467b9f12a117e80b5",
+      "sha256": "241758a9a3c5f45b4ad701c02ee0ae56409548e8f490e52a0f4f5fa756c091b4"
+    },
+    {
+      "path": "native/resnet50/engine/mixed_quotient_policy.hpp",
+      "original_sha256": "be2f15889835aab26c53d7621a9902bf244c487c3effa923e558ed8deb9db76a",
+      "sha256": "6f7cb7ea06a5eee2b7e5469b31425a3d2e4c388c194fbd46830379708255f087"
+    },
+    {
+      "path": "native/resnet50/engine/mixed_affine_quotient.hpp",
+      "original_sha256": "f44e9e7d5966ec1b301015dd6b504b0367db7a4bf1b4c8902400e8cddf1e8d27",
+      "sha256": "8a1b822ad49ed95e32c4fd5486f5a03d52ac47b529859a041b6c6d9d85b29262"
+    },
+    {
+      "path": "native/resnet50/engine/elided_component_policy.hpp",
+      "original_sha256": "d7e8cba948a765aa5a00ba6ff2d1ae871d01b09824524ad5166c5b4f0ee3b238",
+      "sha256": "94a4b61d89ffdaa9538b76b7e8c1cbfc6f51cfb074a1dc1916e4c5162f5ce47b"
+    },
+    {
+      "path": "native/resnet50/engine/elided_affine_quotient.hpp",
+      "original_sha256": "0488945c7f4eee24eca52a8ba2bcfc539b7d2becf1173c18ec04b80cdabac3bd",
+      "sha256": "e408ce6b7fd8463973d0e656b6220049534925893d7c1596bdca56adacd04d1c"
+    },
+    {
+      "path": "native/resnet50/engine/quotient_residual_phase.hpp",
+      "original_sha256": "25def21a633ea7dd26cd53d9343bc886d99dafa6586573ed03bc645bbb1a89e8",
+      "sha256": "e865d2ff2458153cfbfc0099c32c760862b230514ae9e4a7a9653ad9db2029af"
+    },
+    {
+      "path": "native/resnet50/engine/pool_comparison_policy.hpp",
+      "original_sha256": "87ebf33c55e1430430d69701d1004c27684c317a868b3f8a9f399c1feaa475b2",
+      "sha256": "c56ff2e0d0e4e12ffcda1bbdd0c804757d308910ea55db79502cf936b147514a"
+    },
+    {
+      "path": "native/resnet50/engine/protected_pool.hpp",
+      "original_sha256": "fd94f2b7d7435b1a380ff57076eeee5e1095a18afa02f1490b2d7cba47c07b97",
+      "sha256": "aaee16b923074f9d32f2c95cea8d7878b90590e5f5cf21a63570462990396dc6"
+    },
+    {
+      "path": "native/resnet50/engine/pool_floor_policy.hpp",
+      "original_sha256": "f18a8e8f8639881f8b83c76f415713d5af89f4336cd40af84d093ed649b9bdda",
+      "sha256": "b9a0efb13abc3de3c4d7d7c6c29d75eec8833bfa9d40e63dafdd7bc3175e5164"
+    },
+    {
+      "path": "native/resnet50/engine/pool_carry_consumer.hpp",
+      "original_sha256": "a16b5f067f508d02ebab158f0075e09c3db19848fe9d05f55a28b1089fe404bf",
+      "sha256": "99a88c0b13a92b7a81e573716476bcb853485c069d0c78f7ba9944111ce7a0a3"
+    },
+    {
+      "path": "native/resnet50/engine/phase_plan.hpp",
+      "original_sha256": "5b7f453f5e0fed7340ebe5bb101a9d8ab8acf8e938379aca8b3444a729544ee7",
+      "sha256": "5b7f453f5e0fed7340ebe5bb101a9d8ab8acf8e938379aca8b3444a729544ee7"
+    },
+    {
+      "path": "native/resnet50/engine/residual_phase.hpp",
+      "original_sha256": "2261c01846569b7ad9941dff53a514325373d5659f0a5453c949915da0a8cb64",
+      "sha256": "66dbb57665f60d7075b486e659308591dde6b71f792d90cc2a141d090a6daaa4"
+    },
+    {
+      "path": "native/resnet50/engine/residual_plan.hpp",
+      "original_sha256": "7d8edc2291ec4fbe79fb8f6780dccd9b82ef6e9b4a45119248372b9df0407c73",
+      "sha256": "7d8edc2291ec4fbe79fb8f6780dccd9b82ef6e9b4a45119248372b9df0407c73"
+    },
+    {
+      "path": "native/resnet50/engine/r50_executor.hpp",
+      "original_sha256": "e7036016789e4a61d693d3387ad1bb41bb9948a164aa58f18fcca2006e82049f",
+      "sha256": "6cf8bd18d316f9294c4b387c2bd410b174003c5b27de2bec927fb449b161f6a0"
+    },
+    {
+      "path": "native/resnet50/engine/parallel_tensor.hpp",
+      "original_sha256": "70a73a61587a158644630c16dc6763b31acdfc959a9eda4cdfffbf5de84e611f",
+      "sha256": "5a6ee2fd53da0f4498e4b085cfb414ee4562134a1a656a779a63827fb2acea9c"
+    },
+    {
+      "path": "native/resnet50/engine/average_pool_reciprocal.hpp",
+      "original_sha256": "de3ac89b10b1455ca589c2ec082b3bf6a08aee0f82ca10ce99ed42d530041e65",
+      "sha256": "c4bc4cf5a03ea20538d6cf0b49621e130eafcbab18a13dc3f3ed4280b9888414"
+    },
+    {
+      "path": "native/resnet50/engine/pointwise_core.hpp",
+      "original_sha256": "4cf0354a0013722fc490220f7e1fa30824ab71e95a3ba8775f6bf9540ddd0d6b",
+      "sha256": "abc8565a6406916ad48cbce84efb3584c13bfd300d9488b0d87dfa6fd1346f9f"
+    },
+    {
+      "path": "native/resnet50/engine/short_ntt.hpp",
+      "original_sha256": "10fa70b932b0e935d199fc2311ba9e307dd4e8b3fcfe672428679b1b88c5dd93",
+      "sha256": "10fa70b932b0e935d199fc2311ba9e307dd4e8b3fcfe672428679b1b88c5dd93"
+    },
+    {
+      "path": "native/resnet50/engine/exact_fma_dot.hpp",
+      "original_sha256": "dea2994779d5977c088e7cc22f1ab88a21a1d015c3763623231afefbe3db8582",
+      "sha256": "ad9b40fea1c8ddf9fcfc9500dc5b46bd4b0f66c724e3646e5ca11eda35a61dc0"
+    },
+    {
+      "path": "native/resnet50/engine/dot.hpp",
+      "original_sha256": "49d0d217b9c6fcc6ba9f45d9069d08991db63371b41c13afe7cf474e17429811",
+      "sha256": "49d0d217b9c6fcc6ba9f45d9069d08991db63371b41c13afe7cf474e17429811"
+    },
+    {
+      "path": "native/resnet50/engine/output_trace_merge.hpp",
+      "original_sha256": "9798e8f7a096a5c71e43cc11f7fdd4b2654419b74ff84b3ea7ee8c410bc521d5",
+      "sha256": "3d4d34d79747d1bb1549388d8959ae2fca021bb9526d55576c90e95889005253"
+    },
+    {
+      "path": "native/resnet50/engine/trace_evaluator_internal.hpp",
+      "original_sha256": "fa42a7d83c03cb691e947eb94c51625f6f6579e5d7ea1ce5892756de44fef5c5",
+      "sha256": "fa42a7d83c03cb691e947eb94c51625f6f6579e5d7ea1ce5892756de44fef5c5"
+    },
+    {
+      "path": "native/resnet50/src/trace_evaluator.cpp",
+      "original_sha256": "faee9515d91e0bb2f0542827bca89c47ad3cda02b6a86c215d06622d189abd64",
+      "sha256": "228cae4d03c2fca17b2d239a655b13c4abf92b7cca07caffb3752ef760445932"
+    },
+    {
+      "path": "native/resnet50/src/native_ot_bridge.cpp",
+      "original_sha256": "6ade44f15c8247fba47edf29382e3679020e730ec171b909fe5f67f00bdad6f2",
+      "sha256": "1f2148d1bc3e1a31731e24f14e363af4b02eb939c5b68c6e9d25100ee2101d77"
+    },
+    {
+      "path": "native/resnet50/protocol/native_ot_bridge.h",
+      "original_sha256": "2dcd5fa1bc1eb32f7ebce4d56efb78ba023f2d2a53787dc21db3fd26c1a8c20e",
+      "sha256": "2dcd5fa1bc1eb32f7ebce4d56efb78ba023f2d2a53787dc21db3fd26c1a8c20e"
+    },
+    {
+      "path": "native/resnet50/protocol/stream_batch_io.hpp",
+      "original_sha256": "65fcfe3ce7fddf6ff05f9b61a9b59ef9f86d4cce8a2d888daed7b45dd37ba8a0",
+      "sha256": "65fcfe3ce7fddf6ff05f9b61a9b59ef9f86d4cce8a2d888daed7b45dd37ba8a0"
+    },
+    {
+      "path": "native/resnet50/protocol/bool_batch_io.hpp",
+      "original_sha256": "b4ea49c336b8a4574a3e605b868b8b5ba1cbfeebbd2436ce9a533326fe49f091",
+      "sha256": "b4ea49c336b8a4574a3e605b868b8b5ba1cbfeebbd2436ce9a533326fe49f091"
+    },
+    {
+      "path": "native/resnet50/protocol/OT/ferret/silent_ot.h",
+      "original_sha256": "c86ebe8e97a6da6031e61f40b59fe597dbb24a75ac0371615d3f814524b57110",
+      "sha256": "fc6bfc113a97df0e388b0069cd3d03d0c8120478879ea2f24adfa7dea10d9d9b"
+    },
+    {
+      "path": "native/resnet50/vendor/emp/emp-ot/cot.h",
+      "original_sha256": "1ecf56ae68b11a7ca652e1ad37cc54a35c1c2bf9177656b8f4b2372f41f905f8",
+      "sha256": "24c8257b608b73ec6c25b54dae83d40777ec3d35f4ccad393bd03a3cd3a66ea4"
+    },
+    {
+      "path": "native/resnet50/vendor/emp/emp-ot/ot.h",
+      "original_sha256": "7145d567927636dec207cb8a8155f3beb181aa7ce1f49a960b52e72a19428689",
+      "sha256": "879ca9facdebc477169fba41dee841b95c1a1b1f6a2f3b463daad8e498ca1f05"
+    },
+    {
+      "path": "native/resnet50/vendor/emp/emp-tool/emp-tool.h",
+      "original_sha256": "b4bb1afb6246354cbdab169d4ad85f2666ccfc0d2bc82d25a9f13833b0967e31",
+      "sha256": "398c2ba079e835c0ef41c016722d1aff89e88bc221fe0894edf25e440be06ac5"
+    },
+    {
+      "path": "native/resnet50/vendor/emp/emp-tool/io/file_io_channel.h",
+      "original_sha256": "23ee81df15f7852e34e04849a4bb7ab0d2856650be5eb9a974bd4d97228e28e5",
+      "sha256": "2414bf4e46412c3e446a556fcf12481c441f57fafd9c73967e243672c5d3d318"
+    },
+    {
+      "path": "native/resnet50/vendor/emp/emp-tool/io/io_channel.h",
+      "original_sha256": "0c0b812e12552e1219650c5eec1023e45bd32e7b07c4e28ceff902e4ff0b38a6",
+      "sha256": "fd307c4e842a3460180a854be4945fb3c54ac40074099aca1e97fcddb7bc4396"
+    },
+    {
+      "path": "native/resnet50/vendor/emp/emp-tool/utils/block.h",
+      "original_sha256": "130e554f090c969c0f846abfa0574fc845d3394edeceb89c8ea55e7b24f98d49",
+      "sha256": "130e554f090c969c0f846abfa0574fc845d3394edeceb89c8ea55e7b24f98d49"
+    },
+    {
+      "path": "native/resnet50/vendor/emp/emp-tool/utils/prg.h",
+      "original_sha256": "7150ec6e6c0a4ee5a747a069e342031073d8b70251652a6da73c780b4047bd10",
+      "sha256": "e755f5154048cb31ca8838ab033e8b4a08e9a7e87f255341b5ce0d558b6470ee"
+    },
+    {
+      "path": "native/resnet50/vendor/emp/emp-tool/utils/aes.h",
+      "original_sha256": "a5a52f1df1d7d0114c0e2cb5a0986f236897bc3883c19c3a56a6aa813f8a99ba",
+      "sha256": "8f222dc8b355417cd38669f73ab2c05eebf0c045a5e3015c3ca1e98f3f9cbae4"
+    },
+    {
+      "path": "native/resnet50/vendor/emp/emp-tool/utils/utils.h",
+      "original_sha256": "65af213e98198c0cc6250c600bef2b384be9571cf5f28ed26a058816b75b3950",
+      "sha256": "b953ecc74aa163a00a8aa568e55d87a39ffc31f9ac47fd6bca3fcf038b9246da"
+    },
+    {
+      "path": "native/resnet50/vendor/emp/emp-tool/utils/constants.h",
+      "original_sha256": "dea92ec918d4dbe4292f73fda96d83140819caf62d36ef3707d7a7524e6770ab",
+      "sha256": "dea92ec918d4dbe4292f73fda96d83140819caf62d36ef3707d7a7524e6770ab"
+    },
+    {
+      "path": "native/resnet50/vendor/emp/emp-tool/utils/utils.hpp",
+      "original_sha256": "81ccd4363a4773810c71d721d1e7c22c226cf02d773520f9d04d5ab69f98eadf",
+      "sha256": "81ccd4363a4773810c71d721d1e7c22c226cf02d773520f9d04d5ab69f98eadf"
+    },
+    {
+      "path": "native/resnet50/vendor/emp/emp-tool/utils/group.h",
+      "original_sha256": "1bc38eee273344a1478f9703fd057db54472dd93570b590014956042b31b0be4",
+      "sha256": "7f15b51f87790c5da22eee42e413f9a5122a92dada6ca3a97740cc268af4111e"
+    },
+    {
+      "path": "native/resnet50/vendor/emp/emp-tool/utils/group_openssl.h",
+      "original_sha256": "550bd959940ad7fcb17e31a5fe5c7785ad0cc00a9796f8d2fdd4f20ac20cf8ad",
+      "sha256": "550bd959940ad7fcb17e31a5fe5c7785ad0cc00a9796f8d2fdd4f20ac20cf8ad"
+    },
+    {
+      "path": "native/resnet50/vendor/emp/emp-tool/io/mem_io_channel.h",
+      "original_sha256": "6fc3de953eb79b58eb8a9b999191dd7b503f1dcdd19fe301d9aa5a087c6e0eed",
+      "sha256": "e79133891d7f6dad26a06efb9f2652daf0989ee19f2b14afc3c93f5ced5bfb1c"
+    },
+    {
+      "path": "native/resnet50/vendor/emp/emp-tool/io/net_io_channel.h",
+      "original_sha256": "c7c53ba4cb42e7457b70fc899fe9c6fdb30d132aaac90987eb7655d211452191",
+      "sha256": "043c8eed3560e1293878b14d32180998e322ac5db500053f245bea179605fb18"
+    },
+    {
+      "path": "native/resnet50/vendor/emp/emp-tool/io/highspeed_net_io_channel.h",
+      "original_sha256": "eee640b356d306d98bbb55cb4cfe7e9edd18c65879279799c7b5af1d639a9393",
+      "sha256": "631b0d9c9f7ad6b50af48db7debc6a9e3bb0d38a664fbf3fba59186857a37ff5"
+    },
+    {
+      "path": "native/resnet50/vendor/emp/emp-tool/circuits/bit.h",
+      "original_sha256": "cb470f03caf21f463927675f35d206484ebbf0283375d9c668555242b7a62f01",
+      "sha256": "982e3a1601bc2021df36891fcba3758275fd4ee8b135b1c0af48f9bf983e4b61"
+    },
+    {
+      "path": "native/resnet50/vendor/emp/emp-tool/execution/circuit_execution.h",
+      "original_sha256": "9730aed44cb12166fc57ec42998e43ff2eb67141fd22e6af4334bdf88773d8f7",
+      "sha256": "31894520f4070342f59b2df8303e9a9871f8a7a5b5db16f5527d3181675a1650"
+    },
+    {
+      "path": "native/resnet50/vendor/emp/emp-tool/execution/protocol_execution.h",
+      "original_sha256": "4f95e7230a906442bba99d5df8480a44b84659681c36e8252d296230b178817d",
+      "sha256": "81d4cb86d558eb8476b2d466931edf9812cdc296f98110c2418629ecae5ac23d"
+    },
+    {
+      "path": "native/resnet50/vendor/emp/emp-tool/circuits/swappable.h",
+      "original_sha256": "56bd0a16c1576fe09d2c70fd90347f9ad6cbf0bc9e0b5266b39e79a4e9045130",
+      "sha256": "9e1ae66399b1683c27b25b080f6ef4513245f42212c1287499e34357603be130"
+    },
+    {
+      "path": "native/resnet50/vendor/emp/emp-tool/circuits/bit.hpp",
+      "original_sha256": "9186ddc282c95bbe68a275bc9e52283751e859a2335e0dc62851c77df8548641",
+      "sha256": "9186ddc282c95bbe68a275bc9e52283751e859a2335e0dc62851c77df8548641"
+    },
+    {
+      "path": "native/resnet50/vendor/emp/emp-tool/circuits/circuit_file.h",
+      "original_sha256": "5fc0d4331417cdaafa20595c8a4d4f83146b363304dbfc7d0356fab2c9d810c1",
+      "sha256": "e851bc9b1faf16ca2e965976488a3cade41e590d972c293a09fe5c787bb9a6c0"
+    },
+    {
+      "path": "native/resnet50/vendor/emp/emp-tool/circuits/comparable.h",
+      "original_sha256": "880b3b8e999e05e21eba284444b4761609cbe73e9db3aeed06b573e3ff495a56",
+      "sha256": "880b3b8e999e05e21eba284444b4761609cbe73e9db3aeed06b573e3ff495a56"
+    },
+    {
+      "path": "native/resnet50/vendor/emp/emp-tool/circuits/float32.h",
+      "original_sha256": "155490d4a6637874d8e9d1e6cfc35e22447b63e19e9e04323029d15435e60ad5",
+      "sha256": "3ea350fd866bcc1fd0d9b06b8f48a387a379d84feb555bb7b662e689df75540c"
+    },
+    {
+      "path": "native/resnet50/vendor/emp/emp-tool/circuits/integer.h",
+      "original_sha256": "cc0a390594e08b11279adc394da1c7f81fb526984018fe2805706088396317c7",
+      "sha256": "36f904634b9d0b69e660dae60032cdc4153080f3fec613c74ee6fcd99a8eb92e"
+    },
+    {
+      "path": "native/resnet50/vendor/emp/emp-tool/circuits/number.h",
+      "original_sha256": "09bb9a49a81c4c32e0280d18c86dde8cbc76727f6d4fbec1ad1102f9288bb684",
+      "sha256": "c433ba3b382a46f09102d8f9487a05f8d37432e6c1a3978dc62618f8c356b78d"
+    },
+    {
+      "path": "native/resnet50/vendor/emp/emp-tool/circuits/integer.hpp",
+      "original_sha256": "b30cf8bef5b81eca9d93aa2c6b6a28b7f80ef4bef51a308291c5c2a747fb69eb",
+      "sha256": "b30cf8bef5b81eca9d93aa2c6b6a28b7f80ef4bef51a308291c5c2a747fb69eb"
+    },
+    {
+      "path": "native/resnet50/vendor/emp/emp-tool/circuits/float32.hpp",
+      "original_sha256": "67d5479663f6d615d007a561c4097908813e1ac6b8d83cea26d8534e7713ef52",
+      "sha256": "67d5479663f6d615d007a561c4097908813e1ac6b8d83cea26d8534e7713ef52"
+    },
+    {
+      "path": "native/resnet50/vendor/emp/emp-tool/circuits/aes_128_ctr.h",
+      "original_sha256": "046ea144b46a363b8102e4d739f3b8211c223ea4da1eb5e92773b11e28e65438",
+      "sha256": "a3fa8da2aac4a69858a0f4577c12b67270b9d6bf3c535c8bb0bcaf52badd1d17"
+    },
+    {
+      "path": "native/resnet50/vendor/emp/emp-tool/utils/hash.h",
+      "original_sha256": "14492f2b9cdbced276d7602b8cec2c474f5bab15cb442c37d74f41e496816a60",
+      "sha256": "c072f8310c4ce09c7f9c33274c12de833e511b2d5a9b7fe0a761c5a2aad113b6"
+    },
+    {
+      "path": "native/resnet50/vendor/emp/emp-tool/utils/prp.h",
+      "original_sha256": "a3fcae2e342f1efd6cf9579cdcc08536f5c9d330e70029679895fe705e04940a",
+      "sha256": "2ecb68cf61dd53d3c6bb936974f2376e2d23a6a9af21096d18278e861ebe0e83"
+    },
+    {
+      "path": "native/resnet50/vendor/emp/emp-tool/utils/crh.h",
+      "original_sha256": "5fa8865bd079a4a5ae228abeb74a4821a312676e3205b4abeb2e48db0ba47765",
+      "sha256": "b0e2f6dc798bf5e0c3a36b4d752cf4e31e2dc5c79fa2d4586b56a7be1a3836ce"
+    },
+    {
+      "path": "native/resnet50/vendor/emp/emp-tool/utils/ccrh.h",
+      "original_sha256": "06c480584c8a6ececada26496b6ed6d5b6f189ca045029bd67d5388995e26abd",
+      "sha256": "11620a823f1a48cc22329a5e9699347d9f6dc610fb249211c6c82d621cec5441"
+    },
+    {
+      "path": "native/resnet50/vendor/emp/emp-tool/utils/tccrh.h",
+      "original_sha256": "9a71b097d5df8801b5ea34fc65a0b1454c96e41d3d9e70c36fc47d15f6f70786",
+      "sha256": "66ae3006c74e25aa3e4525ced8cbb96d10f1701b603f29fe5f4805562a84bd8b"
+    },
+    {
+      "path": "native/resnet50/parallel/ThreadPool.h",
+      "original_sha256": "bb6789333ed64699829feec4d64c40fcad4280e0f8a545f5ad6a6175e174ad78",
+      "sha256": "bb6789333ed64699829feec4d64c40fcad4280e0f8a545f5ad6a6175e174ad78"
+    },
+    {
+      "path": "native/resnet50/vendor/emp/emp-tool/utils/mitccrh.h",
+      "original_sha256": "250f1371df7e7a612fdb862fef55f7e63ac77397770b91a3c7443e70bf181c9e",
+      "sha256": "ca8d936a90f90498b3293d358e7f352d0af9064e9b66af4031771d4e8bd492e3"
+    },
+    {
+      "path": "native/resnet50/vendor/emp/emp-tool/utils/aes_opt.h",
+      "original_sha256": "58955f8ea30eb82043138fb4fc635c1febbbaaa86120f4f11cb4847b9ecb0440",
+      "sha256": "feb2096df2075f5e609b7536d9eba8ea2d28c457ab6fdb0805c2abfb0084b4da"
+    },
+    {
+      "path": "native/resnet50/vendor/emp/emp-tool/utils/f2k.h",
+      "original_sha256": "9ce2931ce47bed734a7f2b35c23eb6b0af750091c8403b8225b30f788dc45ff5",
+      "sha256": "1e8fd696b6ef65ad270ae1a364e35c13068506cce4a98893d74213b69d4015e1"
+    },
+    {
+      "path": "native/resnet50/vendor/emp/emp-tool/gc/halfgate_eva.h",
+      "original_sha256": "c52104344a881fc1083706a175ace3f452967cdeb99ef1d587e8b3128485f4e9",
+      "sha256": "939aa60c8e06d6444db3205cffd4ce1d0ba7f792430a0043b07121d1d2d5036c"
+    },
+    {
+      "path": "native/resnet50/vendor/emp/emp-tool/gc/halfgate_gen.h",
+      "original_sha256": "741b2fb5d6006d4e73d50a02d4efe9e131926acb1b6938d8cdb97b5ec266cba7",
+      "sha256": "0810c960823d8d7cc41797e031ea4cd16dc5ce17d496ec0732c73f77cfda3b3e"
+    },
+    {
+      "path": "native/resnet50/vendor/emp/emp-tool/gc/privacy_free_eva.h",
+      "original_sha256": "844203fcc6e6e12ea6f7942a5d725ee9d7871cf4fa1705d6bfda36c8e1fa019b",
+      "sha256": "1a6f17a6d856687290976820aeafe042e29560db405b8e667286b702f9ff9f5d"
+    },
+    {
+      "path": "native/resnet50/vendor/emp/emp-tool/gc/privacy_free_gen.h",
+      "original_sha256": "6e79363f056cb7016930ba7e795915058d5f50d306114cac8bf574d423ab6825",
+      "sha256": "9f1e254c6329b9c384d3ce9a4d6f94ad203515563434b29e441a8a5dc25e3ae2"
+    },
+    {
+      "path": "native/resnet50/vendor/emp/emp-tool/execution/plain_circ.h",
+      "original_sha256": "e4f5f399644f6772a440ca2b7ebb6402f7e1a1c67fcbc28cd739d8f0ec71a129",
+      "sha256": "be2469c615259eec5606ccdf1c26b6fe4a60b4e1d568d0442aff8abdeb8a1f77"
+    },
+    {
+      "path": "native/resnet50/vendor/emp/emp-tool/execution/plain_prot.h",
+      "original_sha256": "1e657b677566baaac40a9cf3f7116626f619192598b89406e8c3e3191931b842",
+      "sha256": "0c31baaa5976b50a804cfd7ff6998099f8e1002540efc7dd055fd072373324b9"
+    },
+    {
+      "path": "native/resnet50/protocol/emp-ot/ferret/ferret_cot.h",
+      "original_sha256": "3ca54990aca00b6ed3af24ee1f5933ffa7942989389010e23ad395d610770b4f",
+      "sha256": "2009bbe47cd9d6fe306973fb609917bf6bbfb3797708b8e10c14961580dbde8c"
+    },
+    {
+      "path": "native/resnet50/vendor/emp/emp-ot/ferret/mpcot_reg.h",
+      "original_sha256": "d9b36dae872a41ac00c19b6c1b5f79c30a06cc037ed765ec8bd0176e39afb604",
+      "sha256": "49b33fbc42c9d0cb422099348e6fd3fbce3e70ab6dfb14a6b71b8be61b990ab0"
+    },
+    {
+      "path": "native/resnet50/vendor/emp/emp-ot/ferret/spcot_sender.h",
+      "original_sha256": "6a8c41835d11431be649a752fb99c8b1e249f7f2362200d034b39e588ef8ea5e",
+      "sha256": "43756316f3326963cbf31cd4feb526ad1d3e21f1968d92ac8cb7dc11c162cd28"
+    },
+    {
+      "path": "native/resnet50/vendor/emp/emp-ot/emp-ot.h",
+      "original_sha256": "1eb5e9f8373cb82b9b76a8cb72a965ab4f71ab85703d8443514a988176a42fad",
+      "sha256": "9438dda3a262281d09f5305306a7ebd06027bc341acfa0838150d169e85bcf0d"
+    },
+    {
+      "path": "native/resnet50/vendor/emp/emp-ot/ideal.h",
+      "original_sha256": "d9246ac35c3ef09fc6697b45da271936d4e69758fe9d323d0e3299129371784c",
+      "sha256": "2a90b691d74cdab92093e315a7ce3d10a55500d04db4a7deaf08076e293f6188"
+    },
+    {
+      "path": "native/resnet50/vendor/emp/emp-ot/co.h",
+      "original_sha256": "fce33e4ebddd061e312e7439f8b1dc9fc927c8e77b631102308c450b9570a2c8",
+      "sha256": "701c2d3085c35fe4eddb2f0cb4c26a4b368728976c8f53d4cba59080ac7b6036"
+    },
+    {
+      "path": "native/resnet50/vendor/emp/emp-ot/np.h",
+      "original_sha256": "30da57f91f58af8c4b29cb1b9d38d8dd7e7f16e257f81cede191d7b71fba5c23",
+      "sha256": "5c40abb2640b3dee96190c088eb616fd31f773d0f0243836768cfd01970242fb"
+    },
+    {
+      "path": "native/resnet50/vendor/emp/emp-ot/iknp.h",
+      "original_sha256": "a665b1741b9c01204bd32bff4a4f57d166e92fa8e7ef218841534d22d73535b8",
+      "sha256": "24ff827f536ec78e388dc3984c5af76b0cf0d52cb2c7ab3b7d7ac3a87fb8bd24"
+    },
+    {
+      "path": "native/resnet50/vendor/emp/emp-ot/ferret/twokeyprp.h",
+      "original_sha256": "752ba75fa3462e0729c95e2e670f355929e7a775732926c4469f771a6c01dca2",
+      "sha256": "bb92167f4513f5dad04ff0166bad749d6382b0a0bb372c8d355945306c17f521"
+    },
+    {
+      "path": "native/resnet50/vendor/emp/emp-ot/ferret/spcot_recver.h",
+      "original_sha256": "4d8271299748d29091ab9e7e7a0e0bbaa7a15dd4deb6ea31caf806d818a53756",
+      "sha256": "324d7f94a2ef69edde30307d7cd6d597d2729c995174d02fd0c7a22cd463a2fc"
+    },
+    {
+      "path": "native/resnet50/vendor/emp/emp-ot/ferret/preot.h",
+      "original_sha256": "a278179ce3feaeb6367ae5bfb838bd2159e51b583f9a66679d410a91a7d695e5",
+      "sha256": "62977930bb8f43aaf17313f3574c18c3d4f16dbc73536e1a847abb71cc4017d3"
+    },
+    {
+      "path": "native/resnet50/vendor/emp/emp-ot/ferret/base_cot.h",
+      "original_sha256": "6948b31cf7fcc42c7e6a7bf928dc1fdbb43fe9b7536f1f2eb57bf88ca759c0da",
+      "sha256": "830606d6d08d8e8e583779b73c5b825a114917ea4e396c8d17178bf5f4f9cb12"
+    },
+    {
+      "path": "native/resnet50/protocol/emp-ot/ferret/lpn_f2.h",
+      "original_sha256": "d771c4c35d1eb34cc886e9c8a533bf6be15012faea048ea07faea4a7fc9a004b",
+      "sha256": "eb093cc7335df1e9edc7d48e445031597c53a10b6e9e57904e22e6b04cecd17f"
+    },
+    {
+      "path": "native/resnet50/protocol/carry_correlation_common.hpp",
+      "original_sha256": "3691fae80abe0f1c8adf2f7883cb3c53a5a104e899be733647f768aeb197d9e6",
+      "sha256": "abf4cefc8cfec08ad44862e4e6fd5dc65801c832857c138e8c694bb463c53833"
+    },
+    {
+      "path": "native/resnet50/protocol/owned_correlation_fifo.hpp",
+      "original_sha256": "bb8e2cb229d306814c7ada6adafeebd51aaa46fb316a17c100493d7d6d91809d",
+      "sha256": "bb8e2cb229d306814c7ada6adafeebd51aaa46fb316a17c100493d7d6d91809d"
+    },
+    {
+      "path": "native/resnet50/vendor/emp/emp-ot/ferret/constants.h",
+      "original_sha256": "e58ed31b1665d90c1e7535a4a5db5f72ab843e5375c646cde7245d4527dca051",
+      "sha256": "e58ed31b1665d90c1e7535a4a5db5f72ab843e5375c646cde7245d4527dca051"
+    },
+    {
+      "path": "native/resnet50/protocol/pool_correlation_policy.hpp",
+      "original_sha256": "fbeeaac2008298c33c5416e33d2c7b00ac3539078c369089fe7187aff309c004",
+      "sha256": "d3b92fa6fcc8ae33620d35f77bfc0ef5c8faee625fdce08375a23dfe0d1e06ef"
+    },
+    {
+      "path": "native/resnet50/protocol/emp-ot/ferret/ferret_cot.hpp",
+      "original_sha256": "199a0f8dc70e347dee1d69141363b115a980a50f8cab1d303a4c34344cd2a618",
+      "sha256": "199a0f8dc70e347dee1d69141363b115a980a50f8cab1d303a4c34344cd2a618"
+    },
+    {
+      "path": "native/resnet50/protocol/carry_correlation_cohort.hpp",
+      "original_sha256": "00002311a68f7ad153f5f164f1ff36bfb5e1841949f0bd266d7c3f9bf22d059c",
+      "sha256": "06aeb0e324199e59a1b1ad25ce3b9e24df857c0487dc6c1edb49d34825011997"
+    },
+    {
+      "path": "native/resnet50/vendor/native_sci/OT/ot-utils.h",
+      "original_sha256": "6cbfd263b1134a3bf2a5f838ce53cf272791619423a722bb0c1fd362e0aa3f84",
+      "sha256": "c173f7e215d3d6379b01821f3880ae195e0d5b8fe4eaa47511cc0592afe7f836"
+    },
+    {
+      "path": "native/resnet50/vendor/native_sci/OT/ot.h",
+      "original_sha256": "af9ee4ebbcff3fe5af091d15e442a9ca5cf9a67e2f7024d13c7f3b88924fa6cb",
+      "sha256": "78f0fa3cd9c668c6b2b9cce672cd554deae86d777623ebfb8abd23481008b5aa"
+    },
+    {
+      "path": "native/resnet50/vendor/native_sci/utils/emp-tool.h",
+      "original_sha256": "566242c6a82b1b61d61af9fc7f9ac3cb5252a30726f4fd908704e686977fda86",
+      "sha256": "076dea19d8bc6ec62ae069ee7b2f5408687636fe2ad5c4e312fc31118b1507ca"
+    },
+    {
+      "path": "native/resnet50/vendor/native_sci/utils/io_channel.h",
+      "original_sha256": "8ef8a1c58749480752b61099a617cd100403831c021f4b5fc85e951bc61b095c",
+      "sha256": "7962b1650953406f6d04865564705da85f4d67972c4d2db8ab793240116531eb"
+    },
+    {
+      "path": "native/resnet50/vendor/native_sci/utils/block.h",
+      "original_sha256": "833b74d0745a865b0a976f4180bc4840a6653120d89c4628d3423e9253a6ef1e",
+      "sha256": "833b74d0745a865b0a976f4180bc4840a6653120d89c4628d3423e9253a6ef1e"
+    },
+    {
+      "path": "native/resnet50/vendor/native_sci/utils/group.h",
+      "original_sha256": "c81fdece56d525619148f482dc9df7cde6a97ad61f5548a8f88b84c1ba5274ae",
+      "sha256": "979f57d0ad6a3c27164bc52ff022ee83b399750a9567834da1401891bbc6d2bb"
+    },
+    {
+      "path": "native/resnet50/vendor/native_sci/utils/net_io_channel.h",
+      "original_sha256": "54d76fb63751f0b0e9c009dbff9e7c445db6938f0816da1ae04c51cdefbd9d62",
+      "sha256": "36c9a9cc941e995e92082f4b7eefe0babaa80ad8c540659ec71c59d5aa5a8326"
+    },
+    {
+      "path": "native/resnet50/vendor/native_sci/utils/ArgMapping/ArgMapping.h",
+      "original_sha256": "bb48e5cafe66b57d5c03cce7a2ef56cf63f09d3cfa63ba3b9510247c4ffe838a",
+      "sha256": "bb48e5cafe66b57d5c03cce7a2ef56cf63f09d3cfa63ba3b9510247c4ffe838a"
+    },
+    {
+      "path": "native/resnet50/vendor/native_sci/utils/aes-ni.h",
+      "original_sha256": "24f84169975a20c69eba643bb52f974d34502b96635efeaf97da24d05d599285",
+      "sha256": "01351f214e2b92cc43e2751240f98ffbcf8ba53a53a59686f1fc4607409e1735"
+    },
+    {
+      "path": "native/resnet50/vendor/native_sci/utils/aes.h",
+      "original_sha256": "3d48d5f729640d0c6812427241fa6656808e3a58ee616274d47220b6d4b41a96",
+      "sha256": "82ecda19478af2cf008cc1e32654526983c7c1ec7ee9a18dec738db43b3fd606"
+    },
+    {
+      "path": "native/resnet50/vendor/native_sci/utils/aes_opt.h",
+      "original_sha256": "a15d3d44d9994de81db73b59d61ea5b1933730fb7b490cfb5de8d9d550191cfc",
+      "sha256": "3939f66f2b4b8b730c578b7e7dd1a34454ed6bd09095755913f662561a08ca0c"
+    },
+    {
+      "path": "native/resnet50/vendor/native_sci/utils/ubuntu_terminal_colors.h",
+      "original_sha256": "1b0c6b7f881eb53fcc8391c6357905136043f0e8a39e1514e1adb825b2515494",
+      "sha256": "1b0c6b7f881eb53fcc8391c6357905136043f0e8a39e1514e1adb825b2515494"
+    },
+    {
+      "path": "native/resnet50/vendor/native_sci/utils/ccrf.h",
+      "original_sha256": "0994531208bf1b92becea1fd180314ec6d232b544032faa17fe096ad2c645c9c",
+      "sha256": "e2ab1b6772ff1db86454d0e04ae27a4a963f01f3eb32987c3a6025697cba2654"
+    },
+    {
+      "path": "native/resnet50/vendor/native_sci/utils/prg.h",
+      "original_sha256": "656d15bfe1c3f01bf019f2cc416b502e18746c3432b705b83686a0d116731423",
+      "sha256": "3eb09dca2d2f6a24e1c44fcbc69c11dd2e78829e4fd744908e90ccfd68801003"
+    },
+    {
+      "path": "native/resnet50/vendor/native_sci/utils/constants.h",
+      "original_sha256": "95de3e71fd81b0c3d3158118646fb92ebe548c238888f0d2b3618322ea01001c",
+      "sha256": "95de3e71fd81b0c3d3158118646fb92ebe548c238888f0d2b3618322ea01001c"
+    },
+    {
+      "path": "native/resnet50/vendor/native_sci/utils/crh.h",
+      "original_sha256": "497d47f7f9058a3c11abe4507a4144abb56f7c7aa741458715aef9f8d6a13fa6",
+      "sha256": "066c03a3032b6544ecc19929da6817e1290749eb75b71969b3df225d4c1ad6d4"
+    },
+    {
+      "path": "native/resnet50/vendor/native_sci/utils/prp.h",
+      "original_sha256": "16fece23d02b68887a843b9bedb4da9071d918c9414d797801427c0e6a1e6bd6",
+      "sha256": "50ca90a9a5aa631614176fc4476b96de076557bb6ccbd7d3dd67b19077b450ee"
+    },
+    {
+      "path": "native/resnet50/vendor/native_sci/utils/hash.h",
+      "original_sha256": "c135e790a2572c29ecb656196400b276ae80cdc42018b144ab861c387dc102ed",
+      "sha256": "14d9122d69bbd5ae8bd565eedb08e20f4b0bc8923381945b07416e9b6c6fab86"
+    },
+    {
+      "path": "native/resnet50/vendor/native_sci/utils/utils.h",
+      "original_sha256": "b3d70c051aa2e3f1d9d5702454ad8cf8f0b91dcfcc0e4af2b2467a917c8eb340",
+      "sha256": "c0a84dacba468e30bd49ee5cb81bf0cc8f74585505a7286ad56e67504d639940"
+    },
+    {
+      "path": "native/resnet50/vendor/native_sci/utils/utils.hpp",
+      "original_sha256": "ca71833337d9d2088ad06b8f4ce5df342abd0cc0ba9e8faa994c61aff5d046b9",
+      "sha256": "ca71833337d9d2088ad06b8f4ce5df342abd0cc0ba9e8faa994c61aff5d046b9"
+    },
+    {
+      "path": "native/resnet50/vendor/native_sci/utils/mitccrh.h",
+      "original_sha256": "fcbe6a49a3cff1e2396bbed0a4af5089f75bbef8bc847795e613d9aee28ad7f5",
+      "sha256": "5d388d132a805d3c14410b442aeeeff07efd98f61f7fd44a2e13a77f9dd9a047"
+    },
+    {
+      "path": "native/resnet50/vendor/native_sci/utils/performance.h",
+      "original_sha256": "b5dded69eb4a82cd7e55499777eb9e761815a4ceb8b96ad54d8ed3296355ccbb",
+      "sha256": "b5dded69eb4a82cd7e55499777eb9e761815a4ceb8b96ad54d8ed3296355ccbb"
+    },
+    {
+      "path": "native/resnet50/protocol/correlation_key_slice.hpp",
+      "original_sha256": "a29c54ad3d1e28b5e5edeb263949fe963695d60aa9a87ebabe24bfdd2816deb4",
+      "sha256": "a29c54ad3d1e28b5e5edeb263949fe963695d60aa9a87ebabe24bfdd2816deb4"
+    },
+    {
+      "path": "native/resnet50/protocol/correlation_word.hpp",
+      "original_sha256": "07d920a1eb4c62a672de16c8fe4f26aa892425e56944227df562bf5281b51ac9",
+      "sha256": "07d920a1eb4c62a672de16c8fe4f26aa892425e56944227df562bf5281b51ac9"
+    },
+    {
+      "path": "native/resnet50/protocol/late_quotient_fields.inc",
+      "original_sha256": "c171d2485b7e16b06b20a6fa7c05660a4a6fea7406c4dcd0dcd54f30f7e75171",
+      "sha256": "c171d2485b7e16b06b20a6fa7c05660a4a6fea7406c4dcd0dcd54f30f7e75171"
+    },
+    {
+      "path": "native/resnet50/protocol/quotient_recovery_fields.inc",
+      "original_sha256": "ca66d608bb05fe3d5496777b31313d8bb426e8dbd8021c990ea8bbaa5f5d15bf",
+      "sha256": "c7856950775b01c9b6354ed51f9c08acded40da31057273dc26b0a6288c69843"
+    },
+    {
+      "path": "native/resnet50/protocol/quotient_recovery.h",
+      "original_sha256": "362334b027316f13d87771bca9c9f3e056ab57c1d0f1ca2c5a9b391d75c9d0df",
+      "sha256": "de7fb9c98c871fe7b9f12d896674fbf7287ed49a5543d8b9903fdb463bb12c52"
+    },
+    {
+      "path": "native/resnet50/protocol/quotient_recovery_math.hpp",
+      "original_sha256": "98f109cd4b3d0532765f63b97c4fd17b6c1e7ae217db3026abf32c929b2f69ab",
+      "sha256": "98f109cd4b3d0532765f63b97c4fd17b6c1e7ae217db3026abf32c929b2f69ab"
+    },
+    {
+      "path": "native/resnet50/protocol/radix_quotient_fields.inc",
+      "original_sha256": "90eddfa91beb20d607cce04ebdfd2e300536b0d7559de2f9392e479958e234bd",
+      "sha256": "f22a2ba0444f2c58a991eaf09671e82d0a0177c5a10fe3ec82e2b76ea93e598e"
+    },
+    {
+      "path": "native/resnet50/protocol/radix_quotient.h",
+      "original_sha256": "48a79e19a0d864073ff3d68fa70181a45c5bc4b91bfe0175675505db18c49728",
+      "sha256": "227d0256a5d7bdb4413a8f9e65913b1886bc387e2d4915ffdc017e7bc73a8afd"
+    },
+    {
+      "path": "native/resnet50/protocol/radix_quotient_math.hpp",
+      "original_sha256": "d4a5ed9c2fbf0a9fd2dc46e0901be9b686d7e44dd7bbfc23d560283652765b01",
+      "sha256": "d4a5ed9c2fbf0a9fd2dc46e0901be9b686d7e44dd7bbfc23d560283652765b01"
+    },
+    {
+      "path": "native/resnet50/protocol/pool_carry_fields.inc",
+      "original_sha256": "37f5176b3dd8c9b131312cde02181bf265c28acb9969c6ca92a8670703fecded",
+      "sha256": "d332f023373eb181eb9d4df2e640fc4bfc02e77a3b5c4cc4be9c1000c4e7df0b"
+    },
+    {
+      "path": "native/resnet50/protocol/pool_carry.h",
+      "original_sha256": "3e3c1355a009bc95a0e43eb1bf6186e0fe73ddf9279b5778a9f12fecf88aa0a3",
+      "sha256": "605ea9bcfa8f30e0f0e0e945d86d1908c207fff6d6c1a0c765f9ab9b542f21fd"
+    },
+    {
+      "path": "native/resnet50/protocol/pool_radix_math.hpp",
+      "original_sha256": "54c12289f0583047811f890b9efc0218369c48ca6fe1b72046322165f8347800",
+      "sha256": "54c12289f0583047811f890b9efc0218369c48ca6fe1b72046322165f8347800"
+    },
+    {
+      "path": "native/resnet50/protocol/correlation_lookup.inc",
+      "original_sha256": "edfe6ff6a8a0021a49213835e5c868d2f93029f643daba7341f0da6330c62c65",
+      "sha256": "edfe6ff6a8a0021a49213835e5c868d2f93029f643daba7341f0da6330c62c65"
+    },
+    {
+      "path": "native/resnet50/protocol/packed_correlation_tables.inc",
+      "original_sha256": "d06eb0db281d2e2b0ffbdcec3b7bcbe5e0b7ef2544ec67f868576baa15cdd935",
+      "sha256": "d06eb0db281d2e2b0ffbdcec3b7bcbe5e0b7ef2544ec67f868576baa15cdd935"
+    },
+    {
+      "path": "native/resnet50/protocol/late_quotient_bridge.inc",
+      "original_sha256": "ac7cf75615758078181c4b5740292dbb33b58ff260de7a137e17ad2bc991a87e",
+      "sha256": "ac7cf75615758078181c4b5740292dbb33b58ff260de7a137e17ad2bc991a87e"
+    },
+    {
+      "path": "native/resnet50/protocol/quotient_recovery_bridge.inc",
+      "original_sha256": "75fc2f7d342c75d06f67bbc580ac4c7787986339241641b9a0a1fc0b541b49cc",
+      "sha256": "75fc2f7d342c75d06f67bbc580ac4c7787986339241641b9a0a1fc0b541b49cc"
+    },
+    {
+      "path": "native/resnet50/protocol/radix_quotient_bridge.inc",
+      "original_sha256": "97d6832112d2372485e6d9018001eea7d474fe70fa73a2bef1fda7d7b72dad89",
+      "sha256": "97d6832112d2372485e6d9018001eea7d474fe70fa73a2bef1fda7d7b72dad89"
+    },
+    {
+      "path": "native/resnet50/protocol/pool_carry_bridge.inc",
+      "original_sha256": "76da44230d45bc925cd60d15d3f81ad87f5b6bb06eba6559dda8554cf826e65f",
+      "sha256": "76da44230d45bc925cd60d15d3f81ad87f5b6bb06eba6559dda8554cf826e65f"
+    },
+    {
+      "path": "native/resnet50/protocol/seeded_mask_bridge.inc",
+      "original_sha256": "688671ad446315fcdb304b40b7def5df235165c6c20f6e8efe84f2a458696934",
+      "sha256": "688671ad446315fcdb304b40b7def5df235165c6c20f6e8efe84f2a458696934"
+    },
+    {
+      "path": "native/resnet50/protocol/resnet_joint_carry_bridge.inc",
+      "original_sha256": "fe6273a3d44164aaf67ae2c5884c2e9cd4f106f17356bb60ba5aa27249c9428d",
+      "sha256": "fe6273a3d44164aaf67ae2c5884c2e9cd4f106f17356bb60ba5aa27249c9428d"
+    },
+    {
+      "path": "native/resnet50/protocol/elided_component_bridge.inc",
+      "original_sha256": "e9f4bdb7922936817c44c094f9fd9769ad00814138b1307eae7c3c0f8c00efef",
+      "sha256": "e9f4bdb7922936817c44c094f9fd9769ad00814138b1307eae7c3c0f8c00efef"
+    },
+    {
+      "path": "native/resnet50/protocol/duplex_lookup_bridge.inc",
+      "original_sha256": "75db2b276f68799a07bdca1e02d69a771bf38c56278fbc02483d0d85cc2e6690",
+      "sha256": "75db2b276f68799a07bdca1e02d69a771bf38c56278fbc02483d0d85cc2e6690"
+    },
+    {
+      "path": "native/resnet50/protocol/prefix_leaf_bridge.inc",
+      "original_sha256": "b081c6f490bce6fb0ad4bb985f1427bd66910562751f34fecbbfe17cbcaf54e3",
+      "sha256": "b081c6f490bce6fb0ad4bb985f1427bd66910562751f34fecbbfe17cbcaf54e3"
+    },
+    {
+      "path": "native/resnet50/src/exact_fma_kernel.cpp",
+      "original_sha256": "24f9e6264f95199c629e251dbc67ef231a1231b66d9b79581d59cf8d29a81362",
+      "sha256": "cc0954cbeccc4cabd66da4e28ba0cc6d45a9a945e2733343cf529ab36e9edac3"
+    },
+    {
+      "path": "native/resnet50/engine/bounded_fma_accumulator.hpp",
+      "original_sha256": "1db59a39f7e67eb6290c7c6b4bb511ed52b6b0a5c54c735df052306171e27bb2",
+      "sha256": "1db59a39f7e67eb6290c7c6b4bb511ed52b6b0a5c54c735df052306171e27bb2"
+    },
+    {
+      "path": "native/resnet50/src/transport_pacing.cpp",
+      "original_sha256": "6288c2812b1dc06505426de413ec0028f3fe447c37abad3b258a0569e643ea66",
+      "sha256": "6288c2812b1dc06505426de413ec0028f3fe447c37abad3b258a0569e643ea66"
+    },
+    {
+      "path": "native/resnet50/he_backend/parallel_ntt_hooks.cpp",
+      "original_sha256": "f6c1341c81f8f032eb42911ffd0f16cd3b4f807b61f6e09df2c68e0e2a346f6b",
+      "sha256": "5586006a89813f6ecc2f94fb5207f2e399747d02cf768ff4ff09630f8b3ce911"
+    },
+    {
+      "path": "native/resnet50/he_backend/parallel_ntt.hpp",
+      "original_sha256": "fa12270cc3850e7927eec5a03297c535aa7a35d149df7b5f311de7536a9f7518",
+      "sha256": "52ef94e3146b319e8e7e15353eadf0ad222454a081cacbe8355a9df089d36216"
+    },
+    {
+      "path": "native/resnet50/engine/persistent_worker_owner.hpp",
+      "original_sha256": "f7be6ce2bc73ae99459fa83366acb1df634e17376f643f9dde8183c8e8168fd8",
+      "sha256": "f7be6ce2bc73ae99459fa83366acb1df634e17376f643f9dde8183c8e8168fd8"
+    },
+    {
+      "path": "native/resnet50/he_backend/seal_rns_parallel.cpp",
+      "original_sha256": "ea40221d5696fa13670e53a5fe34f33f8419c3201774828d0a7f9fd104451250",
+      "sha256": "d31b7aa302c816d7638f7070037252724b36ddb52b78911171125af39c74ff98"
+    },
+    {
+      "path": "native/resnet50/he_backend/parallel_rns.hpp",
+      "original_sha256": "a7bc679de8d2b412f35590003943d35f4a2a050b483a1180afa8745673ee9d57",
+      "sha256": "2ead1e40cf365e3b2392be4bb456fec5a18121082b0ca4e64c7e517e10565e48"
+    },
+    {
+      "path": "native/resnet50/he_backend/parallel_data.hpp",
+      "original_sha256": "5f5445f178a4921f41d3157d6b95b09ee1bb02f4186d905d39ea0553802e92bf",
+      "sha256": "a0052feec5d107363c81de6b492ec3d52eb77e23e3374ebc7acc2c3ef474a3ed"
+    },
+    {
+      "path": "native/resnet50/he_backend/pcn_parallel.hpp",
+      "original_sha256": "9f7f3070efb55eb3f7b235667cf170cb55803d5b8676f98687b79b6bb18c7763",
+      "sha256": "c16ae01c29dba814857df86f505f4451712ad1f0ed9eff5f0611fe769a9a397a"
+    },
+    {
+      "path": "native/resnet50/he_backend/seal_rlwe_parallel.cpp",
+      "original_sha256": "93136a89459c9e4dfe1862645cd7e94f8ccea2f29095bba694b53024656a645c",
+      "sha256": "ab3d4bc458dcb3df92c53bd0814c60f724edff69f356e6b443edba9fb5e63e94"
+    },
+    {
+      "path": "native/resnet50/he_backend/parallel_noise_sampling.hpp",
+      "original_sha256": "c6dc02b8e870683a5441cc101c3a3dca502ae574f159c354f36d34479af99e37",
+      "sha256": "b3cb50af00ef428d960cc3605982c68e18f707ffba90bb34925ca0be84602419"
+    },
+    {
+      "path": "native/resnet50/he_backend/seal_randomgen_parallel.cpp",
+      "original_sha256": "12dc1031df5c73042c9f0b0fa30628ac709074057ad7337e522975446a8fca29",
+      "sha256": "8f8bcc4bf41333297c31c38df11ee4d52524ca9e168b64f9096956f4f6763614"
+    },
+    {
+      "path": "native/resnet50/he_backend/seal_polynomial_parallel.cpp",
+      "original_sha256": "7e188e74259b331892fcabc0240f50cd161e285bc406b98c33d5c2f5b9cacc1c",
+      "sha256": "44d46a27fa389ee611051f674ee927d2f75a3162d3841ad4a6f65afab097413f"
+    },
+    {
+      "path": "native/resnet50/he_backend/parallel_polynomial.hpp",
+      "original_sha256": "de9506450ed10675a8a398153380fe3212a9d546d96c82d529b7c1429def6f8a",
+      "sha256": "39b7a69f9af477990d9683b49b2e7196f2df7ac7c0c3c4d99aabbfba216d698a"
+    },
+    {
+      "path": "native/resnet50/he_backend/seal_ntt_parallel.cpp",
+      "original_sha256": "d11c00bd92327c3f695c3af502f349d350d61f7b07af6d82bacd7146e6d60b97",
+      "sha256": "f317198ebbadd1d299c1f25005a5eb8f4d79cac65f686203098ab74c4c648a71"
+    },
+    {
+      "path": "native/resnet50/he_backend/parallel_context.hpp",
+      "original_sha256": "9632b7c11798957f49ca7bed5ea2c81424d45fd361bc8248267cb1aea4282593",
+      "sha256": "8e257de2fc75f50bef6eef7cc0dac4d96015b9eb448bee3900249d75ad539307"
+    },
+    {
+      "path": "native/resnet50/he_backend/parallel_span.hpp",
+      "original_sha256": "eeba5a01643d34642b02009fde2c97ccce26b85401643a435c7e34c992b36ae9",
+      "sha256": "b7825da1a71ab71c22a4222c8a343a60bf2f30ca0462f7e7e74e169335d93ce4"
+    },
+    {
+      "path": "native/resnet50/he_backend/seal_validation_parallel.cpp",
+      "original_sha256": "99042da919da9dda70e9892011cba066131dcfcd12cac56e4eca37a8e170c552",
+      "sha256": "959c68a61c7c58539029f4d32b1cfc79aa49798779f8ecf1046e87da088c4eb0"
+    },
+    {
+      "path": "native/resnet50/he_backend/seal_decryptor_parallel.cpp",
+      "original_sha256": "9dcf5ac4f7afefdbb07d28ee9d2b84469ca989003ab6562e93f04f4272a21d30",
+      "sha256": "336e84a49554640bc3b5736f1a378548285b68b5ba8e0820aa0a7b4608206f4e"
+    }
+  ],
+  "portable_additions": [
+    {
+      "path": "native/portable_cpu.hpp",
+      "sha256": "8d5779143eb5214e566cafa1c1a671152b440f4653837eddf7f3a90d714087e3"
+    }
+  ],
+  "system_dependency_header_matches": {
+    "gmp.h": "1a5bb6702226627c7322821b06084a4ee4ac69b71f987a36a6a46df0de4364b0"
+  }
+}

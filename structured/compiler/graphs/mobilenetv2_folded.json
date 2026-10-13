@@ -1,0 +1,3351 @@
+{
+  "schema": "pcn.bn_compatible_derived_model.unbounded_Q12.v2",
+  "checkpoint_sha256": "a7b4b74c3174fe1ede780a8587e77f62827537690c5bddac4accd01bcdb7efb5",
+  "author_model": "c100_nas_mobilenetv2",
+  "source_sha256": "0b6a9aeca8b36546c6af9711121ca38478c5035e3acc447d39b00354dec19dc8",
+  "plain_modulus": null,
+  "nodes": [
+    {
+      "id": 1,
+      "name": "features.0.0",
+      "op": "CONV",
+      "inputs": [
+        0
+      ],
+      "Ci": 3,
+      "Co": 32,
+      "K": 3,
+      "stride": 1,
+      "padding": 1,
+      "groups": 1,
+      "block": 1,
+      "input_scale_bits": 12,
+      "weight_scale_bits": 12,
+      "bias_scale_bits": 12,
+      "output_scale_bits": 12,
+      "post_affine_shift_bits": 12,
+      "weight_shape": [
+        32,
+        3,
+        3,
+        3
+      ],
+      "parameter_owner": "server_only",
+      "shape_nchw": [
+        1,
+        32,
+        32,
+        32
+      ],
+      "input_shape_nchw": [
+        1,
+        3,
+        32,
+        32
+      ]
+    },
+    {
+      "id": 2,
+      "name": "features.0.2",
+      "op": "RELU6",
+      "inputs": [
+        1
+      ],
+      "shape_nchw": [
+        1,
+        32,
+        32,
+        32
+      ],
+      "input_shape_nchw": [
+        1,
+        32,
+        32,
+        32
+      ]
+    },
+    {
+      "id": 3,
+      "name": "features.1.conv.0",
+      "op": "DEPTHWISE",
+      "inputs": [
+        2
+      ],
+      "Ci": 32,
+      "Co": 32,
+      "K": 3,
+      "stride": 1,
+      "padding": 1,
+      "groups": 32,
+      "block": 1,
+      "input_scale_bits": 12,
+      "weight_scale_bits": 12,
+      "bias_scale_bits": 12,
+      "output_scale_bits": 12,
+      "post_affine_shift_bits": 12,
+      "weight_shape": [
+        32,
+        1,
+        3,
+        3
+      ],
+      "parameter_owner": "server_only",
+      "shape_nchw": [
+        1,
+        32,
+        32,
+        32
+      ],
+      "input_shape_nchw": [
+        1,
+        32,
+        32,
+        32
+      ]
+    },
+    {
+      "id": 4,
+      "name": "features.1.conv.2",
+      "op": "RELU6",
+      "inputs": [
+        3
+      ],
+      "shape_nchw": [
+        1,
+        32,
+        32,
+        32
+      ],
+      "input_shape_nchw": [
+        1,
+        32,
+        32,
+        32
+      ]
+    },
+    {
+      "id": 5,
+      "name": "features.1.conv.3",
+      "op": "CONV",
+      "inputs": [
+        4
+      ],
+      "Ci": 32,
+      "Co": 16,
+      "K": 1,
+      "stride": 1,
+      "padding": 0,
+      "groups": 1,
+      "block": 1,
+      "input_scale_bits": 12,
+      "weight_scale_bits": 12,
+      "bias_scale_bits": 12,
+      "output_scale_bits": 12,
+      "post_affine_shift_bits": 12,
+      "weight_shape": [
+        16,
+        32,
+        1,
+        1
+      ],
+      "parameter_owner": "server_only",
+      "shape_nchw": [
+        1,
+        16,
+        32,
+        32
+      ],
+      "input_shape_nchw": [
+        1,
+        32,
+        32,
+        32
+      ]
+    },
+    {
+      "id": 6,
+      "name": "features.2.conv.0",
+      "op": "CIRCONV",
+      "inputs": [
+        5
+      ],
+      "Ci": 16,
+      "Co": 96,
+      "K": 1,
+      "stride": 1,
+      "padding": 0,
+      "groups": 1,
+      "block": 1,
+      "input_scale_bits": 12,
+      "weight_scale_bits": 12,
+      "bias_scale_bits": 12,
+      "output_scale_bits": 12,
+      "post_affine_shift_bits": 12,
+      "weight_shape": [
+        96,
+        16,
+        1,
+        1
+      ],
+      "parameter_owner": "server_only",
+      "shape_nchw": [
+        1,
+        96,
+        32,
+        32
+      ],
+      "input_shape_nchw": [
+        1,
+        16,
+        32,
+        32
+      ]
+    },
+    {
+      "id": 7,
+      "name": "features.2.conv.2",
+      "op": "RELU6",
+      "inputs": [
+        6
+      ],
+      "shape_nchw": [
+        1,
+        96,
+        32,
+        32
+      ],
+      "input_shape_nchw": [
+        1,
+        96,
+        32,
+        32
+      ]
+    },
+    {
+      "id": 8,
+      "name": "features.2.conv.3",
+      "op": "DEPTHWISE",
+      "inputs": [
+        7
+      ],
+      "Ci": 96,
+      "Co": 96,
+      "K": 3,
+      "stride": 1,
+      "padding": 1,
+      "groups": 96,
+      "block": 1,
+      "input_scale_bits": 12,
+      "weight_scale_bits": 12,
+      "bias_scale_bits": 12,
+      "output_scale_bits": 12,
+      "post_affine_shift_bits": 12,
+      "weight_shape": [
+        96,
+        1,
+        3,
+        3
+      ],
+      "parameter_owner": "server_only",
+      "shape_nchw": [
+        1,
+        96,
+        32,
+        32
+      ],
+      "input_shape_nchw": [
+        1,
+        96,
+        32,
+        32
+      ]
+    },
+    {
+      "id": 9,
+      "name": "features.2.conv.5",
+      "op": "RELU6",
+      "inputs": [
+        8
+      ],
+      "shape_nchw": [
+        1,
+        96,
+        32,
+        32
+      ],
+      "input_shape_nchw": [
+        1,
+        96,
+        32,
+        32
+      ]
+    },
+    {
+      "id": 10,
+      "name": "features.2.conv.6",
+      "op": "CIRCONV",
+      "inputs": [
+        9
+      ],
+      "Ci": 96,
+      "Co": 24,
+      "K": 1,
+      "stride": 1,
+      "padding": 0,
+      "groups": 1,
+      "block": 1,
+      "input_scale_bits": 12,
+      "weight_scale_bits": 12,
+      "bias_scale_bits": 12,
+      "output_scale_bits": 12,
+      "post_affine_shift_bits": 12,
+      "weight_shape": [
+        24,
+        96,
+        1,
+        1
+      ],
+      "parameter_owner": "server_only",
+      "shape_nchw": [
+        1,
+        24,
+        32,
+        32
+      ],
+      "input_shape_nchw": [
+        1,
+        96,
+        32,
+        32
+      ]
+    },
+    {
+      "id": 11,
+      "name": "features.3.conv.0",
+      "op": "CIRCONV",
+      "inputs": [
+        10
+      ],
+      "Ci": 24,
+      "Co": 144,
+      "K": 1,
+      "stride": 1,
+      "padding": 0,
+      "groups": 1,
+      "block": 2,
+      "input_scale_bits": 12,
+      "weight_scale_bits": 12,
+      "bias_scale_bits": 12,
+      "output_scale_bits": 12,
+      "post_affine_shift_bits": 12,
+      "weight_shape": [
+        144,
+        24,
+        1,
+        1
+      ],
+      "parameter_owner": "server_only",
+      "shape_nchw": [
+        1,
+        144,
+        32,
+        32
+      ],
+      "input_shape_nchw": [
+        1,
+        24,
+        32,
+        32
+      ]
+    },
+    {
+      "id": 13,
+      "name": "features.3.conv.2",
+      "op": "RELU6",
+      "inputs": [
+        11
+      ],
+      "shape_nchw": [
+        1,
+        144,
+        32,
+        32
+      ],
+      "input_shape_nchw": [
+        1,
+        144,
+        32,
+        32
+      ]
+    },
+    {
+      "id": 14,
+      "name": "features.3.conv.3",
+      "op": "DEPTHWISE",
+      "inputs": [
+        13
+      ],
+      "Ci": 144,
+      "Co": 144,
+      "K": 3,
+      "stride": 1,
+      "padding": 1,
+      "groups": 144,
+      "block": 1,
+      "input_scale_bits": 12,
+      "weight_scale_bits": 12,
+      "bias_scale_bits": 12,
+      "output_scale_bits": 12,
+      "post_affine_shift_bits": 12,
+      "weight_shape": [
+        144,
+        1,
+        3,
+        3
+      ],
+      "parameter_owner": "server_only",
+      "shape_nchw": [
+        1,
+        144,
+        32,
+        32
+      ],
+      "input_shape_nchw": [
+        1,
+        144,
+        32,
+        32
+      ]
+    },
+    {
+      "id": 15,
+      "name": "features.3.conv.5",
+      "op": "RELU6",
+      "inputs": [
+        14
+      ],
+      "shape_nchw": [
+        1,
+        144,
+        32,
+        32
+      ],
+      "input_shape_nchw": [
+        1,
+        144,
+        32,
+        32
+      ]
+    },
+    {
+      "id": 16,
+      "name": "features.3.conv.6",
+      "op": "CIRCONV",
+      "inputs": [
+        15
+      ],
+      "Ci": 144,
+      "Co": 24,
+      "K": 1,
+      "stride": 1,
+      "padding": 0,
+      "groups": 1,
+      "block": 2,
+      "input_scale_bits": 12,
+      "weight_scale_bits": 12,
+      "bias_scale_bits": 12,
+      "output_scale_bits": 12,
+      "post_affine_shift_bits": 12,
+      "weight_shape": [
+        24,
+        144,
+        1,
+        1
+      ],
+      "parameter_owner": "server_only",
+      "shape_nchw": [
+        1,
+        24,
+        32,
+        32
+      ],
+      "input_shape_nchw": [
+        1,
+        144,
+        32,
+        32
+      ]
+    },
+    {
+      "id": 18,
+      "name": "features.3.residual",
+      "op": "ADD",
+      "inputs": [
+        10,
+        16
+      ],
+      "shape_nchw": [
+        1,
+        24,
+        32,
+        32
+      ],
+      "input_shape_nchw": [
+        1,
+        24,
+        32,
+        32
+      ]
+    },
+    {
+      "id": 19,
+      "name": "features.4.conv.0",
+      "op": "CIRCONV",
+      "inputs": [
+        18
+      ],
+      "Ci": 24,
+      "Co": 144,
+      "K": 1,
+      "stride": 1,
+      "padding": 0,
+      "groups": 1,
+      "block": 2,
+      "input_scale_bits": 12,
+      "weight_scale_bits": 12,
+      "bias_scale_bits": 12,
+      "output_scale_bits": 12,
+      "post_affine_shift_bits": 12,
+      "weight_shape": [
+        144,
+        24,
+        1,
+        1
+      ],
+      "parameter_owner": "server_only",
+      "shape_nchw": [
+        1,
+        144,
+        32,
+        32
+      ],
+      "input_shape_nchw": [
+        1,
+        24,
+        32,
+        32
+      ]
+    },
+    {
+      "id": 21,
+      "name": "features.4.conv.2",
+      "op": "RELU6",
+      "inputs": [
+        19
+      ],
+      "shape_nchw": [
+        1,
+        144,
+        32,
+        32
+      ],
+      "input_shape_nchw": [
+        1,
+        144,
+        32,
+        32
+      ]
+    },
+    {
+      "id": 22,
+      "name": "features.4.conv.3",
+      "op": "DEPTHWISE",
+      "inputs": [
+        21
+      ],
+      "Ci": 144,
+      "Co": 144,
+      "K": 3,
+      "stride": 2,
+      "padding": 1,
+      "groups": 144,
+      "block": 1,
+      "input_scale_bits": 12,
+      "weight_scale_bits": 12,
+      "bias_scale_bits": 12,
+      "output_scale_bits": 12,
+      "post_affine_shift_bits": 12,
+      "weight_shape": [
+        144,
+        1,
+        3,
+        3
+      ],
+      "parameter_owner": "server_only",
+      "shape_nchw": [
+        1,
+        144,
+        16,
+        16
+      ],
+      "input_shape_nchw": [
+        1,
+        144,
+        32,
+        32
+      ]
+    },
+    {
+      "id": 23,
+      "name": "features.4.conv.5",
+      "op": "RELU6",
+      "inputs": [
+        22
+      ],
+      "shape_nchw": [
+        1,
+        144,
+        16,
+        16
+      ],
+      "input_shape_nchw": [
+        1,
+        144,
+        16,
+        16
+      ]
+    },
+    {
+      "id": 24,
+      "name": "features.4.conv.6",
+      "op": "CIRCONV",
+      "inputs": [
+        23
+      ],
+      "Ci": 144,
+      "Co": 32,
+      "K": 1,
+      "stride": 1,
+      "padding": 0,
+      "groups": 1,
+      "block": 1,
+      "input_scale_bits": 12,
+      "weight_scale_bits": 12,
+      "bias_scale_bits": 12,
+      "output_scale_bits": 12,
+      "post_affine_shift_bits": 12,
+      "weight_shape": [
+        32,
+        144,
+        1,
+        1
+      ],
+      "parameter_owner": "server_only",
+      "shape_nchw": [
+        1,
+        32,
+        16,
+        16
+      ],
+      "input_shape_nchw": [
+        1,
+        144,
+        16,
+        16
+      ]
+    },
+    {
+      "id": 25,
+      "name": "features.5.conv.0",
+      "op": "CIRCONV",
+      "inputs": [
+        24
+      ],
+      "Ci": 32,
+      "Co": 192,
+      "K": 1,
+      "stride": 1,
+      "padding": 0,
+      "groups": 1,
+      "block": 4,
+      "input_scale_bits": 12,
+      "weight_scale_bits": 12,
+      "bias_scale_bits": 12,
+      "output_scale_bits": 12,
+      "post_affine_shift_bits": 12,
+      "weight_shape": [
+        192,
+        32,
+        1,
+        1
+      ],
+      "parameter_owner": "server_only",
+      "shape_nchw": [
+        1,
+        192,
+        16,
+        16
+      ],
+      "input_shape_nchw": [
+        1,
+        32,
+        16,
+        16
+      ]
+    },
+    {
+      "id": 27,
+      "name": "features.5.conv.2",
+      "op": "RELU6",
+      "inputs": [
+        25
+      ],
+      "shape_nchw": [
+        1,
+        192,
+        16,
+        16
+      ],
+      "input_shape_nchw": [
+        1,
+        192,
+        16,
+        16
+      ]
+    },
+    {
+      "id": 28,
+      "name": "features.5.conv.3",
+      "op": "DEPTHWISE",
+      "inputs": [
+        27
+      ],
+      "Ci": 192,
+      "Co": 192,
+      "K": 3,
+      "stride": 1,
+      "padding": 1,
+      "groups": 192,
+      "block": 1,
+      "input_scale_bits": 12,
+      "weight_scale_bits": 12,
+      "bias_scale_bits": 12,
+      "output_scale_bits": 12,
+      "post_affine_shift_bits": 12,
+      "weight_shape": [
+        192,
+        1,
+        3,
+        3
+      ],
+      "parameter_owner": "server_only",
+      "shape_nchw": [
+        1,
+        192,
+        16,
+        16
+      ],
+      "input_shape_nchw": [
+        1,
+        192,
+        16,
+        16
+      ]
+    },
+    {
+      "id": 29,
+      "name": "features.5.conv.5",
+      "op": "RELU6",
+      "inputs": [
+        28
+      ],
+      "shape_nchw": [
+        1,
+        192,
+        16,
+        16
+      ],
+      "input_shape_nchw": [
+        1,
+        192,
+        16,
+        16
+      ]
+    },
+    {
+      "id": 30,
+      "name": "features.5.conv.6",
+      "op": "CIRCONV",
+      "inputs": [
+        29
+      ],
+      "Ci": 192,
+      "Co": 32,
+      "K": 1,
+      "stride": 1,
+      "padding": 0,
+      "groups": 1,
+      "block": 2,
+      "input_scale_bits": 12,
+      "weight_scale_bits": 12,
+      "bias_scale_bits": 12,
+      "output_scale_bits": 12,
+      "post_affine_shift_bits": 12,
+      "weight_shape": [
+        32,
+        192,
+        1,
+        1
+      ],
+      "parameter_owner": "server_only",
+      "shape_nchw": [
+        1,
+        32,
+        16,
+        16
+      ],
+      "input_shape_nchw": [
+        1,
+        192,
+        16,
+        16
+      ]
+    },
+    {
+      "id": 32,
+      "name": "features.5.residual",
+      "op": "ADD",
+      "inputs": [
+        24,
+        30
+      ],
+      "shape_nchw": [
+        1,
+        32,
+        16,
+        16
+      ],
+      "input_shape_nchw": [
+        1,
+        32,
+        16,
+        16
+      ]
+    },
+    {
+      "id": 33,
+      "name": "features.6.conv.0",
+      "op": "CIRCONV",
+      "inputs": [
+        32
+      ],
+      "Ci": 32,
+      "Co": 192,
+      "K": 1,
+      "stride": 1,
+      "padding": 0,
+      "groups": 1,
+      "block": 4,
+      "input_scale_bits": 12,
+      "weight_scale_bits": 12,
+      "bias_scale_bits": 12,
+      "output_scale_bits": 12,
+      "post_affine_shift_bits": 12,
+      "weight_shape": [
+        192,
+        32,
+        1,
+        1
+      ],
+      "parameter_owner": "server_only",
+      "shape_nchw": [
+        1,
+        192,
+        16,
+        16
+      ],
+      "input_shape_nchw": [
+        1,
+        32,
+        16,
+        16
+      ]
+    },
+    {
+      "id": 35,
+      "name": "features.6.conv.2",
+      "op": "RELU6",
+      "inputs": [
+        33
+      ],
+      "shape_nchw": [
+        1,
+        192,
+        16,
+        16
+      ],
+      "input_shape_nchw": [
+        1,
+        192,
+        16,
+        16
+      ]
+    },
+    {
+      "id": 36,
+      "name": "features.6.conv.3",
+      "op": "DEPTHWISE",
+      "inputs": [
+        35
+      ],
+      "Ci": 192,
+      "Co": 192,
+      "K": 3,
+      "stride": 1,
+      "padding": 1,
+      "groups": 192,
+      "block": 1,
+      "input_scale_bits": 12,
+      "weight_scale_bits": 12,
+      "bias_scale_bits": 12,
+      "output_scale_bits": 12,
+      "post_affine_shift_bits": 12,
+      "weight_shape": [
+        192,
+        1,
+        3,
+        3
+      ],
+      "parameter_owner": "server_only",
+      "shape_nchw": [
+        1,
+        192,
+        16,
+        16
+      ],
+      "input_shape_nchw": [
+        1,
+        192,
+        16,
+        16
+      ]
+    },
+    {
+      "id": 37,
+      "name": "features.6.conv.5",
+      "op": "RELU6",
+      "inputs": [
+        36
+      ],
+      "shape_nchw": [
+        1,
+        192,
+        16,
+        16
+      ],
+      "input_shape_nchw": [
+        1,
+        192,
+        16,
+        16
+      ]
+    },
+    {
+      "id": 38,
+      "name": "features.6.conv.6",
+      "op": "CIRCONV",
+      "inputs": [
+        37
+      ],
+      "Ci": 192,
+      "Co": 32,
+      "K": 1,
+      "stride": 1,
+      "padding": 0,
+      "groups": 1,
+      "block": 4,
+      "input_scale_bits": 12,
+      "weight_scale_bits": 12,
+      "bias_scale_bits": 12,
+      "output_scale_bits": 12,
+      "post_affine_shift_bits": 12,
+      "weight_shape": [
+        32,
+        192,
+        1,
+        1
+      ],
+      "parameter_owner": "server_only",
+      "shape_nchw": [
+        1,
+        32,
+        16,
+        16
+      ],
+      "input_shape_nchw": [
+        1,
+        192,
+        16,
+        16
+      ]
+    },
+    {
+      "id": 40,
+      "name": "features.6.residual",
+      "op": "ADD",
+      "inputs": [
+        32,
+        38
+      ],
+      "shape_nchw": [
+        1,
+        32,
+        16,
+        16
+      ],
+      "input_shape_nchw": [
+        1,
+        32,
+        16,
+        16
+      ]
+    },
+    {
+      "id": 41,
+      "name": "features.7.conv.0",
+      "op": "CIRCONV",
+      "inputs": [
+        40
+      ],
+      "Ci": 32,
+      "Co": 192,
+      "K": 1,
+      "stride": 1,
+      "padding": 0,
+      "groups": 1,
+      "block": 1,
+      "input_scale_bits": 12,
+      "weight_scale_bits": 12,
+      "bias_scale_bits": 12,
+      "output_scale_bits": 12,
+      "post_affine_shift_bits": 12,
+      "weight_shape": [
+        192,
+        32,
+        1,
+        1
+      ],
+      "parameter_owner": "server_only",
+      "shape_nchw": [
+        1,
+        192,
+        16,
+        16
+      ],
+      "input_shape_nchw": [
+        1,
+        32,
+        16,
+        16
+      ]
+    },
+    {
+      "id": 42,
+      "name": "features.7.conv.2",
+      "op": "RELU6",
+      "inputs": [
+        41
+      ],
+      "shape_nchw": [
+        1,
+        192,
+        16,
+        16
+      ],
+      "input_shape_nchw": [
+        1,
+        192,
+        16,
+        16
+      ]
+    },
+    {
+      "id": 43,
+      "name": "features.7.conv.3",
+      "op": "DEPTHWISE",
+      "inputs": [
+        42
+      ],
+      "Ci": 192,
+      "Co": 192,
+      "K": 3,
+      "stride": 2,
+      "padding": 1,
+      "groups": 192,
+      "block": 1,
+      "input_scale_bits": 12,
+      "weight_scale_bits": 12,
+      "bias_scale_bits": 12,
+      "output_scale_bits": 12,
+      "post_affine_shift_bits": 12,
+      "weight_shape": [
+        192,
+        1,
+        3,
+        3
+      ],
+      "parameter_owner": "server_only",
+      "shape_nchw": [
+        1,
+        192,
+        8,
+        8
+      ],
+      "input_shape_nchw": [
+        1,
+        192,
+        16,
+        16
+      ]
+    },
+    {
+      "id": 44,
+      "name": "features.7.conv.5",
+      "op": "RELU6",
+      "inputs": [
+        43
+      ],
+      "shape_nchw": [
+        1,
+        192,
+        8,
+        8
+      ],
+      "input_shape_nchw": [
+        1,
+        192,
+        8,
+        8
+      ]
+    },
+    {
+      "id": 45,
+      "name": "features.7.conv.6",
+      "op": "CIRCONV",
+      "inputs": [
+        44
+      ],
+      "Ci": 192,
+      "Co": 64,
+      "K": 1,
+      "stride": 1,
+      "padding": 0,
+      "groups": 1,
+      "block": 1,
+      "input_scale_bits": 12,
+      "weight_scale_bits": 12,
+      "bias_scale_bits": 12,
+      "output_scale_bits": 12,
+      "post_affine_shift_bits": 12,
+      "weight_shape": [
+        64,
+        192,
+        1,
+        1
+      ],
+      "parameter_owner": "server_only",
+      "shape_nchw": [
+        1,
+        64,
+        8,
+        8
+      ],
+      "input_shape_nchw": [
+        1,
+        192,
+        8,
+        8
+      ]
+    },
+    {
+      "id": 46,
+      "name": "features.8.conv.0",
+      "op": "CIRCONV",
+      "inputs": [
+        45
+      ],
+      "Ci": 64,
+      "Co": 384,
+      "K": 1,
+      "stride": 1,
+      "padding": 0,
+      "groups": 1,
+      "block": 16,
+      "input_scale_bits": 12,
+      "weight_scale_bits": 12,
+      "bias_scale_bits": 12,
+      "output_scale_bits": 12,
+      "post_affine_shift_bits": 12,
+      "weight_shape": [
+        384,
+        64,
+        1,
+        1
+      ],
+      "parameter_owner": "server_only",
+      "shape_nchw": [
+        1,
+        384,
+        8,
+        8
+      ],
+      "input_shape_nchw": [
+        1,
+        64,
+        8,
+        8
+      ]
+    },
+    {
+      "id": 48,
+      "name": "features.8.conv.2",
+      "op": "RELU6",
+      "inputs": [
+        46
+      ],
+      "shape_nchw": [
+        1,
+        384,
+        8,
+        8
+      ],
+      "input_shape_nchw": [
+        1,
+        384,
+        8,
+        8
+      ]
+    },
+    {
+      "id": 49,
+      "name": "features.8.conv.3",
+      "op": "DEPTHWISE",
+      "inputs": [
+        48
+      ],
+      "Ci": 384,
+      "Co": 384,
+      "K": 3,
+      "stride": 1,
+      "padding": 1,
+      "groups": 384,
+      "block": 1,
+      "input_scale_bits": 12,
+      "weight_scale_bits": 12,
+      "bias_scale_bits": 12,
+      "output_scale_bits": 12,
+      "post_affine_shift_bits": 12,
+      "weight_shape": [
+        384,
+        1,
+        3,
+        3
+      ],
+      "parameter_owner": "server_only",
+      "shape_nchw": [
+        1,
+        384,
+        8,
+        8
+      ],
+      "input_shape_nchw": [
+        1,
+        384,
+        8,
+        8
+      ]
+    },
+    {
+      "id": 50,
+      "name": "features.8.conv.5",
+      "op": "RELU6",
+      "inputs": [
+        49
+      ],
+      "shape_nchw": [
+        1,
+        384,
+        8,
+        8
+      ],
+      "input_shape_nchw": [
+        1,
+        384,
+        8,
+        8
+      ]
+    },
+    {
+      "id": 51,
+      "name": "features.8.conv.6",
+      "op": "CIRCONV",
+      "inputs": [
+        50
+      ],
+      "Ci": 384,
+      "Co": 64,
+      "K": 1,
+      "stride": 1,
+      "padding": 0,
+      "groups": 1,
+      "block": 16,
+      "input_scale_bits": 12,
+      "weight_scale_bits": 12,
+      "bias_scale_bits": 12,
+      "output_scale_bits": 12,
+      "post_affine_shift_bits": 12,
+      "weight_shape": [
+        64,
+        384,
+        1,
+        1
+      ],
+      "parameter_owner": "server_only",
+      "shape_nchw": [
+        1,
+        64,
+        8,
+        8
+      ],
+      "input_shape_nchw": [
+        1,
+        384,
+        8,
+        8
+      ]
+    },
+    {
+      "id": 53,
+      "name": "features.8.residual",
+      "op": "ADD",
+      "inputs": [
+        45,
+        51
+      ],
+      "shape_nchw": [
+        1,
+        64,
+        8,
+        8
+      ],
+      "input_shape_nchw": [
+        1,
+        64,
+        8,
+        8
+      ]
+    },
+    {
+      "id": 54,
+      "name": "features.9.conv.0",
+      "op": "CIRCONV",
+      "inputs": [
+        53
+      ],
+      "Ci": 64,
+      "Co": 384,
+      "K": 1,
+      "stride": 1,
+      "padding": 0,
+      "groups": 1,
+      "block": 16,
+      "input_scale_bits": 12,
+      "weight_scale_bits": 12,
+      "bias_scale_bits": 12,
+      "output_scale_bits": 12,
+      "post_affine_shift_bits": 12,
+      "weight_shape": [
+        384,
+        64,
+        1,
+        1
+      ],
+      "parameter_owner": "server_only",
+      "shape_nchw": [
+        1,
+        384,
+        8,
+        8
+      ],
+      "input_shape_nchw": [
+        1,
+        64,
+        8,
+        8
+      ]
+    },
+    {
+      "id": 56,
+      "name": "features.9.conv.2",
+      "op": "RELU6",
+      "inputs": [
+        54
+      ],
+      "shape_nchw": [
+        1,
+        384,
+        8,
+        8
+      ],
+      "input_shape_nchw": [
+        1,
+        384,
+        8,
+        8
+      ]
+    },
+    {
+      "id": 57,
+      "name": "features.9.conv.3",
+      "op": "DEPTHWISE",
+      "inputs": [
+        56
+      ],
+      "Ci": 384,
+      "Co": 384,
+      "K": 3,
+      "stride": 1,
+      "padding": 1,
+      "groups": 384,
+      "block": 1,
+      "input_scale_bits": 12,
+      "weight_scale_bits": 12,
+      "bias_scale_bits": 12,
+      "output_scale_bits": 12,
+      "post_affine_shift_bits": 12,
+      "weight_shape": [
+        384,
+        1,
+        3,
+        3
+      ],
+      "parameter_owner": "server_only",
+      "shape_nchw": [
+        1,
+        384,
+        8,
+        8
+      ],
+      "input_shape_nchw": [
+        1,
+        384,
+        8,
+        8
+      ]
+    },
+    {
+      "id": 58,
+      "name": "features.9.conv.5",
+      "op": "RELU6",
+      "inputs": [
+        57
+      ],
+      "shape_nchw": [
+        1,
+        384,
+        8,
+        8
+      ],
+      "input_shape_nchw": [
+        1,
+        384,
+        8,
+        8
+      ]
+    },
+    {
+      "id": 59,
+      "name": "features.9.conv.6",
+      "op": "CIRCONV",
+      "inputs": [
+        58
+      ],
+      "Ci": 384,
+      "Co": 64,
+      "K": 1,
+      "stride": 1,
+      "padding": 0,
+      "groups": 1,
+      "block": 16,
+      "input_scale_bits": 12,
+      "weight_scale_bits": 12,
+      "bias_scale_bits": 12,
+      "output_scale_bits": 12,
+      "post_affine_shift_bits": 12,
+      "weight_shape": [
+        64,
+        384,
+        1,
+        1
+      ],
+      "parameter_owner": "server_only",
+      "shape_nchw": [
+        1,
+        64,
+        8,
+        8
+      ],
+      "input_shape_nchw": [
+        1,
+        384,
+        8,
+        8
+      ]
+    },
+    {
+      "id": 61,
+      "name": "features.9.residual",
+      "op": "ADD",
+      "inputs": [
+        53,
+        59
+      ],
+      "shape_nchw": [
+        1,
+        64,
+        8,
+        8
+      ],
+      "input_shape_nchw": [
+        1,
+        64,
+        8,
+        8
+      ]
+    },
+    {
+      "id": 62,
+      "name": "features.10.conv.0",
+      "op": "CIRCONV",
+      "inputs": [
+        61
+      ],
+      "Ci": 64,
+      "Co": 384,
+      "K": 1,
+      "stride": 1,
+      "padding": 0,
+      "groups": 1,
+      "block": 16,
+      "input_scale_bits": 12,
+      "weight_scale_bits": 12,
+      "bias_scale_bits": 12,
+      "output_scale_bits": 12,
+      "post_affine_shift_bits": 12,
+      "weight_shape": [
+        384,
+        64,
+        1,
+        1
+      ],
+      "parameter_owner": "server_only",
+      "shape_nchw": [
+        1,
+        384,
+        8,
+        8
+      ],
+      "input_shape_nchw": [
+        1,
+        64,
+        8,
+        8
+      ]
+    },
+    {
+      "id": 64,
+      "name": "features.10.conv.2",
+      "op": "RELU6",
+      "inputs": [
+        62
+      ],
+      "shape_nchw": [
+        1,
+        384,
+        8,
+        8
+      ],
+      "input_shape_nchw": [
+        1,
+        384,
+        8,
+        8
+      ]
+    },
+    {
+      "id": 65,
+      "name": "features.10.conv.3",
+      "op": "DEPTHWISE",
+      "inputs": [
+        64
+      ],
+      "Ci": 384,
+      "Co": 384,
+      "K": 3,
+      "stride": 1,
+      "padding": 1,
+      "groups": 384,
+      "block": 1,
+      "input_scale_bits": 12,
+      "weight_scale_bits": 12,
+      "bias_scale_bits": 12,
+      "output_scale_bits": 12,
+      "post_affine_shift_bits": 12,
+      "weight_shape": [
+        384,
+        1,
+        3,
+        3
+      ],
+      "parameter_owner": "server_only",
+      "shape_nchw": [
+        1,
+        384,
+        8,
+        8
+      ],
+      "input_shape_nchw": [
+        1,
+        384,
+        8,
+        8
+      ]
+    },
+    {
+      "id": 66,
+      "name": "features.10.conv.5",
+      "op": "RELU6",
+      "inputs": [
+        65
+      ],
+      "shape_nchw": [
+        1,
+        384,
+        8,
+        8
+      ],
+      "input_shape_nchw": [
+        1,
+        384,
+        8,
+        8
+      ]
+    },
+    {
+      "id": 67,
+      "name": "features.10.conv.6",
+      "op": "CIRCONV",
+      "inputs": [
+        66
+      ],
+      "Ci": 384,
+      "Co": 64,
+      "K": 1,
+      "stride": 1,
+      "padding": 0,
+      "groups": 1,
+      "block": 16,
+      "input_scale_bits": 12,
+      "weight_scale_bits": 12,
+      "bias_scale_bits": 12,
+      "output_scale_bits": 12,
+      "post_affine_shift_bits": 12,
+      "weight_shape": [
+        64,
+        384,
+        1,
+        1
+      ],
+      "parameter_owner": "server_only",
+      "shape_nchw": [
+        1,
+        64,
+        8,
+        8
+      ],
+      "input_shape_nchw": [
+        1,
+        384,
+        8,
+        8
+      ]
+    },
+    {
+      "id": 69,
+      "name": "features.10.residual",
+      "op": "ADD",
+      "inputs": [
+        61,
+        67
+      ],
+      "shape_nchw": [
+        1,
+        64,
+        8,
+        8
+      ],
+      "input_shape_nchw": [
+        1,
+        64,
+        8,
+        8
+      ]
+    },
+    {
+      "id": 70,
+      "name": "features.11.conv.0",
+      "op": "CIRCONV",
+      "inputs": [
+        69
+      ],
+      "Ci": 64,
+      "Co": 384,
+      "K": 1,
+      "stride": 1,
+      "padding": 0,
+      "groups": 1,
+      "block": 2,
+      "input_scale_bits": 12,
+      "weight_scale_bits": 12,
+      "bias_scale_bits": 12,
+      "output_scale_bits": 12,
+      "post_affine_shift_bits": 12,
+      "weight_shape": [
+        384,
+        64,
+        1,
+        1
+      ],
+      "parameter_owner": "server_only",
+      "shape_nchw": [
+        1,
+        384,
+        8,
+        8
+      ],
+      "input_shape_nchw": [
+        1,
+        64,
+        8,
+        8
+      ]
+    },
+    {
+      "id": 72,
+      "name": "features.11.conv.2",
+      "op": "RELU6",
+      "inputs": [
+        70
+      ],
+      "shape_nchw": [
+        1,
+        384,
+        8,
+        8
+      ],
+      "input_shape_nchw": [
+        1,
+        384,
+        8,
+        8
+      ]
+    },
+    {
+      "id": 73,
+      "name": "features.11.conv.3",
+      "op": "DEPTHWISE",
+      "inputs": [
+        72
+      ],
+      "Ci": 384,
+      "Co": 384,
+      "K": 3,
+      "stride": 1,
+      "padding": 1,
+      "groups": 384,
+      "block": 1,
+      "input_scale_bits": 12,
+      "weight_scale_bits": 12,
+      "bias_scale_bits": 12,
+      "output_scale_bits": 12,
+      "post_affine_shift_bits": 12,
+      "weight_shape": [
+        384,
+        1,
+        3,
+        3
+      ],
+      "parameter_owner": "server_only",
+      "shape_nchw": [
+        1,
+        384,
+        8,
+        8
+      ],
+      "input_shape_nchw": [
+        1,
+        384,
+        8,
+        8
+      ]
+    },
+    {
+      "id": 74,
+      "name": "features.11.conv.5",
+      "op": "RELU6",
+      "inputs": [
+        73
+      ],
+      "shape_nchw": [
+        1,
+        384,
+        8,
+        8
+      ],
+      "input_shape_nchw": [
+        1,
+        384,
+        8,
+        8
+      ]
+    },
+    {
+      "id": 75,
+      "name": "features.11.conv.6",
+      "op": "CIRCONV",
+      "inputs": [
+        74
+      ],
+      "Ci": 384,
+      "Co": 96,
+      "K": 1,
+      "stride": 1,
+      "padding": 0,
+      "groups": 1,
+      "block": 2,
+      "input_scale_bits": 12,
+      "weight_scale_bits": 12,
+      "bias_scale_bits": 12,
+      "output_scale_bits": 12,
+      "post_affine_shift_bits": 12,
+      "weight_shape": [
+        96,
+        384,
+        1,
+        1
+      ],
+      "parameter_owner": "server_only",
+      "shape_nchw": [
+        1,
+        96,
+        8,
+        8
+      ],
+      "input_shape_nchw": [
+        1,
+        384,
+        8,
+        8
+      ]
+    },
+    {
+      "id": 77,
+      "name": "features.12.conv.0",
+      "op": "CIRCONV",
+      "inputs": [
+        75
+      ],
+      "Ci": 96,
+      "Co": 576,
+      "K": 1,
+      "stride": 1,
+      "padding": 0,
+      "groups": 1,
+      "block": 16,
+      "input_scale_bits": 12,
+      "weight_scale_bits": 12,
+      "bias_scale_bits": 12,
+      "output_scale_bits": 12,
+      "post_affine_shift_bits": 12,
+      "weight_shape": [
+        576,
+        96,
+        1,
+        1
+      ],
+      "parameter_owner": "server_only",
+      "shape_nchw": [
+        1,
+        576,
+        8,
+        8
+      ],
+      "input_shape_nchw": [
+        1,
+        96,
+        8,
+        8
+      ]
+    },
+    {
+      "id": 79,
+      "name": "features.12.conv.2",
+      "op": "RELU6",
+      "inputs": [
+        77
+      ],
+      "shape_nchw": [
+        1,
+        576,
+        8,
+        8
+      ],
+      "input_shape_nchw": [
+        1,
+        576,
+        8,
+        8
+      ]
+    },
+    {
+      "id": 80,
+      "name": "features.12.conv.3",
+      "op": "DEPTHWISE",
+      "inputs": [
+        79
+      ],
+      "Ci": 576,
+      "Co": 576,
+      "K": 3,
+      "stride": 1,
+      "padding": 1,
+      "groups": 576,
+      "block": 1,
+      "input_scale_bits": 12,
+      "weight_scale_bits": 12,
+      "bias_scale_bits": 12,
+      "output_scale_bits": 12,
+      "post_affine_shift_bits": 12,
+      "weight_shape": [
+        576,
+        1,
+        3,
+        3
+      ],
+      "parameter_owner": "server_only",
+      "shape_nchw": [
+        1,
+        576,
+        8,
+        8
+      ],
+      "input_shape_nchw": [
+        1,
+        576,
+        8,
+        8
+      ]
+    },
+    {
+      "id": 81,
+      "name": "features.12.conv.5",
+      "op": "RELU6",
+      "inputs": [
+        80
+      ],
+      "shape_nchw": [
+        1,
+        576,
+        8,
+        8
+      ],
+      "input_shape_nchw": [
+        1,
+        576,
+        8,
+        8
+      ]
+    },
+    {
+      "id": 82,
+      "name": "features.12.conv.6",
+      "op": "CIRCONV",
+      "inputs": [
+        81
+      ],
+      "Ci": 576,
+      "Co": 96,
+      "K": 1,
+      "stride": 1,
+      "padding": 0,
+      "groups": 1,
+      "block": 16,
+      "input_scale_bits": 12,
+      "weight_scale_bits": 12,
+      "bias_scale_bits": 12,
+      "output_scale_bits": 12,
+      "post_affine_shift_bits": 12,
+      "weight_shape": [
+        96,
+        576,
+        1,
+        1
+      ],
+      "parameter_owner": "server_only",
+      "shape_nchw": [
+        1,
+        96,
+        8,
+        8
+      ],
+      "input_shape_nchw": [
+        1,
+        576,
+        8,
+        8
+      ]
+    },
+    {
+      "id": 84,
+      "name": "features.12.residual",
+      "op": "ADD",
+      "inputs": [
+        75,
+        82
+      ],
+      "shape_nchw": [
+        1,
+        96,
+        8,
+        8
+      ],
+      "input_shape_nchw": [
+        1,
+        96,
+        8,
+        8
+      ]
+    },
+    {
+      "id": 85,
+      "name": "features.13.conv.0",
+      "op": "CIRCONV",
+      "inputs": [
+        84
+      ],
+      "Ci": 96,
+      "Co": 576,
+      "K": 1,
+      "stride": 1,
+      "padding": 0,
+      "groups": 1,
+      "block": 16,
+      "input_scale_bits": 12,
+      "weight_scale_bits": 12,
+      "bias_scale_bits": 12,
+      "output_scale_bits": 12,
+      "post_affine_shift_bits": 12,
+      "weight_shape": [
+        576,
+        96,
+        1,
+        1
+      ],
+      "parameter_owner": "server_only",
+      "shape_nchw": [
+        1,
+        576,
+        8,
+        8
+      ],
+      "input_shape_nchw": [
+        1,
+        96,
+        8,
+        8
+      ]
+    },
+    {
+      "id": 87,
+      "name": "features.13.conv.2",
+      "op": "RELU6",
+      "inputs": [
+        85
+      ],
+      "shape_nchw": [
+        1,
+        576,
+        8,
+        8
+      ],
+      "input_shape_nchw": [
+        1,
+        576,
+        8,
+        8
+      ]
+    },
+    {
+      "id": 88,
+      "name": "features.13.conv.3",
+      "op": "DEPTHWISE",
+      "inputs": [
+        87
+      ],
+      "Ci": 576,
+      "Co": 576,
+      "K": 3,
+      "stride": 1,
+      "padding": 1,
+      "groups": 576,
+      "block": 1,
+      "input_scale_bits": 12,
+      "weight_scale_bits": 12,
+      "bias_scale_bits": 12,
+      "output_scale_bits": 12,
+      "post_affine_shift_bits": 12,
+      "weight_shape": [
+        576,
+        1,
+        3,
+        3
+      ],
+      "parameter_owner": "server_only",
+      "shape_nchw": [
+        1,
+        576,
+        8,
+        8
+      ],
+      "input_shape_nchw": [
+        1,
+        576,
+        8,
+        8
+      ]
+    },
+    {
+      "id": 89,
+      "name": "features.13.conv.5",
+      "op": "RELU6",
+      "inputs": [
+        88
+      ],
+      "shape_nchw": [
+        1,
+        576,
+        8,
+        8
+      ],
+      "input_shape_nchw": [
+        1,
+        576,
+        8,
+        8
+      ]
+    },
+    {
+      "id": 90,
+      "name": "features.13.conv.6",
+      "op": "CIRCONV",
+      "inputs": [
+        89
+      ],
+      "Ci": 576,
+      "Co": 96,
+      "K": 1,
+      "stride": 1,
+      "padding": 0,
+      "groups": 1,
+      "block": 16,
+      "input_scale_bits": 12,
+      "weight_scale_bits": 12,
+      "bias_scale_bits": 12,
+      "output_scale_bits": 12,
+      "post_affine_shift_bits": 12,
+      "weight_shape": [
+        96,
+        576,
+        1,
+        1
+      ],
+      "parameter_owner": "server_only",
+      "shape_nchw": [
+        1,
+        96,
+        8,
+        8
+      ],
+      "input_shape_nchw": [
+        1,
+        576,
+        8,
+        8
+      ]
+    },
+    {
+      "id": 92,
+      "name": "features.13.residual",
+      "op": "ADD",
+      "inputs": [
+        84,
+        90
+      ],
+      "shape_nchw": [
+        1,
+        96,
+        8,
+        8
+      ],
+      "input_shape_nchw": [
+        1,
+        96,
+        8,
+        8
+      ]
+    },
+    {
+      "id": 93,
+      "name": "features.14.conv.0",
+      "op": "CIRCONV",
+      "inputs": [
+        92
+      ],
+      "Ci": 96,
+      "Co": 576,
+      "K": 1,
+      "stride": 1,
+      "padding": 0,
+      "groups": 1,
+      "block": 2,
+      "input_scale_bits": 12,
+      "weight_scale_bits": 12,
+      "bias_scale_bits": 12,
+      "output_scale_bits": 12,
+      "post_affine_shift_bits": 12,
+      "weight_shape": [
+        576,
+        96,
+        1,
+        1
+      ],
+      "parameter_owner": "server_only",
+      "shape_nchw": [
+        1,
+        576,
+        8,
+        8
+      ],
+      "input_shape_nchw": [
+        1,
+        96,
+        8,
+        8
+      ]
+    },
+    {
+      "id": 95,
+      "name": "features.14.conv.2",
+      "op": "RELU6",
+      "inputs": [
+        93
+      ],
+      "shape_nchw": [
+        1,
+        576,
+        8,
+        8
+      ],
+      "input_shape_nchw": [
+        1,
+        576,
+        8,
+        8
+      ]
+    },
+    {
+      "id": 96,
+      "name": "features.14.conv.3",
+      "op": "DEPTHWISE",
+      "inputs": [
+        95
+      ],
+      "Ci": 576,
+      "Co": 576,
+      "K": 3,
+      "stride": 2,
+      "padding": 1,
+      "groups": 576,
+      "block": 1,
+      "input_scale_bits": 12,
+      "weight_scale_bits": 12,
+      "bias_scale_bits": 12,
+      "output_scale_bits": 12,
+      "post_affine_shift_bits": 12,
+      "weight_shape": [
+        576,
+        1,
+        3,
+        3
+      ],
+      "parameter_owner": "server_only",
+      "shape_nchw": [
+        1,
+        576,
+        4,
+        4
+      ],
+      "input_shape_nchw": [
+        1,
+        576,
+        8,
+        8
+      ]
+    },
+    {
+      "id": 97,
+      "name": "features.14.conv.5",
+      "op": "RELU6",
+      "inputs": [
+        96
+      ],
+      "shape_nchw": [
+        1,
+        576,
+        4,
+        4
+      ],
+      "input_shape_nchw": [
+        1,
+        576,
+        4,
+        4
+      ]
+    },
+    {
+      "id": 98,
+      "name": "features.14.conv.6",
+      "op": "CIRCONV",
+      "inputs": [
+        97
+      ],
+      "Ci": 576,
+      "Co": 160,
+      "K": 1,
+      "stride": 1,
+      "padding": 0,
+      "groups": 1,
+      "block": 2,
+      "input_scale_bits": 12,
+      "weight_scale_bits": 12,
+      "bias_scale_bits": 12,
+      "output_scale_bits": 12,
+      "post_affine_shift_bits": 12,
+      "weight_shape": [
+        160,
+        576,
+        1,
+        1
+      ],
+      "parameter_owner": "server_only",
+      "shape_nchw": [
+        1,
+        160,
+        4,
+        4
+      ],
+      "input_shape_nchw": [
+        1,
+        576,
+        4,
+        4
+      ]
+    },
+    {
+      "id": 100,
+      "name": "features.15.conv.0",
+      "op": "CIRCONV",
+      "inputs": [
+        98
+      ],
+      "Ci": 160,
+      "Co": 960,
+      "K": 1,
+      "stride": 1,
+      "padding": 0,
+      "groups": 1,
+      "block": 16,
+      "input_scale_bits": 12,
+      "weight_scale_bits": 12,
+      "bias_scale_bits": 12,
+      "output_scale_bits": 12,
+      "post_affine_shift_bits": 12,
+      "weight_shape": [
+        960,
+        160,
+        1,
+        1
+      ],
+      "parameter_owner": "server_only",
+      "shape_nchw": [
+        1,
+        960,
+        4,
+        4
+      ],
+      "input_shape_nchw": [
+        1,
+        160,
+        4,
+        4
+      ]
+    },
+    {
+      "id": 102,
+      "name": "features.15.conv.2",
+      "op": "RELU6",
+      "inputs": [
+        100
+      ],
+      "shape_nchw": [
+        1,
+        960,
+        4,
+        4
+      ],
+      "input_shape_nchw": [
+        1,
+        960,
+        4,
+        4
+      ]
+    },
+    {
+      "id": 103,
+      "name": "features.15.conv.3",
+      "op": "DEPTHWISE",
+      "inputs": [
+        102
+      ],
+      "Ci": 960,
+      "Co": 960,
+      "K": 3,
+      "stride": 1,
+      "padding": 1,
+      "groups": 960,
+      "block": 1,
+      "input_scale_bits": 12,
+      "weight_scale_bits": 12,
+      "bias_scale_bits": 12,
+      "output_scale_bits": 12,
+      "post_affine_shift_bits": 12,
+      "weight_shape": [
+        960,
+        1,
+        3,
+        3
+      ],
+      "parameter_owner": "server_only",
+      "shape_nchw": [
+        1,
+        960,
+        4,
+        4
+      ],
+      "input_shape_nchw": [
+        1,
+        960,
+        4,
+        4
+      ]
+    },
+    {
+      "id": 104,
+      "name": "features.15.conv.5",
+      "op": "RELU6",
+      "inputs": [
+        103
+      ],
+      "shape_nchw": [
+        1,
+        960,
+        4,
+        4
+      ],
+      "input_shape_nchw": [
+        1,
+        960,
+        4,
+        4
+      ]
+    },
+    {
+      "id": 105,
+      "name": "features.15.conv.6",
+      "op": "CIRCONV",
+      "inputs": [
+        104
+      ],
+      "Ci": 960,
+      "Co": 160,
+      "K": 1,
+      "stride": 1,
+      "padding": 0,
+      "groups": 1,
+      "block": 16,
+      "input_scale_bits": 12,
+      "weight_scale_bits": 12,
+      "bias_scale_bits": 12,
+      "output_scale_bits": 12,
+      "post_affine_shift_bits": 12,
+      "weight_shape": [
+        160,
+        960,
+        1,
+        1
+      ],
+      "parameter_owner": "server_only",
+      "shape_nchw": [
+        1,
+        160,
+        4,
+        4
+      ],
+      "input_shape_nchw": [
+        1,
+        960,
+        4,
+        4
+      ]
+    },
+    {
+      "id": 107,
+      "name": "features.15.residual",
+      "op": "ADD",
+      "inputs": [
+        98,
+        105
+      ],
+      "shape_nchw": [
+        1,
+        160,
+        4,
+        4
+      ],
+      "input_shape_nchw": [
+        1,
+        160,
+        4,
+        4
+      ]
+    },
+    {
+      "id": 108,
+      "name": "features.16.conv.0",
+      "op": "CIRCONV",
+      "inputs": [
+        107
+      ],
+      "Ci": 160,
+      "Co": 960,
+      "K": 1,
+      "stride": 1,
+      "padding": 0,
+      "groups": 1,
+      "block": 8,
+      "input_scale_bits": 12,
+      "weight_scale_bits": 12,
+      "bias_scale_bits": 12,
+      "output_scale_bits": 12,
+      "post_affine_shift_bits": 12,
+      "weight_shape": [
+        960,
+        160,
+        1,
+        1
+      ],
+      "parameter_owner": "server_only",
+      "shape_nchw": [
+        1,
+        960,
+        4,
+        4
+      ],
+      "input_shape_nchw": [
+        1,
+        160,
+        4,
+        4
+      ]
+    },
+    {
+      "id": 110,
+      "name": "features.16.conv.2",
+      "op": "RELU6",
+      "inputs": [
+        108
+      ],
+      "shape_nchw": [
+        1,
+        960,
+        4,
+        4
+      ],
+      "input_shape_nchw": [
+        1,
+        960,
+        4,
+        4
+      ]
+    },
+    {
+      "id": 111,
+      "name": "features.16.conv.3",
+      "op": "DEPTHWISE",
+      "inputs": [
+        110
+      ],
+      "Ci": 960,
+      "Co": 960,
+      "K": 3,
+      "stride": 1,
+      "padding": 1,
+      "groups": 960,
+      "block": 1,
+      "input_scale_bits": 12,
+      "weight_scale_bits": 12,
+      "bias_scale_bits": 12,
+      "output_scale_bits": 12,
+      "post_affine_shift_bits": 12,
+      "weight_shape": [
+        960,
+        1,
+        3,
+        3
+      ],
+      "parameter_owner": "server_only",
+      "shape_nchw": [
+        1,
+        960,
+        4,
+        4
+      ],
+      "input_shape_nchw": [
+        1,
+        960,
+        4,
+        4
+      ]
+    },
+    {
+      "id": 112,
+      "name": "features.16.conv.5",
+      "op": "RELU6",
+      "inputs": [
+        111
+      ],
+      "shape_nchw": [
+        1,
+        960,
+        4,
+        4
+      ],
+      "input_shape_nchw": [
+        1,
+        960,
+        4,
+        4
+      ]
+    },
+    {
+      "id": 113,
+      "name": "features.16.conv.6",
+      "op": "CIRCONV",
+      "inputs": [
+        112
+      ],
+      "Ci": 960,
+      "Co": 160,
+      "K": 1,
+      "stride": 1,
+      "padding": 0,
+      "groups": 1,
+      "block": 16,
+      "input_scale_bits": 12,
+      "weight_scale_bits": 12,
+      "bias_scale_bits": 12,
+      "output_scale_bits": 12,
+      "post_affine_shift_bits": 12,
+      "weight_shape": [
+        160,
+        960,
+        1,
+        1
+      ],
+      "parameter_owner": "server_only",
+      "shape_nchw": [
+        1,
+        160,
+        4,
+        4
+      ],
+      "input_shape_nchw": [
+        1,
+        960,
+        4,
+        4
+      ]
+    },
+    {
+      "id": 115,
+      "name": "features.16.residual",
+      "op": "ADD",
+      "inputs": [
+        107,
+        113
+      ],
+      "shape_nchw": [
+        1,
+        160,
+        4,
+        4
+      ],
+      "input_shape_nchw": [
+        1,
+        160,
+        4,
+        4
+      ]
+    },
+    {
+      "id": 116,
+      "name": "features.17.conv.0",
+      "op": "CIRCONV",
+      "inputs": [
+        115
+      ],
+      "Ci": 160,
+      "Co": 960,
+      "K": 1,
+      "stride": 1,
+      "padding": 0,
+      "groups": 1,
+      "block": 2,
+      "input_scale_bits": 12,
+      "weight_scale_bits": 12,
+      "bias_scale_bits": 12,
+      "output_scale_bits": 12,
+      "post_affine_shift_bits": 12,
+      "weight_shape": [
+        960,
+        160,
+        1,
+        1
+      ],
+      "parameter_owner": "server_only",
+      "shape_nchw": [
+        1,
+        960,
+        4,
+        4
+      ],
+      "input_shape_nchw": [
+        1,
+        160,
+        4,
+        4
+      ]
+    },
+    {
+      "id": 118,
+      "name": "features.17.conv.2",
+      "op": "RELU6",
+      "inputs": [
+        116
+      ],
+      "shape_nchw": [
+        1,
+        960,
+        4,
+        4
+      ],
+      "input_shape_nchw": [
+        1,
+        960,
+        4,
+        4
+      ]
+    },
+    {
+      "id": 119,
+      "name": "features.17.conv.3",
+      "op": "DEPTHWISE",
+      "inputs": [
+        118
+      ],
+      "Ci": 960,
+      "Co": 960,
+      "K": 3,
+      "stride": 1,
+      "padding": 1,
+      "groups": 960,
+      "block": 1,
+      "input_scale_bits": 12,
+      "weight_scale_bits": 12,
+      "bias_scale_bits": 12,
+      "output_scale_bits": 12,
+      "post_affine_shift_bits": 12,
+      "weight_shape": [
+        960,
+        1,
+        3,
+        3
+      ],
+      "parameter_owner": "server_only",
+      "shape_nchw": [
+        1,
+        960,
+        4,
+        4
+      ],
+      "input_shape_nchw": [
+        1,
+        960,
+        4,
+        4
+      ]
+    },
+    {
+      "id": 120,
+      "name": "features.17.conv.5",
+      "op": "RELU6",
+      "inputs": [
+        119
+      ],
+      "shape_nchw": [
+        1,
+        960,
+        4,
+        4
+      ],
+      "input_shape_nchw": [
+        1,
+        960,
+        4,
+        4
+      ]
+    },
+    {
+      "id": 121,
+      "name": "features.17.conv.6",
+      "op": "CIRCONV",
+      "inputs": [
+        120
+      ],
+      "Ci": 960,
+      "Co": 320,
+      "K": 1,
+      "stride": 1,
+      "padding": 0,
+      "groups": 1,
+      "block": 8,
+      "input_scale_bits": 12,
+      "weight_scale_bits": 12,
+      "bias_scale_bits": 12,
+      "output_scale_bits": 12,
+      "post_affine_shift_bits": 12,
+      "weight_shape": [
+        320,
+        960,
+        1,
+        1
+      ],
+      "parameter_owner": "server_only",
+      "shape_nchw": [
+        1,
+        320,
+        4,
+        4
+      ],
+      "input_shape_nchw": [
+        1,
+        960,
+        4,
+        4
+      ]
+    },
+    {
+      "id": 123,
+      "name": "conv.0",
+      "op": "CONV",
+      "inputs": [
+        121
+      ],
+      "Ci": 320,
+      "Co": 1280,
+      "K": 1,
+      "stride": 1,
+      "padding": 0,
+      "groups": 1,
+      "block": 1,
+      "input_scale_bits": 12,
+      "weight_scale_bits": 12,
+      "bias_scale_bits": 12,
+      "output_scale_bits": 12,
+      "post_affine_shift_bits": 12,
+      "weight_shape": [
+        1280,
+        320,
+        1,
+        1
+      ],
+      "parameter_owner": "server_only",
+      "shape_nchw": [
+        1,
+        1280,
+        4,
+        4
+      ],
+      "input_shape_nchw": [
+        1,
+        320,
+        4,
+        4
+      ]
+    },
+    {
+      "id": 124,
+      "name": "conv.2",
+      "op": "RELU6",
+      "inputs": [
+        123
+      ],
+      "shape_nchw": [
+        1,
+        1280,
+        4,
+        4
+      ],
+      "input_shape_nchw": [
+        1,
+        1280,
+        4,
+        4
+      ]
+    },
+    {
+      "id": 125,
+      "name": "avgpool",
+      "op": "AVGPOOL",
+      "inputs": [
+        124
+      ],
+      "shift_bits": 4,
+      "shape_nchw": [
+        1,
+        1280,
+        1,
+        1
+      ],
+      "input_shape_nchw": [
+        1,
+        1280,
+        4,
+        4
+      ]
+    },
+    {
+      "id": 126,
+      "name": "classifier",
+      "op": "FC",
+      "inputs": [
+        125
+      ],
+      "Ci": 1280,
+      "Co": 100,
+      "K": 1,
+      "stride": 1,
+      "padding": 0,
+      "groups": 1,
+      "block": 1,
+      "input_scale_bits": 12,
+      "weight_scale_bits": 12,
+      "bias_scale_bits": 12,
+      "output_scale_bits": 12,
+      "post_affine_shift_bits": 12,
+      "weight_shape": [
+        100,
+        1280
+      ],
+      "parameter_owner": "server_only",
+      "shape_nchw": [
+        1,
+        100
+      ],
+      "input_shape_nchw": [
+        1,
+        1280
+      ]
+    }
+  ],
+  "output_id": 126,
+  "public_metadata": "architecture, shapes, block schedule, fixed-point policy",
+  "numeric_policy": "Derived model. Per-affine Q12 floors; modulus not admitted.",
+  "folded_BN": [
+    {
+      "conv": "features.0.0",
+      "bn": "features.0.1",
+      "block": 1,
+      "cyclic_structure_preserved": true,
+      "semantics": "checkpoint_exact_float_fold"
+    },
+    {
+      "conv": "features.1.conv.0",
+      "bn": "features.1.conv.1",
+      "block": 1,
+      "cyclic_structure_preserved": true,
+      "semantics": "checkpoint_exact_float_fold"
+    },
+    {
+      "conv": "features.1.conv.3",
+      "bn": "features.1.conv.4",
+      "block": 1,
+      "cyclic_structure_preserved": true,
+      "semantics": "checkpoint_exact_float_fold"
+    },
+    {
+      "conv": "features.2.conv.0",
+      "bn": "features.2.conv.1",
+      "block": 1,
+      "cyclic_structure_preserved": true,
+      "semantics": "checkpoint_exact_float_fold"
+    },
+    {
+      "conv": "features.2.conv.3",
+      "bn": "features.2.conv.4",
+      "block": 1,
+      "cyclic_structure_preserved": true,
+      "semantics": "checkpoint_exact_float_fold"
+    },
+    {
+      "conv": "features.2.conv.6",
+      "bn": "features.2.conv.7",
+      "block": 1,
+      "cyclic_structure_preserved": true,
+      "semantics": "checkpoint_exact_float_fold"
+    },
+    {
+      "conv": "features.3.conv.3",
+      "bn": "features.3.conv.4",
+      "block": 1,
+      "cyclic_structure_preserved": true,
+      "semantics": "checkpoint_exact_float_fold"
+    },
+    {
+      "conv": "features.4.conv.3",
+      "bn": "features.4.conv.4",
+      "block": 1,
+      "cyclic_structure_preserved": true,
+      "semantics": "checkpoint_exact_float_fold"
+    },
+    {
+      "conv": "features.4.conv.6",
+      "bn": "features.4.conv.7",
+      "block": 1,
+      "cyclic_structure_preserved": true,
+      "semantics": "checkpoint_exact_float_fold"
+    },
+    {
+      "conv": "features.5.conv.3",
+      "bn": "features.5.conv.4",
+      "block": 1,
+      "cyclic_structure_preserved": true,
+      "semantics": "checkpoint_exact_float_fold"
+    },
+    {
+      "conv": "features.6.conv.3",
+      "bn": "features.6.conv.4",
+      "block": 1,
+      "cyclic_structure_preserved": true,
+      "semantics": "checkpoint_exact_float_fold"
+    },
+    {
+      "conv": "features.7.conv.0",
+      "bn": "features.7.conv.1",
+      "block": 1,
+      "cyclic_structure_preserved": true,
+      "semantics": "checkpoint_exact_float_fold"
+    },
+    {
+      "conv": "features.7.conv.3",
+      "bn": "features.7.conv.4",
+      "block": 1,
+      "cyclic_structure_preserved": true,
+      "semantics": "checkpoint_exact_float_fold"
+    },
+    {
+      "conv": "features.7.conv.6",
+      "bn": "features.7.conv.7",
+      "block": 1,
+      "cyclic_structure_preserved": true,
+      "semantics": "checkpoint_exact_float_fold"
+    },
+    {
+      "conv": "features.8.conv.3",
+      "bn": "features.8.conv.4",
+      "block": 1,
+      "cyclic_structure_preserved": true,
+      "semantics": "checkpoint_exact_float_fold"
+    },
+    {
+      "conv": "features.9.conv.3",
+      "bn": "features.9.conv.4",
+      "block": 1,
+      "cyclic_structure_preserved": true,
+      "semantics": "checkpoint_exact_float_fold"
+    },
+    {
+      "conv": "features.10.conv.3",
+      "bn": "features.10.conv.4",
+      "block": 1,
+      "cyclic_structure_preserved": true,
+      "semantics": "checkpoint_exact_float_fold"
+    },
+    {
+      "conv": "features.11.conv.3",
+      "bn": "features.11.conv.4",
+      "block": 1,
+      "cyclic_structure_preserved": true,
+      "semantics": "checkpoint_exact_float_fold"
+    },
+    {
+      "conv": "features.12.conv.3",
+      "bn": "features.12.conv.4",
+      "block": 1,
+      "cyclic_structure_preserved": true,
+      "semantics": "checkpoint_exact_float_fold"
+    },
+    {
+      "conv": "features.13.conv.3",
+      "bn": "features.13.conv.4",
+      "block": 1,
+      "cyclic_structure_preserved": true,
+      "semantics": "checkpoint_exact_float_fold"
+    },
+    {
+      "conv": "features.14.conv.3",
+      "bn": "features.14.conv.4",
+      "block": 1,
+      "cyclic_structure_preserved": true,
+      "semantics": "checkpoint_exact_float_fold"
+    },
+    {
+      "conv": "features.15.conv.3",
+      "bn": "features.15.conv.4",
+      "block": 1,
+      "cyclic_structure_preserved": true,
+      "semantics": "checkpoint_exact_float_fold"
+    },
+    {
+      "conv": "features.16.conv.3",
+      "bn": "features.16.conv.4",
+      "block": 1,
+      "cyclic_structure_preserved": true,
+      "semantics": "checkpoint_exact_float_fold"
+    },
+    {
+      "conv": "features.17.conv.3",
+      "bn": "features.17.conv.4",
+      "block": 1,
+      "cyclic_structure_preserved": true,
+      "semantics": "checkpoint_exact_float_fold"
+    },
+    {
+      "conv": "conv.0",
+      "bn": "conv.1",
+      "block": 1,
+      "cyclic_structure_preserved": true,
+      "semantics": "checkpoint_exact_float_fold"
+    }
+  ],
+  "separate_private_BN": [
+    {
+      "conv": "features.3.conv.0",
+      "bn": "features.3.conv.1",
+      "reason": "checkpoint running variance is not block-constant; ordinary fold destroys circulancy"
+    },
+    {
+      "conv": "features.3.conv.6",
+      "bn": "features.3.conv.7",
+      "reason": "checkpoint running variance is not block-constant; ordinary fold destroys circulancy"
+    },
+    {
+      "conv": "features.4.conv.0",
+      "bn": "features.4.conv.1",
+      "reason": "checkpoint running variance is not block-constant; ordinary fold destroys circulancy"
+    },
+    {
+      "conv": "features.5.conv.0",
+      "bn": "features.5.conv.1",
+      "reason": "checkpoint running variance is not block-constant; ordinary fold destroys circulancy"
+    },
+    {
+      "conv": "features.5.conv.6",
+      "bn": "features.5.conv.7",
+      "reason": "checkpoint running variance is not block-constant; ordinary fold destroys circulancy"
+    },
+    {
+      "conv": "features.6.conv.0",
+      "bn": "features.6.conv.1",
+      "reason": "checkpoint running variance is not block-constant; ordinary fold destroys circulancy"
+    },
+    {
+      "conv": "features.6.conv.6",
+      "bn": "features.6.conv.7",
+      "reason": "checkpoint running variance is not block-constant; ordinary fold destroys circulancy"
+    },
+    {
+      "conv": "features.8.conv.0",
+      "bn": "features.8.conv.1",
+      "reason": "checkpoint running variance is not block-constant; ordinary fold destroys circulancy"
+    },
+    {
+      "conv": "features.8.conv.6",
+      "bn": "features.8.conv.7",
+      "reason": "checkpoint running variance is not block-constant; ordinary fold destroys circulancy"
+    },
+    {
+      "conv": "features.9.conv.0",
+      "bn": "features.9.conv.1",
+      "reason": "checkpoint running variance is not block-constant; ordinary fold destroys circulancy"
+    },
+    {
+      "conv": "features.9.conv.6",
+      "bn": "features.9.conv.7",
+      "reason": "checkpoint running variance is not block-constant; ordinary fold destroys circulancy"
+    },
+    {
+      "conv": "features.10.conv.0",
+      "bn": "features.10.conv.1",
+      "reason": "checkpoint running variance is not block-constant; ordinary fold destroys circulancy"
+    },
+    {
+      "conv": "features.10.conv.6",
+      "bn": "features.10.conv.7",
+      "reason": "checkpoint running variance is not block-constant; ordinary fold destroys circulancy"
+    },
+    {
+      "conv": "features.11.conv.0",
+      "bn": "features.11.conv.1",
+      "reason": "checkpoint running variance is not block-constant; ordinary fold destroys circulancy"
+    },
+    {
+      "conv": "features.11.conv.6",
+      "bn": "features.11.conv.7",
+      "reason": "checkpoint running variance is not block-constant; ordinary fold destroys circulancy"
+    },
+    {
+      "conv": "features.12.conv.0",
+      "bn": "features.12.conv.1",
+      "reason": "checkpoint running variance is not block-constant; ordinary fold destroys circulancy"
+    },
+    {
+      "conv": "features.12.conv.6",
+      "bn": "features.12.conv.7",
+      "reason": "checkpoint running variance is not block-constant; ordinary fold destroys circulancy"
+    },
+    {
+      "conv": "features.13.conv.0",
+      "bn": "features.13.conv.1",
+      "reason": "checkpoint running variance is not block-constant; ordinary fold destroys circulancy"
+    },
+    {
+      "conv": "features.13.conv.6",
+      "bn": "features.13.conv.7",
+      "reason": "checkpoint running variance is not block-constant; ordinary fold destroys circulancy"
+    },
+    {
+      "conv": "features.14.conv.0",
+      "bn": "features.14.conv.1",
+      "reason": "checkpoint running variance is not block-constant; ordinary fold destroys circulancy"
+    },
+    {
+      "conv": "features.14.conv.6",
+      "bn": "features.14.conv.7",
+      "reason": "checkpoint running variance is not block-constant; ordinary fold destroys circulancy"
+    },
+    {
+      "conv": "features.15.conv.0",
+      "bn": "features.15.conv.1",
+      "reason": "checkpoint running variance is not block-constant; ordinary fold destroys circulancy"
+    },
+    {
+      "conv": "features.15.conv.6",
+      "bn": "features.15.conv.7",
+      "reason": "checkpoint running variance is not block-constant; ordinary fold destroys circulancy"
+    },
+    {
+      "conv": "features.16.conv.0",
+      "bn": "features.16.conv.1",
+      "reason": "checkpoint running variance is not block-constant; ordinary fold destroys circulancy"
+    },
+    {
+      "conv": "features.16.conv.6",
+      "bn": "features.16.conv.7",
+      "reason": "checkpoint running variance is not block-constant; ordinary fold destroys circulancy"
+    },
+    {
+      "conv": "features.17.conv.0",
+      "bn": "features.17.conv.1",
+      "reason": "checkpoint running variance is not block-constant; ordinary fold destroys circulancy"
+    },
+    {
+      "conv": "features.17.conv.6",
+      "bn": "features.17.conv.7",
+      "reason": "checkpoint running variance is not block-constant; ordinary fold destroys circulancy"
+    }
+  ],
+  "no_shared_model_with_other_frameworks": true,
+  "native_IR_fusion": false,
+  "full_paper_fusion_claim": false,
+  "full_paper_BN_IR_fusion": false,
+  "removed_BN_nodes": [
+    12,
+    17,
+    20,
+    26,
+    31,
+    34,
+    39,
+    47,
+    52,
+    55,
+    60,
+    63,
+    68,
+    71,
+    76,
+    78,
+    83,
+    86,
+    91,
+    94,
+    99,
+    101,
+    106,
+    109,
+    114,
+    117,
+    122
+  ]
+}

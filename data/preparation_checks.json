@@ -1,0 +1,35 @@
+{
+  "status": "PASS",
+  "scope": "Data preparation and checkpoint import only; no encrypted benchmark performed by these checks.",
+  "native": {
+    "squeezenet": {
+      "exact_prepared_images": 100,
+      "imported_parameter_tensors": 52,
+      "imported_integers": 1235496,
+      "checkpoint_download_sha256_verified": "7b60a2db6bdccca9be6fca80f46a21ec985d74d7820f22e7fbc7bd4950050fe2",
+      "runtime_integer_scores_checked_here": false,
+      "all_imported_tensors_match_original_arrays": true
+    },
+    "resnet50": {
+      "exact_prepared_images": 100,
+      "imported_parameter_tensors": 251,
+      "imported_integers": 25596841,
+      "checkpoint_download_sha256_verified": "02bf0a430dbfb09f1a90f6599873fcf5af3143d17e6a4b382a5e690c4e69b999",
+      "runtime_integer_scores_checked_here": false
+    }
+  },
+  "structured_mobilenet_integer_packet_sha256": "93f954f0bba8559380a8c8159c4a8b5f7211164015fabe2624fb735169067032",
+  "squeezenet_preprocessing_versions": {
+    "numpy": "2.3.5",
+    "pillow": "12.3.0"
+  },
+  "resnet50_preprocessing_versions": {
+    "numpy": "1.26.4",
+    "tensorflow": "2.17.1"
+  },
+  "network_fetch_checked": [
+    "squeezenet",
+    "resnet50"
+  ],
+  "image_datasets_not_downloaded_or_redistributed_by_checks": true
+}

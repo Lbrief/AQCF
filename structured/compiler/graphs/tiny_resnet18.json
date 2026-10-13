@@ -1,0 +1,747 @@
+{
+  "name": "author_tiny_resnet18_200_q12",
+  "input_shape": [
+    1,
+    64,
+    64,
+    3
+  ],
+  "classes": 200,
+  "nodes": [
+    {
+      "op": "CONV_BN",
+      "name": "conv1",
+      "bn": "bn1",
+      "x": "input",
+      "shape": [
+        32,
+        32,
+        64
+      ],
+      "in_shape": [
+        64,
+        64,
+        3
+      ],
+      "kernel": 3,
+      "stride": 2,
+      "padding": 1,
+      "output_scale": 24
+    },
+    {
+      "op": "RELU_TRUNC",
+      "name": "stem_relu",
+      "x": "conv1",
+      "shape": [
+        32,
+        32,
+        64
+      ],
+      "output_scale": 12
+    },
+    {
+      "op": "CONV_BN",
+      "name": "layer1.0.conv1",
+      "bn": "layer1.0.bn1",
+      "x": "stem_relu",
+      "shape": [
+        32,
+        32,
+        64
+      ],
+      "in_shape": [
+        32,
+        32,
+        64
+      ],
+      "kernel": 3,
+      "stride": 1,
+      "padding": 1,
+      "output_scale": 24
+    },
+    {
+      "op": "RELU_TRUNC",
+      "name": "layer1.0.relu1",
+      "x": "layer1.0.conv1",
+      "shape": [
+        32,
+        32,
+        64
+      ],
+      "output_scale": 12
+    },
+    {
+      "op": "CONV_BN",
+      "name": "layer1.0.conv2",
+      "bn": "layer1.0.bn2",
+      "x": "layer1.0.relu1",
+      "shape": [
+        32,
+        32,
+        64
+      ],
+      "in_shape": [
+        32,
+        32,
+        64
+      ],
+      "kernel": 3,
+      "stride": 1,
+      "padding": 1,
+      "output_scale": 24
+    },
+    {
+      "op": "ADD",
+      "name": "layer1.0.add",
+      "x": "layer1.0.conv2",
+      "residual": "stem_relu",
+      "shape": [
+        32,
+        32,
+        64
+      ],
+      "residual_lift": 12,
+      "output_scale": 24
+    },
+    {
+      "op": "RELU_TRUNC",
+      "name": "layer1.0.relu2",
+      "x": "layer1.0.add",
+      "shape": [
+        32,
+        32,
+        64
+      ],
+      "output_scale": 12
+    },
+    {
+      "op": "CONV_BN",
+      "name": "layer1.1.conv1",
+      "bn": "layer1.1.bn1",
+      "x": "layer1.0.relu2",
+      "shape": [
+        32,
+        32,
+        64
+      ],
+      "in_shape": [
+        32,
+        32,
+        64
+      ],
+      "kernel": 3,
+      "stride": 1,
+      "padding": 1,
+      "output_scale": 24
+    },
+    {
+      "op": "RELU_TRUNC",
+      "name": "layer1.1.relu1",
+      "x": "layer1.1.conv1",
+      "shape": [
+        32,
+        32,
+        64
+      ],
+      "output_scale": 12
+    },
+    {
+      "op": "CONV_BN",
+      "name": "layer1.1.conv2",
+      "bn": "layer1.1.bn2",
+      "x": "layer1.1.relu1",
+      "shape": [
+        32,
+        32,
+        64
+      ],
+      "in_shape": [
+        32,
+        32,
+        64
+      ],
+      "kernel": 3,
+      "stride": 1,
+      "padding": 1,
+      "output_scale": 24
+    },
+    {
+      "op": "ADD",
+      "name": "layer1.1.add",
+      "x": "layer1.1.conv2",
+      "residual": "layer1.0.relu2",
+      "shape": [
+        32,
+        32,
+        64
+      ],
+      "residual_lift": 12,
+      "output_scale": 24
+    },
+    {
+      "op": "RELU_TRUNC",
+      "name": "layer1.1.relu2",
+      "x": "layer1.1.add",
+      "shape": [
+        32,
+        32,
+        64
+      ],
+      "output_scale": 12
+    },
+    {
+      "op": "CONV_BN",
+      "name": "layer2.0.conv1",
+      "bn": "layer2.0.bn1",
+      "x": "layer1.1.relu2",
+      "shape": [
+        16,
+        16,
+        128
+      ],
+      "in_shape": [
+        32,
+        32,
+        64
+      ],
+      "kernel": 3,
+      "stride": 2,
+      "padding": 1,
+      "output_scale": 24
+    },
+    {
+      "op": "RELU_TRUNC",
+      "name": "layer2.0.relu1",
+      "x": "layer2.0.conv1",
+      "shape": [
+        16,
+        16,
+        128
+      ],
+      "output_scale": 12
+    },
+    {
+      "op": "CONV_BN",
+      "name": "layer2.0.conv2",
+      "bn": "layer2.0.bn2",
+      "x": "layer2.0.relu1",
+      "shape": [
+        16,
+        16,
+        128
+      ],
+      "in_shape": [
+        16,
+        16,
+        128
+      ],
+      "kernel": 3,
+      "stride": 1,
+      "padding": 1,
+      "output_scale": 24
+    },
+    {
+      "op": "CONV_BN",
+      "name": "layer2.0.downsample.0",
+      "bn": "layer2.0.downsample.1",
+      "x": "layer1.1.relu2",
+      "shape": [
+        16,
+        16,
+        128
+      ],
+      "in_shape": [
+        32,
+        32,
+        64
+      ],
+      "kernel": 1,
+      "stride": 2,
+      "padding": 0,
+      "output_scale": 24
+    },
+    {
+      "op": "ADD",
+      "name": "layer2.0.add",
+      "x": "layer2.0.conv2",
+      "residual": "layer2.0.downsample.0",
+      "shape": [
+        16,
+        16,
+        128
+      ],
+      "residual_lift": 0,
+      "output_scale": 24
+    },
+    {
+      "op": "RELU_TRUNC",
+      "name": "layer2.0.relu2",
+      "x": "layer2.0.add",
+      "shape": [
+        16,
+        16,
+        128
+      ],
+      "output_scale": 12
+    },
+    {
+      "op": "CONV_BN",
+      "name": "layer2.1.conv1",
+      "bn": "layer2.1.bn1",
+      "x": "layer2.0.relu2",
+      "shape": [
+        16,
+        16,
+        128
+      ],
+      "in_shape": [
+        16,
+        16,
+        128
+      ],
+      "kernel": 3,
+      "stride": 1,
+      "padding": 1,
+      "output_scale": 24
+    },
+    {
+      "op": "RELU_TRUNC",
+      "name": "layer2.1.relu1",
+      "x": "layer2.1.conv1",
+      "shape": [
+        16,
+        16,
+        128
+      ],
+      "output_scale": 12
+    },
+    {
+      "op": "CONV_BN",
+      "name": "layer2.1.conv2",
+      "bn": "layer2.1.bn2",
+      "x": "layer2.1.relu1",
+      "shape": [
+        16,
+        16,
+        128
+      ],
+      "in_shape": [
+        16,
+        16,
+        128
+      ],
+      "kernel": 3,
+      "stride": 1,
+      "padding": 1,
+      "output_scale": 24
+    },
+    {
+      "op": "ADD",
+      "name": "layer2.1.add",
+      "x": "layer2.1.conv2",
+      "residual": "layer2.0.relu2",
+      "shape": [
+        16,
+        16,
+        128
+      ],
+      "residual_lift": 12,
+      "output_scale": 24
+    },
+    {
+      "op": "RELU_TRUNC",
+      "name": "layer2.1.relu2",
+      "x": "layer2.1.add",
+      "shape": [
+        16,
+        16,
+        128
+      ],
+      "output_scale": 12
+    },
+    {
+      "op": "CONV_BN",
+      "name": "layer3.0.conv1",
+      "bn": "layer3.0.bn1",
+      "x": "layer2.1.relu2",
+      "shape": [
+        8,
+        8,
+        256
+      ],
+      "in_shape": [
+        16,
+        16,
+        128
+      ],
+      "kernel": 3,
+      "stride": 2,
+      "padding": 1,
+      "output_scale": 24
+    },
+    {
+      "op": "RELU_TRUNC",
+      "name": "layer3.0.relu1",
+      "x": "layer3.0.conv1",
+      "shape": [
+        8,
+        8,
+        256
+      ],
+      "output_scale": 12
+    },
+    {
+      "op": "CONV_BN",
+      "name": "layer3.0.conv2",
+      "bn": "layer3.0.bn2",
+      "x": "layer3.0.relu1",
+      "shape": [
+        8,
+        8,
+        256
+      ],
+      "in_shape": [
+        8,
+        8,
+        256
+      ],
+      "kernel": 3,
+      "stride": 1,
+      "padding": 1,
+      "output_scale": 24
+    },
+    {
+      "op": "CONV_BN",
+      "name": "layer3.0.downsample.0",
+      "bn": "layer3.0.downsample.1",
+      "x": "layer2.1.relu2",
+      "shape": [
+        8,
+        8,
+        256
+      ],
+      "in_shape": [
+        16,
+        16,
+        128
+      ],
+      "kernel": 1,
+      "stride": 2,
+      "padding": 0,
+      "output_scale": 24
+    },
+    {
+      "op": "ADD",
+      "name": "layer3.0.add",
+      "x": "layer3.0.conv2",
+      "residual": "layer3.0.downsample.0",
+      "shape": [
+        8,
+        8,
+        256
+      ],
+      "residual_lift": 0,
+      "output_scale": 24
+    },
+    {
+      "op": "RELU_TRUNC",
+      "name": "layer3.0.relu2",
+      "x": "layer3.0.add",
+      "shape": [
+        8,
+        8,
+        256
+      ],
+      "output_scale": 12
+    },
+    {
+      "op": "CONV_BN",
+      "name": "layer3.1.conv1",
+      "bn": "layer3.1.bn1",
+      "x": "layer3.0.relu2",
+      "shape": [
+        8,
+        8,
+        256
+      ],
+      "in_shape": [
+        8,
+        8,
+        256
+      ],
+      "kernel": 3,
+      "stride": 1,
+      "padding": 1,
+      "output_scale": 24
+    },
+    {
+      "op": "RELU_TRUNC",
+      "name": "layer3.1.relu1",
+      "x": "layer3.1.conv1",
+      "shape": [
+        8,
+        8,
+        256
+      ],
+      "output_scale": 12
+    },
+    {
+      "op": "CONV_BN",
+      "name": "layer3.1.conv2",
+      "bn": "layer3.1.bn2",
+      "x": "layer3.1.relu1",
+      "shape": [
+        8,
+        8,
+        256
+      ],
+      "in_shape": [
+        8,
+        8,
+        256
+      ],
+      "kernel": 3,
+      "stride": 1,
+      "padding": 1,
+      "output_scale": 24
+    },
+    {
+      "op": "ADD",
+      "name": "layer3.1.add",
+      "x": "layer3.1.conv2",
+      "residual": "layer3.0.relu2",
+      "shape": [
+        8,
+        8,
+        256
+      ],
+      "residual_lift": 12,
+      "output_scale": 24
+    },
+    {
+      "op": "RELU_TRUNC",
+      "name": "layer3.1.relu2",
+      "x": "layer3.1.add",
+      "shape": [
+        8,
+        8,
+        256
+      ],
+      "output_scale": 12
+    },
+    {
+      "op": "CONV_BN",
+      "name": "layer4.0.conv1",
+      "bn": "layer4.0.bn1",
+      "x": "layer3.1.relu2",
+      "shape": [
+        4,
+        4,
+        512
+      ],
+      "in_shape": [
+        8,
+        8,
+        256
+      ],
+      "kernel": 3,
+      "stride": 2,
+      "padding": 1,
+      "output_scale": 24
+    },
+    {
+      "op": "RELU_TRUNC",
+      "name": "layer4.0.relu1",
+      "x": "layer4.0.conv1",
+      "shape": [
+        4,
+        4,
+        512
+      ],
+      "output_scale": 12
+    },
+    {
+      "op": "CONV_BN",
+      "name": "layer4.0.conv2",
+      "bn": "layer4.0.bn2",
+      "x": "layer4.0.relu1",
+      "shape": [
+        4,
+        4,
+        512
+      ],
+      "in_shape": [
+        4,
+        4,
+        512
+      ],
+      "kernel": 3,
+      "stride": 1,
+      "padding": 1,
+      "output_scale": 24
+    },
+    {
+      "op": "CONV_BN",
+      "name": "layer4.0.downsample.0",
+      "bn": "layer4.0.downsample.1",
+      "x": "layer3.1.relu2",
+      "shape": [
+        4,
+        4,
+        512
+      ],
+      "in_shape": [
+        8,
+        8,
+        256
+      ],
+      "kernel": 1,
+      "stride": 2,
+      "padding": 0,
+      "output_scale": 24
+    },
+    {
+      "op": "ADD",
+      "name": "layer4.0.add",
+      "x": "layer4.0.conv2",
+      "residual": "layer4.0.downsample.0",
+      "shape": [
+        4,
+        4,
+        512
+      ],
+      "residual_lift": 0,
+      "output_scale": 24
+    },
+    {
+      "op": "RELU_TRUNC",
+      "name": "layer4.0.relu2",
+      "x": "layer4.0.add",
+      "shape": [
+        4,
+        4,
+        512
+      ],
+      "output_scale": 12
+    },
+    {
+      "op": "CONV_BN",
+      "name": "layer4.1.conv1",
+      "bn": "layer4.1.bn1",
+      "x": "layer4.0.relu2",
+      "shape": [
+        4,
+        4,
+        512
+      ],
+      "in_shape": [
+        4,
+        4,
+        512
+      ],
+      "kernel": 3,
+      "stride": 1,
+      "padding": 1,
+      "output_scale": 24
+    },
+    {
+      "op": "RELU_TRUNC",
+      "name": "layer4.1.relu1",
+      "x": "layer4.1.conv1",
+      "shape": [
+        4,
+        4,
+        512
+      ],
+      "output_scale": 12
+    },
+    {
+      "op": "CONV_BN",
+      "name": "layer4.1.conv2",
+      "bn": "layer4.1.bn2",
+      "x": "layer4.1.relu1",
+      "shape": [
+        4,
+        4,
+        512
+      ],
+      "in_shape": [
+        4,
+        4,
+        512
+      ],
+      "kernel": 3,
+      "stride": 1,
+      "padding": 1,
+      "output_scale": 24
+    },
+    {
+      "op": "ADD",
+      "name": "layer4.1.add",
+      "x": "layer4.1.conv2",
+      "residual": "layer4.0.relu2",
+      "shape": [
+        4,
+        4,
+        512
+      ],
+      "residual_lift": 12,
+      "output_scale": 24
+    },
+    {
+      "op": "RELU_TRUNC",
+      "name": "layer4.1.relu2",
+      "x": "layer4.1.add",
+      "shape": [
+        4,
+        4,
+        512
+      ],
+      "output_scale": 12
+    },
+    {
+      "op": "AVGPOOL",
+      "name": "global_pool",
+      "x": "layer4.1.relu2",
+      "in_shape": [
+        4,
+        4,
+        512
+      ],
+      "shape": [
+        1,
+        1,
+        512
+      ],
+      "kernel": 4,
+      "stride": 1,
+      "padding": 0,
+      "output_scale": 12
+    },
+    {
+      "op": "FC",
+      "name": "fc",
+      "x": "global_pool",
+      "in_shape": [
+        1,
+        1,
+        512
+      ],
+      "shape": [
+        200
+      ],
+      "output_scale": 24
+    }
+  ],
+  "census": {
+    "convolutions": 20,
+    "folded_BN": 20,
+    "relu_trunc": 17,
+    "residual_add": 8,
+    "maxpool": 0,
+    "global_avgpool": 1,
+    "fc": 1,
+    "secure_argmax": 1,
+    "total_executed_nodes": 48
+  }
+}

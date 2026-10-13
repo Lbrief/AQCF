@@ -1,0 +1,1241 @@
+[
+  {
+    "plan": null,
+    "counts": {
+      "input_CT": 3,
+      "output_CT": 10,
+      "PM": 30,
+      "CT_Add": 20,
+      "Rot": 0,
+      "max_output_PT_L1": 153155
+    }
+  },
+  {
+    "plan": {
+      "layout": "compact_query_safe",
+      "objective": "minimum_CT",
+      "nominal_output_tile": [
+        32,
+        32
+      ],
+      "output_tile_area": 1024,
+      "tile_count": 1,
+      "counts": {
+        "PM": 704,
+        "CT_Add": 682,
+        "PT_bias_Add": 22,
+        "input_CT": 32,
+        "output_CT": 22,
+        "Rot": 0,
+        "input_plus_output_CT": 54
+      },
+      "tiles": [
+        {
+          "geometry": {
+            "layout": "compact_query_safe",
+            "degree": 8192,
+            "output_origin": [
+              0,
+              0
+            ],
+            "output_tile": [
+              32,
+              32
+            ],
+            "encoded_input_shape": [
+              32,
+              32
+            ],
+            "encoded_output_shape": [
+              32,
+              32
+            ],
+            "kernel": 3,
+            "stride": 1,
+            "padding": 1,
+            "actual_input_bounds": [
+              0,
+              31,
+              0,
+              31
+            ],
+            "actual_input_shape": [
+              32,
+              32
+            ],
+            "required_input_bounds": [
+              -1,
+              32,
+              -1,
+              32
+            ],
+            "omitted_padding_columns": [
+              1,
+              1
+            ],
+            "row_stride": 33,
+            "L": 1089,
+            "input_spatial_max": 1054,
+            "tap_spatial_max": 68,
+            "query_spatial_min": 34,
+            "query_spatial_max": 1088,
+            "input_sampling_stride": 1,
+            "horizontal_alias_query_separation": 1,
+            "channel_alias_query_separation": 1,
+            "arbitrary_dense_weight_support": true
+          },
+          "placement": {
+            "J": 2,
+            "F": 3,
+            "U": 32,
+            "V": 22,
+            "counts": {
+              "PM": 704,
+              "CT_Add": 682,
+              "PT_bias_Add": 22,
+              "input_CT": 32,
+              "output_CT": 22,
+              "Rot": 0
+            },
+            "input_plus_output_CT": 54,
+            "admitted_F_interval": [
+              1,
+              3
+            ],
+            "certificate": {
+              "input_degree_max": 2143,
+              "plaintext_degree_max": 5513,
+              "query_degree_min": 1123,
+              "query_degree_max": 6533,
+              "product_degree_max": 7656,
+              "wrapped_degree_max": null,
+              "wrap_query_separation": null,
+              "channel_plane_difference_nonzero_cannot_hit_query": true,
+              "input_PT_coefficients_unique": true,
+              "nominal_J_kept_for_tail": true,
+              "nominal_F_kept_for_tail": true
+            }
+          }
+        }
+      ],
+      "input_mapped_values_including_repeated_halos": 65536,
+      "actual_executed_counts": null,
+      "noise_qualified": false,
+      "latency_qualified": false
+    },
+    "counts": {
+      "PM": 704,
+      "CT_Add": 682,
+      "PT_bias_Add": 22,
+      "input_CT": 32,
+      "output_CT": 22,
+      "Rot": 0,
+      "input_plus_output_CT": 54
+    }
+  },
+  {
+    "plan": {
+      "layout": "compact_query_safe",
+      "objective": "minimum_CT",
+      "nominal_output_tile": [
+        32,
+        32
+      ],
+      "output_tile_area": 1024,
+      "tile_count": 1,
+      "counts": {
+        "PM": 704,
+        "CT_Add": 682,
+        "PT_bias_Add": 22,
+        "input_CT": 32,
+        "output_CT": 22,
+        "Rot": 0,
+        "input_plus_output_CT": 54
+      },
+      "tiles": [
+        {
+          "geometry": {
+            "layout": "compact_query_safe",
+            "degree": 8192,
+            "output_origin": [
+              0,
+              0
+            ],
+            "output_tile": [
+              32,
+              32
+            ],
+            "encoded_input_shape": [
+              32,
+              32
+            ],
+            "encoded_output_shape": [
+              32,
+              32
+            ],
+            "kernel": 3,
+            "stride": 1,
+            "padding": 1,
+            "actual_input_bounds": [
+              0,
+              31,
+              0,
+              31
+            ],
+            "actual_input_shape": [
+              32,
+              32
+            ],
+            "required_input_bounds": [
+              -1,
+              32,
+              -1,
+              32
+            ],
+            "omitted_padding_columns": [
+              1,
+              1
+            ],
+            "row_stride": 33,
+            "L": 1089,
+            "input_spatial_max": 1054,
+            "tap_spatial_max": 68,
+            "query_spatial_min": 34,
+            "query_spatial_max": 1088,
+            "input_sampling_stride": 1,
+            "horizontal_alias_query_separation": 1,
+            "channel_alias_query_separation": 1,
+            "arbitrary_dense_weight_support": true
+          },
+          "placement": {
+            "J": 2,
+            "F": 3,
+            "U": 32,
+            "V": 22,
+            "counts": {
+              "PM": 704,
+              "CT_Add": 682,
+              "PT_bias_Add": 22,
+              "input_CT": 32,
+              "output_CT": 22,
+              "Rot": 0
+            },
+            "input_plus_output_CT": 54,
+            "admitted_F_interval": [
+              1,
+              3
+            ],
+            "certificate": {
+              "input_degree_max": 2143,
+              "plaintext_degree_max": 5513,
+              "query_degree_min": 1123,
+              "query_degree_max": 6533,
+              "product_degree_max": 7656,
+              "wrapped_degree_max": null,
+              "wrap_query_separation": null,
+              "channel_plane_difference_nonzero_cannot_hit_query": true,
+              "input_PT_coefficients_unique": true,
+              "nominal_J_kept_for_tail": true,
+              "nominal_F_kept_for_tail": true
+            }
+          }
+        }
+      ],
+      "input_mapped_values_including_repeated_halos": 65536,
+      "actual_executed_counts": null,
+      "noise_qualified": false,
+      "latency_qualified": false
+    },
+    "counts": {
+      "PM": 704,
+      "CT_Add": 682,
+      "PT_bias_Add": 22,
+      "input_CT": 32,
+      "output_CT": 22,
+      "Rot": 0,
+      "input_plus_output_CT": 54
+    }
+  },
+  {
+    "plan": {
+      "layout": "compact_query_safe",
+      "objective": "minimum_CT",
+      "nominal_output_tile": [
+        32,
+        32
+      ],
+      "output_tile_area": 1024,
+      "tile_count": 1,
+      "counts": {
+        "PM": 704,
+        "CT_Add": 682,
+        "PT_bias_Add": 22,
+        "input_CT": 32,
+        "output_CT": 22,
+        "Rot": 0,
+        "input_plus_output_CT": 54
+      },
+      "tiles": [
+        {
+          "geometry": {
+            "layout": "compact_query_safe",
+            "degree": 8192,
+            "output_origin": [
+              0,
+              0
+            ],
+            "output_tile": [
+              32,
+              32
+            ],
+            "encoded_input_shape": [
+              32,
+              32
+            ],
+            "encoded_output_shape": [
+              32,
+              32
+            ],
+            "kernel": 3,
+            "stride": 1,
+            "padding": 1,
+            "actual_input_bounds": [
+              0,
+              31,
+              0,
+              31
+            ],
+            "actual_input_shape": [
+              32,
+              32
+            ],
+            "required_input_bounds": [
+              -1,
+              32,
+              -1,
+              32
+            ],
+            "omitted_padding_columns": [
+              1,
+              1
+            ],
+            "row_stride": 33,
+            "L": 1089,
+            "input_spatial_max": 1054,
+            "tap_spatial_max": 68,
+            "query_spatial_min": 34,
+            "query_spatial_max": 1088,
+            "input_sampling_stride": 1,
+            "horizontal_alias_query_separation": 1,
+            "channel_alias_query_separation": 1,
+            "arbitrary_dense_weight_support": true
+          },
+          "placement": {
+            "J": 2,
+            "F": 3,
+            "U": 32,
+            "V": 22,
+            "counts": {
+              "PM": 704,
+              "CT_Add": 682,
+              "PT_bias_Add": 22,
+              "input_CT": 32,
+              "output_CT": 22,
+              "Rot": 0
+            },
+            "input_plus_output_CT": 54,
+            "admitted_F_interval": [
+              1,
+              3
+            ],
+            "certificate": {
+              "input_degree_max": 2143,
+              "plaintext_degree_max": 5513,
+              "query_degree_min": 1123,
+              "query_degree_max": 6533,
+              "product_degree_max": 7656,
+              "wrapped_degree_max": null,
+              "wrap_query_separation": null,
+              "channel_plane_difference_nonzero_cannot_hit_query": true,
+              "input_PT_coefficients_unique": true,
+              "nominal_J_kept_for_tail": true,
+              "nominal_F_kept_for_tail": true
+            }
+          }
+        }
+      ],
+      "input_mapped_values_including_repeated_halos": 65536,
+      "actual_executed_counts": null,
+      "noise_qualified": false,
+      "latency_qualified": false
+    },
+    "counts": {
+      "PM": 704,
+      "CT_Add": 682,
+      "PT_bias_Add": 22,
+      "input_CT": 32,
+      "output_CT": 22,
+      "Rot": 0,
+      "input_plus_output_CT": 54
+    }
+  },
+  {
+    "plan": {
+      "layout": "compact_query_safe",
+      "objective": "minimum_CT",
+      "nominal_output_tile": [
+        32,
+        32
+      ],
+      "output_tile_area": 1024,
+      "tile_count": 1,
+      "counts": {
+        "PM": 704,
+        "CT_Add": 682,
+        "PT_bias_Add": 22,
+        "input_CT": 32,
+        "output_CT": 22,
+        "Rot": 0,
+        "input_plus_output_CT": 54
+      },
+      "tiles": [
+        {
+          "geometry": {
+            "layout": "compact_query_safe",
+            "degree": 8192,
+            "output_origin": [
+              0,
+              0
+            ],
+            "output_tile": [
+              32,
+              32
+            ],
+            "encoded_input_shape": [
+              32,
+              32
+            ],
+            "encoded_output_shape": [
+              32,
+              32
+            ],
+            "kernel": 3,
+            "stride": 1,
+            "padding": 1,
+            "actual_input_bounds": [
+              0,
+              31,
+              0,
+              31
+            ],
+            "actual_input_shape": [
+              32,
+              32
+            ],
+            "required_input_bounds": [
+              -1,
+              32,
+              -1,
+              32
+            ],
+            "omitted_padding_columns": [
+              1,
+              1
+            ],
+            "row_stride": 33,
+            "L": 1089,
+            "input_spatial_max": 1054,
+            "tap_spatial_max": 68,
+            "query_spatial_min": 34,
+            "query_spatial_max": 1088,
+            "input_sampling_stride": 1,
+            "horizontal_alias_query_separation": 1,
+            "channel_alias_query_separation": 1,
+            "arbitrary_dense_weight_support": true
+          },
+          "placement": {
+            "J": 2,
+            "F": 3,
+            "U": 32,
+            "V": 22,
+            "counts": {
+              "PM": 704,
+              "CT_Add": 682,
+              "PT_bias_Add": 22,
+              "input_CT": 32,
+              "output_CT": 22,
+              "Rot": 0
+            },
+            "input_plus_output_CT": 54,
+            "admitted_F_interval": [
+              1,
+              3
+            ],
+            "certificate": {
+              "input_degree_max": 2143,
+              "plaintext_degree_max": 5513,
+              "query_degree_min": 1123,
+              "query_degree_max": 6533,
+              "product_degree_max": 7656,
+              "wrapped_degree_max": null,
+              "wrap_query_separation": null,
+              "channel_plane_difference_nonzero_cannot_hit_query": true,
+              "input_PT_coefficients_unique": true,
+              "nominal_J_kept_for_tail": true,
+              "nominal_F_kept_for_tail": true
+            }
+          }
+        }
+      ],
+      "input_mapped_values_including_repeated_halos": 65536,
+      "actual_executed_counts": null,
+      "noise_qualified": false,
+      "latency_qualified": false
+    },
+    "counts": {
+      "PM": 704,
+      "CT_Add": 682,
+      "PT_bias_Add": 22,
+      "input_CT": 32,
+      "output_CT": 22,
+      "Rot": 0,
+      "input_plus_output_CT": 54
+    }
+  },
+  {
+    "plan": null,
+    "counts": {
+      "input_CT": 64,
+      "output_CT": 19,
+      "PM": 1216,
+      "CT_Add": 1197,
+      "Rot": 0,
+      "max_output_PT_L1": 351335
+    }
+  },
+  {
+    "plan": null,
+    "counts": {
+      "input_CT": 32,
+      "output_CT": 19,
+      "PM": 608,
+      "CT_Add": 589,
+      "Rot": 0,
+      "max_output_PT_L1": 1131807
+    }
+  },
+  {
+    "plan": null,
+    "counts": {
+      "input_CT": 16,
+      "output_CT": 16,
+      "PM": 256,
+      "CT_Add": 240,
+      "Rot": 0,
+      "max_output_PT_L1": 122941
+    }
+  },
+  {
+    "plan": null,
+    "counts": {
+      "input_CT": 32,
+      "output_CT": 19,
+      "PM": 608,
+      "CT_Add": 589,
+      "Rot": 0,
+      "max_output_PT_L1": 640007
+    }
+  },
+  {
+    "plan": null,
+    "counts": {
+      "input_CT": 32,
+      "output_CT": 19,
+      "PM": 608,
+      "CT_Add": 589,
+      "Rot": 0,
+      "max_output_PT_L1": 1596167
+    }
+  },
+  {
+    "plan": null,
+    "counts": {
+      "input_CT": 32,
+      "output_CT": 37,
+      "PM": 1184,
+      "CT_Add": 1147,
+      "Rot": 0,
+      "max_output_PT_L1": 401837
+    }
+  },
+  {
+    "plan": null,
+    "counts": {
+      "input_CT": 26,
+      "output_CT": 26,
+      "PM": 676,
+      "CT_Add": 650,
+      "Rot": 0,
+      "max_output_PT_L1": 2199434
+    }
+  },
+  {
+    "plan": null,
+    "counts": {
+      "input_CT": 16,
+      "output_CT": 16,
+      "PM": 256,
+      "CT_Add": 240,
+      "Rot": 0,
+      "max_output_PT_L1": 248657
+    }
+  },
+  {
+    "plan": null,
+    "counts": {
+      "input_CT": 26,
+      "output_CT": 26,
+      "PM": 676,
+      "CT_Add": 650,
+      "Rot": 0,
+      "max_output_PT_L1": 1344277
+    }
+  },
+  {
+    "plan": null,
+    "counts": {
+      "input_CT": 26,
+      "output_CT": 26,
+      "PM": 676,
+      "CT_Add": 650,
+      "Rot": 0,
+      "max_output_PT_L1": 4016790
+    }
+  },
+  {
+    "plan": {
+      "layout": "compact_query_safe",
+      "objective": "minimum_CT",
+      "nominal_output_tile": [
+        4,
+        4
+      ],
+      "output_tile_area": 16,
+      "tile_count": 1,
+      "counts": {
+        "PM": 1376,
+        "CT_Add": 1344,
+        "PT_bias_Add": 32,
+        "input_CT": 43,
+        "output_CT": 32,
+        "Rot": 0,
+        "input_plus_output_CT": 75
+      },
+      "tiles": [
+        {
+          "geometry": {
+            "layout": "compact_query_safe",
+            "degree": 8192,
+            "output_origin": [
+              0,
+              0
+            ],
+            "output_tile": [
+              4,
+              4
+            ],
+            "encoded_input_shape": [
+              8,
+              8
+            ],
+            "encoded_output_shape": [
+              4,
+              4
+            ],
+            "kernel": 3,
+            "stride": 2,
+            "padding": 1,
+            "actual_input_bounds": [
+              0,
+              7,
+              0,
+              7
+            ],
+            "actual_input_shape": [
+              8,
+              8
+            ],
+            "required_input_bounds": [
+              -1,
+              7,
+              -1,
+              7
+            ],
+            "omitted_padding_columns": [
+              1,
+              0
+            ],
+            "row_stride": 9,
+            "L": 81,
+            "input_spatial_max": 70,
+            "tap_spatial_max": 20,
+            "query_spatial_min": 10,
+            "query_spatial_max": 70,
+            "input_sampling_stride": 1,
+            "horizontal_alias_query_separation": 1,
+            "channel_alias_query_separation": 1,
+            "arbitrary_dense_weight_support": true
+          },
+          "placement": {
+            "J": 6,
+            "F": 16,
+            "U": 43,
+            "V": 32,
+            "counts": {
+              "PM": 1376,
+              "CT_Add": 1344,
+              "PT_bias_Add": 32,
+              "input_CT": 43,
+              "output_CT": 32,
+              "Rot": 0
+            },
+            "input_plus_output_CT": 75,
+            "admitted_F_interval": [
+              1,
+              16
+            ],
+            "certificate": {
+              "input_degree_max": 475,
+              "plaintext_degree_max": 7715,
+              "query_degree_min": 415,
+              "query_degree_max": 7765,
+              "product_degree_max": 8190,
+              "wrapped_degree_max": null,
+              "wrap_query_separation": null,
+              "channel_plane_difference_nonzero_cannot_hit_query": true,
+              "input_PT_coefficients_unique": true,
+              "nominal_J_kept_for_tail": true,
+              "nominal_F_kept_for_tail": true
+            }
+          }
+        }
+      ],
+      "input_mapped_values_including_repeated_halos": 16384,
+      "actual_executed_counts": null,
+      "noise_qualified": false,
+      "latency_qualified": false
+    },
+    "counts": {
+      "PM": 1376,
+      "CT_Add": 1344,
+      "PT_bias_Add": 32,
+      "input_CT": 43,
+      "output_CT": 32,
+      "Rot": 0,
+      "input_plus_output_CT": 75
+    }
+  },
+  {
+    "plan": {
+      "layout": "compact_query_safe",
+      "objective": "minimum_CT",
+      "nominal_output_tile": [
+        4,
+        4
+      ],
+      "output_tile_area": 16,
+      "tile_count": 1,
+      "counts": {
+        "PM": 832,
+        "CT_Add": 806,
+        "PT_bias_Add": 26,
+        "input_CT": 32,
+        "output_CT": 26,
+        "Rot": 0,
+        "input_plus_output_CT": 58
+      },
+      "tiles": [
+        {
+          "geometry": {
+            "layout": "compact_query_safe",
+            "degree": 8192,
+            "output_origin": [
+              0,
+              0
+            ],
+            "output_tile": [
+              4,
+              4
+            ],
+            "encoded_input_shape": [
+              4,
+              4
+            ],
+            "encoded_output_shape": [
+              4,
+              4
+            ],
+            "kernel": 3,
+            "stride": 1,
+            "padding": 1,
+            "actual_input_bounds": [
+              0,
+              3,
+              0,
+              3
+            ],
+            "actual_input_shape": [
+              4,
+              4
+            ],
+            "required_input_bounds": [
+              -1,
+              4,
+              -1,
+              4
+            ],
+            "omitted_padding_columns": [
+              1,
+              1
+            ],
+            "row_stride": 5,
+            "L": 25,
+            "input_spatial_max": 18,
+            "tap_spatial_max": 12,
+            "query_spatial_min": 6,
+            "query_spatial_max": 24,
+            "input_sampling_stride": 1,
+            "horizontal_alias_query_separation": 1,
+            "channel_alias_query_separation": 1,
+            "arbitrary_dense_weight_support": true
+          },
+          "placement": {
+            "J": 16,
+            "F": 20,
+            "U": 32,
+            "V": 26,
+            "counts": {
+              "PM": 832,
+              "CT_Add": 806,
+              "PT_bias_Add": 26,
+              "input_CT": 32,
+              "output_CT": 26,
+              "Rot": 0
+            },
+            "input_plus_output_CT": 58,
+            "admitted_F_interval": [
+              1,
+              20
+            ],
+            "certificate": {
+              "input_degree_max": 393,
+              "plaintext_degree_max": 7987,
+              "query_degree_min": 381,
+              "query_degree_max": 7999,
+              "product_degree_max": 8380,
+              "wrapped_degree_max": 188,
+              "wrap_query_separation": 193,
+              "channel_plane_difference_nonzero_cannot_hit_query": true,
+              "input_PT_coefficients_unique": true,
+              "nominal_J_kept_for_tail": true,
+              "nominal_F_kept_for_tail": true
+            }
+          }
+        }
+      ],
+      "input_mapped_values_including_repeated_halos": 8192,
+      "actual_executed_counts": null,
+      "noise_qualified": false,
+      "latency_qualified": false
+    },
+    "counts": {
+      "PM": 832,
+      "CT_Add": 806,
+      "PT_bias_Add": 26,
+      "input_CT": 32,
+      "output_CT": 26,
+      "Rot": 0,
+      "input_plus_output_CT": 58
+    }
+  },
+  {
+    "plan": null,
+    "counts": {
+      "input_CT": 16,
+      "output_CT": 16,
+      "PM": 256,
+      "CT_Add": 240,
+      "Rot": 0,
+      "max_output_PT_L1": 663498
+    }
+  },
+  {
+    "plan": {
+      "layout": "compact_query_safe",
+      "objective": "minimum_CT",
+      "nominal_output_tile": [
+        4,
+        4
+      ],
+      "output_tile_area": 16,
+      "tile_count": 1,
+      "counts": {
+        "PM": 832,
+        "CT_Add": 806,
+        "PT_bias_Add": 26,
+        "input_CT": 32,
+        "output_CT": 26,
+        "Rot": 0,
+        "input_plus_output_CT": 58
+      },
+      "tiles": [
+        {
+          "geometry": {
+            "layout": "compact_query_safe",
+            "degree": 8192,
+            "output_origin": [
+              0,
+              0
+            ],
+            "output_tile": [
+              4,
+              4
+            ],
+            "encoded_input_shape": [
+              4,
+              4
+            ],
+            "encoded_output_shape": [
+              4,
+              4
+            ],
+            "kernel": 3,
+            "stride": 1,
+            "padding": 1,
+            "actual_input_bounds": [
+              0,
+              3,
+              0,
+              3
+            ],
+            "actual_input_shape": [
+              4,
+              4
+            ],
+            "required_input_bounds": [
+              -1,
+              4,
+              -1,
+              4
+            ],
+            "omitted_padding_columns": [
+              1,
+              1
+            ],
+            "row_stride": 5,
+            "L": 25,
+            "input_spatial_max": 18,
+            "tap_spatial_max": 12,
+            "query_spatial_min": 6,
+            "query_spatial_max": 24,
+            "input_sampling_stride": 1,
+            "horizontal_alias_query_separation": 1,
+            "channel_alias_query_separation": 1,
+            "arbitrary_dense_weight_support": true
+          },
+          "placement": {
+            "J": 16,
+            "F": 20,
+            "U": 32,
+            "V": 26,
+            "counts": {
+              "PM": 832,
+              "CT_Add": 806,
+              "PT_bias_Add": 26,
+              "input_CT": 32,
+              "output_CT": 26,
+              "Rot": 0
+            },
+            "input_plus_output_CT": 58,
+            "admitted_F_interval": [
+              1,
+              20
+            ],
+            "certificate": {
+              "input_degree_max": 393,
+              "plaintext_degree_max": 7987,
+              "query_degree_min": 381,
+              "query_degree_max": 7999,
+              "product_degree_max": 8380,
+              "wrapped_degree_max": 188,
+              "wrap_query_separation": 193,
+              "channel_plane_difference_nonzero_cannot_hit_query": true,
+              "input_PT_coefficients_unique": true,
+              "nominal_J_kept_for_tail": true,
+              "nominal_F_kept_for_tail": true
+            }
+          }
+        }
+      ],
+      "input_mapped_values_including_repeated_halos": 8192,
+      "actual_executed_counts": null,
+      "noise_qualified": false,
+      "latency_qualified": false
+    },
+    "counts": {
+      "PM": 832,
+      "CT_Add": 806,
+      "PT_bias_Add": 26,
+      "input_CT": 32,
+      "output_CT": 26,
+      "Rot": 0,
+      "input_plus_output_CT": 58
+    }
+  },
+  {
+    "plan": {
+      "layout": "compact_query_safe",
+      "objective": "minimum_CT",
+      "nominal_output_tile": [
+        4,
+        4
+      ],
+      "output_tile_area": 16,
+      "tile_count": 1,
+      "counts": {
+        "PM": 832,
+        "CT_Add": 806,
+        "PT_bias_Add": 26,
+        "input_CT": 32,
+        "output_CT": 26,
+        "Rot": 0,
+        "input_plus_output_CT": 58
+      },
+      "tiles": [
+        {
+          "geometry": {
+            "layout": "compact_query_safe",
+            "degree": 8192,
+            "output_origin": [
+              0,
+              0
+            ],
+            "output_tile": [
+              4,
+              4
+            ],
+            "encoded_input_shape": [
+              4,
+              4
+            ],
+            "encoded_output_shape": [
+              4,
+              4
+            ],
+            "kernel": 3,
+            "stride": 1,
+            "padding": 1,
+            "actual_input_bounds": [
+              0,
+              3,
+              0,
+              3
+            ],
+            "actual_input_shape": [
+              4,
+              4
+            ],
+            "required_input_bounds": [
+              -1,
+              4,
+              -1,
+              4
+            ],
+            "omitted_padding_columns": [
+              1,
+              1
+            ],
+            "row_stride": 5,
+            "L": 25,
+            "input_spatial_max": 18,
+            "tap_spatial_max": 12,
+            "query_spatial_min": 6,
+            "query_spatial_max": 24,
+            "input_sampling_stride": 1,
+            "horizontal_alias_query_separation": 1,
+            "channel_alias_query_separation": 1,
+            "arbitrary_dense_weight_support": true
+          },
+          "placement": {
+            "J": 16,
+            "F": 20,
+            "U": 32,
+            "V": 26,
+            "counts": {
+              "PM": 832,
+              "CT_Add": 806,
+              "PT_bias_Add": 26,
+              "input_CT": 32,
+              "output_CT": 26,
+              "Rot": 0
+            },
+            "input_plus_output_CT": 58,
+            "admitted_F_interval": [
+              1,
+              20
+            ],
+            "certificate": {
+              "input_degree_max": 393,
+              "plaintext_degree_max": 7987,
+              "query_degree_min": 381,
+              "query_degree_max": 7999,
+              "product_degree_max": 8380,
+              "wrapped_degree_max": 188,
+              "wrap_query_separation": 193,
+              "channel_plane_difference_nonzero_cannot_hit_query": true,
+              "input_PT_coefficients_unique": true,
+              "nominal_J_kept_for_tail": true,
+              "nominal_F_kept_for_tail": true
+            }
+          }
+        }
+      ],
+      "input_mapped_values_including_repeated_halos": 8192,
+      "actual_executed_counts": null,
+      "noise_qualified": false,
+      "latency_qualified": false
+    },
+    "counts": {
+      "PM": 832,
+      "CT_Add": 806,
+      "PT_bias_Add": 26,
+      "input_CT": 32,
+      "output_CT": 26,
+      "Rot": 0,
+      "input_plus_output_CT": 58
+    }
+  },
+  {
+    "plan": {
+      "layout": "compact_query_safe",
+      "objective": "minimum_CT",
+      "nominal_output_tile": [
+        1,
+        1
+      ],
+      "output_tile_area": 1,
+      "tile_count": 1,
+      "counts": {
+        "PM": 8,
+        "CT_Add": 6,
+        "PT_bias_Add": 2,
+        "input_CT": 4,
+        "output_CT": 2,
+        "Rot": 0,
+        "input_plus_output_CT": 6
+      },
+      "tiles": [
+        {
+          "geometry": {
+            "layout": "compact_query_safe",
+            "degree": 8192,
+            "output_origin": [
+              0,
+              0
+            ],
+            "output_tile": [
+              1,
+              1
+            ],
+            "encoded_input_shape": [
+              1,
+              1
+            ],
+            "encoded_output_shape": [
+              1,
+              1
+            ],
+            "kernel": 1,
+            "stride": 1,
+            "padding": 0,
+            "actual_input_bounds": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "actual_input_shape": [
+              1,
+              1
+            ],
+            "required_input_bounds": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "omitted_padding_columns": [
+              0,
+              0
+            ],
+            "row_stride": 1,
+            "L": 1,
+            "input_spatial_max": 0,
+            "tap_spatial_max": 0,
+            "query_spatial_min": 0,
+            "query_spatial_max": 0,
+            "input_sampling_stride": 1,
+            "horizontal_alias_query_separation": 1,
+            "channel_alias_query_separation": 1,
+            "arbitrary_dense_weight_support": true
+          },
+          "placement": {
+            "J": 128,
+            "F": 64,
+            "U": 4,
+            "V": 2,
+            "counts": {
+              "PM": 8,
+              "CT_Add": 6,
+              "PT_bias_Add": 2,
+              "input_CT": 4,
+              "output_CT": 2,
+              "Rot": 0
+            },
+            "input_plus_output_CT": 6,
+            "admitted_F_interval": [
+              1,
+              64
+            ],
+            "certificate": {
+              "input_degree_max": 127,
+              "plaintext_degree_max": 8191,
+              "query_degree_min": 127,
+              "query_degree_max": 8191,
+              "product_degree_max": 8318,
+              "wrapped_degree_max": 126,
+              "wrap_query_separation": 1,
+              "channel_plane_difference_nonzero_cannot_hit_query": true,
+              "input_PT_coefficients_unique": true,
+              "nominal_J_kept_for_tail": true,
+              "nominal_F_kept_for_tail": true
+            }
+          }
+        }
+      ],
+      "input_mapped_values_including_repeated_halos": 512,
+      "actual_executed_counts": null,
+      "noise_qualified": false,
+      "latency_qualified": false
+    },
+    "counts": {
+      "PM": 8,
+      "CT_Add": 6,
+      "PT_bias_Add": 2,
+      "input_CT": 4,
+      "output_CT": 2,
+      "Rot": 0,
+      "input_plus_output_CT": 6
+    }
+  }
+]

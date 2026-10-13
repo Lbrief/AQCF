@@ -1,0 +1,12 @@
+[
+  {
+    "file": "tools/runtime/isolate_squeezenet.py",
+    "original_sha256": "cf4e461a09ff7aaac82453f7b1a9fbd72893bbcc7d21fc84c8db4460dbdffb0b",
+    "changes": "Read explicit four-CPU selection from fresh release record; namespace and role isolation retained."
+  },
+  {
+    "file": "tools/runtime/isolate_resnet50.py",
+    "original_sha256": "e837f25cf05962a9f094925a24c308a48a3d24acc9a3cb57ae293c4fe41c9e46",
+    "changes": "Read explicit four-CPU selection from fresh release record; accept recorded WAN_NATIVE and CLOUD_PUBLIC profiles, both without artificial pacing; namespace and role isolation retained."
+  }
+]

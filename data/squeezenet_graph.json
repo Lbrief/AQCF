@@ -1,0 +1,3489 @@
+{
+  "input_shape": [
+    1,
+    227,
+    227,
+    3
+  ],
+  "arrays": {
+    "tmp0": [
+      1,
+      227,
+      227,
+      3
+    ],
+    "tmp1": [
+      3,
+      3,
+      3,
+      64
+    ],
+    "tmp2": [
+      64
+    ],
+    "tmp3": [
+      1,
+      1,
+      64,
+      16
+    ],
+    "tmp4": [
+      16
+    ],
+    "tmp5": [
+      1,
+      1,
+      16,
+      64
+    ],
+    "tmp6": [
+      64
+    ],
+    "tmp7": [
+      3,
+      3,
+      16,
+      64
+    ],
+    "tmp8": [
+      64
+    ],
+    "tmp9": [
+      1,
+      1,
+      128,
+      16
+    ],
+    "tmp10": [
+      16
+    ],
+    "tmp11": [
+      1,
+      1,
+      16,
+      64
+    ],
+    "tmp12": [
+      64
+    ],
+    "tmp13": [
+      3,
+      3,
+      16,
+      64
+    ],
+    "tmp14": [
+      64
+    ],
+    "tmp15": [
+      1,
+      1,
+      128,
+      32
+    ],
+    "tmp16": [
+      32
+    ],
+    "tmp17": [
+      1,
+      1,
+      32,
+      128
+    ],
+    "tmp18": [
+      128
+    ],
+    "tmp19": [
+      3,
+      3,
+      32,
+      128
+    ],
+    "tmp20": [
+      128
+    ],
+    "tmp21": [
+      1,
+      1,
+      256,
+      32
+    ],
+    "tmp22": [
+      32
+    ],
+    "tmp23": [
+      1,
+      1,
+      32,
+      128
+    ],
+    "tmp24": [
+      128
+    ],
+    "tmp25": [
+      3,
+      3,
+      32,
+      128
+    ],
+    "tmp26": [
+      128
+    ],
+    "tmp27": [
+      1,
+      1,
+      256,
+      48
+    ],
+    "tmp28": [
+      48
+    ],
+    "tmp29": [
+      1,
+      1,
+      48,
+      192
+    ],
+    "tmp30": [
+      192
+    ],
+    "tmp31": [
+      3,
+      3,
+      48,
+      192
+    ],
+    "tmp32": [
+      192
+    ],
+    "tmp33": [
+      1,
+      1,
+      384,
+      48
+    ],
+    "tmp34": [
+      48
+    ],
+    "tmp35": [
+      1,
+      1,
+      48,
+      192
+    ],
+    "tmp36": [
+      192
+    ],
+    "tmp37": [
+      3,
+      3,
+      48,
+      192
+    ],
+    "tmp38": [
+      192
+    ],
+    "tmp39": [
+      1,
+      1,
+      384,
+      64
+    ],
+    "tmp40": [
+      64
+    ],
+    "tmp41": [
+      1,
+      1,
+      64,
+      256
+    ],
+    "tmp42": [
+      256
+    ],
+    "tmp43": [
+      3,
+      3,
+      64,
+      256
+    ],
+    "tmp44": [
+      256
+    ],
+    "tmp45": [
+      1,
+      1,
+      512,
+      64
+    ],
+    "tmp46": [
+      64
+    ],
+    "tmp47": [
+      1,
+      1,
+      64,
+      256
+    ],
+    "tmp48": [
+      256
+    ],
+    "tmp49": [
+      3,
+      3,
+      64,
+      256
+    ],
+    "tmp50": [
+      256
+    ],
+    "tmp51": [
+      1,
+      1,
+      512,
+      1000
+    ],
+    "tmp52": [
+      1000
+    ],
+    "tmp53": [
+      1,
+      113,
+      113,
+      64
+    ],
+    "tmp56": [
+      1,
+      113,
+      113,
+      64
+    ],
+    "tmp59": [
+      1,
+      56,
+      56,
+      64
+    ],
+    "tmp61": [
+      1,
+      56,
+      56,
+      64
+    ],
+    "tmp63": [
+      1,
+      56,
+      56,
+      16
+    ],
+    "tmp66": [
+      1,
+      56,
+      56,
+      16
+    ],
+    "tmp69": [
+      1,
+      56,
+      56,
+      16
+    ],
+    "tmp71": [
+      1,
+      56,
+      56,
+      64
+    ],
+    "tmp73": [
+      1,
+      56,
+      56,
+      64
+    ],
+    "tmp76": [
+      1,
+      56,
+      56,
+      64
+    ],
+    "tmp78": [
+      1,
+      56,
+      56,
+      64
+    ],
+    "tmp81": [
+      1,
+      56,
+      56,
+      64
+    ],
+    "tmp84": [
+      1,
+      56,
+      56,
+      64
+    ],
+    "tmp87": [
+      1,
+      56,
+      56,
+      128
+    ],
+    "tmp91": [
+      1,
+      56,
+      56,
+      16
+    ],
+    "tmp94": [
+      1,
+      56,
+      56,
+      16
+    ],
+    "tmp97": [
+      1,
+      56,
+      56,
+      16
+    ],
+    "tmp99": [
+      1,
+      56,
+      56,
+      64
+    ],
+    "tmp101": [
+      1,
+      56,
+      56,
+      64
+    ],
+    "tmp104": [
+      1,
+      56,
+      56,
+      64
+    ],
+    "tmp106": [
+      1,
+      56,
+      56,
+      64
+    ],
+    "tmp109": [
+      1,
+      56,
+      56,
+      64
+    ],
+    "tmp112": [
+      1,
+      56,
+      56,
+      64
+    ],
+    "tmp115": [
+      1,
+      56,
+      56,
+      128
+    ],
+    "tmp119": [
+      1,
+      27,
+      27,
+      128
+    ],
+    "tmp121": [
+      1,
+      27,
+      27,
+      32
+    ],
+    "tmp124": [
+      1,
+      27,
+      27,
+      32
+    ],
+    "tmp127": [
+      1,
+      27,
+      27,
+      32
+    ],
+    "tmp129": [
+      1,
+      27,
+      27,
+      128
+    ],
+    "tmp131": [
+      1,
+      27,
+      27,
+      128
+    ],
+    "tmp134": [
+      1,
+      27,
+      27,
+      128
+    ],
+    "tmp136": [
+      1,
+      27,
+      27,
+      128
+    ],
+    "tmp139": [
+      1,
+      27,
+      27,
+      128
+    ],
+    "tmp142": [
+      1,
+      27,
+      27,
+      128
+    ],
+    "tmp145": [
+      1,
+      27,
+      27,
+      256
+    ],
+    "tmp149": [
+      1,
+      27,
+      27,
+      32
+    ],
+    "tmp152": [
+      1,
+      27,
+      27,
+      32
+    ],
+    "tmp155": [
+      1,
+      27,
+      27,
+      32
+    ],
+    "tmp157": [
+      1,
+      27,
+      27,
+      128
+    ],
+    "tmp159": [
+      1,
+      27,
+      27,
+      128
+    ],
+    "tmp162": [
+      1,
+      27,
+      27,
+      128
+    ],
+    "tmp164": [
+      1,
+      27,
+      27,
+      128
+    ],
+    "tmp167": [
+      1,
+      27,
+      27,
+      128
+    ],
+    "tmp170": [
+      1,
+      27,
+      27,
+      128
+    ],
+    "tmp173": [
+      1,
+      27,
+      27,
+      256
+    ],
+    "tmp177": [
+      1,
+      13,
+      13,
+      256
+    ],
+    "tmp179": [
+      1,
+      13,
+      13,
+      48
+    ],
+    "tmp182": [
+      1,
+      13,
+      13,
+      48
+    ],
+    "tmp185": [
+      1,
+      13,
+      13,
+      48
+    ],
+    "tmp187": [
+      1,
+      13,
+      13,
+      192
+    ],
+    "tmp189": [
+      1,
+      13,
+      13,
+      192
+    ],
+    "tmp192": [
+      1,
+      13,
+      13,
+      192
+    ],
+    "tmp194": [
+      1,
+      13,
+      13,
+      192
+    ],
+    "tmp197": [
+      1,
+      13,
+      13,
+      192
+    ],
+    "tmp200": [
+      1,
+      13,
+      13,
+      192
+    ],
+    "tmp203": [
+      1,
+      13,
+      13,
+      384
+    ],
+    "tmp207": [
+      1,
+      13,
+      13,
+      48
+    ],
+    "tmp210": [
+      1,
+      13,
+      13,
+      48
+    ],
+    "tmp213": [
+      1,
+      13,
+      13,
+      48
+    ],
+    "tmp215": [
+      1,
+      13,
+      13,
+      192
+    ],
+    "tmp217": [
+      1,
+      13,
+      13,
+      192
+    ],
+    "tmp220": [
+      1,
+      13,
+      13,
+      192
+    ],
+    "tmp222": [
+      1,
+      13,
+      13,
+      192
+    ],
+    "tmp225": [
+      1,
+      13,
+      13,
+      192
+    ],
+    "tmp228": [
+      1,
+      13,
+      13,
+      192
+    ],
+    "tmp231": [
+      1,
+      13,
+      13,
+      384
+    ],
+    "tmp235": [
+      1,
+      13,
+      13,
+      64
+    ],
+    "tmp238": [
+      1,
+      13,
+      13,
+      64
+    ],
+    "tmp241": [
+      1,
+      13,
+      13,
+      64
+    ],
+    "tmp243": [
+      1,
+      13,
+      13,
+      256
+    ],
+    "tmp245": [
+      1,
+      13,
+      13,
+      256
+    ],
+    "tmp248": [
+      1,
+      13,
+      13,
+      256
+    ],
+    "tmp250": [
+      1,
+      13,
+      13,
+      256
+    ],
+    "tmp253": [
+      1,
+      13,
+      13,
+      256
+    ],
+    "tmp256": [
+      1,
+      13,
+      13,
+      256
+    ],
+    "tmp259": [
+      1,
+      13,
+      13,
+      512
+    ],
+    "tmp263": [
+      1,
+      13,
+      13,
+      64
+    ],
+    "tmp266": [
+      1,
+      13,
+      13,
+      64
+    ],
+    "tmp269": [
+      1,
+      13,
+      13,
+      64
+    ],
+    "tmp271": [
+      1,
+      13,
+      13,
+      256
+    ],
+    "tmp273": [
+      1,
+      13,
+      13,
+      256
+    ],
+    "tmp276": [
+      1,
+      13,
+      13,
+      256
+    ],
+    "tmp278": [
+      1,
+      13,
+      13,
+      256
+    ],
+    "tmp281": [
+      1,
+      13,
+      13,
+      256
+    ],
+    "tmp284": [
+      1,
+      13,
+      13,
+      256
+    ],
+    "tmp287": [
+      1,
+      13,
+      13,
+      512
+    ],
+    "tmp291": [
+      1,
+      13,
+      13,
+      1000
+    ],
+    "tmp294": [
+      1,
+      13,
+      13,
+      1000
+    ],
+    "tmp297": [
+      1,
+      13,
+      13,
+      1000
+    ],
+    "tmp299": [
+      1,
+      1,
+      1,
+      1000
+    ],
+    "tmp302": [
+      1,
+      1,
+      1
+    ]
+  },
+  "nodes": [
+    {
+      "index": 0,
+      "kind": "Conv2DWrapper",
+      "args": [
+        1,
+        227,
+        227,
+        3,
+        3,
+        3,
+        64,
+        0,
+        0,
+        0,
+        0,
+        2,
+        2,
+        "tmp0",
+        "tmp1",
+        "tmp53"
+      ],
+      "output": "tmp53",
+      "shape": [
+        1,
+        113,
+        113,
+        64
+      ],
+      "elements": 817216,
+      "rhombus_eligible_pointwise": false
+    },
+    {
+      "index": 1,
+      "kind": "ScaleUp1",
+      "args": [
+        64,
+        "tmp2",
+        12
+      ],
+      "output": "tmp2",
+      "shape": [
+        64
+      ],
+      "elements": 64
+    },
+    {
+      "index": 2,
+      "kind": "MatAddBroadCast4",
+      "args": [
+        1,
+        113,
+        113,
+        64,
+        "tmp53",
+        "tmp2",
+        "tmp56"
+      ],
+      "output": "tmp56",
+      "shape": [
+        1,
+        113,
+        113,
+        64
+      ],
+      "elements": 817216
+    },
+    {
+      "index": 3,
+      "kind": "MaxPool",
+      "args": [
+        1,
+        56,
+        56,
+        64,
+        3,
+        3,
+        0,
+        0,
+        0,
+        0,
+        2,
+        2,
+        1,
+        113,
+        113,
+        64,
+        "tmp56",
+        "tmp59"
+      ],
+      "output": "tmp59",
+      "shape": [
+        1,
+        56,
+        56,
+        64
+      ],
+      "elements": 200704
+    },
+    {
+      "index": 4,
+      "kind": "Relu4",
+      "args": [
+        1,
+        56,
+        56,
+        64,
+        "tmp59",
+        "tmp61",
+        12,
+        1
+      ],
+      "output": "tmp61",
+      "shape": [
+        1,
+        56,
+        56,
+        64
+      ],
+      "elements": 200704
+    },
+    {
+      "index": 5,
+      "kind": "Conv2DWrapper",
+      "args": [
+        1,
+        56,
+        56,
+        64,
+        1,
+        1,
+        16,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        "tmp61",
+        "tmp3",
+        "tmp63"
+      ],
+      "output": "tmp63",
+      "shape": [
+        1,
+        56,
+        56,
+        16
+      ],
+      "elements": 50176,
+      "rhombus_eligible_pointwise": true
+    },
+    {
+      "index": 6,
+      "kind": "ScaleUp1",
+      "args": [
+        16,
+        "tmp4",
+        12
+      ],
+      "output": "tmp4",
+      "shape": [
+        16
+      ],
+      "elements": 16
+    },
+    {
+      "index": 7,
+      "kind": "MatAddBroadCast4",
+      "args": [
+        1,
+        56,
+        56,
+        16,
+        "tmp63",
+        "tmp4",
+        "tmp66"
+      ],
+      "output": "tmp66",
+      "shape": [
+        1,
+        56,
+        56,
+        16
+      ],
+      "elements": 50176
+    },
+    {
+      "index": 8,
+      "kind": "Relu4",
+      "args": [
+        1,
+        56,
+        56,
+        16,
+        "tmp66",
+        "tmp69",
+        12,
+        1
+      ],
+      "output": "tmp69",
+      "shape": [
+        1,
+        56,
+        56,
+        16
+      ],
+      "elements": 50176
+    },
+    {
+      "index": 9,
+      "kind": "Conv2DWrapper",
+      "args": [
+        1,
+        56,
+        56,
+        16,
+        1,
+        1,
+        64,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        "tmp69",
+        "tmp5",
+        "tmp71"
+      ],
+      "output": "tmp71",
+      "shape": [
+        1,
+        56,
+        56,
+        64
+      ],
+      "elements": 200704,
+      "rhombus_eligible_pointwise": true
+    },
+    {
+      "index": 10,
+      "kind": "ScaleUp1",
+      "args": [
+        64,
+        "tmp6",
+        12
+      ],
+      "output": "tmp6",
+      "shape": [
+        64
+      ],
+      "elements": 64
+    },
+    {
+      "index": 11,
+      "kind": "MatAddBroadCast4",
+      "args": [
+        1,
+        56,
+        56,
+        64,
+        "tmp71",
+        "tmp6",
+        "tmp73"
+      ],
+      "output": "tmp73",
+      "shape": [
+        1,
+        56,
+        56,
+        64
+      ],
+      "elements": 200704
+    },
+    {
+      "index": 12,
+      "kind": "Relu4",
+      "args": [
+        1,
+        56,
+        56,
+        64,
+        "tmp73",
+        "tmp76",
+        12,
+        1
+      ],
+      "output": "tmp76",
+      "shape": [
+        1,
+        56,
+        56,
+        64
+      ],
+      "elements": 200704
+    },
+    {
+      "index": 13,
+      "kind": "Conv2DWrapper",
+      "args": [
+        1,
+        56,
+        56,
+        16,
+        3,
+        3,
+        64,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        "tmp69",
+        "tmp7",
+        "tmp78"
+      ],
+      "output": "tmp78",
+      "shape": [
+        1,
+        56,
+        56,
+        64
+      ],
+      "elements": 200704,
+      "rhombus_eligible_pointwise": false
+    },
+    {
+      "index": 14,
+      "kind": "ScaleUp1",
+      "args": [
+        64,
+        "tmp8",
+        12
+      ],
+      "output": "tmp8",
+      "shape": [
+        64
+      ],
+      "elements": 64
+    },
+    {
+      "index": 15,
+      "kind": "MatAddBroadCast4",
+      "args": [
+        1,
+        56,
+        56,
+        64,
+        "tmp78",
+        "tmp8",
+        "tmp81"
+      ],
+      "output": "tmp81",
+      "shape": [
+        1,
+        56,
+        56,
+        64
+      ],
+      "elements": 200704
+    },
+    {
+      "index": 16,
+      "kind": "Relu4",
+      "args": [
+        1,
+        56,
+        56,
+        64,
+        "tmp81",
+        "tmp84",
+        12,
+        1
+      ],
+      "output": "tmp84",
+      "shape": [
+        1,
+        56,
+        56,
+        64
+      ],
+      "elements": 200704
+    },
+    {
+      "index": 17,
+      "kind": "Concat2T444",
+      "args": [
+        1,
+        56,
+        56,
+        128,
+        1,
+        56,
+        56,
+        64,
+        "tmp76",
+        1,
+        56,
+        56,
+        64,
+        "tmp84",
+        3,
+        "tmp87"
+      ],
+      "output": "tmp87",
+      "shape": [
+        1,
+        56,
+        56,
+        128
+      ],
+      "elements": 401408
+    },
+    {
+      "index": 18,
+      "kind": "Conv2DWrapper",
+      "args": [
+        1,
+        56,
+        56,
+        128,
+        1,
+        1,
+        16,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        "tmp87",
+        "tmp9",
+        "tmp91"
+      ],
+      "output": "tmp91",
+      "shape": [
+        1,
+        56,
+        56,
+        16
+      ],
+      "elements": 50176,
+      "rhombus_eligible_pointwise": true
+    },
+    {
+      "index": 19,
+      "kind": "ScaleUp1",
+      "args": [
+        16,
+        "tmp10",
+        12
+      ],
+      "output": "tmp10",
+      "shape": [
+        16
+      ],
+      "elements": 16
+    },
+    {
+      "index": 20,
+      "kind": "MatAddBroadCast4",
+      "args": [
+        1,
+        56,
+        56,
+        16,
+        "tmp91",
+        "tmp10",
+        "tmp94"
+      ],
+      "output": "tmp94",
+      "shape": [
+        1,
+        56,
+        56,
+        16
+      ],
+      "elements": 50176
+    },
+    {
+      "index": 21,
+      "kind": "Relu4",
+      "args": [
+        1,
+        56,
+        56,
+        16,
+        "tmp94",
+        "tmp97",
+        12,
+        1
+      ],
+      "output": "tmp97",
+      "shape": [
+        1,
+        56,
+        56,
+        16
+      ],
+      "elements": 50176
+    },
+    {
+      "index": 22,
+      "kind": "Conv2DWrapper",
+      "args": [
+        1,
+        56,
+        56,
+        16,
+        1,
+        1,
+        64,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        "tmp97",
+        "tmp11",
+        "tmp99"
+      ],
+      "output": "tmp99",
+      "shape": [
+        1,
+        56,
+        56,
+        64
+      ],
+      "elements": 200704,
+      "rhombus_eligible_pointwise": true
+    },
+    {
+      "index": 23,
+      "kind": "ScaleUp1",
+      "args": [
+        64,
+        "tmp12",
+        12
+      ],
+      "output": "tmp12",
+      "shape": [
+        64
+      ],
+      "elements": 64
+    },
+    {
+      "index": 24,
+      "kind": "MatAddBroadCast4",
+      "args": [
+        1,
+        56,
+        56,
+        64,
+        "tmp99",
+        "tmp12",
+        "tmp101"
+      ],
+      "output": "tmp101",
+      "shape": [
+        1,
+        56,
+        56,
+        64
+      ],
+      "elements": 200704
+    },
+    {
+      "index": 25,
+      "kind": "Relu4",
+      "args": [
+        1,
+        56,
+        56,
+        64,
+        "tmp101",
+        "tmp104",
+        12,
+        1
+      ],
+      "output": "tmp104",
+      "shape": [
+        1,
+        56,
+        56,
+        64
+      ],
+      "elements": 200704
+    },
+    {
+      "index": 26,
+      "kind": "Conv2DWrapper",
+      "args": [
+        1,
+        56,
+        56,
+        16,
+        3,
+        3,
+        64,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        "tmp97",
+        "tmp13",
+        "tmp106"
+      ],
+      "output": "tmp106",
+      "shape": [
+        1,
+        56,
+        56,
+        64
+      ],
+      "elements": 200704,
+      "rhombus_eligible_pointwise": false
+    },
+    {
+      "index": 27,
+      "kind": "ScaleUp1",
+      "args": [
+        64,
+        "tmp14",
+        12
+      ],
+      "output": "tmp14",
+      "shape": [
+        64
+      ],
+      "elements": 64
+    },
+    {
+      "index": 28,
+      "kind": "MatAddBroadCast4",
+      "args": [
+        1,
+        56,
+        56,
+        64,
+        "tmp106",
+        "tmp14",
+        "tmp109"
+      ],
+      "output": "tmp109",
+      "shape": [
+        1,
+        56,
+        56,
+        64
+      ],
+      "elements": 200704
+    },
+    {
+      "index": 29,
+      "kind": "Relu4",
+      "args": [
+        1,
+        56,
+        56,
+        64,
+        "tmp109",
+        "tmp112",
+        12,
+        1
+      ],
+      "output": "tmp112",
+      "shape": [
+        1,
+        56,
+        56,
+        64
+      ],
+      "elements": 200704
+    },
+    {
+      "index": 30,
+      "kind": "Concat2T444",
+      "args": [
+        1,
+        56,
+        56,
+        128,
+        1,
+        56,
+        56,
+        64,
+        "tmp104",
+        1,
+        56,
+        56,
+        64,
+        "tmp112",
+        3,
+        "tmp115"
+      ],
+      "output": "tmp115",
+      "shape": [
+        1,
+        56,
+        56,
+        128
+      ],
+      "elements": 401408
+    },
+    {
+      "index": 31,
+      "kind": "MaxPool",
+      "args": [
+        1,
+        27,
+        27,
+        128,
+        3,
+        3,
+        0,
+        0,
+        0,
+        0,
+        2,
+        2,
+        1,
+        56,
+        56,
+        128,
+        "tmp115",
+        "tmp119"
+      ],
+      "output": "tmp119",
+      "shape": [
+        1,
+        27,
+        27,
+        128
+      ],
+      "elements": 93312
+    },
+    {
+      "index": 32,
+      "kind": "Conv2DWrapper",
+      "args": [
+        1,
+        27,
+        27,
+        128,
+        1,
+        1,
+        32,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        "tmp119",
+        "tmp15",
+        "tmp121"
+      ],
+      "output": "tmp121",
+      "shape": [
+        1,
+        27,
+        27,
+        32
+      ],
+      "elements": 23328,
+      "rhombus_eligible_pointwise": true
+    },
+    {
+      "index": 33,
+      "kind": "ScaleUp1",
+      "args": [
+        32,
+        "tmp16",
+        12
+      ],
+      "output": "tmp16",
+      "shape": [
+        32
+      ],
+      "elements": 32
+    },
+    {
+      "index": 34,
+      "kind": "MatAddBroadCast4",
+      "args": [
+        1,
+        27,
+        27,
+        32,
+        "tmp121",
+        "tmp16",
+        "tmp124"
+      ],
+      "output": "tmp124",
+      "shape": [
+        1,
+        27,
+        27,
+        32
+      ],
+      "elements": 23328
+    },
+    {
+      "index": 35,
+      "kind": "Relu4",
+      "args": [
+        1,
+        27,
+        27,
+        32,
+        "tmp124",
+        "tmp127",
+        12,
+        1
+      ],
+      "output": "tmp127",
+      "shape": [
+        1,
+        27,
+        27,
+        32
+      ],
+      "elements": 23328
+    },
+    {
+      "index": 36,
+      "kind": "Conv2DWrapper",
+      "args": [
+        1,
+        27,
+        27,
+        32,
+        1,
+        1,
+        128,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        "tmp127",
+        "tmp17",
+        "tmp129"
+      ],
+      "output": "tmp129",
+      "shape": [
+        1,
+        27,
+        27,
+        128
+      ],
+      "elements": 93312,
+      "rhombus_eligible_pointwise": true
+    },
+    {
+      "index": 37,
+      "kind": "ScaleUp1",
+      "args": [
+        128,
+        "tmp18",
+        12
+      ],
+      "output": "tmp18",
+      "shape": [
+        128
+      ],
+      "elements": 128
+    },
+    {
+      "index": 38,
+      "kind": "MatAddBroadCast4",
+      "args": [
+        1,
+        27,
+        27,
+        128,
+        "tmp129",
+        "tmp18",
+        "tmp131"
+      ],
+      "output": "tmp131",
+      "shape": [
+        1,
+        27,
+        27,
+        128
+      ],
+      "elements": 93312
+    },
+    {
+      "index": 39,
+      "kind": "Relu4",
+      "args": [
+        1,
+        27,
+        27,
+        128,
+        "tmp131",
+        "tmp134",
+        12,
+        1
+      ],
+      "output": "tmp134",
+      "shape": [
+        1,
+        27,
+        27,
+        128
+      ],
+      "elements": 93312
+    },
+    {
+      "index": 40,
+      "kind": "Conv2DWrapper",
+      "args": [
+        1,
+        27,
+        27,
+        32,
+        3,
+        3,
+        128,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        "tmp127",
+        "tmp19",
+        "tmp136"
+      ],
+      "output": "tmp136",
+      "shape": [
+        1,
+        27,
+        27,
+        128
+      ],
+      "elements": 93312,
+      "rhombus_eligible_pointwise": false
+    },
+    {
+      "index": 41,
+      "kind": "ScaleUp1",
+      "args": [
+        128,
+        "tmp20",
+        12
+      ],
+      "output": "tmp20",
+      "shape": [
+        128
+      ],
+      "elements": 128
+    },
+    {
+      "index": 42,
+      "kind": "MatAddBroadCast4",
+      "args": [
+        1,
+        27,
+        27,
+        128,
+        "tmp136",
+        "tmp20",
+        "tmp139"
+      ],
+      "output": "tmp139",
+      "shape": [
+        1,
+        27,
+        27,
+        128
+      ],
+      "elements": 93312
+    },
+    {
+      "index": 43,
+      "kind": "Relu4",
+      "args": [
+        1,
+        27,
+        27,
+        128,
+        "tmp139",
+        "tmp142",
+        12,
+        1
+      ],
+      "output": "tmp142",
+      "shape": [
+        1,
+        27,
+        27,
+        128
+      ],
+      "elements": 93312
+    },
+    {
+      "index": 44,
+      "kind": "Concat2T444",
+      "args": [
+        1,
+        27,
+        27,
+        256,
+        1,
+        27,
+        27,
+        128,
+        "tmp134",
+        1,
+        27,
+        27,
+        128,
+        "tmp142",
+        3,
+        "tmp145"
+      ],
+      "output": "tmp145",
+      "shape": [
+        1,
+        27,
+        27,
+        256
+      ],
+      "elements": 186624
+    },
+    {
+      "index": 45,
+      "kind": "Conv2DWrapper",
+      "args": [
+        1,
+        27,
+        27,
+        256,
+        1,
+        1,
+        32,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        "tmp145",
+        "tmp21",
+        "tmp149"
+      ],
+      "output": "tmp149",
+      "shape": [
+        1,
+        27,
+        27,
+        32
+      ],
+      "elements": 23328,
+      "rhombus_eligible_pointwise": true
+    },
+    {
+      "index": 46,
+      "kind": "ScaleUp1",
+      "args": [
+        32,
+        "tmp22",
+        12
+      ],
+      "output": "tmp22",
+      "shape": [
+        32
+      ],
+      "elements": 32
+    },
+    {
+      "index": 47,
+      "kind": "MatAddBroadCast4",
+      "args": [
+        1,
+        27,
+        27,
+        32,
+        "tmp149",
+        "tmp22",
+        "tmp152"
+      ],
+      "output": "tmp152",
+      "shape": [
+        1,
+        27,
+        27,
+        32
+      ],
+      "elements": 23328
+    },
+    {
+      "index": 48,
+      "kind": "Relu4",
+      "args": [
+        1,
+        27,
+        27,
+        32,
+        "tmp152",
+        "tmp155",
+        12,
+        1
+      ],
+      "output": "tmp155",
+      "shape": [
+        1,
+        27,
+        27,
+        32
+      ],
+      "elements": 23328
+    },
+    {
+      "index": 49,
+      "kind": "Conv2DWrapper",
+      "args": [
+        1,
+        27,
+        27,
+        32,
+        1,
+        1,
+        128,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        "tmp155",
+        "tmp23",
+        "tmp157"
+      ],
+      "output": "tmp157",
+      "shape": [
+        1,
+        27,
+        27,
+        128
+      ],
+      "elements": 93312,
+      "rhombus_eligible_pointwise": true
+    },
+    {
+      "index": 50,
+      "kind": "ScaleUp1",
+      "args": [
+        128,
+        "tmp24",
+        12
+      ],
+      "output": "tmp24",
+      "shape": [
+        128
+      ],
+      "elements": 128
+    },
+    {
+      "index": 51,
+      "kind": "MatAddBroadCast4",
+      "args": [
+        1,
+        27,
+        27,
+        128,
+        "tmp157",
+        "tmp24",
+        "tmp159"
+      ],
+      "output": "tmp159",
+      "shape": [
+        1,
+        27,
+        27,
+        128
+      ],
+      "elements": 93312
+    },
+    {
+      "index": 52,
+      "kind": "Relu4",
+      "args": [
+        1,
+        27,
+        27,
+        128,
+        "tmp159",
+        "tmp162",
+        12,
+        1
+      ],
+      "output": "tmp162",
+      "shape": [
+        1,
+        27,
+        27,
+        128
+      ],
+      "elements": 93312
+    },
+    {
+      "index": 53,
+      "kind": "Conv2DWrapper",
+      "args": [
+        1,
+        27,
+        27,
+        32,
+        3,
+        3,
+        128,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        "tmp155",
+        "tmp25",
+        "tmp164"
+      ],
+      "output": "tmp164",
+      "shape": [
+        1,
+        27,
+        27,
+        128
+      ],
+      "elements": 93312,
+      "rhombus_eligible_pointwise": false
+    },
+    {
+      "index": 54,
+      "kind": "ScaleUp1",
+      "args": [
+        128,
+        "tmp26",
+        12
+      ],
+      "output": "tmp26",
+      "shape": [
+        128
+      ],
+      "elements": 128
+    },
+    {
+      "index": 55,
+      "kind": "MatAddBroadCast4",
+      "args": [
+        1,
+        27,
+        27,
+        128,
+        "tmp164",
+        "tmp26",
+        "tmp167"
+      ],
+      "output": "tmp167",
+      "shape": [
+        1,
+        27,
+        27,
+        128
+      ],
+      "elements": 93312
+    },
+    {
+      "index": 56,
+      "kind": "Relu4",
+      "args": [
+        1,
+        27,
+        27,
+        128,
+        "tmp167",
+        "tmp170",
+        12,
+        1
+      ],
+      "output": "tmp170",
+      "shape": [
+        1,
+        27,
+        27,
+        128
+      ],
+      "elements": 93312
+    },
+    {
+      "index": 57,
+      "kind": "Concat2T444",
+      "args": [
+        1,
+        27,
+        27,
+        256,
+        1,
+        27,
+        27,
+        128,
+        "tmp162",
+        1,
+        27,
+        27,
+        128,
+        "tmp170",
+        3,
+        "tmp173"
+      ],
+      "output": "tmp173",
+      "shape": [
+        1,
+        27,
+        27,
+        256
+      ],
+      "elements": 186624
+    },
+    {
+      "index": 58,
+      "kind": "MaxPool",
+      "args": [
+        1,
+        13,
+        13,
+        256,
+        3,
+        3,
+        0,
+        0,
+        0,
+        0,
+        2,
+        2,
+        1,
+        27,
+        27,
+        256,
+        "tmp173",
+        "tmp177"
+      ],
+      "output": "tmp177",
+      "shape": [
+        1,
+        13,
+        13,
+        256
+      ],
+      "elements": 43264
+    },
+    {
+      "index": 59,
+      "kind": "Conv2DWrapper",
+      "args": [
+        1,
+        13,
+        13,
+        256,
+        1,
+        1,
+        48,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        "tmp177",
+        "tmp27",
+        "tmp179"
+      ],
+      "output": "tmp179",
+      "shape": [
+        1,
+        13,
+        13,
+        48
+      ],
+      "elements": 8112,
+      "rhombus_eligible_pointwise": true
+    },
+    {
+      "index": 60,
+      "kind": "ScaleUp1",
+      "args": [
+        48,
+        "tmp28",
+        12
+      ],
+      "output": "tmp28",
+      "shape": [
+        48
+      ],
+      "elements": 48
+    },
+    {
+      "index": 61,
+      "kind": "MatAddBroadCast4",
+      "args": [
+        1,
+        13,
+        13,
+        48,
+        "tmp179",
+        "tmp28",
+        "tmp182"
+      ],
+      "output": "tmp182",
+      "shape": [
+        1,
+        13,
+        13,
+        48
+      ],
+      "elements": 8112
+    },
+    {
+      "index": 62,
+      "kind": "Relu4",
+      "args": [
+        1,
+        13,
+        13,
+        48,
+        "tmp182",
+        "tmp185",
+        12,
+        1
+      ],
+      "output": "tmp185",
+      "shape": [
+        1,
+        13,
+        13,
+        48
+      ],
+      "elements": 8112
+    },
+    {
+      "index": 63,
+      "kind": "Conv2DWrapper",
+      "args": [
+        1,
+        13,
+        13,
+        48,
+        1,
+        1,
+        192,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        "tmp185",
+        "tmp29",
+        "tmp187"
+      ],
+      "output": "tmp187",
+      "shape": [
+        1,
+        13,
+        13,
+        192
+      ],
+      "elements": 32448,
+      "rhombus_eligible_pointwise": true
+    },
+    {
+      "index": 64,
+      "kind": "ScaleUp1",
+      "args": [
+        192,
+        "tmp30",
+        12
+      ],
+      "output": "tmp30",
+      "shape": [
+        192
+      ],
+      "elements": 192
+    },
+    {
+      "index": 65,
+      "kind": "MatAddBroadCast4",
+      "args": [
+        1,
+        13,
+        13,
+        192,
+        "tmp187",
+        "tmp30",
+        "tmp189"
+      ],
+      "output": "tmp189",
+      "shape": [
+        1,
+        13,
+        13,
+        192
+      ],
+      "elements": 32448
+    },
+    {
+      "index": 66,
+      "kind": "Relu4",
+      "args": [
+        1,
+        13,
+        13,
+        192,
+        "tmp189",
+        "tmp192",
+        12,
+        1
+      ],
+      "output": "tmp192",
+      "shape": [
+        1,
+        13,
+        13,
+        192
+      ],
+      "elements": 32448
+    },
+    {
+      "index": 67,
+      "kind": "Conv2DWrapper",
+      "args": [
+        1,
+        13,
+        13,
+        48,
+        3,
+        3,
+        192,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        "tmp185",
+        "tmp31",
+        "tmp194"
+      ],
+      "output": "tmp194",
+      "shape": [
+        1,
+        13,
+        13,
+        192
+      ],
+      "elements": 32448,
+      "rhombus_eligible_pointwise": false
+    },
+    {
+      "index": 68,
+      "kind": "ScaleUp1",
+      "args": [
+        192,
+        "tmp32",
+        12
+      ],
+      "output": "tmp32",
+      "shape": [
+        192
+      ],
+      "elements": 192
+    },
+    {
+      "index": 69,
+      "kind": "MatAddBroadCast4",
+      "args": [
+        1,
+        13,
+        13,
+        192,
+        "tmp194",
+        "tmp32",
+        "tmp197"
+      ],
+      "output": "tmp197",
+      "shape": [
+        1,
+        13,
+        13,
+        192
+      ],
+      "elements": 32448
+    },
+    {
+      "index": 70,
+      "kind": "Relu4",
+      "args": [
+        1,
+        13,
+        13,
+        192,
+        "tmp197",
+        "tmp200",
+        12,
+        1
+      ],
+      "output": "tmp200",
+      "shape": [
+        1,
+        13,
+        13,
+        192
+      ],
+      "elements": 32448
+    },
+    {
+      "index": 71,
+      "kind": "Concat2T444",
+      "args": [
+        1,
+        13,
+        13,
+        384,
+        1,
+        13,
+        13,
+        192,
+        "tmp192",
+        1,
+        13,
+        13,
+        192,
+        "tmp200",
+        3,
+        "tmp203"
+      ],
+      "output": "tmp203",
+      "shape": [
+        1,
+        13,
+        13,
+        384
+      ],
+      "elements": 64896
+    },
+    {
+      "index": 72,
+      "kind": "Conv2DWrapper",
+      "args": [
+        1,
+        13,
+        13,
+        384,
+        1,
+        1,
+        48,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        "tmp203",
+        "tmp33",
+        "tmp207"
+      ],
+      "output": "tmp207",
+      "shape": [
+        1,
+        13,
+        13,
+        48
+      ],
+      "elements": 8112,
+      "rhombus_eligible_pointwise": true
+    },
+    {
+      "index": 73,
+      "kind": "ScaleUp1",
+      "args": [
+        48,
+        "tmp34",
+        12
+      ],
+      "output": "tmp34",
+      "shape": [
+        48
+      ],
+      "elements": 48
+    },
+    {
+      "index": 74,
+      "kind": "MatAddBroadCast4",
+      "args": [
+        1,
+        13,
+        13,
+        48,
+        "tmp207",
+        "tmp34",
+        "tmp210"
+      ],
+      "output": "tmp210",
+      "shape": [
+        1,
+        13,
+        13,
+        48
+      ],
+      "elements": 8112
+    },
+    {
+      "index": 75,
+      "kind": "Relu4",
+      "args": [
+        1,
+        13,
+        13,
+        48,
+        "tmp210",
+        "tmp213",
+        12,
+        1
+      ],
+      "output": "tmp213",
+      "shape": [
+        1,
+        13,
+        13,
+        48
+      ],
+      "elements": 8112
+    },
+    {
+      "index": 76,
+      "kind": "Conv2DWrapper",
+      "args": [
+        1,
+        13,
+        13,
+        48,
+        1,
+        1,
+        192,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        "tmp213",
+        "tmp35",
+        "tmp215"
+      ],
+      "output": "tmp215",
+      "shape": [
+        1,
+        13,
+        13,
+        192
+      ],
+      "elements": 32448,
+      "rhombus_eligible_pointwise": true
+    },
+    {
+      "index": 77,
+      "kind": "ScaleUp1",
+      "args": [
+        192,
+        "tmp36",
+        12
+      ],
+      "output": "tmp36",
+      "shape": [
+        192
+      ],
+      "elements": 192
+    },
+    {
+      "index": 78,
+      "kind": "MatAddBroadCast4",
+      "args": [
+        1,
+        13,
+        13,
+        192,
+        "tmp215",
+        "tmp36",
+        "tmp217"
+      ],
+      "output": "tmp217",
+      "shape": [
+        1,
+        13,
+        13,
+        192
+      ],
+      "elements": 32448
+    },
+    {
+      "index": 79,
+      "kind": "Relu4",
+      "args": [
+        1,
+        13,
+        13,
+        192,
+        "tmp217",
+        "tmp220",
+        12,
+        1
+      ],
+      "output": "tmp220",
+      "shape": [
+        1,
+        13,
+        13,
+        192
+      ],
+      "elements": 32448
+    },
+    {
+      "index": 80,
+      "kind": "Conv2DWrapper",
+      "args": [
+        1,
+        13,
+        13,
+        48,
+        3,
+        3,
+        192,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        "tmp213",
+        "tmp37",
+        "tmp222"
+      ],
+      "output": "tmp222",
+      "shape": [
+        1,
+        13,
+        13,
+        192
+      ],
+      "elements": 32448,
+      "rhombus_eligible_pointwise": false
+    },
+    {
+      "index": 81,
+      "kind": "ScaleUp1",
+      "args": [
+        192,
+        "tmp38",
+        12
+      ],
+      "output": "tmp38",
+      "shape": [
+        192
+      ],
+      "elements": 192
+    },
+    {
+      "index": 82,
+      "kind": "MatAddBroadCast4",
+      "args": [
+        1,
+        13,
+        13,
+        192,
+        "tmp222",
+        "tmp38",
+        "tmp225"
+      ],
+      "output": "tmp225",
+      "shape": [
+        1,
+        13,
+        13,
+        192
+      ],
+      "elements": 32448
+    },
+    {
+      "index": 83,
+      "kind": "Relu4",
+      "args": [
+        1,
+        13,
+        13,
+        192,
+        "tmp225",
+        "tmp228",
+        12,
+        1
+      ],
+      "output": "tmp228",
+      "shape": [
+        1,
+        13,
+        13,
+        192
+      ],
+      "elements": 32448
+    },
+    {
+      "index": 84,
+      "kind": "Concat2T444",
+      "args": [
+        1,
+        13,
+        13,
+        384,
+        1,
+        13,
+        13,
+        192,
+        "tmp220",
+        1,
+        13,
+        13,
+        192,
+        "tmp228",
+        3,
+        "tmp231"
+      ],
+      "output": "tmp231",
+      "shape": [
+        1,
+        13,
+        13,
+        384
+      ],
+      "elements": 64896
+    },
+    {
+      "index": 85,
+      "kind": "Conv2DWrapper",
+      "args": [
+        1,
+        13,
+        13,
+        384,
+        1,
+        1,
+        64,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        "tmp231",
+        "tmp39",
+        "tmp235"
+      ],
+      "output": "tmp235",
+      "shape": [
+        1,
+        13,
+        13,
+        64
+      ],
+      "elements": 10816,
+      "rhombus_eligible_pointwise": true
+    },
+    {
+      "index": 86,
+      "kind": "ScaleUp1",
+      "args": [
+        64,
+        "tmp40",
+        12
+      ],
+      "output": "tmp40",
+      "shape": [
+        64
+      ],
+      "elements": 64
+    },
+    {
+      "index": 87,
+      "kind": "MatAddBroadCast4",
+      "args": [
+        1,
+        13,
+        13,
+        64,
+        "tmp235",
+        "tmp40",
+        "tmp238"
+      ],
+      "output": "tmp238",
+      "shape": [
+        1,
+        13,
+        13,
+        64
+      ],
+      "elements": 10816
+    },
+    {
+      "index": 88,
+      "kind": "Relu4",
+      "args": [
+        1,
+        13,
+        13,
+        64,
+        "tmp238",
+        "tmp241",
+        12,
+        1
+      ],
+      "output": "tmp241",
+      "shape": [
+        1,
+        13,
+        13,
+        64
+      ],
+      "elements": 10816
+    },
+    {
+      "index": 89,
+      "kind": "Conv2DWrapper",
+      "args": [
+        1,
+        13,
+        13,
+        64,
+        1,
+        1,
+        256,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        "tmp241",
+        "tmp41",
+        "tmp243"
+      ],
+      "output": "tmp243",
+      "shape": [
+        1,
+        13,
+        13,
+        256
+      ],
+      "elements": 43264,
+      "rhombus_eligible_pointwise": true
+    },
+    {
+      "index": 90,
+      "kind": "ScaleUp1",
+      "args": [
+        256,
+        "tmp42",
+        12
+      ],
+      "output": "tmp42",
+      "shape": [
+        256
+      ],
+      "elements": 256
+    },
+    {
+      "index": 91,
+      "kind": "MatAddBroadCast4",
+      "args": [
+        1,
+        13,
+        13,
+        256,
+        "tmp243",
+        "tmp42",
+        "tmp245"
+      ],
+      "output": "tmp245",
+      "shape": [
+        1,
+        13,
+        13,
+        256
+      ],
+      "elements": 43264
+    },
+    {
+      "index": 92,
+      "kind": "Relu4",
+      "args": [
+        1,
+        13,
+        13,
+        256,
+        "tmp245",
+        "tmp248",
+        12,
+        1
+      ],
+      "output": "tmp248",
+      "shape": [
+        1,
+        13,
+        13,
+        256
+      ],
+      "elements": 43264
+    },
+    {
+      "index": 93,
+      "kind": "Conv2DWrapper",
+      "args": [
+        1,
+        13,
+        13,
+        64,
+        3,
+        3,
+        256,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        "tmp241",
+        "tmp43",
+        "tmp250"
+      ],
+      "output": "tmp250",
+      "shape": [
+        1,
+        13,
+        13,
+        256
+      ],
+      "elements": 43264,
+      "rhombus_eligible_pointwise": false
+    },
+    {
+      "index": 94,
+      "kind": "ScaleUp1",
+      "args": [
+        256,
+        "tmp44",
+        12
+      ],
+      "output": "tmp44",
+      "shape": [
+        256
+      ],
+      "elements": 256
+    },
+    {
+      "index": 95,
+      "kind": "MatAddBroadCast4",
+      "args": [
+        1,
+        13,
+        13,
+        256,
+        "tmp250",
+        "tmp44",
+        "tmp253"
+      ],
+      "output": "tmp253",
+      "shape": [
+        1,
+        13,
+        13,
+        256
+      ],
+      "elements": 43264
+    },
+    {
+      "index": 96,
+      "kind": "Relu4",
+      "args": [
+        1,
+        13,
+        13,
+        256,
+        "tmp253",
+        "tmp256",
+        12,
+        1
+      ],
+      "output": "tmp256",
+      "shape": [
+        1,
+        13,
+        13,
+        256
+      ],
+      "elements": 43264
+    },
+    {
+      "index": 97,
+      "kind": "Concat2T444",
+      "args": [
+        1,
+        13,
+        13,
+        512,
+        1,
+        13,
+        13,
+        256,
+        "tmp248",
+        1,
+        13,
+        13,
+        256,
+        "tmp256",
+        3,
+        "tmp259"
+      ],
+      "output": "tmp259",
+      "shape": [
+        1,
+        13,
+        13,
+        512
+      ],
+      "elements": 86528
+    },
+    {
+      "index": 98,
+      "kind": "Conv2DWrapper",
+      "args": [
+        1,
+        13,
+        13,
+        512,
+        1,
+        1,
+        64,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        "tmp259",
+        "tmp45",
+        "tmp263"
+      ],
+      "output": "tmp263",
+      "shape": [
+        1,
+        13,
+        13,
+        64
+      ],
+      "elements": 10816,
+      "rhombus_eligible_pointwise": true
+    },
+    {
+      "index": 99,
+      "kind": "ScaleUp1",
+      "args": [
+        64,
+        "tmp46",
+        12
+      ],
+      "output": "tmp46",
+      "shape": [
+        64
+      ],
+      "elements": 64
+    },
+    {
+      "index": 100,
+      "kind": "MatAddBroadCast4",
+      "args": [
+        1,
+        13,
+        13,
+        64,
+        "tmp263",
+        "tmp46",
+        "tmp266"
+      ],
+      "output": "tmp266",
+      "shape": [
+        1,
+        13,
+        13,
+        64
+      ],
+      "elements": 10816
+    },
+    {
+      "index": 101,
+      "kind": "Relu4",
+      "args": [
+        1,
+        13,
+        13,
+        64,
+        "tmp266",
+        "tmp269",
+        12,
+        1
+      ],
+      "output": "tmp269",
+      "shape": [
+        1,
+        13,
+        13,
+        64
+      ],
+      "elements": 10816
+    },
+    {
+      "index": 102,
+      "kind": "Conv2DWrapper",
+      "args": [
+        1,
+        13,
+        13,
+        64,
+        1,
+        1,
+        256,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        "tmp269",
+        "tmp47",
+        "tmp271"
+      ],
+      "output": "tmp271",
+      "shape": [
+        1,
+        13,
+        13,
+        256
+      ],
+      "elements": 43264,
+      "rhombus_eligible_pointwise": true
+    },
+    {
+      "index": 103,
+      "kind": "ScaleUp1",
+      "args": [
+        256,
+        "tmp48",
+        12
+      ],
+      "output": "tmp48",
+      "shape": [
+        256
+      ],
+      "elements": 256
+    },
+    {
+      "index": 104,
+      "kind": "MatAddBroadCast4",
+      "args": [
+        1,
+        13,
+        13,
+        256,
+        "tmp271",
+        "tmp48",
+        "tmp273"
+      ],
+      "output": "tmp273",
+      "shape": [
+        1,
+        13,
+        13,
+        256
+      ],
+      "elements": 43264
+    },
+    {
+      "index": 105,
+      "kind": "Relu4",
+      "args": [
+        1,
+        13,
+        13,
+        256,
+        "tmp273",
+        "tmp276",
+        12,
+        1
+      ],
+      "output": "tmp276",
+      "shape": [
+        1,
+        13,
+        13,
+        256
+      ],
+      "elements": 43264
+    },
+    {
+      "index": 106,
+      "kind": "Conv2DWrapper",
+      "args": [
+        1,
+        13,
+        13,
+        64,
+        3,
+        3,
+        256,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        "tmp269",
+        "tmp49",
+        "tmp278"
+      ],
+      "output": "tmp278",
+      "shape": [
+        1,
+        13,
+        13,
+        256
+      ],
+      "elements": 43264,
+      "rhombus_eligible_pointwise": false
+    },
+    {
+      "index": 107,
+      "kind": "ScaleUp1",
+      "args": [
+        256,
+        "tmp50",
+        12
+      ],
+      "output": "tmp50",
+      "shape": [
+        256
+      ],
+      "elements": 256
+    },
+    {
+      "index": 108,
+      "kind": "MatAddBroadCast4",
+      "args": [
+        1,
+        13,
+        13,
+        256,
+        "tmp278",
+        "tmp50",
+        "tmp281"
+      ],
+      "output": "tmp281",
+      "shape": [
+        1,
+        13,
+        13,
+        256
+      ],
+      "elements": 43264
+    },
+    {
+      "index": 109,
+      "kind": "Relu4",
+      "args": [
+        1,
+        13,
+        13,
+        256,
+        "tmp281",
+        "tmp284",
+        12,
+        1
+      ],
+      "output": "tmp284",
+      "shape": [
+        1,
+        13,
+        13,
+        256
+      ],
+      "elements": 43264
+    },
+    {
+      "index": 110,
+      "kind": "Concat2T444",
+      "args": [
+        1,
+        13,
+        13,
+        512,
+        1,
+        13,
+        13,
+        256,
+        "tmp276",
+        1,
+        13,
+        13,
+        256,
+        "tmp284",
+        3,
+        "tmp287"
+      ],
+      "output": "tmp287",
+      "shape": [
+        1,
+        13,
+        13,
+        512
+      ],
+      "elements": 86528
+    },
+    {
+      "index": 111,
+      "kind": "Conv2DWrapper",
+      "args": [
+        1,
+        13,
+        13,
+        512,
+        1,
+        1,
+        1000,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        "tmp287",
+        "tmp51",
+        "tmp291"
+      ],
+      "output": "tmp291",
+      "shape": [
+        1,
+        13,
+        13,
+        1000
+      ],
+      "elements": 169000,
+      "rhombus_eligible_pointwise": true
+    },
+    {
+      "index": 112,
+      "kind": "ScaleUp1",
+      "args": [
+        1000,
+        "tmp52",
+        12
+      ],
+      "output": "tmp52",
+      "shape": [
+        1000
+      ],
+      "elements": 1000
+    },
+    {
+      "index": 113,
+      "kind": "MatAddBroadCast4",
+      "args": [
+        1,
+        13,
+        13,
+        1000,
+        "tmp291",
+        "tmp52",
+        "tmp294"
+      ],
+      "output": "tmp294",
+      "shape": [
+        1,
+        13,
+        13,
+        1000
+      ],
+      "elements": 169000
+    },
+    {
+      "index": 114,
+      "kind": "Relu4",
+      "args": [
+        1,
+        13,
+        13,
+        1000,
+        "tmp294",
+        "tmp297",
+        12,
+        1
+      ],
+      "output": "tmp297",
+      "shape": [
+        1,
+        13,
+        13,
+        1000
+      ],
+      "elements": 169000
+    },
+    {
+      "index": 115,
+      "kind": "AvgPool",
+      "args": [
+        1,
+        1,
+        1,
+        1000,
+        13,
+        13,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        13,
+        13,
+        1000,
+        "tmp297",
+        "tmp299"
+      ],
+      "output": "tmp299",
+      "shape": [
+        1,
+        1,
+        1,
+        1000
+      ],
+      "elements": 1000
+    },
+    {
+      "index": 116,
+      "kind": "ArgMax3",
+      "args": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1000,
+        "tmp299",
+        3,
+        "tmp302"
+      ],
+      "output": "tmp302",
+      "shape": [
+        1,
+        1,
+        1
+      ],
+      "elements": 1
+    }
+  ],
+  "census": {
+    "Conv2DWrapper": 26,
+    "ScaleUp1": 26,
+    "MatAddBroadCast4": 26,
+    "MaxPool": 3,
+    "Relu4": 26,
+    "Concat2T444": 8,
+    "AvgPool": 1,
+    "ArgMax3": 1
+  },
+  "classes": 1000,
+  "fractional_bits": 12,
+  "source_sha256": "90135d4164aec80140bf86123923081d3df4a1eaf5c326084c6f57aa5072e6d1"
+}

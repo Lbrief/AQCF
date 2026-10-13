@@ -1,0 +1,39 @@
+{
+  "schema": "aqcf.native_model_sources.v1",
+  "upstream_url": "https://github.com/Alibaba-Gemini-Lab/OpenCheetah",
+  "upstream_commit": "f71d4d49ffde81701fc3cc2d887fae62381fb472",
+  "models": {
+    "squeezenet": {
+      "fractional_bits": 12,
+      "classes": 1000,
+      "graph": "data/squeezenet_graph.json",
+      "files": [
+        {
+          "filename": "weights.inp",
+          "upstream_path": "pretrained/sqnet_model_scale12.inp",
+          "sha256": "7b60a2db6bdccca9be6fca80f46a21ec985d74d7820f22e7fbc7bd4950050fe2",
+          "url": "https://raw.githubusercontent.com/Alibaba-Gemini-Lab/OpenCheetah/f71d4d49ffde81701fc3cc2d887fae62381fb472/pretrained/sqnet_model_scale12.inp",
+          "upstream_sha256": "d19e437e1ce371af17d5dd5db6602ff56b81f72d5af67561e2e5c24916718a47",
+          "line_endings": "Pinned upstream LF is verified first; fetch tool emits CRLF to reproduce retained experiment file SHA256. Integer tokens are unchanged.",
+          "upstream_bytes": 4986900
+        }
+      ]
+    },
+    "resnet50": {
+      "fractional_bits": 12,
+      "classes": 1001,
+      "graph": "data/resnet50_graph.json",
+      "files": [
+        {
+          "filename": "weights.inp",
+          "upstream_path": "pretrained/resnet50_model_scale12.inp",
+          "sha256": "02bf0a430dbfb09f1a90f6599873fcf5af3143d17e6a4b382a5e690c4e69b999",
+          "url": "https://raw.githubusercontent.com/Alibaba-Gemini-Lab/OpenCheetah/f71d4d49ffde81701fc3cc2d887fae62381fb472/pretrained/resnet50_model_scale12.inp",
+          "upstream_sha256": "0918dca50022d671f9d2d998a59404f69e420e106990fd7705cd3c9707a5c58f",
+          "line_endings": "Pinned upstream LF is verified first; fetch tool emits CRLF to reproduce retained experiment file SHA256. Integer tokens are unchanged.",
+          "upstream_bytes": 90563797
+        }
+      ]
+    }
+  }
+}

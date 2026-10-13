@@ -1,0 +1,23 @@
+#pragma once
+// Fixed-width lossless serialization, not a cryptographic primitive.
+#include "resnet50/core/seeded_wire.hpp"
+#include "resnet50/parallel/parallel_data.hpp"
+namespace aqcf_wire38 {
+using namespace aqcf_seeded_wire;
+constexpr std::size_t SIZE=8+PREFIX+COUNT*38/8+SUFFIX;
+inline std::string pack(const std::string& raw,const std::array<U,2>& qs){
+ validate(raw);std::string out(SIZE,'\0');std::memcpy(out.data(),"AQSW0038",8);std::memcpy(out.data()+8,raw.data(),PREFIX);
+ pcn_data089::each("AQCF_SEEDED38_PACK",COUNT/8,[&](std::size_t g){std::array<U,5>b{};
+  for(unsigned j=0;j<8;++j){U v=word(raw.data()+PREFIX+8*(8*g+j));require(v<qs[(8*g+j)/DEGREE]&&v<(U(1)<<38),"canonical38 coefficient");unsigned pos=38*j,k=pos/64,s=pos%64;b[k]|=v<<s;if(s>26)b[k+1]|=v>>(64-s);}
+  std::memcpy(out.data()+8+PREFIX+38*g,b.data(),38);
+ });
+ std::memcpy(out.data()+SIZE-SUFFIX,raw.data()+RAW_SIZE-SUFFIX,SUFFIX);return out;
+}
+inline std::string unpack(const std::string& packed,const std::array<U,2>& qs){
+ require(packed.size()==SIZE&&packed.compare(0,8,"AQSW0038")==0,"fixed38 frame");std::string raw(RAW_SIZE,'\0');std::memcpy(raw.data(),packed.data()+8,PREFIX);
+ pcn_data089::each("AQCF_SEEDED38_UNPACK",COUNT/8,[&](std::size_t g){std::array<U,5>b{};std::memcpy(b.data(),packed.data()+8+PREFIX+38*g,38);
+  for(unsigned j=0;j<8;++j){unsigned pos=38*j,k=pos/64,s=pos%64;U v=b[k]>>s;if(s>26)v|=b[k+1]<<(64-s);v&=(U(1)<<38)-1;require(v<qs[(8*g+j)/DEGREE],"noncanonical38 frame");put(raw.data()+PREFIX+8*(8*g+j),v);}
+ });
+ std::memcpy(raw.data()+RAW_SIZE-SUFFIX,packed.data()+SIZE-SUFFIX,SUFFIX);validate(raw);return raw;
+}
+}

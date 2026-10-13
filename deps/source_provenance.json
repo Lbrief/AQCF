@@ -1,0 +1,534 @@
+{
+  "bolt_repository": "https://github.com/cmu-cryptosystems/BOLT",
+  "bolt_commit": "6911b1c26cb0405793e7b5a3e9effe67f659bc49",
+  "bolt_source_files": [
+    {
+      "path": "BuildingBlocks/aux-protocols.cpp",
+      "sha256": "e8f185e766ee55456af614e95889051588694ac0088b3a16e0be0104e2a91ddf",
+      "exact_upstream": true
+    },
+    {
+      "path": "BuildingBlocks/aux-protocols.h",
+      "sha256": "2b4e2324694c52c1be0f321cadf1a9efb7e8f6201d11676061e3d59225acd9bc",
+      "exact_upstream": true
+    },
+    {
+      "path": "BuildingBlocks/CMakeLists.txt",
+      "sha256": "df5a87433689cbd550a9a248a6e905dd62e5f76075397e460c4af4d9a33d2822",
+      "exact_upstream": true
+    },
+    {
+      "path": "BuildingBlocks/truncation.cpp",
+      "sha256": "886a0ea9d07199f80b3d881f41295f408378967580f0d76299f4a57550bc7b82",
+      "exact_upstream": true
+    },
+    {
+      "path": "BuildingBlocks/truncation.h",
+      "sha256": "b8fdd0d6214ed1ca0e7b174a94fdcb64de4cdcaa37fa0de61f4e781f0cf6b30d",
+      "exact_upstream": true
+    },
+    {
+      "path": "BuildingBlocks/value-extension.cpp",
+      "sha256": "ce875299e6f213807014e6bc38528b81f4aa1c6df50b4754ef93bcf53aa2405d",
+      "exact_upstream": true
+    },
+    {
+      "path": "BuildingBlocks/value-extension.h",
+      "sha256": "d315accf65be855bfba4c8ddf3924b086ca8ebdcdb104ded25a6e1cbd07db7f7",
+      "exact_upstream": true
+    },
+    {
+      "path": "FloatingPoint/bool-data.cpp",
+      "sha256": "38862a9a9eaa71055d986afc65eda1292f4ed992ba14e5f1675a9adcd2ab42e1",
+      "exact_upstream": true
+    },
+    {
+      "path": "FloatingPoint/bool-data.h",
+      "sha256": "9ae6b9f998f624f4237c589e681c25502f732b3b1b3ebbf3b8b119b452f111f1",
+      "exact_upstream": true
+    },
+    {
+      "path": "FloatingPoint/CMakeLists.txt",
+      "sha256": "9c107c34ccd87f3e1959ca90e3c04a1caceebabb26f95118306f71bc96bca51d",
+      "exact_upstream": true
+    },
+    {
+      "path": "FloatingPoint/fixed-point.cpp",
+      "sha256": "07cbcebcb4de84823510a16fcff79a345d0a4d5e886051380c535d444eb99a60",
+      "exact_upstream": true
+    },
+    {
+      "path": "FloatingPoint/fixed-point.h",
+      "sha256": "48760a8a4bfe9062c1bf69a5f9be73d47e1d8664dec22c1e2c01de73c6ae27dc",
+      "exact_upstream": true
+    },
+    {
+      "path": "FloatingPoint/floating-point.cpp",
+      "sha256": "0b273d12510b0c5aed899f4bedf2510091c377931cd124db6a99c31db38c0a38",
+      "exact_upstream": true
+    },
+    {
+      "path": "FloatingPoint/floating-point.h",
+      "sha256": "250134eb80e4e6820a587681a672b20fce82e73e61b2719c4a0325a40bb1daf3",
+      "exact_upstream": true
+    },
+    {
+      "path": "FloatingPoint/fp-math-coeffs.h",
+      "sha256": "b1510bb612d6d0c86378768539bcb980c4bc8cf2b2aa6e2c1cca1086d3ab05bc",
+      "exact_upstream": true
+    },
+    {
+      "path": "FloatingPoint/fp-math.cpp",
+      "sha256": "117a643b11d201c4dc27a597b45af4079ae5b7a7f80cc49a1fc81559246b5044",
+      "exact_upstream": true
+    },
+    {
+      "path": "FloatingPoint/fp-math.h",
+      "sha256": "77204d231311641e9ef3fb5bf66b761cd2d2f6cde42ce7fbff397a6155f0a45d",
+      "exact_upstream": true
+    },
+    {
+      "path": "GC/aes_opt.h",
+      "sha256": "f66ef723d5005d3abf8648f25c7891be2eeb3d578e118cc52b610ba807cfbae9",
+      "exact_upstream": true
+    },
+    {
+      "path": "GC/bit.h",
+      "sha256": "e3339519f69d76faef0ea9d760f7a40969c90da287e216d4bd4a062340a1c257",
+      "exact_upstream": true
+    },
+    {
+      "path": "GC/bit.hpp",
+      "sha256": "f14fbc8407e233214c333088868fba8ed77c28ea2daaeb0d877292933bc5b8f7",
+      "exact_upstream": true
+    },
+    {
+      "path": "GC/circuit_execution.h",
+      "sha256": "d0e1b8170a719b4303dd1b1f4aa06e33c2131912d7ac9eae42a9adaf7d6a4927",
+      "exact_upstream": true
+    },
+    {
+      "path": "GC/CMakeLists.txt",
+      "sha256": "880dfb963ae782567dbf0287e4b461c358d6a67f7d19a5e335e2eb395bfddfee",
+      "exact_upstream": true
+    },
+    {
+      "path": "GC/comparable.h",
+      "sha256": "df13c12a47d89bcef0f22723b238aae3d56139c88e2d4156f4ab481b054a0e47",
+      "exact_upstream": true
+    },
+    {
+      "path": "GC/emp-sh2pc.h",
+      "sha256": "4ec3ba3070cb6f88c426ff091c45d629db255a20b6523fbf711d8520bd23706a",
+      "exact_upstream": true
+    },
+    {
+      "path": "GC/emp-tool.cpp",
+      "sha256": "7467a5d2adc8b86c2b19c7af876b33e6b5604a23988cd6f086d5456f0c98d7f1",
+      "exact_upstream": true
+    },
+    {
+      "path": "GC/emp-tool.h",
+      "sha256": "4450d77f09620e31813a4566f41a9acb2da8fa49d1588ee19e2311d641167cfc",
+      "exact_upstream": true
+    },
+    {
+      "path": "GC/f2k.h",
+      "sha256": "b65e3d4572a4a33cb200f9816d6257409a3fbbf06704351577674a55d01033f1",
+      "exact_upstream": true
+    },
+    {
+      "path": "GC/halfgate_eva.cpp",
+      "sha256": "ce2e39266c84a17170dee8013586d3040ed3700e4971a2f3c3092064a711afa5",
+      "exact_upstream": true
+    },
+    {
+      "path": "GC/halfgate_eva.h",
+      "sha256": "9f6b2364a36c55174cfc5fa76a8732edfc0ed465b1ba388a3bfa4b57016c3b1a",
+      "exact_upstream": true
+    },
+    {
+      "path": "GC/halfgate_gen.cpp",
+      "sha256": "462031b21e9a0b7cb3a03a1cd4a54d5ba074f3069425602b9653fd3aaf908a59",
+      "exact_upstream": true
+    },
+    {
+      "path": "GC/halfgate_gen.h",
+      "sha256": "d6e15b7076bcf14409a54eb71ba9cc7ebc5bbde27e0c934711407f6b35df74ad",
+      "exact_upstream": true
+    },
+    {
+      "path": "GC/integer.h",
+      "sha256": "09146e74d0fa4b271a4860230ac3f13b867be3be0a7815ff03beb319ebcda85d",
+      "exact_upstream": true
+    },
+    {
+      "path": "GC/integer.hpp",
+      "sha256": "3c1bf40700a67997688f38b66e847465ae374a222747daf3799f84ae37a2db47",
+      "exact_upstream": true
+    },
+    {
+      "path": "GC/mitccrh.h",
+      "sha256": "4c2cede1fb065b582e2bf9a74f3b61975eda553b1e10b0ec15cd2a7d0f49cebc",
+      "exact_upstream": true
+    },
+    {
+      "path": "GC/number.h",
+      "sha256": "0514e5a48fbdd75a7349ec6e2385137c2fef57ca300d9786c0129a3d7ec83471",
+      "exact_upstream": true
+    },
+    {
+      "path": "GC/protocol_execution.h",
+      "sha256": "08ae641c3a8f504f9cd6a452cd1310f46661d3ccf91422c9349d51ac9f3b6f37",
+      "exact_upstream": true
+    },
+    {
+      "path": "GC/semihonest.h",
+      "sha256": "b37dd84ab0ed6892d17665253b6e666d25f5d6065b183cfd5d56772e9dc12c77",
+      "exact_upstream": true
+    },
+    {
+      "path": "GC/sh_eva.h",
+      "sha256": "c9317438523ceceadaba715d1b8cb5ee20c4d5aca557e7686502597a1cf0c465",
+      "exact_upstream": true
+    },
+    {
+      "path": "GC/sh_gen.h",
+      "sha256": "f0f66c7044d001039005f37ab87b4773dc2f446024ef8459c8af553676b8783e",
+      "exact_upstream": true
+    },
+    {
+      "path": "GC/sh_party.h",
+      "sha256": "dac36b9dff35b11c934280c13fa248538d68c1fa18906b58c4a83cd2da47b345",
+      "exact_upstream": true
+    },
+    {
+      "path": "GC/swappable.h",
+      "sha256": "53ef455f42c3a3d01464737a37ea2bd91617cbd39681e1b7b1855093b6d3b877",
+      "exact_upstream": true
+    },
+    {
+      "path": "GC/utils.h",
+      "sha256": "5e460df44b35b6f8505f07e917fb462c8be534f5680df020bc6b8a56f2b884dc",
+      "exact_upstream": true
+    },
+    {
+      "path": "LinearOT/CMakeLists.txt",
+      "sha256": "12d4aecabbdc083d82b54f5df1649cd96bc36dc056d45b0040baa8ccc8d30dd5",
+      "exact_upstream": true
+    },
+    {
+      "path": "LinearOT/linear-ot.cpp",
+      "sha256": "fc9f9ecae1aa57ff5d0f477615e2a274c3adef7cc852f4157da1be55229e38af",
+      "exact_upstream": true
+    },
+    {
+      "path": "LinearOT/linear-ot.h",
+      "sha256": "b3da4aa9fa4e30228611add70eb5c87d4f11bb4657a3ba5a0c853639ef03e149",
+      "exact_upstream": true
+    },
+    {
+      "path": "LinearOT/linear-uniform.h",
+      "sha256": "68586ca82996f6df20e8ddc9149357b034578062efc3272a19f34a89cd680dfa",
+      "exact_upstream": true
+    },
+    {
+      "path": "Math/CMakeLists.txt",
+      "sha256": "eaf94f2bb09117cfe01f2a42aeda3b05864eace371b5772c69cecc3b23b13733",
+      "exact_upstream": true
+    },
+    {
+      "path": "Math/math-functions.cpp",
+      "sha256": "9772cbf6fb4be0d2ea4d45fa782a31b3f8f743962d0103bfa05c5d4a4b0a85cd",
+      "exact_upstream": true
+    },
+    {
+      "path": "Math/math-functions.h",
+      "sha256": "576bab34eff456a0d1bfa7e73b16dcb018224cb0c3babd3825a2df7144b67db7",
+      "exact_upstream": true
+    },
+    {
+      "path": "Millionaire/bit-triple-generator.h",
+      "sha256": "0289cf5f8571a3376a142a5b5e5c6017861627bfe1d4267a25c2aeb2a5cf5bf7",
+      "exact_upstream": true
+    },
+    {
+      "path": "Millionaire/CMakeLists.txt",
+      "sha256": "4fc128d3d0943312de368e921dee2f04fa33ef26ce296ce66f91b3885b627dc8",
+      "exact_upstream": true
+    },
+    {
+      "path": "Millionaire/equality.h",
+      "sha256": "f0a5f58cdbe4a1d1744e57908fee42310e28931ec5b2b991a1a16520f83b150f",
+      "exact_upstream": true
+    },
+    {
+      "path": "Millionaire/millionaire.h",
+      "sha256": "b75b51e5c3698e44f63b2396c1cbbd3d6b005da68ef129b2dbe8e034ef3cdfe1",
+      "exact_upstream": true
+    },
+    {
+      "path": "Millionaire/millionaire_with_equality.h",
+      "sha256": "eb5c0213c1d63b1f2bb032f93bfdf611b2222701740e28d9737559f3164fe2ae",
+      "exact_upstream": true
+    },
+    {
+      "path": "NonLinear/argmax.h",
+      "sha256": "75b9da7fb757321383a2ea8842d2522b8ecef218e480a1d30ee4dd38c3a24366",
+      "exact_upstream": true
+    },
+    {
+      "path": "NonLinear/CMakeLists.txt",
+      "sha256": "aec8f1b735890bd52a47ec86b4cf79cf909d0e1fa9c6201f223aea9bc7b3ebbe",
+      "exact_upstream": true
+    },
+    {
+      "path": "NonLinear/drelu-field.h",
+      "sha256": "6b0f02f7a60f3e53985b1a36be0d9a3d396bf8eb3170a8cd714be7ce7a0ab515",
+      "exact_upstream": true
+    },
+    {
+      "path": "NonLinear/maxpool.h",
+      "sha256": "3c1a2915a5ecbd58c4d6f95ff3fa5f19bea65aed41d68b577ceaa3ebc96312ad",
+      "exact_upstream": true
+    },
+    {
+      "path": "NonLinear/relu-field.h",
+      "sha256": "823b446eb055f293e8f71c4a2d2e5f226b0c9ee189dffce4ae845fcf94074998",
+      "exact_upstream": true
+    },
+    {
+      "path": "NonLinear/relu-interface.h",
+      "sha256": "c002a2ac9b98f1b9227ca351c9f0aca4842f6fb077047febdb101cf7adef293e",
+      "exact_upstream": true
+    },
+    {
+      "path": "NonLinear/relu-ring.h",
+      "sha256": "4c5d38e80718f3004b87452c922c93a9ed51d970745b7d2b404faf782844862e",
+      "exact_upstream": true
+    },
+    {
+      "path": "OT/CMakeLists.txt",
+      "sha256": "31d75c4448b2062823323e65603ee7170412fcee1b1f3bb051bf646050ae1cf2",
+      "exact_upstream": true
+    },
+    {
+      "path": "OT/emp-ot.h",
+      "sha256": "66e9dbfc12fded62871f55d1c6c0d6f891cd245c77062b88e709b6fd58338072",
+      "exact_upstream": true
+    },
+    {
+      "path": "OT/ideal.h",
+      "sha256": "8399420d65cba722567112b24a77e6618dcdb45910a8c63d8555a3c93f9ea6dc",
+      "exact_upstream": true
+    },
+    {
+      "path": "OT/iknp.h",
+      "sha256": "8585a2cce3e9a52a5c9faaf33d4762632b90448a6e0e1140d2832d96a2602380",
+      "exact_upstream": true
+    },
+    {
+      "path": "OT/kkot.h",
+      "sha256": "53798112027b59ec83054a266ddf30da0606250c48f8cadbb7482370219b2cdd",
+      "exact_upstream": true
+    },
+    {
+      "path": "OT/np.h",
+      "sha256": "c040ac3dba53d0e374ff02952f288a05091e6bb680b703d2fb8eb7163d2bbc98",
+      "exact_upstream": true
+    },
+    {
+      "path": "OT/ot-utils.h",
+      "sha256": "35cc43ccc1b86a1d16ab3e1979f000e77425941ed3a5eff6cf48de315b8e1027",
+      "exact_upstream": true
+    },
+    {
+      "path": "OT/ot.h",
+      "sha256": "af9ee4ebbcff3fe5af091d15e442a9ca5cf9a67e2f7024d13c7f3b88924fa6cb",
+      "exact_upstream": true
+    },
+    {
+      "path": "OT/ot_pack.h",
+      "sha256": "33b02d12c90aafb0df41454e876d31fd1f2c73101cdc2bc519d0bce21572dee3",
+      "exact_upstream": true
+    },
+    {
+      "path": "OT/split-iknp.h",
+      "sha256": "7ea5ca10d7d17a350c1c74cce393f279a3ee26597d05dace9122a57bcd40aafa",
+      "exact_upstream": true
+    },
+    {
+      "path": "OT/split-kkot.h",
+      "sha256": "76913564f37e4a6fe97376aa0b11cab5919d266e816fc5dc0ba2a8602a9441a1",
+      "exact_upstream": true
+    },
+    {
+      "path": "OT/split-utils.h",
+      "sha256": "9af4756eebc30c255a95b578c4152052b858bdf038443b6420d85ce846e18aec",
+      "exact_upstream": true
+    },
+    {
+      "path": "utils/aes-ni.h",
+      "sha256": "24f84169975a20c69eba643bb52f974d34502b96635efeaf97da24d05d599285",
+      "exact_upstream": true
+    },
+    {
+      "path": "utils/aes.h",
+      "sha256": "3d48d5f729640d0c6812427241fa6656808e3a58ee616274d47220b6d4b41a96",
+      "exact_upstream": true
+    },
+    {
+      "path": "utils/aes_opt.h",
+      "sha256": "a15d3d44d9994de81db73b59d61ea5b1933730fb7b490cfb5de8d9d550191cfc",
+      "exact_upstream": true
+    },
+    {
+      "path": "utils/block.h",
+      "sha256": "d66a545a0ba698495d7881bc2640c6ffdcf05aee3bcfca2f015c530e4943dd50",
+      "exact_upstream": true
+    },
+    {
+      "path": "utils/ccrf.h",
+      "sha256": "0994531208bf1b92becea1fd180314ec6d232b544032faa17fe096ad2c645c9c",
+      "exact_upstream": true
+    },
+    {
+      "path": "utils/ccrh.h",
+      "sha256": "6e5f91f167b8d7ff351b1cf798f7e7c93944b64082269ee561037e7e71d63e26",
+      "exact_upstream": true
+    },
+    {
+      "path": "utils/CMakeLists.txt",
+      "sha256": "016fe75bde3cadfb5b128e5a6dbd97679e2e6f35086faedae5518fdc29cca2f6",
+      "exact_upstream": true
+    },
+    {
+      "path": "utils/constants.h",
+      "sha256": "2966ac6e4e14d7957f832933f75f1908bf57a5df4bb08d542ee821b5ad594098",
+      "exact_upstream": true
+    },
+    {
+      "path": "utils/crh.h",
+      "sha256": "497d47f7f9058a3c11abe4507a4144abb56f7c7aa741458715aef9f8d6a13fa6",
+      "exact_upstream": true
+    },
+    {
+      "path": "utils/emp-tool.h",
+      "sha256": "d1deb1f276f556aafb6df649a5645388323fec296b94782f927bdb6d0e53ad54",
+      "exact_upstream": true
+    },
+    {
+      "path": "utils/f2k.h",
+      "sha256": "b76dc72d06adff514a8fb4e9c56670ca8154337a5435ad6f194d38f9149821ec",
+      "exact_upstream": true
+    },
+    {
+      "path": "utils/group.h",
+      "sha256": "c81fdece56d525619148f482dc9df7cde6a97ad61f5548a8f88b84c1ba5274ae",
+      "exact_upstream": true
+    },
+    {
+      "path": "utils/group_openssl.h",
+      "sha256": "ce121a72f972dd301d052707989bc0b5b0d33876f6f16d03a7e9abb56c97b610",
+      "exact_upstream": true
+    },
+    {
+      "path": "utils/hash.h",
+      "sha256": "eca38b17aad0bf20757f838002b4bb7869d3f95c15fd956283a36e9911da8f84",
+      "exact_upstream": true
+    },
+    {
+      "path": "utils/io_channel.h",
+      "sha256": "1043065cf49bf118e15144215bd79b63a8d1547a8971d6b58877c0780a5cf298",
+      "exact_upstream": true
+    },
+    {
+      "path": "utils/io_pack.h",
+      "sha256": "2371eed0f738e8cac0ec68e87bf5854ef865d252d51fc218488cde65956a16a5",
+      "exact_upstream": true
+    },
+    {
+      "path": "utils/net_io_channel.h",
+      "sha256": "bc051cf2b55a6cbe327176cd9772695d07ea0683516dfe220e0a1c9d771a911a",
+      "exact_upstream": true
+    },
+    {
+      "path": "utils/prg.h",
+      "sha256": "870294bc36bbeb8f298890767145247ec299102e8d77ca7d8ca69167559153df",
+      "exact_upstream": true
+    },
+    {
+      "path": "utils/prp.h",
+      "sha256": "16fece23d02b68887a843b9bedb4da9071d918c9414d797801427c0e6a1e6bd6",
+      "exact_upstream": true
+    },
+    {
+      "path": "utils/sse2neon.h",
+      "sha256": "a7729d3d3a13e01b90c9302b7e00e57bb76768799f5af1b9845eb8d08e53ca9a",
+      "exact_upstream": true
+    },
+    {
+      "path": "utils/tccrh.h",
+      "sha256": "b30d2212437922742c0de323b80f20bb42f8e17720787beb60c77cbd6b066604",
+      "exact_upstream": true
+    },
+    {
+      "path": "utils/ThreadPool.h",
+      "sha256": "d62eecffd22f8d2bf6e4f822eb776b9da9c85c097bc1fa6afea0253b3a209364",
+      "exact_upstream": true
+    },
+    {
+      "path": "utils/ubuntu_terminal_colors.h",
+      "sha256": "1b0c6b7f881eb53fcc8391c6357905136043f0e8a39e1514e1adb825b2515494",
+      "exact_upstream": true
+    },
+    {
+      "path": "utils/utils.h",
+      "sha256": "13e9acf2bc45a7b09e395d4a7e0ebe4b41030a29a69bb2f99d1228987477712a",
+      "exact_upstream": true
+    },
+    {
+      "path": "utils/utils.hpp",
+      "sha256": "edb7f010c0f7d17d63e6f2bb34cb4b18b11da78e9413560811a0fec4992735fb",
+      "exact_upstream": true
+    },
+    {
+      "path": "utils/ArgMapping/ArgMapping.h",
+      "sha256": "bb48e5cafe66b57d5c03cce7a2ef56cf63f09d3cfa63ba3b9510247c4ffe838a",
+      "exact_upstream": true
+    },
+    {
+      "path": "utils/ArgMapping/LICENSE",
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "exact_upstream": true
+    },
+    {
+      "path": "utils/ArgMapping/NOTICE",
+      "sha256": "6cae45b38d1cc1023d12ed5fd0b0709f9eaff4d85c35547da7887335d86d6ec6",
+      "exact_upstream": true
+    },
+    {
+      "path": "utils/cmake/FindGMP.cmake",
+      "sha256": "8f63a4c73dd57b12c7c9cedf72125e9d2b4cc67d83f952a5851a81801353bfba",
+      "exact_upstream": true
+    },
+    {
+      "path": "utils/cmake/source_of_randomness.cmake",
+      "sha256": "fd94311ab6ba898a89474682070341a7f87336d190b1c21bb2d1962f0280f7b0",
+      "exact_upstream": true
+    }
+  ],
+  "serial_sci": {
+    "BuildingBlocks/aux-protocols.cpp": "73452c7da920e30c4891bc192004ea0c98f56bac781886a3d34d06e82728d2db",
+    "BuildingBlocks/truncation.cpp": "886a0ea9d07199f80b3d881f41295f408378967580f0d76299f4a57550bc7b82",
+    "BuildingBlocks/value-extension.cpp": "ce875299e6f213807014e6bc38528b81f4aa1c6df50b4754ef93bcf53aa2405d",
+    "Millionaire/millionaire.h": "cc50b2c5a30ed0872a0b5e19ae6f8eefdcddfe60b99b8475ee3467a7f414cea4"
+  },
+  "licenses": [
+    "bolt_sci/LICENSE",
+    "licenses/ezpc.txt",
+    "licenses/emp-tool.txt",
+    "licenses/emp-ot.txt",
+    "licenses/seal.txt"
+  ]
+}

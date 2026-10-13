@@ -1,0 +1,311 @@
+{
+  "cifar_resnet18": {
+    "all_off": {
+      "AQCF_ABLATE_SHORT": 1,
+      "AQCF_ABLATE_FUSION": 1,
+      "AQCF_ABLATE_PREFIX": 1,
+      "AQCF_ABLATE_SHARED_PREFIX": 1,
+      "AQCF_ABLATE_EMITTER": 1,
+      "AQCF_ABLATE_QUOTIENT": 1,
+      "AQCF_ABLATE_LIFT": 1,
+      "AQCF_ABLATE_QUARTER": 1
+    },
+    "all_on": {
+      "AQCF_ABLATE_SHORT": 0,
+      "AQCF_ABLATE_FUSION": 0,
+      "AQCF_ABLATE_PREFIX": 0,
+      "AQCF_ABLATE_SHARED_PREFIX": 0,
+      "AQCF_ABLATE_EMITTER": 0,
+      "AQCF_ABLATE_QUOTIENT": 0,
+      "AQCF_ABLATE_LIFT": 0,
+      "AQCF_ABLATE_QUARTER": 0
+    },
+    "no_short_weights": {
+      "AQCF_ABLATE_SHORT": 1,
+      "AQCF_ABLATE_FUSION": 0,
+      "AQCF_ABLATE_PREFIX": 0,
+      "AQCF_ABLATE_SHARED_PREFIX": 0,
+      "AQCF_ABLATE_EMITTER": 0,
+      "AQCF_ABLATE_QUOTIENT": 0,
+      "AQCF_ABLATE_LIFT": 0,
+      "AQCF_ABLATE_QUARTER": 0
+    },
+    "no_inverse_transform_fusion": {
+      "AQCF_ABLATE_SHORT": 0,
+      "AQCF_ABLATE_FUSION": 1,
+      "AQCF_ABLATE_PREFIX": 0,
+      "AQCF_ABLATE_SHARED_PREFIX": 0,
+      "AQCF_ABLATE_EMITTER": 0,
+      "AQCF_ABLATE_QUOTIENT": 0,
+      "AQCF_ABLATE_LIFT": 0,
+      "AQCF_ABLATE_QUARTER": 0
+    },
+    "no_linked_prefix": {
+      "AQCF_ABLATE_SHORT": 0,
+      "AQCF_ABLATE_FUSION": 0,
+      "AQCF_ABLATE_PREFIX": 1,
+      "AQCF_ABLATE_SHARED_PREFIX": 0,
+      "AQCF_ABLATE_EMITTER": 0,
+      "AQCF_ABLATE_QUOTIENT": 0,
+      "AQCF_ABLATE_LIFT": 0,
+      "AQCF_ABLATE_QUARTER": 0
+    },
+    "no_shared_prefix": {
+      "AQCF_ABLATE_SHORT": 0,
+      "AQCF_ABLATE_FUSION": 0,
+      "AQCF_ABLATE_PREFIX": 0,
+      "AQCF_ABLATE_SHARED_PREFIX": 1,
+      "AQCF_ABLATE_EMITTER": 0,
+      "AQCF_ABLATE_QUOTIENT": 0,
+      "AQCF_ABLATE_LIFT": 0,
+      "AQCF_ABLATE_QUARTER": 0
+    },
+    "no_compact_emitter": {
+      "AQCF_ABLATE_SHORT": 0,
+      "AQCF_ABLATE_FUSION": 0,
+      "AQCF_ABLATE_PREFIX": 0,
+      "AQCF_ABLATE_SHARED_PREFIX": 0,
+      "AQCF_ABLATE_EMITTER": 1,
+      "AQCF_ABLATE_QUOTIENT": 0,
+      "AQCF_ABLATE_LIFT": 0,
+      "AQCF_ABLATE_QUARTER": 0
+    },
+    "no_quotient": {
+      "AQCF_ABLATE_SHORT": 0,
+      "AQCF_ABLATE_FUSION": 0,
+      "AQCF_ABLATE_PREFIX": 0,
+      "AQCF_ABLATE_SHARED_PREFIX": 0,
+      "AQCF_ABLATE_EMITTER": 0,
+      "AQCF_ABLATE_QUOTIENT": 1,
+      "AQCF_ABLATE_LIFT": 0,
+      "AQCF_ABLATE_QUARTER": 0
+    },
+    "no_lift_specialization": {
+      "AQCF_ABLATE_SHORT": 0,
+      "AQCF_ABLATE_FUSION": 0,
+      "AQCF_ABLATE_PREFIX": 0,
+      "AQCF_ABLATE_SHARED_PREFIX": 0,
+      "AQCF_ABLATE_EMITTER": 0,
+      "AQCF_ABLATE_QUOTIENT": 0,
+      "AQCF_ABLATE_LIFT": 1,
+      "AQCF_ABLATE_QUARTER": 0
+    },
+    "no_quarter_normalization": {
+      "AQCF_ABLATE_SHORT": 0,
+      "AQCF_ABLATE_FUSION": 0,
+      "AQCF_ABLATE_PREFIX": 0,
+      "AQCF_ABLATE_SHARED_PREFIX": 0,
+      "AQCF_ABLATE_EMITTER": 0,
+      "AQCF_ABLATE_QUOTIENT": 0,
+      "AQCF_ABLATE_LIFT": 0,
+      "AQCF_ABLATE_QUARTER": 1
+    },
+    "no_prefix_and_quotient": {
+      "AQCF_ABLATE_SHORT": 0,
+      "AQCF_ABLATE_FUSION": 0,
+      "AQCF_ABLATE_PREFIX": 1,
+      "AQCF_ABLATE_SHARED_PREFIX": 0,
+      "AQCF_ABLATE_EMITTER": 0,
+      "AQCF_ABLATE_QUOTIENT": 1,
+      "AQCF_ABLATE_LIFT": 0,
+      "AQCF_ABLATE_QUARTER": 0
+    },
+    "no_short_weights_and_fusion": {
+      "AQCF_ABLATE_SHORT": 1,
+      "AQCF_ABLATE_FUSION": 1,
+      "AQCF_ABLATE_PREFIX": 0,
+      "AQCF_ABLATE_SHARED_PREFIX": 0,
+      "AQCF_ABLATE_EMITTER": 0,
+      "AQCF_ABLATE_QUOTIENT": 0,
+      "AQCF_ABLATE_LIFT": 0,
+      "AQCF_ABLATE_QUARTER": 0
+    }
+  },
+  "tiny_resnet18": {
+    "all_off": {
+      "AQCF_ABLATE_SHORT": 1,
+      "AQCF_ABLATE_FUSION": 1,
+      "AQCF_ABLATE_PREFIX": 1,
+      "AQCF_ABLATE_SHARED_PREFIX": 1,
+      "AQCF_ABLATE_EMITTER": 1,
+      "AQCF_ABLATE_QUOTIENT": 1,
+      "AQCF_ABLATE_LIFT": 1,
+      "AQCF_ABLATE_QUARTER": 1
+    },
+    "all_on": {
+      "AQCF_ABLATE_SHORT": 0,
+      "AQCF_ABLATE_FUSION": 0,
+      "AQCF_ABLATE_PREFIX": 0,
+      "AQCF_ABLATE_SHARED_PREFIX": 0,
+      "AQCF_ABLATE_EMITTER": 0,
+      "AQCF_ABLATE_QUOTIENT": 0,
+      "AQCF_ABLATE_LIFT": 0,
+      "AQCF_ABLATE_QUARTER": 0
+    },
+    "no_short_weights": {
+      "AQCF_ABLATE_SHORT": 1,
+      "AQCF_ABLATE_FUSION": 0,
+      "AQCF_ABLATE_PREFIX": 0,
+      "AQCF_ABLATE_SHARED_PREFIX": 0,
+      "AQCF_ABLATE_EMITTER": 0,
+      "AQCF_ABLATE_QUOTIENT": 0,
+      "AQCF_ABLATE_LIFT": 0,
+      "AQCF_ABLATE_QUARTER": 0
+    },
+    "no_inverse_transform_fusion": {
+      "AQCF_ABLATE_SHORT": 0,
+      "AQCF_ABLATE_FUSION": 1,
+      "AQCF_ABLATE_PREFIX": 0,
+      "AQCF_ABLATE_SHARED_PREFIX": 0,
+      "AQCF_ABLATE_EMITTER": 0,
+      "AQCF_ABLATE_QUOTIENT": 0,
+      "AQCF_ABLATE_LIFT": 0,
+      "AQCF_ABLATE_QUARTER": 0
+    },
+    "no_linked_prefix": {
+      "AQCF_ABLATE_SHORT": 0,
+      "AQCF_ABLATE_FUSION": 0,
+      "AQCF_ABLATE_PREFIX": 1,
+      "AQCF_ABLATE_SHARED_PREFIX": 0,
+      "AQCF_ABLATE_EMITTER": 0,
+      "AQCF_ABLATE_QUOTIENT": 0,
+      "AQCF_ABLATE_LIFT": 0,
+      "AQCF_ABLATE_QUARTER": 0
+    },
+    "no_shared_prefix": {
+      "AQCF_ABLATE_SHORT": 0,
+      "AQCF_ABLATE_FUSION": 0,
+      "AQCF_ABLATE_PREFIX": 0,
+      "AQCF_ABLATE_SHARED_PREFIX": 1,
+      "AQCF_ABLATE_EMITTER": 0,
+      "AQCF_ABLATE_QUOTIENT": 0,
+      "AQCF_ABLATE_LIFT": 0,
+      "AQCF_ABLATE_QUARTER": 0
+    },
+    "no_compact_emitter": {
+      "AQCF_ABLATE_SHORT": 0,
+      "AQCF_ABLATE_FUSION": 0,
+      "AQCF_ABLATE_PREFIX": 0,
+      "AQCF_ABLATE_SHARED_PREFIX": 0,
+      "AQCF_ABLATE_EMITTER": 1,
+      "AQCF_ABLATE_QUOTIENT": 0,
+      "AQCF_ABLATE_LIFT": 0,
+      "AQCF_ABLATE_QUARTER": 0
+    },
+    "no_quotient": {
+      "AQCF_ABLATE_SHORT": 0,
+      "AQCF_ABLATE_FUSION": 0,
+      "AQCF_ABLATE_PREFIX": 0,
+      "AQCF_ABLATE_SHARED_PREFIX": 0,
+      "AQCF_ABLATE_EMITTER": 0,
+      "AQCF_ABLATE_QUOTIENT": 1,
+      "AQCF_ABLATE_LIFT": 0,
+      "AQCF_ABLATE_QUARTER": 0
+    },
+    "no_lift_specialization": {
+      "AQCF_ABLATE_SHORT": 0,
+      "AQCF_ABLATE_FUSION": 0,
+      "AQCF_ABLATE_PREFIX": 0,
+      "AQCF_ABLATE_SHARED_PREFIX": 0,
+      "AQCF_ABLATE_EMITTER": 0,
+      "AQCF_ABLATE_QUOTIENT": 0,
+      "AQCF_ABLATE_LIFT": 1,
+      "AQCF_ABLATE_QUARTER": 0
+    },
+    "no_quarter_normalization": {
+      "AQCF_ABLATE_SHORT": 0,
+      "AQCF_ABLATE_FUSION": 0,
+      "AQCF_ABLATE_PREFIX": 0,
+      "AQCF_ABLATE_SHARED_PREFIX": 0,
+      "AQCF_ABLATE_EMITTER": 0,
+      "AQCF_ABLATE_QUOTIENT": 0,
+      "AQCF_ABLATE_LIFT": 0,
+      "AQCF_ABLATE_QUARTER": 1
+    },
+    "no_prefix_and_quotient": {
+      "AQCF_ABLATE_SHORT": 0,
+      "AQCF_ABLATE_FUSION": 0,
+      "AQCF_ABLATE_PREFIX": 1,
+      "AQCF_ABLATE_SHARED_PREFIX": 0,
+      "AQCF_ABLATE_EMITTER": 0,
+      "AQCF_ABLATE_QUOTIENT": 1,
+      "AQCF_ABLATE_LIFT": 0,
+      "AQCF_ABLATE_QUARTER": 0
+    },
+    "no_short_weights_and_fusion": {
+      "AQCF_ABLATE_SHORT": 1,
+      "AQCF_ABLATE_FUSION": 1,
+      "AQCF_ABLATE_PREFIX": 0,
+      "AQCF_ABLATE_SHARED_PREFIX": 0,
+      "AQCF_ABLATE_EMITTER": 0,
+      "AQCF_ABLATE_QUOTIENT": 0,
+      "AQCF_ABLATE_LIFT": 0,
+      "AQCF_ABLATE_QUARTER": 0
+    }
+  },
+  "cifar_mobilenetv2": {
+    "all_off": {
+      "AQCF_ABLATE_PREFIX": 1,
+      "AQCF_ABLATE_EMITTER": 1,
+      "AQCF_ABLATE_QUOTIENT": 1,
+      "AQCF_ABLATE_SHORT": 1,
+      "AQCF_ABLATE_FUSION": 1
+    },
+    "all_on": {
+      "AQCF_ABLATE_PREFIX": 0,
+      "AQCF_ABLATE_EMITTER": 0,
+      "AQCF_ABLATE_QUOTIENT": 0,
+      "AQCF_ABLATE_SHORT": 0,
+      "AQCF_ABLATE_FUSION": 0
+    },
+    "no_linked_prefix": {
+      "AQCF_ABLATE_PREFIX": 1,
+      "AQCF_ABLATE_EMITTER": 0,
+      "AQCF_ABLATE_QUOTIENT": 0,
+      "AQCF_ABLATE_SHORT": 0,
+      "AQCF_ABLATE_FUSION": 0
+    },
+    "no_compact_emitter": {
+      "AQCF_ABLATE_PREFIX": 0,
+      "AQCF_ABLATE_EMITTER": 1,
+      "AQCF_ABLATE_QUOTIENT": 0,
+      "AQCF_ABLATE_SHORT": 0,
+      "AQCF_ABLATE_FUSION": 0
+    },
+    "no_quotient": {
+      "AQCF_ABLATE_PREFIX": 0,
+      "AQCF_ABLATE_EMITTER": 0,
+      "AQCF_ABLATE_QUOTIENT": 1,
+      "AQCF_ABLATE_SHORT": 0,
+      "AQCF_ABLATE_FUSION": 0
+    },
+    "no_short_weights": {
+      "AQCF_ABLATE_PREFIX": 0,
+      "AQCF_ABLATE_EMITTER": 0,
+      "AQCF_ABLATE_QUOTIENT": 0,
+      "AQCF_ABLATE_SHORT": 1,
+      "AQCF_ABLATE_FUSION": 0
+    },
+    "no_inverse_transform_fusion": {
+      "AQCF_ABLATE_PREFIX": 0,
+      "AQCF_ABLATE_EMITTER": 0,
+      "AQCF_ABLATE_QUOTIENT": 0,
+      "AQCF_ABLATE_SHORT": 0,
+      "AQCF_ABLATE_FUSION": 1
+    },
+    "no_prefix_and_quotient": {
+      "AQCF_ABLATE_PREFIX": 1,
+      "AQCF_ABLATE_EMITTER": 0,
+      "AQCF_ABLATE_QUOTIENT": 1,
+      "AQCF_ABLATE_SHORT": 0,
+      "AQCF_ABLATE_FUSION": 0
+    },
+    "no_short_weights_and_fusion": {
+      "AQCF_ABLATE_PREFIX": 0,
+      "AQCF_ABLATE_EMITTER": 0,
+      "AQCF_ABLATE_QUOTIENT": 0,
+      "AQCF_ABLATE_SHORT": 1,
+      "AQCF_ABLATE_FUSION": 1
+    }
+  }
+}

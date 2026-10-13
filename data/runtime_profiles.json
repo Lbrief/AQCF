@@ -1,0 +1,36 @@
+{
+  "squeezenet": {
+    "candidate427": 1
+  },
+  "resnet50": {
+    "quotient169": 1,
+    "bn191": 1,
+    "radix197": 0,
+    "slices209": 1,
+    "input213": 1,
+    "floor216": 1,
+    "seed221": 1,
+    "frontier233": 1,
+    "mixed238": 1,
+    "elide250": 1,
+    "pool258": 1,
+    "horner293": 1,
+    "pool295": 1,
+    "retained299": 1,
+    "joint305": 1,
+    "retained307": 1,
+    "common371": 1,
+    "duplex371": 1,
+    "correction371": 1,
+    "seeded371": 1,
+    "packed371": 1,
+    "direction371": 1,
+    "input371": 1,
+    "pool444": 1,
+    "poly458": 1,
+    "pipe467": 1,
+    "dot500": 1,
+    "merge515": 1,
+    "execution_profile170": "CLOUD_PUBLIC"
+  }
+}

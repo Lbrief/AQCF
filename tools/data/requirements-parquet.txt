@@ -1,0 +1,2 @@
+# Optional: needed only when reading the historical Parquet shard.
+pyarrow>=16,<21

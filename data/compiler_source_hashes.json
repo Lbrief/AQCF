@@ -1,0 +1,57 @@
+[
+  {
+    "file": "tools/aqcf_compiler/spatial_planner.py",
+    "original_sha256": "046d6548a12540ea8394bac77a21c4705d2e1dfc8b0f13d0e82b300bb99157c6",
+    "packaged_sha256": "84033b0044dd4b668f5911ebc012e9925528c456c593f12c8d55253b645ab2a9"
+  },
+  {
+    "file": "tools/aqcf_compiler/coefficient_program.py",
+    "original_sha256": "3c8b1dd94dcf2e62b28c79b31a4bcf8cf1a8a883ff44e75d80e88fc38370b627",
+    "packaged_sha256": "de6891256667a6437e93c15a93542d64d41dcaa17f3e5d51fcce73ed23b5167f"
+  },
+  {
+    "file": "tools/aqcf_compiler/program_writer.py",
+    "original_sha256": "530e1fa9e1322729092ccb0cd772d15ffcc0b39309ed2b6546ebe67c0e8b49fe",
+    "packaged_sha256": "930308ef992d9d3e55acbb2cf2c34eeec67943c47361be547693b5a8120fdbfa"
+  },
+  {
+    "file": "tools/aqcf_compiler/layout_cost.py",
+    "original_sha256": "e275c96700de79e8659e8b49023e70597e656bd92a266ed0300f822666144380",
+    "packaged_sha256": "75a7560fddc292e680d0bfccef41b5517238619593515a304e9a5967e5d45012"
+  },
+  {
+    "file": "tools/aqcf_compiler/pointwise_packing.py",
+    "original_sha256": "178cda8b1383619338318ea9f8670da60254e606c417447e11f1e0c8b84c8b52",
+    "packaged_sha256": "59106706eb475a724866ebac05458bdfee97f442fe68a68266238f66a841f332"
+  },
+  {
+    "file": "tools/aqcf_compiler/paired_layout.py",
+    "original_sha256": "8c77eccc3db02b352499cc89753feee95f739386dc6f0dd4b47bd3297f84a2fb",
+    "packaged_sha256": "8c77eccc3db02b352499cc89753feee95f739386dc6f0dd4b47bd3297f84a2fb"
+  },
+  {
+    "file": "tools/aqcf_compiler/polynomial_io.py",
+    "original_sha256": "20e3940ed7d540b592374abcbe233d6c1030945897a22a618efc659fa20c3c48",
+    "packaged_sha256": "fca339e10de6d1b629cdcfbfd7db39e6a055fb540311eabdccb8af5f335b37f5"
+  },
+  {
+    "file": "tools/aqcf_compiler/resnet_stem.py",
+    "original_sha256": "3c7b8bcadad0e56d1da3eda8694619362182465dcacedfa6aebcdee64f52b05e",
+    "packaged_sha256": "2169c83d06b9beec568b9b07214a4108c1099c401121b8feb70a8acc359c0e24"
+  },
+  {
+    "file": "data/plans/squeezenet_pointwise.json",
+    "original_sha256": "4297703254f182076dddff434b7ac451238dae89b070aeca4da2baccd0ec875b",
+    "packaged_sha256": "ba973234d51b1e4a8b3c4523a4c9adb099c4a4c742a7534b9f163ec2cf3e293f"
+  },
+  {
+    "file": "data/plans/squeezenet_paired_branches.json",
+    "original_sha256": "42a7a5f5dd342f346b05983ae542a8f90566edb7ffda711f2102abaed06fcfbd",
+    "packaged_sha256": "5cbd77460dd797c871e0e0a2118b7082c15cde7dc21bfb21dac5fb24a1b065ac"
+  },
+  {
+    "file": "data/plans/squeezenet_final_pointwise.json",
+    "original_sha256": "8533cfc9825c339142ddaeab71ea96ed3086d1e27fc1831422619cac28566be9",
+    "packaged_sha256": "e5de18ee5d6336e2c6e2bc7d2a5dee39a6a379cae3c6f1543a356c27e4396f42"
+  }
+]

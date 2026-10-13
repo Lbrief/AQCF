@@ -1,0 +1,586 @@
+{
+  "layers": [
+    {
+      "affine": 0,
+      "native_node": 0,
+      "input_channels": 3,
+      "output_channels": 64,
+      "kernel": 3,
+      "output_spatial": 12769,
+      "old_objective": "minimum_PM",
+      "old": {
+        "input_CT": 22,
+        "output_CT": 464,
+        "PM": 1360
+      },
+      "proposed_public_geometry": null
+    },
+    {
+      "affine": 1,
+      "native_node": 5,
+      "input_channels": 64,
+      "output_channels": 16,
+      "kernel": 1,
+      "output_spatial": 3136,
+      "old_objective": "minimum_PM",
+      "old": {
+        "input_CT": 100,
+        "output_CT": 62,
+        "PM": 392
+      },
+      "proposed_public_geometry": {
+        "b": 512,
+        "J": 8,
+        "F": 2,
+        "tiles": 7,
+        "input_CT": 56,
+        "output_CT": 56,
+        "PM": 448,
+        "variable_payload_proxy_bytes": 12730368,
+        "noise_certified": false,
+        "encrypted_run": false
+      }
+    },
+    {
+      "affine": 2,
+      "native_node": 9,
+      "input_channels": 16,
+      "output_channels": 64,
+      "kernel": 1,
+      "output_spatial": 3136,
+      "old_objective": "minimum_PM",
+      "old": {
+        "input_CT": 100,
+        "output_CT": 62,
+        "PM": 392
+      },
+      "proposed_public_geometry": {
+        "b": 512,
+        "J": 2,
+        "F": 8,
+        "tiles": 7,
+        "input_CT": 56,
+        "output_CT": 56,
+        "PM": 448,
+        "variable_payload_proxy_bytes": 12730368,
+        "noise_certified": false,
+        "encrypted_run": false
+      }
+    },
+    {
+      "affine": 3,
+      "native_node": 13,
+      "input_channels": 16,
+      "output_channels": 64,
+      "kernel": 3,
+      "output_spatial": 3136,
+      "old_objective": "minimum_PM",
+      "old": {
+        "input_CT": 32,
+        "output_CT": 29,
+        "PM": 464
+      },
+      "proposed_public_geometry": null
+    },
+    {
+      "affine": 4,
+      "native_node": 18,
+      "input_channels": 128,
+      "output_channels": 16,
+      "kernel": 1,
+      "output_spatial": 3136,
+      "old_objective": "minimum_PM",
+      "old": {
+        "input_CT": 124,
+        "output_CT": 100,
+        "PM": 784
+      },
+      "proposed_public_geometry": {
+        "b": 512,
+        "J": 16,
+        "F": 1,
+        "tiles": 7,
+        "input_CT": 56,
+        "output_CT": 112,
+        "PM": 896,
+        "variable_payload_proxy_bytes": 18120704,
+        "noise_certified": false,
+        "encrypted_run": false
+      }
+    },
+    {
+      "affine": 5,
+      "native_node": 22,
+      "input_channels": 16,
+      "output_channels": 64,
+      "kernel": 1,
+      "output_spatial": 3136,
+      "old_objective": "minimum_PM",
+      "old": {
+        "input_CT": 100,
+        "output_CT": 62,
+        "PM": 392
+      },
+      "proposed_public_geometry": {
+        "b": 512,
+        "J": 2,
+        "F": 8,
+        "tiles": 7,
+        "input_CT": 56,
+        "output_CT": 56,
+        "PM": 448,
+        "variable_payload_proxy_bytes": 12730368,
+        "noise_certified": false,
+        "encrypted_run": false
+      }
+    },
+    {
+      "affine": 6,
+      "native_node": 26,
+      "input_channels": 16,
+      "output_channels": 64,
+      "kernel": 3,
+      "output_spatial": 3136,
+      "old_objective": "minimum_PM",
+      "old": {
+        "input_CT": 32,
+        "output_CT": 29,
+        "PM": 464
+      },
+      "proposed_public_geometry": null
+    },
+    {
+      "affine": 7,
+      "native_node": 32,
+      "input_channels": 128,
+      "output_channels": 32,
+      "kernel": 1,
+      "output_spatial": 729,
+      "old_objective": "minimum_PM",
+      "old": {
+        "input_CT": 365,
+        "output_CT": 196,
+        "PM": 365
+      },
+      "proposed_public_geometry": {
+        "b": 256,
+        "J": 16,
+        "F": 2,
+        "tiles": 3,
+        "input_CT": 24,
+        "output_CT": 48,
+        "PM": 384,
+        "variable_payload_proxy_bytes": 7766016,
+        "noise_certified": false,
+        "encrypted_run": false
+      }
+    },
+    {
+      "affine": 8,
+      "native_node": 36,
+      "input_channels": 32,
+      "output_channels": 128,
+      "kernel": 1,
+      "output_spatial": 729,
+      "old_objective": "minimum_PM",
+      "old": {
+        "input_CT": 365,
+        "output_CT": 196,
+        "PM": 365
+      },
+      "proposed_public_geometry": {
+        "b": 256,
+        "J": 4,
+        "F": 8,
+        "tiles": 3,
+        "input_CT": 24,
+        "output_CT": 48,
+        "PM": 384,
+        "variable_payload_proxy_bytes": 7766016,
+        "noise_certified": false,
+        "encrypted_run": false
+      }
+    },
+    {
+      "affine": 9,
+      "native_node": 40,
+      "input_channels": 32,
+      "output_channels": 128,
+      "kernel": 3,
+      "output_spatial": 729,
+      "old_objective": "minimum_PM",
+      "old": {
+        "input_CT": 16,
+        "output_CT": 26,
+        "PM": 416
+      },
+      "proposed_public_geometry": null
+    },
+    {
+      "affine": 10,
+      "native_node": 45,
+      "input_channels": 256,
+      "output_channels": 32,
+      "kernel": 1,
+      "output_spatial": 729,
+      "old_objective": "minimum_PM",
+      "old": {
+        "input_CT": 391,
+        "output_CT": 365,
+        "PM": 729
+      },
+      "proposed_public_geometry": {
+        "b": 256,
+        "J": 16,
+        "F": 2,
+        "tiles": 3,
+        "input_CT": 48,
+        "output_CT": 48,
+        "PM": 768,
+        "variable_payload_proxy_bytes": 10911744,
+        "noise_certified": false,
+        "encrypted_run": false
+      }
+    },
+    {
+      "affine": 11,
+      "native_node": 49,
+      "input_channels": 32,
+      "output_channels": 128,
+      "kernel": 1,
+      "output_spatial": 729,
+      "old_objective": "minimum_PM",
+      "old": {
+        "input_CT": 365,
+        "output_CT": 196,
+        "PM": 365
+      },
+      "proposed_public_geometry": {
+        "b": 256,
+        "J": 4,
+        "F": 8,
+        "tiles": 3,
+        "input_CT": 24,
+        "output_CT": 48,
+        "PM": 384,
+        "variable_payload_proxy_bytes": 7766016,
+        "noise_certified": false,
+        "encrypted_run": false
+      }
+    },
+    {
+      "affine": 12,
+      "native_node": 53,
+      "input_channels": 32,
+      "output_channels": 128,
+      "kernel": 3,
+      "output_spatial": 729,
+      "old_objective": "minimum_PM",
+      "old": {
+        "input_CT": 16,
+        "output_CT": 26,
+        "PM": 416
+      },
+      "proposed_public_geometry": null
+    },
+    {
+      "affine": 13,
+      "native_node": 59,
+      "input_channels": 256,
+      "output_channels": 48,
+      "kernel": 1,
+      "output_spatial": 169,
+      "old_objective": "minimum_PM",
+      "old": {
+        "input_CT": 50,
+        "output_CT": 73,
+        "PM": 254
+      },
+      "proposed_public_geometry": {
+        "b": 64,
+        "J": 32,
+        "F": 4,
+        "tiles": 3,
+        "input_CT": 24,
+        "output_CT": 36,
+        "PM": 288,
+        "variable_payload_proxy_bytes": 6610944,
+        "noise_certified": false,
+        "encrypted_run": false
+      }
+    },
+    {
+      "affine": 14,
+      "native_node": 63,
+      "input_channels": 48,
+      "output_channels": 192,
+      "kernel": 1,
+      "output_spatial": 169,
+      "old_objective": "minimum_PM",
+      "old": {
+        "input_CT": 16,
+        "output_CT": 12,
+        "PM": 192
+      },
+      "proposed_public_geometry": {
+        "b": 64,
+        "J": 8,
+        "F": 16,
+        "tiles": 3,
+        "input_CT": 18,
+        "output_CT": 36,
+        "PM": 216,
+        "variable_payload_proxy_bytes": 5824512,
+        "noise_certified": false,
+        "encrypted_run": false
+      }
+    },
+    {
+      "affine": 15,
+      "native_node": 67,
+      "input_channels": 48,
+      "output_channels": 192,
+      "kernel": 3,
+      "output_spatial": 169,
+      "old_objective": "minimum_PM",
+      "old": {
+        "input_CT": 6,
+        "output_CT": 39,
+        "PM": 234
+      },
+      "proposed_public_geometry": null
+    },
+    {
+      "affine": 16,
+      "native_node": 72,
+      "input_channels": 384,
+      "output_channels": 48,
+      "kernel": 1,
+      "output_spatial": 169,
+      "old_objective": "minimum_PM",
+      "old": {
+        "input_CT": 75,
+        "output_CT": 73,
+        "PM": 381
+      },
+      "proposed_public_geometry": {
+        "b": 64,
+        "J": 32,
+        "F": 4,
+        "tiles": 3,
+        "input_CT": 36,
+        "output_CT": 36,
+        "PM": 432,
+        "variable_payload_proxy_bytes": 8183808,
+        "noise_certified": false,
+        "encrypted_run": false
+      }
+    },
+    {
+      "affine": 17,
+      "native_node": 76,
+      "input_channels": 48,
+      "output_channels": 192,
+      "kernel": 1,
+      "output_spatial": 169,
+      "old_objective": "minimum_PM",
+      "old": {
+        "input_CT": 16,
+        "output_CT": 12,
+        "PM": 192
+      },
+      "proposed_public_geometry": {
+        "b": 64,
+        "J": 8,
+        "F": 16,
+        "tiles": 3,
+        "input_CT": 18,
+        "output_CT": 36,
+        "PM": 216,
+        "variable_payload_proxy_bytes": 5824512,
+        "noise_certified": false,
+        "encrypted_run": false
+      }
+    },
+    {
+      "affine": 18,
+      "native_node": 80,
+      "input_channels": 48,
+      "output_channels": 192,
+      "kernel": 3,
+      "output_spatial": 169,
+      "old_objective": "minimum_PM",
+      "old": {
+        "input_CT": 6,
+        "output_CT": 39,
+        "PM": 234
+      },
+      "proposed_public_geometry": null
+    },
+    {
+      "affine": 19,
+      "native_node": 85,
+      "input_channels": 384,
+      "output_channels": 64,
+      "kernel": 1,
+      "output_spatial": 169,
+      "old_objective": "minimum_PM",
+      "old": {
+        "input_CT": 75,
+        "output_CT": 97,
+        "PM": 507
+      },
+      "proposed_public_geometry": {
+        "b": 64,
+        "J": 32,
+        "F": 4,
+        "tiles": 3,
+        "input_CT": 36,
+        "output_CT": 48,
+        "PM": 576,
+        "variable_payload_proxy_bytes": 9338880,
+        "noise_certified": false,
+        "encrypted_run": false
+      }
+    },
+    {
+      "affine": 20,
+      "native_node": 89,
+      "input_channels": 64,
+      "output_channels": 256,
+      "kernel": 1,
+      "output_spatial": 169,
+      "old_objective": "minimum_PM",
+      "old": {
+        "input_CT": 98,
+        "output_CT": 49,
+        "PM": 338
+      },
+      "proposed_public_geometry": {
+        "b": 64,
+        "J": 8,
+        "F": 16,
+        "tiles": 3,
+        "input_CT": 24,
+        "output_CT": 48,
+        "PM": 384,
+        "variable_payload_proxy_bytes": 7766016,
+        "noise_certified": false,
+        "encrypted_run": false
+      }
+    },
+    {
+      "affine": 21,
+      "native_node": 93,
+      "input_channels": 64,
+      "output_channels": 256,
+      "kernel": 3,
+      "output_spatial": 169,
+      "old_objective": "minimum_PM",
+      "old": {
+        "input_CT": 16,
+        "output_CT": 26,
+        "PM": 416
+      },
+      "proposed_public_geometry": null
+    },
+    {
+      "affine": 22,
+      "native_node": 98,
+      "input_channels": 512,
+      "output_channels": 64,
+      "kernel": 1,
+      "output_spatial": 169,
+      "old_objective": "minimum_PM",
+      "old": {
+        "input_CT": 98,
+        "output_CT": 98,
+        "PM": 676
+      },
+      "proposed_public_geometry": {
+        "b": 64,
+        "J": 32,
+        "F": 4,
+        "tiles": 3,
+        "input_CT": 48,
+        "output_CT": 48,
+        "PM": 768,
+        "variable_payload_proxy_bytes": 10911744,
+        "noise_certified": false,
+        "encrypted_run": false
+      }
+    },
+    {
+      "affine": 23,
+      "native_node": 102,
+      "input_channels": 64,
+      "output_channels": 256,
+      "kernel": 1,
+      "output_spatial": 169,
+      "old_objective": "minimum_PM",
+      "old": {
+        "input_CT": 98,
+        "output_CT": 49,
+        "PM": 338
+      },
+      "proposed_public_geometry": {
+        "b": 64,
+        "J": 8,
+        "F": 16,
+        "tiles": 3,
+        "input_CT": 24,
+        "output_CT": 48,
+        "PM": 384,
+        "variable_payload_proxy_bytes": 7766016,
+        "noise_certified": false,
+        "encrypted_run": false
+      }
+    },
+    {
+      "affine": 24,
+      "native_node": 106,
+      "input_channels": 64,
+      "output_channels": 256,
+      "kernel": 3,
+      "output_spatial": 169,
+      "old_objective": "minimum_PM",
+      "old": {
+        "input_CT": 16,
+        "output_CT": 26,
+        "PM": 416
+      },
+      "proposed_public_geometry": null
+    },
+    {
+      "affine": 25,
+      "native_node": 111,
+      "input_channels": 512,
+      "output_channels": 1000,
+      "kernel": 1,
+      "output_spatial": 169,
+      "old_objective": "minimum_PM",
+      "old": {
+        "input_CT": 93,
+        "output_CT": 1882,
+        "PM": 10563
+      },
+      "proposed_public_geometry": {
+        "b": 64,
+        "J": 9,
+        "F": 14,
+        "tiles": 3,
+        "input_CT": 171,
+        "output_CT": 216,
+        "PM": 12312,
+        "variable_payload_proxy_bytes": 43204608,
+        "noise_certified": false,
+        "encrypted_run": false
+      }
+    }
+  ],
+  "proposed_26_affine_totals": {
+    "input_CT": 905,
+    "output_CT": 1728,
+    "PM": 24156
+  }
+}
