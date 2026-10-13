@@ -3,10 +3,10 @@
 [English](README.md) | [简体中文](README.zh-CN.md)
 
 <p align="center">
-  <a href="docs/media/aqcf-overview.gif"><img src="docs/media/aqcf-overview.gif" alt="AQCF 论文机制动态演示：本地相位校正、掩码编程的进位共享与精确系数迹抵消" width="100%"></a>
+  <a href="docs/media/aqcf-overview.gif"><img src="docs/media/aqcf-overview.gif" alt="aqcf 完整算法动图：矩阵乘法、通道打包、迹合并、保留相位和联合进位" width="100%"></a>
 </p>
 
-[静态封面](docs/media/aqcf-overview.png) · [动图与论文机制对应](docs/media/README.md)
+[查看大图](docs/media/aqcf-overview.png) · [高清视频](docs/media/aqcf-overview.mp4) · [动图说明](docs/media/README.md)
 
 **面向客户端与云服务器的精确整数隐私推理。**
 

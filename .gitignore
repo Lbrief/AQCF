@@ -37,3 +37,4 @@ __pycache__/
 .env.*
 .DS_Store
 Thumbs.db
+/docs/media/aqcf-overview-master.mkv

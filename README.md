@@ -3,10 +3,10 @@
 [English](README.md) | [简体中文](README.zh-CN.md)
 
 <p align="center">
-  <a href="docs/media/aqcf-overview.gif"><img src="docs/media/aqcf-overview.gif" alt="AQCF paper mechanisms in motion: local phase correction, programmed carry shares, and exact coefficient trace cancellation" width="100%"></a>
+  <a href="docs/media/aqcf-overview.gif"><img src="docs/media/aqcf-overview.gif" alt="aqcf algorithm animation: matrix products, channel packing, trace merging, retained phases, and joint carry shares" width="100%"></a>
 </p>
 
-[Still image](docs/media/aqcf-overview.png) · [Animation and paper mapping](docs/media/README.md)
+[Full-size image](docs/media/aqcf-overview.png) · [HD video](docs/media/aqcf-overview.mp4) · [Animation guide](docs/media/README.md)
 
 **Exact integer inference for private client–cloud computation.**
 
