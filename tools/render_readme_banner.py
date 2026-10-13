@@ -1,440 +1,185 @@
-"""Render AQCF's paper mechanisms as moving coefficient objects.
-
-Requires Pillow. Geometry, lighting and motion are generated locally.
-The coefficients are symbolic protected views, not opened plaintext values.
-The scenes follow Figure 1(b), Algorithm 1 and Figure 2 of the AQCF paper.
-"""
-from __future__ import annotations
-
-import argparse
-from functools import lru_cache
-import math
-import os
+"""Render a full AQCF algorithm plate with three animated mechanisms."""
 from pathlib import Path
-import random
+import math
+import json
+import subprocess
+import argparse
+from PIL import Image, ImageDraw
+import cover_drawing as b
+from cover_protocols import draw_lower, flow
 
-from PIL import Image, ImageDraw, ImageFilter, ImageFont
+ROOT=Path(__file__).resolve().parents[1]/'docs/media'
+W,H,FPS,DURATION=1600,1380,20,30
+P=b.PURPLE;T=b.TEAL;C=b.CORAL;INK=b.INK;MUTED=b.MUTED;LINE=b.LINE
+WM=[[2,1,-1,0],[1,3,0,1],[0,-1,2,1],[1,0,1,2]]
+XM=[[1,3,2,0],[2,4,1,3],[0,1,2,1],[1,2,0,4]]
+YM=[[sum(WM[i][k]*XM[k][j] for k in range(4)) for j in range(4)] for i in range(4)]
+P0=[XM[i][j] for j in range(4) for i in (0,1)]
+P1=[XM[i][j] for j in range(4) for i in (2,3)]
+def conv(a,c):
+    out=[0]*(len(a)+len(c)-1)
+    for i,x in enumerate(a):
+        for j,y in enumerate(c):out[i+j]+=x*y
+    return out
+Z0=[x+y for x,y in zip(conv(P0,[1,2]),conv(P1,[0,-1]))]
+Z1=[x+y for x,y in zip(conv(P0,[3,1]),conv(P1,[1,0]))]
+A=Z0+[0];U=[0]+Z1
+V=[a+u for a,u in zip(A,U)];DIFF=[a-u for a,u in zip(A,U)]
+SIG=[-a if i%2 else a for i,a in zip(range(-1,9),DIFF)]
+MERGED=[a+v for a,v in zip(V,SIG)]
+assert MERGED == [0]+[2*YM[i][j] for j in range(4) for i in (0,1)]+[0]
 
-W, H, SCALE = 1440, 810, 2
-PAPER = (237, 233, 223)
-INK = (38, 40, 40)
-MUTED = (104, 103, 96)
-STONE = (84, 91, 91)
-PALE = (182, 185, 175)
-RED = (188, 69, 43)
-BLUE = (107, 130, 143)
-WHITE = (246, 242, 232)
+def txt(im,x,y,s,size=22,color=INK,style='sans',anchor='lm'):
+    b.draw_text(im,x,y,s,size,color,style,anchor)
+def box(im,area,fill='#fff',stroke=LINE,width=1,radius=3):b.rect(im,area,fill,stroke,width,radius)
+def line(im,pts,color=LINE,width=1):b.line(im,pts,color,width)
+def arrow(im,a,c,color=P,width=1.5):b.arrow(im,a,c,color,width)
 
+def matrix4(im,x,y,vals,hot_rows=(),hot_cols=(),accent=P,cell=33):
+    for r in range(4):
+        for c in range(4):
+            hot=r in hot_rows or c in hot_cols
+            fill=b.LAVENDER if accent==P else b.MINT
+            box(im,(x+c*cell+1,y+r*cell+1,x+(c+1)*cell-1,y+(r+1)*cell-1),fill if hot else '#fcfafc',accent if hot else LINE,.65,1)
+            txt(im,x+(c+.5)*cell,y+(r+.5)*cell,str(vals[r][c]).replace('-','−'),20,accent if hot else INK,'math','mm')
+    b.bracket(im,x-6,y-3,4*cell+12,4*cell+6,accent)
 
-def blend(a, b, t):
-    return tuple(round(x+(y-x)*t) for x, y in zip(a, b))
+def vector(im,x,y,values,cell=36,height=30,colors=None,hot=-1,font=18):
+    for j,v in enumerate(values):
+        col=colors[j] if colors else (b.WHITE,INK)
+        box(im,(x+j*cell,y,x+(j+1)*cell-3,y+height),col[0],P if j==hot else LINE,1.6 if j==hot else .7,1)
+        txt(im,x+(j+.5)*cell-1.5,y+height/2,str(v).replace('-','−'),font,col[1],'math','mm')
 
+def block(im,area,label,size=20,active=False,color=P):
+    box(im,area,b.LAVENDER if active and color==P else b.MINT if active else '#fff',color,1.4 if active else .8,4)
+    txt(im,(area[0]+area[2])/2,(area[1]+area[3])/2,label,size,color,'math','mm')
 
-def smooth(t):
-    t = min(1, max(0, t))
-    return t*t*(3-2*t)
+def frame(t):
+    im=Image.new('RGB',(W*b.S,H*b.S),'white')
+    txt(im,800,76,'aqcf',93,P,'bold','mm')
+    txt(im,800,152,b.AUTHORS,28,INK,'serif','mm')
+    box(im,(60,191,1540,242),P,P,1,0)
+    txt(im,800,216,'Exact private inference  ·  algorithm overview',28,'white','bold','mm')
+    # A single enclosing technical plate, matching the supplied academic format.
+    box(im,(60,263,1540,852),'white',P,1.1,0)
+    box(im,(61,264,1539,308),'#f2ecf7',None,0,0)
+    txt(im,81,287,'01  Shape-directed encrypted linear evaluation',27,P,'bold')
+    txt(im,1519,287,'4 × 4 example  ·  C = 2',19,MUTED,'sans','rm')
 
+    # Full matrices are retained as context during all later protocol stages.
+    c=min(15,int(t/.36));rr,cc=divmod(c,4)
+    active=t<5.76
+    txt(im,162,331,'W',25,P,'italic','mm')
+    txt(im,375,331,'H',25,T,'italic','mm')
+    txt(im,588,331,'Y = WH',25,P,'italic','mm')
+    matrix4(im,96,350,WM,(rr,) if active else (),accent=P)
+    matrix4(im,309,350,XM,hot_cols=(cc,) if active else (),accent=T)
+    matrix4(im,522,350,YM,(rr,) if active else (0,1),accent=P)
+    if active:
+        box(im,(522+cc*33+1,350+rr*33+1,522+(cc+1)*33-1,350+(rr+1)*33-1),None,P,2,1)
+    txt(im,270,416,'×',31,MUTED,'math','mm');txt(im,481,416,'=',31,MUTED,'math','mm')
+    txt(im,162,498,'Private weights',16,MUTED,'sans','mm')
+    txt(im,375,498,'Client input',16,MUTED,'sans','mm')
+    txt(im,588,498,'Two output groups',16,MUTED,'sans','mm')
+    flow(im,[(444,450),(465,450),(465,511),(724,511),(724,390),(747,390)],T,t,5.8,6.5)
+    txt(im,941,330,'Channel-interleaved coefficient packs',20,T,'bold','mm')
+    txt(im,754,371,'P₀',22,T,'math');txt(im,754,426,'P₁',22,T,'math')
+    packhot=min(7,int((t-6.5)/.4)) if 6.5<=t<9.7 else -1
+    cols=[(b.MINT,T) if i%2==0 else (b.LAVENDER,P) for i in range(8)]
+    vector(im,799,355,P0,36,32,cols,packhot,20)
+    vector(im,799,410,P1,36,32,cols,packhot,20)
+    txt(im,941,469,'Pᵢ = Σⱼ (h₂ᵢ,ⱼ + h₂ᵢ₊₁,ⱼ X) X²ʲ',21,T,'math','mm')
+    line(im,[(1124,324),(1124,495)],LINE)
+    txt(im,1328,333,'Reversed short weight packs',21,P,'bold','mm')
+    txt(im,1309,369,'input group 0       input group 1',15,MUTED,'sans','mm')
+    txt(im,1160,410,'row 0',17,MUTED);txt(im,1160,460,'row 1',17,MUTED)
+    block(im,(1223,389,1340,426),'1 + 2X',22,9.7<=t<11)
+    block(im,(1362,389,1479,426),'−X',22,9.7<=t<11)
+    block(im,(1223,439,1340,476),'3 + X',22,11<=t<12.3)
+    block(im,(1362,439,1479,476),'1',22,11<=t<12.3)
+    line(im,[(80,521),(1520,521)],LINE)
 
-def ramp(p, a, b):
-    return smooth((p-a)/(b-a))
-
-
-def sub(n):
-    return str(n).translate(str.maketrans('0123456789', '₀₁₂₃₄₅₆₇₈₉'))
-
-
-@lru_cache(None)
-def font(size, style='body'):
-    roots = [Path(os.environ.get('WINDIR', 'C:/Windows'))/'Fonts',
-             Path('/usr/share/fonts/truetype/dejavu'),
-             Path('/usr/share/fonts/truetype/liberation2')]
-    options = {
-        'body': ['segoeui.ttf', 'DejaVuSans.ttf', 'LiberationSans-Regular.ttf'],
-        'light': ['segoeuil.ttf', 'DejaVuSans.ttf', 'LiberationSans-Regular.ttf'],
-        'bold': ['seguisb.ttf', 'segoeuib.ttf', 'DejaVuSans-Bold.ttf', 'LiberationSans-Bold.ttf'],
-        'math': ['georgia.ttf', 'DejaVuSerif.ttf', 'LiberationSerif-Regular.ttf'],
-        'italic': ['georgiai.ttf', 'DejaVuSerif.ttf', 'LiberationSerif-Italic.ttf'],
-        'mono': ['consola.ttf', 'DejaVuSansMono.ttf', 'LiberationMono-Regular.ttf'],
-    }[style]
-    for root in roots:
-        for name in options:
-            if (root/name).exists():
-                return ImageFont.truetype(str(root/name), round(size*SCALE))
-    raise RuntimeError('Install the DejaVu font family.')
-
-
-def text(im, xy, value, size=22, color=INK, style='body', anchor='la'):
-    ImageDraw.Draw(im).text(tuple(round(v*SCALE) for v in xy), value,
-                           font=font(size, style), fill=color, anchor=anchor)
-
-
-def centered(im, xy, value, size=22, color=INK, style='body'):
-    d = ImageDraw.Draw(im)
-    length = d.textlength(value, font=font(size, style))/SCALE
-    text(im, (xy[0]-length/2, xy[1]), value, size, color, style)
-
-
-def line(im, points, color, width=1):
-    ImageDraw.Draw(im).line([(round(x*SCALE), round(y*SCALE)) for x, y in points],
-                            fill=color, width=max(1, round(width*SCALE)))
-
-
-def poly(im, points, fill):
-    ImageDraw.Draw(im).polygon([(round(x*SCALE), round(y*SCALE)) for x, y in points], fill=fill)
-
-
-def math_text(im, xy, value, size=28, color=INK):
-    # Letter subscripts do not exist as a complete Unicode alphabet.
-    import re
-    x, y = xy
-    for token in re.split('(u_[AB])', value):
-        if token in ('u_A', 'u_B'):
-            text(im, (x,y), 'u', size, color, 'math')
-            x += ImageDraw.Draw(im).textlength('u', font=font(size,'math'))/SCALE
-            text(im, (x,y+size*.42), token[-1], size*.62, color)
-            x += ImageDraw.Draw(im).textlength(token[-1],font=font(size*.62))/SCALE+2
-        else:
-            text(im,(x,y),token,size,color,'body')
-            x += ImageDraw.Draw(im).textlength(token,font=font(size))/SCALE
-
-
-@lru_cache(None)
-def background():
-    # A quiet warm studio surface, without glow, grids or interface decoration.
-    small = Image.new('RGB',(360,203))
-    pixels = small.load()
-    rng = random.Random(13)
-    for y in range(203):
-        for x in range(360):
-            vignette = min(1, math.hypot((x-174)/285,(y-88)/260))
-            shade = -.045*vignette + .012*math.exp(-((x-210)**2+(y-75)**2)/23000)
-            noise = rng.uniform(-.0015,.0015)
-            pixels[x,y] = tuple(round(c*(1+shade+noise)) for c in PAPER)
-    im = small.resize((W*SCALE,H*SCALE),Image.Resampling.BICUBIC)
-    return im
-
-
-def header(im, scene):
-    text(im,(61,39),'AQCF',61,INK,'light')
-    text(im,(64,112),'Exact private inference',20,MUTED)
-    titles = [('Retained phase', 'Local correction. The low two bits stay intact.'),
-              ('Joint carry', 'One incoming carry, two compatible sharings.'),
-              ('Output-directed merge', 'Contract channels, then cancel complementary terms.')]
-    text(im,(484,49),titles[scene][0],34,INK,'light')
-    text(im,(487,101),titles[scene][1],20,MUTED)
-    text(im,(1300,56),f'0{scene+1}',35,RED,'math')
-    text(im,(1360,69),'/ 03',17,MUTED,'mono')
-    line(im,[(64,755),(1375,755)],(187,184,174),1)
-    text(im,(64,771),'Symbolic protected views',16,MUTED)
-    text(im,(1136,773),'CLIENT–CLOUD INFERENCE',14,MUTED,'mono')
-
-
-class Stage:
-    """Orthographic geometry with consistent lighting and soft contact shadows."""
-    def __init__(self, image, origin=(845,415), scale=47, yaw=.26, pitch=.53):
-        self.image, self.origin, self.scale = image, origin, scale
-        self.cy,self.sy,self.cp,self.sp = math.cos(yaw),math.sin(yaw),math.cos(pitch),math.sin(pitch)
-        self.objects = []
-
-    def project(self, v):
-        x,y,z = v
-        return (self.origin[0]+self.scale*(self.cy*x-self.sy*y),
-                self.origin[1]+self.scale*(self.sp*(self.sy*x+self.cy*y)-self.cp*z))
-
-    def depth(self, v):
-        x,y,z=v
-        return self.cp*(self.sy*x+self.cy*y)+self.sp*z
-
-    def box(self,x,y,z,dx,dy,dz,color=STONE,label=None,size=21,ink=WHITE):
-        self.objects.append((x,y,z,dx,dy,dz,color,label,size,ink))
-
-    def draw(self):
-        shadows=Image.new('RGBA',self.image.size,(0,0,0,0))
-        sd=ImageDraw.Draw(shadows)
-        for x,y,z,dx,dy,dz,col,label,size,ink in self.objects:
-            # Farther objects cast wider, lighter shadows on the studio plane.
-            pts=[self.project((xx+.12*(z+dz),yy+.18*(z+dz),0))
-                 for xx,yy in [(x,y),(x+dx,y),(x+dx,y+dy),(x,y+dy)]]
-            sd.polygon([(round(a*SCALE),round(b*SCALE)) for a,b in pts],fill=(53,46,36,32))
-        shadows=shadows.filter(ImageFilter.GaussianBlur(10*SCALE))
-        self.image.paste(shadows,(0,0),shadows)
-        faces=[]
-        for box in self.objects:
-            x,y,z,dx,dy,dz,col,label,size,ink=box
-            vertices=[(x,y,z),(x+dx,y,z),(x+dx,y+dy,z),(x,y+dy,z),
-                      (x,y,z+dz),(x+dx,y,z+dz),(x+dx,y+dy,z+dz),(x,y+dy,z+dz)]
-            for ids,shade in [((1,2,6,5),.55),((2,3,7,6),.73),((4,5,6,7),1.0)]:
-                vv=[vertices[j] for j in ids]
-                depth=sum(self.depth(v) for v in vv)/4
-                color=tuple(round(c*shade) for c in col)
-                faces.append((depth,[self.project(v) for v in vv],color,ids==(4,5,6,7),box))
-        for depth,pts,color,is_top,box in sorted(faces,key=lambda f:f[0]):
-            poly(self.image,pts,color)
-            if is_top:
-                # Light grazes the edge; fine bevels replace glowing outlines.
-                line(self.image,[pts[0],pts[1]],blend(color,WHITE,.22),.8)
-                x,y,z,dx,dy,dz,col,label,size,ink=box
-                if label:
-                    self.surface_label(label,(x,y,z+dz+.005),(dx,dy),size,ink)
-
-    def surface_label(self, value, at, dims, size, color):
-        # Warp the engraved symbol onto its actual top plane.
-        x,y,z=at;dx,dy=dims
-        pad=.08
-        pts=[self.project(v) for v in [(x+pad,y+pad,z),(x+dx-pad,y+pad,z),
-                                      (x+pad,y+dy-pad,z)]]
-        left=math.floor(min(p[0] for p in pts)-2)
-        top=math.floor(min(p[1] for p in pts)-2)
-        fourth=(pts[1][0]+pts[2][0]-pts[0][0],pts[1][1]+pts[2][1]-pts[0][1])
-        right=math.ceil(max([p[0] for p in pts]+[fourth[0]])+2)
-        bottom=math.ceil(max([p[1] for p in pts]+[fourth[1]])+2)
-        tw=max(4,round((dx-.16)*self.scale*SCALE))
-        th=max(4,round((dy-.16)*self.scale*SCALE))
-        label=Image.new('RGBA',(tw,th),(0,0,0,0))
-        dd=ImageDraw.Draw(label)
-        f=font(size)
-        while dd.textlength(value,font=f)>tw*.9 and size>10:
-            size-=1;f=font(size)
-        dd.text((tw/2,th/2),value,font=f,fill=color,anchor='mm')
-        ax=(pts[1][0]-pts[0][0])*SCALE/tw
-        ay=(pts[1][1]-pts[0][1])*SCALE/tw
-        bx=(pts[2][0]-pts[0][0])*SCALE/th
-        by=(pts[2][1]-pts[0][1])*SCALE/th
-        ox=(pts[0][0]-left)*SCALE;oy=(pts[0][1]-top)*SCALE
-        det=ax*by-ay*bx
-        coeff=(by/det,-bx/det,(bx*oy-by*ox)/det,
-               -ay/det,ax/det,(ay*ox-ax*oy)/det)
-        warped=label.transform(((right-left)*SCALE,(bottom-top)*SCALE),
-                               Image.Transform.AFFINE,coeff,Image.Resampling.BICUBIC)
-        self.image.paste(warped,(left*SCALE,top*SCALE),warped)
-
-    def note(self, xyz, value, offset=(0,-35), size=20, color=MUTED):
-        xx,yy=self.project(xyz)
-        target=(xx+offset[0],yy+offset[1])
-        line(self.image,[(xx,yy),target],blend(PAPER,color,.45),1)
-        if 'u_' in value:
-            math_text(self.image,(target[0]+8,target[1]-size),value,size,color)
-        else:
-            text(self.image,(target[0]+8,target[1]-size),value,size,color)
-
-
-def phase_scene(im,p):
-    stage=Stage(im,origin=(873,432),scale=46,yaw=.18,pitch=.63)
-    q=ramp(p,.12,.5)
-    # The correction affects the high part only; the two low-bit cells never move.
-    for row,y in enumerate((-2.7,1.65)):
-        col=STONE if row==0 else BLUE
-        stage.box(-6.4,y,.35,9.0,1.65,.78,col,'4a' if row==0 and q>.94 else ('4ã' if row==0 else '4b'),34)
-        for j in range(2):
-            stage.box(3.05+j*.77,y,.35,.66,1.65,.78,RED)
-    if q<.98:
-        # A thin local-correction plate settles into A, never into r.
-        z=1.3+1.7*(1-q)
-        stage.box(-6.4,-2.7,z,9.0,1.65,.17,blend(RED,STONE,q*.75),'−4 corr',27)
-    stage.draw()
-    for row,y in enumerate((-2.7,1.65)):
-        for j in range(36):
-            if j%3==0:
-                xx=-6.22+j*.245
-                a=stage.project((xx,y+.06,1.139));b=stage.project((xx,y+.32,1.139))
-                line(im,[a,b],(139,147,143),.65)
-    stage.note((-5.9,-2.7,.35),'A′  /  server local' if q>.94 else 'A  /  server local',(-210,-14),19,INK)
-    stage.note((-5.9,3.3,.35),'B  /  client local',(-66,68),19,INK)
-    stage.note((3.7,-2.7,1.2),'r  /  fixed low 2 bits',(47,-48),20,RED)
-    stage.note((3.7,3.3,1.2),'t  /  low 2 bits',(35,56),20,RED)
-    text(im,(65,272),'Local correction',24,INK,'bold')
-    text(im,(65,315),'A′ = A − 4 corr',27,INK,'math')
-    text(im,(65,365),'37-bit high part',19,MUTED)
-    text(im,(65,395),'+ 2 retained low bits',19,MUTED)
-    text(im,(65,606),'PROTECTED QUARTER RECONSTRUCTION',13,MUTED,'mono')
-    text(im,(65,639),'z ≡ b − a + ω(t,r)  (mod 2³⁷)',35,INK)
-    text(im,(931,667),'Shared integer before the floor operation',18,MUTED)
-
-
-def carry_scene(im,p):
-    # Dependency stages live along one diagonal rail, not a client/server route.
-    beta=ramp(p,.28,.44);arith=ramp(p,.54,.73)
-    stage=Stage(im,origin=(895,410),scale=55,yaw=-.17,pitch=.62)
-    # Boolean shares keep their cap while growing an even arithmetic component.
-    for row,(x,label,col) in enumerate(((-3.85,'α',STONE),(.35,'β',BLUE))):
-        appear=1 if row==0 else beta
-        if appear<.015:continue
-        basez=.45+1.35*arith+(1-beta)*1.3*(row==1)
-        if arith>.015:
-            stage.box(x,-.65,.35,2.65,2.65,1.42*arith,col,'',22)
-        stage.box(x,-.65,basez,2.65,2.65,.16,WHITE,label,43,RED)
-        stage.box(x,1.91,basez-.015,2.65,.09,.18,RED)
-        # An inset footing establishes the odd/even boundary.
-        stage.box(x-.10,-.75,.15,2.85,2.85,.16,PALE)
-    # Separate outgoing carry: low-profile block, set farther back.
-    if arith>.06:
-        stage.box(4.7,-4.0,.26,1.1,1.1,.26+arith*.26,PALE,'d′',25,INK)
-    stage.draw()
-    # Mask preparation appears first; lookup output later, arithmetic last.
-    text(im,(65,221),'PREPARE',13,MUTED,'mono')
-    text(im,(65,254),'α = (k₀ + k₁) mod 2',26,INK)
-    text(im,(65,298),'Fresh ROT keys. One use.',18,MUTED)
-    if beta>.05:
-        text(im,(65,367),'PRECEDING LOOKUP',13,MUTED,'mono')
-        text(im,(65,400),'β = d xor α',29,INK)
-    if arith>.05:
-        stage.note((-2.52,2,.48),'u_A = α + 2K',(-114,64),22,INK)
-        stage.note((1.67,2,.48),'u_B = β − 2Q',(2,61),22,INK)
-        stage.note((5.25,-3.45,.8),'next Boolean carry',(24,-35),18,MUTED)
-    else:
-        stage.note((-2.52,-.65,.9),'prepared mask',(-84,-87),20,INK)
-        if beta>.05:stage.note((1.67,2,.8),'masked incoming carry',(12,87),20,INK)
-    text(im,(65,606),'NEXT LOOKUP / ARITHMETIC SHARES',13,MUTED,'mono')
-    math_text(im,(65,638),'u_A + u_B ≡ d  (mod 2ʷ)',35,INK)
-    text(im,(932,629),'The low bits remain α and β.',20,RED)
-    text(im,(932,666),'The outgoing Boolean carry is distinct.',18,MUTED)
-
-
-def contraction_scene(im,p):
-    stage=Stage(im,origin=(811,420),scale=46,yaw=.25,pitch=.65)
-    align=ramp(p,.08,.42)
-    contracted=ramp(p,.48,.83)
-    # The input is one pack; both branches use it. Short weights are reversed.
-    for j in range(4):
-        stage.box(-6+j*.94,-.3,.35,.84,1.3,.55,STONE,'x'+sub(j),23)
-    for row,y in enumerate((-3.6,2.7)):
-        col=STONE if row==0 else BLUE
-        stage.box(-.5,y,.45,1.28,1.4,.32,PALE,'X⁻¹',27,INK)
-        for j,v in enumerate((('b₁','b₀','0','0'),('c₁','c₀','0','0'))[row]):
-            stage.box(1.35+j*.91+(1-align)*.6,y,.45+(1-align)*.4,.81,1.4,.52,col if j<2 else PALE,v,24,WHITE if j<2 else MUTED)
-        stage.box(6.05,y,.45,1.12,1.4,.12+.6*contracted,blend(PALE,RED,contracted),'Z'+sub(row),26)
-    # Small restrained arrows connect actual operator dependencies.
-    def arrow(a,b):
-        x0,y0=stage.project(a);x1,y1=stage.project(b)
-        line(im,[(x0,y0),(x1,y1)],(148,144,134),1.3)
-        a=math.atan2(y1-y0,x1-x0)
-        line(im,[(x1-6*math.cos(a-.5),y1-6*math.sin(a-.5)),(x1,y1),
-                 (x1-6*math.cos(a+.5),y1-6*math.sin(a+.5))],(148,144,134),1.3)
-    arrow((-1.95,.3,.6),(-.7,-2.9,.6));arrow((-1.95,.3,.6),(-.7,3.4,.6))
-    arrow((5.1,-2.9,.6),(5.95,-2.9,.6));arrow((5.1,3.4,.6),(5.95,3.4,.6))
-    stage.draw()
-    stage.note((-4.5,-.3,1),'same Enc(Pᵢ)',(-54,-53),21,INK)
-    stage.note((3,-3.6,1),'private short weights',(-60,-43),19,MUTED)
-    text(im,(65,230),'BEFORE THE MERGE',13,MUTED,'mono')
-    text(im,(65,265),'One input pack.',27,INK,'light')
-    text(im,(65,305),'Two contractions.',27,INK,'light')
-    text(im,(65,605),'CHANNEL CONTRACTION',13,MUTED,'mono')
-    text(im,(65,640),'Zᵣ = Σᵢ Wᵣ,ᵢ X⁻¹ Pᵢ',34,INK)
-    text(im,(905,636),'256 × 56 × 56  →  64 × 56 × 56',24,INK)
-    text(im,(906,675),'Native ResNet-50 example  /  C = 2',18,MUTED)
-
-
-def trace_scene(im,p):
-    complete=ramp(p,.65,.79)
-    stage=Stage(im,origin=(868-93*complete,425-5*complete),scale=63+9*complete,yaw=.17,pitch=.63)
-    q=ramp(p,.03,.63)
-    # Two signed coefficient surfaces approach; a completed cell is their sum.
-    # Row-major indices correspond to 16 consecutive coefficients, not a tensor reshape.
-    for i in range(16):
-        row,col=divmod(i,8)
-        x=-5.5+col*1.29;y=-1.45+row*2.0
-        k=ramp(q*16,i,i+1)
-        done=q*16>=i+1
-        color=STONE if i%2==0 else BLUE
-        if not done:
-            gap=2.55*(1-k)
-            stage.box(x,y,.38+gap,1.13,1.55,.27,STONE,'v'+sub(i),22)
-            stage.box(x,y,.22,1.13,1.55,.26,BLUE,('−' if i%2 else '')+'t'+sub(i),21)
-        else:
-            stage.box(x,y,.23,1.13,1.55,.55,color,'2'+('a' if i%2==0 else 'u')+sub(i),20)
-        if 0<k<1:
-            # A restrained rust rim marks only the pair currently cancelling.
-            stage.box(x-.025,y-.025,.14,1.18,1.6,.08,RED)
-    stage.draw()
-    active=min(15,int(q*16))
-    idx=sub(active)
-    left=im.copy()
-    text(left,(65,215),'COEFFICIENT CANCELLATION',13,MUTED,'mono')
-    text(left,(65,253),'V = A + U',26,INK,'math')
-    text(left,(65,299),'T = A − U',26,INK,'math')
-    text(left,(65,358),'A = Z₀    U = XZ₁',20,MUTED)
-    text(left,(65,391),'σ₁(X) = −X',21,RED)
-    text(left,(65,606),'EXACT OUTPUT TRACE',13,MUTED,'mono')
-    text(left,(65,640),'M = V + σ₁(T)',34,INK,'math')
-    im.paste(Image.blend(left,im,complete))
-    # Labels for the two surfaces, not decorations or implied plaintext values.
-    if q<.97:
-        stage.note((4.095,1.32,3.2),'V',(72,-44),24,INK)
-        stage.note((4.095,2.1,.49),'σ₁(T)',(37,42),23,INK)
-    sign='+' if active%2==0 else '−'
-    term='a' if active%2==0 else 'u'
-    if q<1:
-        text(im,(484,573),f'(a{idx} + u{idx}) {sign} (a{idx} − u{idx}) = 2{term}{idx}',25,INK)
-    else:
-        centered(im,(786,573),'M = 2[a₀, u₁, a₂, u₃, …, a₁₄, u₁₅]',32,INK)
-    text(im,(942,630),'128 → 32',42,RED,'light')
-    text(im,(945,684),'key switches / selected layer',18,MUTED)
-    text(im,(485,690),'16 coefficients · trace factor 2 retained',19,MUTED)
-
-
-def scene(scene,p):
-    im=background().copy()
-    header(im,scene)
-    if scene==0:phase_scene(im,p)
-    elif scene==1:carry_scene(im,p)
-    else:
-        if p<.29:contraction_scene(im,p/.29)
-        elif p<.34:
-            # A paper wipe clears geometry before the trace close-up.
-            q=(p-.29)/.05
-            if q<.5:
-                old=im.copy();contraction_scene(old,1)
-                im=Image.blend(old,im,smooth(q*2))
-            else:
-                nxt=im.copy();trace_scene(nxt,0)
-                im=Image.blend(im,nxt,smooth((q-.5)*2))
-        else:trace_scene(im,(p-.34)/.66)
-    return im
-
-
-def frame(base,t):
-    stage=(t%1)*3
-    i=min(2,int(stage));p=stage-i
-    im=scene(i,p)
-    # A brief exposure through the warm studio surface, never overlapping text.
-    if p>.955:
-        q=(p-.955)/.045
-        clean=background()
-        if q<.5:im=Image.blend(im,clean,smooth(q*2))
-        else:im=Image.blend(clean,scene((i+1)%3,0),smooth((q-.5)*2))
+    # Ciphertext dependency graph, including shifts before channel contraction.
+    txt(im,88,547,'Cloud evaluation · first output group',22,P,'bold')
+    txt(im,220,591,'Encrypted input packs',17,T,'bold','mm')
+    vector(im,102,609,['p₀','p₁','p₂','p₃','…'],39,31,[(b.MINT,T)]*5,font=17)
+    vector(im,102,653,['q₀','q₁','q₂','q₃','…'],39,31,[(b.MINT,T)]*5,font=17)
+    txt(im,219,708,'Enc(P₀), Enc(P₁)',20,T,'math','mm')
+    flow(im,[(312,647),(337,647),(337,593),(377,593)],T,t,9.7,10.4)
+    flow(im,[(312,647),(337,647),(337,723),(377,723)],T,t,10.6,11.3)
+    block(im,(377,574,438,614),'X⁻¹',21,9.7<=t<10.5)
+    block(im,(377,704,438,744),'X⁻¹',21,10.6<=t<11.4)
+    flow(im,[(438,594),(477,594)],P,t,10.4,10.8)
+    flow(im,[(438,724),(477,724)],P,t,11.3,11.7)
+    box(im,(477,568,847,620),'#fbf8fd',P,1,4)
+    box(im,(477,698,847,750),'#fbf8fd',P,1,4)
+    txt(im,662,590,'Z₀ = X⁻¹[(1 + 2X)P₀ − XP₁]',23,P,'math','mm')
+    txt(im,662,722,'Z₁ = X⁻¹[(3 + X)P₀ + P₁]',23,P,'math','mm')
+    txt(im,480,644,'even coefficients',16,MUTED)
+    vector(im,646,631,[4,9,3,2],46,29,[(b.LAVENDER,P)]*4,font=20)
+    txt(im,480,774,'even coefficients',16,MUTED)
+    vector(im,646,761,[8,17,5,13],46,29,[(b.MINT,T)]*4,font=20)
+    flow(im,[(847,594),(865,594),(865,594),(901,594)],P,t,11.8,12.3)
+    flow(im,[(847,724),(870,724),(870,641),(901,641)],T,t,12.2,12.8)
+    txt(im,869,681,'× X',18,T,'math','mm')
+    # Compact coefficient arrays express cancellation rather than a table.
+    box(im,(903,541,1519,803),'#fcfbfd',P,1,4)
+    txt(im,1212,561,'M = A + U + σ(A − U)     ·     σ(X) = −X',20,P,'math','mm')
+    powers=['X⁻¹','1','X','X²','X³','X⁴','X⁵','X⁶','X⁷','X⁸']
+    for j,q in enumerate(powers):txt(im,1066+j*43+19,584,q,13,MUTED,'math','mm')
+    for label,vals,y in [('A = Z₀',A,599),('U = XZ₁',U,636),('V = A + U',V,673),('σ(A − U)',SIG,710),('M',MERGED,760)]:
+        txt(im,919,y+14,label,19,P if label=='M' else INK,'math')
+        colors=[]
+        for j in range(10):
+            degree=j-1
+            if label=='A = Z₀' and degree in (0,2,4,6):colors.append((b.LAVENDER,P))
+            elif label=='U = XZ₁' and degree in (1,3,5,7):colors.append((b.MINT,T))
+            elif label=='M' and j in range(1,9):colors.append((b.LAVENDER,P) if degree%2==0 else (b.MINT,T))
+            elif label=='σ(A − U)' and degree%2:colors.append((b.ROSE,C))
+            else:colors.append((b.WHITE,INK))
+        hot=min(9,int((t-13)/.43)) if 13<=t<17.3 else -1
+        vector(im,1066,y,vals,43,28,colors,hot,18)
+    line(im,[(916,751),(1506,751)],P,1)
+    txt(im,219,778,'Both paths keep their original shift.',16,MUTED,'sans','mm')
+    # The tiny algebra example is not the native scheduling cost example.
+    txt(im,82,830,'Native layer: 256 → 64 channels · 56 × 56 · C = 2',17,MUTED)
+    txt(im,1519,830,'Key switches 128 → 32     |     CT–PT products 8,192 unchanged',18,P,'sans','rm')
+    draw_lower(im,t)
+    # Diagram legend and a current-step ribbon provide context at all moments.
+    txt(im,64,1320,'■  even target coefficients',17,P)
+    txt(im,372,1320,'■  odd target coefficients',17,T)
+    txt(im,672,1320,'■  sign / low-bit correction',17,C)
+    txt(im,1536,1320,'Numbers illustrate algebra; the original integer map and scale are preserved.',16,MUTED,'sans','rm')
+    if t<5.8:caption=f'Y[{rr+1},{cc+1}] = '+ ' + '.join(f'({WM[rr][k]} × {XM[k][cc]})' for k in range(4)) + f' = {YM[rr][cc]}'
+    elif t<9.7:caption='Pack two input channels per group; reverse the private short weights.'
+    elif t<13:caption='Shift both ciphertext paths, multiply their short weight packs, then sum the channel groups.'
+    elif t<17.3:
+        j=min(9,int((t-13)/.43));caption=f'Merge coefficient {j-1}:   {V[j]} + ({SIG[j]}) = {MERGED[j]}    ·    Original trace factor 2 is retained.'
+    elif t<21:caption='Retain the server phase locally; apply the affine correction without changing the low two bits.'
+    elif t<26:caption='Program the next prefix mask first, then derive Boolean and arithmetic shares of the incoming carry.'
+    else:caption='Exact matrix outputs, compatible local phases, and one incoming carry in two shared representations.'
+    line(im,[(60,1341),(1540,1341)],LINE)
+    txt(im,800,1360,caption,19,P,'sans','mm')
     return im.resize((W,H),Image.Resampling.LANCZOS)
 
-
-def main():
-    parser=argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--output',type=Path,default=Path(__file__).resolve().parents[1]/'docs'/'media')
-    parser.add_argument('--frames',type=int,default=600)
-    parser.add_argument('--preview-only',action='store_true')
-    args=parser.parse_args()
-    if args.frames<30 or args.frames%3:parser.error('--frames must be a multiple of 3 and at least 30')
-    args.output.mkdir(parents=True,exist_ok=True)
-    # A completed trace makes the strongest static cover.
-    frame(None,(2+.94)/3).save(args.output/'aqcf-overview.png',optimize=True)
-    if args.preview_only:
-        for i in range(3):
-            frame(None,(i+.72)/3).save(args.output/f'preview-scene-{i+1}.png')
-        frame(None,(2+.19)/3).save(args.output/'preview-contraction.png')
-        print('Four mechanism previews rendered.');return
-    samples=Image.new('RGB',(W,H*4))
-    for i,t in enumerate((.24,.57,.74,.97)):
-        samples.paste(frame(None,t),(0,i*H))
-    palette=samples.quantize(colors=224,method=Image.Quantize.MEDIANCUT)
-    images=[]
-    for i in range(args.frames):
-        images.append(frame(None,i/args.frames).quantize(palette=palette,dither=Image.Dither.NONE))
-        if i%60==0:print(f'Rendered {i}/{args.frames}',flush=True)
-    # 50ms = 20fps; 600 frames produce a readable 30-second loop.
-    images[0].save(args.output/'aqcf-overview.gif',save_all=True,append_images=images[1:],
-                   duration=50,loop=0,disposal=1,optimize=True)
-    print(f'Rendered {W} x {H}, {args.frames} frames, {args.frames*.05:g} seconds.')
-    for name in ('aqcf-overview.gif','aqcf-overview.png'):
-        print(f'{name}: {(args.output/name).stat().st_size:,} bytes')
-
+def render():
+    ffmpeg=b.ffmpeg_executable()
+    out=ROOT/'aqcf-overview-master.mkv'
+    cmd=[str(ffmpeg),'-hide_banner','-loglevel','warning','-y','-f','rawvideo','-pix_fmt','rgb24','-s',f'{W}x{H}','-r',str(FPS),'-i','pipe:0','-an','-c:v','ffv1','-level','3',str(out)]
+    proc=subprocess.Popen(cmd,stdin=subprocess.PIPE)
+    for i in range(FPS*DURATION):
+        proc.stdin.write(frame(i/FPS).tobytes())
+        if i%(FPS*5)==0:print(f'Rendered {i/FPS:.0f}/{DURATION} seconds',flush=True)
+    proc.stdin.close()
+    if proc.wait():raise RuntimeError('Encoding failed')
+    def run(args):subprocess.run([str(ffmpeg),'-hide_banner','-loglevel','warning','-y',*args],check=True)
+    run(['-i',str(out),'-filter_complex','fps=15,scale=1440:1242:flags=lanczos,split[a][b];[a]palettegen=max_colors=192:stats_mode=full[p];[b][p]paletteuse=dither=none:diff_mode=rectangle','-loop','0',str(ROOT/'aqcf-overview.gif')])
+    run(['-i',str(out),'-c:v','libx264','-crf','17','-preset','medium','-pix_fmt','yuv420p','-movflags','+faststart',str(ROOT/'aqcf-overview.mp4')])
 
 if __name__=='__main__':
-    main()
+    p=argparse.ArgumentParser();p.add_argument('--stills',action='store_true');p.add_argument('--output',type=Path,default=ROOT);args=p.parse_args()
+    ROOT=args.output.resolve();ROOT.mkdir(parents=True,exist_ok=True)
+    frame(29).save(ROOT/'aqcf-overview.png')
+    (ROOT/'aqcf-cover-algebra.json').write_text(json.dumps({'status':'PASS','W':WM,'H':XM,'Y':YM,'P0':P0,'P1':P1,'A':A,'U':U,'V':V,'T':DIFF,'sigma_T':SIG,'M':MERGED,'scope':'Illustrative first output group; no new inference experiment'},indent=2),encoding='utf-8')
+    if not args.stills:render()
+    print('Done.',flush=True)
