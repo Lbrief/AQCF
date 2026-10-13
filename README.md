@@ -3,10 +3,10 @@
 [English](README.md) | [简体中文](README.zh-CN.md)
 
 <p align="center">
-  <a href="docs/media/aqcf-overview.gif"><img src="docs/media/aqcf-overview.gif" alt="AQCF private cloud inference: retained-phase quotient recovery, mask-programmed joint carry, and output-directed trace merging" width="100%"></a>
+  <a href="docs/media/aqcf-overview.gif"><img src="docs/media/aqcf-overview.gif" alt="AQCF paper mechanisms in motion: local phase correction, programmed carry shares, and exact coefficient trace cancellation" width="100%"></a>
 </p>
 
-[Still image](docs/media/aqcf-overview.png) · [Animation explained](docs/media/README.md)
+[Still image](docs/media/aqcf-overview.png) · [Animation and paper mapping](docs/media/README.md)
 
 **Exact integer inference for private client–cloud computation.**
 

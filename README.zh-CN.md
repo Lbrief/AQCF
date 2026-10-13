@@ -3,10 +3,10 @@
 [English](README.md) | [简体中文](README.zh-CN.md)
 
 <p align="center">
-  <a href="docs/media/aqcf-overview.gif"><img src="docs/media/aqcf-overview.gif" alt="AQCF 云端隐私推理：保留相位的商恢复、掩码编程的联合进位与面向输出的迹合并" width="100%"></a>
+  <a href="docs/media/aqcf-overview.gif"><img src="docs/media/aqcf-overview.gif" alt="AQCF 论文机制动态演示：本地相位校正、掩码编程的进位共享与精确系数迹抵消" width="100%"></a>
 </p>
 
-[静态封面](docs/media/aqcf-overview.png) · [动图说明](docs/media/README.md)
+[静态封面](docs/media/aqcf-overview.png) · [动图与论文机制对应](docs/media/README.md)
 
 **面向客户端与云服务器的精确整数隐私推理。**
 
