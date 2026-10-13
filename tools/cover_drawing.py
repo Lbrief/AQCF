@@ -24,8 +24,8 @@ def ffmpeg_executable():
 
 @lru_cache(None)
 def font(size,style='sans'):
-    preferred={'sans':'segoeui.ttf','bold':'seguisb.ttf','light':'segoeuil.ttf','serif':'georgia.ttf','math':'cambria.ttc','italic':'georgiai.ttf','mono':'consola.ttf'}
-    fallback={'sans':'DejaVuSans.ttf','bold':'DejaVuSans-Bold.ttf','light':'DejaVuSans.ttf','serif':'DejaVuSerif.ttf','math':'DejaVuSerif.ttf','italic':'DejaVuSerif-Italic.ttf','mono':'DejaVuSansMono.ttf'}
+    preferred={'sans':'segoeui.ttf','bold':'seguisb.ttf','light':'segoeuil.ttf','serif':'georgia.ttf','math':'cambria.ttc','italic':'georgiai.ttf','mono':'consola.ttf','brand':'BOD_BLAR.TTF'}
+    fallback={'sans':'DejaVuSans.ttf','bold':'DejaVuSans-Bold.ttf','light':'DejaVuSans.ttf','serif':'DejaVuSerif.ttf','math':'DejaVuSerif.ttf','italic':'DejaVuSerif-Italic.ttf','mono':'DejaVuSansMono.ttf','brand':'DejaVuSerif-Bold.ttf'}
     roots=[Path(os.environ.get('WINDIR','C:/Windows'))/'Fonts',Path('/usr/share/fonts/truetype/dejavu'),Path('/usr/local/share/fonts'),Path('/Library/Fonts')]
     if os.environ.get('AQCF_FONT_DIR'):
         roots.insert(0,Path(os.environ['AQCF_FONT_DIR']))

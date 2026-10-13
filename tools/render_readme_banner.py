@@ -7,6 +7,7 @@ import argparse
 from PIL import Image, ImageDraw
 import cover_drawing as b
 from cover_protocols import draw_lower, flow
+from cover_identity import header_image
 
 ROOT=Path(__file__).resolve().parents[1]/'docs/media'
 W,H,FPS,DURATION=1600,1380,20,30
@@ -56,8 +57,6 @@ def block(im,area,label,size=20,active=False,color=P):
 
 def frame(t):
     im=Image.new('RGB',(W*b.S,H*b.S),'white')
-    txt(im,800,76,'aqcf',93,P,'bold','mm')
-    txt(im,800,152,b.AUTHORS,28,INK,'serif','mm')
     box(im,(60,191,1540,242),P,P,1,0)
     txt(im,800,216,'Exact private inference  ·  algorithm overview',28,'white','bold','mm')
     # A single enclosing technical plate, matching the supplied academic format.
@@ -160,7 +159,9 @@ def frame(t):
     else:caption='Exact matrix outputs, compatible local phases, and one incoming carry in two shared representations.'
     line(im,[(60,1341),(1540,1341)],LINE)
     txt(im,800,1360,caption,19,P,'sans','mm')
-    return im.resize((W,H),Image.Resampling.LANCZOS)
+    result = im.resize((W,H),Image.Resampling.LANCZOS)
+    result.paste(header_image().resize((W,190),Image.Resampling.LANCZOS), (0,0))
+    return result
 
 def render():
     ffmpeg=b.ffmpeg_executable()
